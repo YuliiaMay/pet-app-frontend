@@ -1,4 +1,4 @@
-export * from './GlobalStyles';
+export theme from './GlobalStyles';
 export * from './FontStyles';
 export * from './Variables';
 export {ResponsiveContainer} from './ResponsiveContainer';

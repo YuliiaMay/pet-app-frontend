@@ -1,12 +1,11 @@
 import { ThemeProvider } from 'styled-components';
-import { variables } from './assets/styles';
-
+import { theme } from './assets/styles';
 
 
 function App() {
   return (
     <>
-      <ThemeProvider theme={variables}>
+      <ThemeProvider theme={theme}>
         <div>It works</div>
       </ThemeProvider>
     </>

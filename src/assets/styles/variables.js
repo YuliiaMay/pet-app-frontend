@@ -1,4 +1,4 @@
-export const variables = Object.freeze({
+export const theme = Object.freeze({
     background: {
         color: '#FFFFFF',
         lightBlue: '#CCE4FB',
