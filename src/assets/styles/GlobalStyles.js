@@ -3,6 +3,9 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     body {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
         background-color: #FFFFFF;
         color: #111111;
         margin: 0;
