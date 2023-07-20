@@ -1,5 +1,5 @@
-import { ThemeProvider } from "styled-components";
-import { theme } from "./assets/styles";
+// import { ThemeProvider } from "styled-components";
+// import { theme } from "./assets/styles";
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const NoticesCategoriesList = lazy(() =>
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/main" element={<MainPage />} />
@@ -44,7 +44,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />}></Route>
         </Route>
       </Routes>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }
 
