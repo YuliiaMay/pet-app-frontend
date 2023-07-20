@@ -1,0 +1,1 @@
+import{j as s,N as e,r,O as a}from"./index-0c94bb9d.js";const l=()=>s.jsxs(s.Fragment,{children:[s.jsx("div",{children:s.jsx(e,{to:"/sell",children:"sell"})}),s.jsx("main",{children:s.jsx(r.Suspense,{fallback:s.jsx("div",{children:"Loading..."}),children:s.jsx(a,{})})})]});export{l as default};
