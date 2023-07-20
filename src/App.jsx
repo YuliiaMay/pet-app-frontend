@@ -27,6 +27,7 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route path="/main" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
+
           <Route path="/notices" element={<NoticesPage />}>
             <Route path="sell" element={<NoticesCategoriesList />} />
             <Route path="lost-found" element={<NoticesCategoriesList />} />
