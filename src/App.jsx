@@ -1,27 +1,27 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/styles";
-// import { lazy } from "react";
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import SharedLayout from './components/SharedLayout/SharedLayout';
-import MainPage from './pages/MainPage';
-import NewsPage from './pages/NewsPage';
+// import MainPage from './pages/MainPage';
+// import NewsPage from './pages/NewsPage';
 
 // const SharedLayout = lazy(() =>
 //   import("./components/SharedLayout/SharedLayout")
 // );
-// const MainPage = lazy(() => import("./pages/MainPage"));
+const MainPage = lazy(() => import("./pages/MainPage"));
 // const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 // const LoginPage = lazy(() => import("./pages/LoginPage"));
-// const NoticesPage = lazy(() => import("./pages/NoticesPage"));
-// const NewsPage = lazy(() => import("./pages/NewsPage"));
+const NoticesPage = lazy(() => import("./pages/NoticesPage"));
+const NewsPage = lazy(() => import("./pages/NewsPage"));
 // const FriendsPage = lazy(() => import("./pages/FriendsPage"));
 // const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 // const UserPage = lazy(() => import("./pages/UserPage"));
 // const AddPetPage = lazy(() => import("./pages/AddPetPage"));
 
-// const NoticesCategoriesList = lazy(() =>
-//   import("./components/Notices/NoticesCategoriesList/NoticesCategoriesList")
-// );
+const NoticesCategoriesList = lazy(() =>
+  import("./components/Notices/NoticesCategoriesList/NoticesCategoriesList")
+);
 
 function App() {
   return (
@@ -30,21 +30,22 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route path="/main" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
+          {/* <Route path="/notices" element={<NoticesPage />}></Route> */}
 
-          {/* <Route path="/notices" element={<NoticesPage />}>
+          <Route path="/notices" element={<NoticesPage />}>
             <Route path="sell" element={<NoticesCategoriesList />} />
-            <Route path="lost-found" element={<NoticesCategoriesList />} />
+            {/* <Route path="lost-found" element={<NoticesCategoriesList />} />
             <Route path="for-free" element={<NoticesCategoriesList />} />
             <Route path="favorite" element={<NoticesCategoriesList />} />
-            <Route path="own" element={<NoticesCategoriesList />} />
+            <Route path="own" element={<NoticesCategoriesList />} /> */}
           </Route>
 
-          <Route path="/friends" element={<FriendsPage />} />
+          {/* <Route path="/friends" element={<FriendsPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
-          <Route path="*" element={<NotFoundPage />}></Route> */}
+          <Route path="*" element={<NotFoundPage />}> */}
         </Route>
       </Routes>
     </ThemeProvider>
