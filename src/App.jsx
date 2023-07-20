@@ -1,6 +1,5 @@
-import { ThemeProvider } from 'styled-components';
-import { theme } from './assets/styles';
-
+import { ThemeProvider } from "styled-components";
+import { theme } from "./assets/styles";
 
 function App() {
   return (
@@ -9,7 +8,7 @@ function App() {
         <div>It works</div>
       </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
