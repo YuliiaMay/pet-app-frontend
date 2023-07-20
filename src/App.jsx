@@ -1,16 +1,19 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/styles";
-import { lazy } from "react";
+// import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import SharedLayout from './components/SharedLayout/SharedLayout';
+import MainPage from './pages/MainPage';
+import NewsPage from './pages/NewsPage';
 
-const SharedLayout = lazy(() =>
-  import("./components/SharedLayout/SharedLayout")
-);
-const MainPage = lazy(() => import("./pages/MainPage"));
+// const SharedLayout = lazy(() =>
+//   import("./components/SharedLayout/SharedLayout")
+// );
+// const MainPage = lazy(() => import("./pages/MainPage"));
 // const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 // const LoginPage = lazy(() => import("./pages/LoginPage"));
 // const NoticesPage = lazy(() => import("./pages/NoticesPage"));
-const NewsPage = lazy(() => import("./pages/NewsPage"));
+// const NewsPage = lazy(() => import("./pages/NewsPage"));
 // const FriendsPage = lazy(() => import("./pages/FriendsPage"));
 // const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 // const UserPage = lazy(() => import("./pages/UserPage"));

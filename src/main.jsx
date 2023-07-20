@@ -8,7 +8,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <GlobalStyle />
     <FontStyles />
-    <BrowserRouter>
+    <BrowserRouter basename="/pet-app-frontend">
       <App />
     </BrowserRouter>
   </React.StrictMode>
