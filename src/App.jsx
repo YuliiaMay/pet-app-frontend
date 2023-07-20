@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/styles";
+
 import { lazy, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -22,7 +23,6 @@ const AddPetPage = lazy(() => import("./pages/AddPetPage"));
 const NoticesCategoriesList = lazy(() =>
   import("./components/Notices/NoticesCategoriesList/NoticesCategoriesList")
 );
-
 
 function App() {
   const dispatch = useDispatch();
