@@ -1,1 +1,0 @@
-import{j as e,r,O as s}from"./index-afba2732.js";const t=()=>e.jsxs(e.Fragment,{children:[e.jsx("header",{children:"Header"}),e.jsx("main",{children:e.jsx(r.Suspense,{fallback:e.jsx("div",{children:"Loading..."}),children:e.jsx(s,{})})})]});export{t as default};
