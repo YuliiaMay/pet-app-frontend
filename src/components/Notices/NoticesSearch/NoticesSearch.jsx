@@ -10,7 +10,7 @@ import {
   Section,
   TitleSearch,
 } from "./NoticesSearch.style";
-import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
+// import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
 
 export const NoticesSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,7 +35,7 @@ export const NoticesSearch = () => {
 
   return (
     <Section>
-      <ResponsiveContainer>
+      {/* <ResponsiveContainer> */}
         <TitleSearch>Find your favorite pet</TitleSearch>
         <FormSearch onSubmit={handleSubmit}>
           <InputSearch
@@ -54,7 +54,7 @@ export const NoticesSearch = () => {
             </ButtonClose>
           )} */}
         </FormSearch>
-      </ResponsiveContainer>
+      {/* </ResponsiveContainer> */}
     </Section>
   );
 };
