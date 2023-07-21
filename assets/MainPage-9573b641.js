@@ -1,4 +1,4 @@
-import{s as e,j as s}from"./index-1d725693.js";const n=e.div`
+import{s as e,j as s}from"./index-2fe824b7.js";const n=e.div`
   background-image: url("../images/backgraund/bg-des@1x.png");
   padding: 0 16px;
   display: flex;
