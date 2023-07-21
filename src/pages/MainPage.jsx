@@ -1,4 +1,3 @@
-import { Header } from "../components/SharedLayout/Header/Header";
 import { Brownie, Cat, Frenchie, MainTitle } from "./MainPage.styled";
 
 export const MainPage = () => {

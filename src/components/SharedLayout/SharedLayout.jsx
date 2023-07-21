@@ -1,10 +1,11 @@
 import { Suspense } from "react";
 import { Outlet, NavLink } from "react-router-dom";
-import { Header, Nav } from "./SharedLayout.style";
+import { Header, Main, Nav } from "./SharedLayout.style";
+import { ResponsiveContainer } from "../../assets/styles/ResponsiveContainer";
 
 const SharedLayout = () => {
   return (
-    <>
+    <ResponsiveContainer>
       <Header>
         <div>
           <NavLink to="/main">Logo</NavLink>
@@ -19,12 +20,12 @@ const SharedLayout = () => {
           <NavLink to="/register">Registration</NavLink>
         </div>
       </Header>
-      <main>
+      <Main>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
-      </main> 
-    </>
+      </Main>
+    </ResponsiveContainer>
   );
 };
 
