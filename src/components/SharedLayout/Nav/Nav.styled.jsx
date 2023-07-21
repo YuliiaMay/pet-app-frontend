@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div``;
@@ -8,7 +9,7 @@ export const NavList = styled.ul`
   margin-right: 270px;
 `;
 
-export const NavItem = styled.li`
+export const NavItem = styled(NavLink)`
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.8px;
