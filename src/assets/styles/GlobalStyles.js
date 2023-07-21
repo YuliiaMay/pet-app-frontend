@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 export const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Manrope', sans-serif;
@@ -9,8 +8,6 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #FFFFFF;
         color: #111111;
         margin: 0;
-        display: flex;
-        place-items: center;
     };
 
     h1,

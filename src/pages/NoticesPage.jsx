@@ -1,20 +1,11 @@
-import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { NoticesSearch } from "../components/Notices/NoticesSearch/NoticesSearch";
+import { Section } from "./NoticesPage.style";
 
 const NoticesPage = () => {
   return (
-    <>
-      <div>
-        <NavLink to="/sell">sell</NavLink>
-
-      </div>
-      <main>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-        </Suspense>
-      </main>
-    </>
+    <Section>
+      <NoticesSearch />
+    </Section>
   );
 };
 
