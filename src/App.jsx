@@ -1,11 +1,15 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/styles";
-import { lazy } from "react";
-import { Routes, Route } from "react-router-dom";
 
-const SharedLayout = lazy(() =>
-  import("./components/SharedLayout/SharedLayout")
-);
+import { lazy, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import SharedLayout from "./components/SharedLayout/SharedLayout"
+
+
+import { fetchPets } from "./redux/petsSlice/operations";
+
+
 const MainPage = lazy(() => import("./pages/MainPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
@@ -21,6 +25,12 @@ const NoticesCategoriesList = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPets());
+  }, [dispatch]);
+
   return (
     <ThemeProvider theme={theme}>
       <Routes>
@@ -41,7 +51,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/add-pet" element={<AddPetPage />} />
-          <Route path="*" element={<NotFoundPage />}></Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </ThemeProvider>
