@@ -4,9 +4,9 @@ export const Navigation = () => {
   return (
     <Wrapper>
       <NavList>
-        <NavItem>News</NavItem>
-        <NavItem>Find pet</NavItem>
-        <NavItem>Our friends</NavItem>
+        <NavItem to="/news">News</NavItem>
+        <NavItem to="/notices">Find pet</NavItem>
+        <NavItem to="/friends">Our friends</NavItem>
       </NavList>
     </Wrapper>
   );
