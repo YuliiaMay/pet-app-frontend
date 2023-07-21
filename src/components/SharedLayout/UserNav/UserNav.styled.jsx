@@ -1,13 +1,12 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
-export const Wrapper = styled.div``;
 
 export const AuthList = styled.nav`
   display: flex;
   gap: 20px;
 `;
 
-export const LogInBtn = styled.button`
+export const LogInBtn = styled(NavLink)`
   display: flex;
   color: #fef9f9;
   background-color: #ffc107;
@@ -18,7 +17,7 @@ export const LogInBtn = styled.button`
   border-radius: 40px;
   border: 1px;
 `;
-export const RegisterBtn = styled.button`
+export const RegisterBtn = styled(NavLink)`
   font-size: 16px;
   font-family: Manrope;
   font-weight: 700;
