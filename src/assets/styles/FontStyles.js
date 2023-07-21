@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+
 import RegularWoff from "../fonts/Manrope-Regular.woff";
 import RegularWoff2 from "../fonts/Manrope-Regular.woff2";
 import MediumWoff from "../fonts/Manrope-Medium.woff";
