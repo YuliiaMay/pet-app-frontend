@@ -1,3 +1,4 @@
+
 import {
   Container,
   Brownie,
@@ -5,6 +6,7 @@ import {
   Frenchie,
   MainTitle,
 } from "./MainPage.styled";
+
 
 import frenchie from "../images/mainPage/mn-des-1@1x.png";
 import brownie from "../images/mainPage/mn-des-2@2x.png";
@@ -30,3 +32,4 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
