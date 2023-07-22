@@ -1,27 +1,26 @@
-import FormTitle from "../FormTitle/FormTitle";
+import { useState } from "react";
+import { OptionList, CategoryOption } from "./OptionForm.styled";
+
 
 
 const OptionForm = () => {
     return (
-        <>
-            <FormTitle />
-            <div>
-                <ul>
-                    <li>
-                        <button type="button">your pet</button>
-                    </li>
-                    <li>
-                        <button type="button">sell</button>
-                    </li>
-                    <li>
-                        <button type="button">lost/found</button>
-                    </li>
-                    <li>
-                        <button type="button">in good hands</button>
-                    </li>                    
-                </ul>
-            </div>
-        </>
+        <div>
+            <OptionList>
+                <li>
+                    <CategoryOption type="button">your pet</CategoryOption>
+                </li>
+                <li>
+                    <CategoryOption type="button">sell</CategoryOption>
+                </li>
+                <li>
+                    <CategoryOption type="button">lost/found</CategoryOption>
+                </li>
+                <li>
+                    <CategoryOption type="button">in good hands</CategoryOption>
+                </li>                    
+            </OptionList>
+        </div>
     );
 };
 
