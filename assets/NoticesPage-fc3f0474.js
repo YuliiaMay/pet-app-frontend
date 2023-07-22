@@ -1,4 +1,4 @@
-import{G as r,s as o,r as x,j as e,N as d}from"./index-744e8b10.js";function p(t){return r({tag:"svg",attr:{fill:"currentColor",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"}}]})(t)}function h(t){return r({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"line",attr:{x1:"12",y1:"5",x2:"12",y2:"19"}},{tag:"line",attr:{x1:"5",y1:"12",x2:"19",y2:"12"}}]})(t)}function u(t){return r({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"line",attr:{x1:"18",y1:"6",x2:"6",y2:"18"}},{tag:"line",attr:{x1:"6",y1:"6",x2:"18",y2:"18"}}]})(t)}const g=o.div`
+import{G as r,s as o,r as d,j as e,N as c}from"./index-f8de9436.js";function p(t){return r({tag:"svg",attr:{fill:"currentColor",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"}}]})(t)}function h(t){return r({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"line",attr:{x1:"12",y1:"5",x2:"12",y2:"19"}},{tag:"line",attr:{x1:"5",y1:"12",x2:"19",y2:"12"}}]})(t)}function u(t){return r({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"line",attr:{x1:"18",y1:"6",x2:"6",y2:"18"}},{tag:"line",attr:{x1:"6",y1:"6",x2:"18",y2:"18"}}]})(t)}const g=o.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,7 +61,7 @@ import{G as r,s as o,r as x,j as e,N as d}from"./index-744e8b10.js";function p(t
   right: 13px;
   border: none;
   background-color: inherit;
-`,w=()=>{const[t,s]=x.useState(""),c=i=>{const l=i.currentTarget.value.toLowerCase();s(l)};console.log(t);const a=i=>{i.preventDefault(),t.trim()!==""&&s("")};return e.jsxs(g,{children:[e.jsx(b,{children:"Find your favorite pet"}),e.jsxs(m,{onSubmit:a,children:[e.jsx(f,{type:"text",placeholder:"Search",value:t,onChange:c}),e.jsx(j,{type:"submit",position:t,children:e.jsx(p,{color:"#54ADFF",size:24})}),t!==""&&e.jsx(y,{type:"button",children:e.jsx(u,{color:"#FFC107",size:24})})]})]})},v=o.div`
+`,w=()=>{const[t,s]=d.useState(""),a=i=>{const x=i.currentTarget.value.toLowerCase();s(x)};console.log(t);const l=i=>{i.preventDefault(),t.trim()!==""&&s("")};return e.jsxs(g,{children:[e.jsx(b,{children:"Find your favorite pet"}),e.jsxs(m,{onSubmit:l,children:[e.jsx(f,{type:"text",placeholder:"Search",value:t,onChange:a}),e.jsx(j,{type:"submit",position:t,children:e.jsx(p,{color:"#54ADFF",size:24})}),t!==""&&e.jsx(y,{type:"button",children:e.jsx(u,{color:"#FFC107",size:24})})]})]})},v=o.div`
   display: flex;
   justify-content: space-between;
   margin-top: 43px;
@@ -78,7 +78,7 @@ import{G as r,s as o,r as x,j as e,N as d}from"./index-744e8b10.js";function p(t
     align-items: flex-start;
     gap: 8px;
   }
-`,n=o(d)`
+`,n=o(c)`
   padding: 8px 16px;
   justify-content: center;
   align-items: center;
@@ -93,7 +93,7 @@ import{G as r,s as o,r as x,j as e,N as d}from"./index-744e8b10.js";function p(t
     background-color: ${t=>t.theme.color.blue};
     color: ${t=>t.theme.color.wight};
   }
-`,z=o.button`
+`,z=o(c)`
   padding: 8px 20px;
   justify-content: center;
   align-items: center;

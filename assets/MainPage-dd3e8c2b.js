@@ -1,4 +1,4 @@
-import{s,j as t}from"./index-744e8b10.js";const e="/pet-app-frontend/assets/bg-des@1x-82264fa3.png",n=s.div`
+import{s,j as t}from"./index-f8de9436.js";const e="/pet-app-frontend/assets/bg-des@1x-82264fa3.png",n=s.div`
   background-image: url(${e});
   /* margin-right: -190px; */
   padding: 0 16px;
