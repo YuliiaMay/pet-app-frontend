@@ -1,3 +1,4 @@
+import AuthNav from "../AuthNav/AuthNav";
 import { Logo } from "../Logo/Logo";
 import { Navigation } from "../Nav/Nav";
 import { UserNav } from "../UserNav/UserNav";
@@ -9,6 +10,7 @@ export const Header = () => {
       <Logo />
       <Navigation />
       <UserNav />
+      <AuthNav />
     </Wrapper>
   );
 };
