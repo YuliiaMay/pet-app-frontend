@@ -17,4 +17,5 @@ export const Nav = styled.div`
 export const Main = styled.main`
   margin: 0px auto;
 `;
+
 export const Body = styled.div``;
