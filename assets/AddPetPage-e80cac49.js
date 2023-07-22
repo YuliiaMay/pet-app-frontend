@@ -1,4 +1,4 @@
-import{s as e,N as i,L as s,j as o,r as d,O as a}from"./index-347f5d22.js";import{F as c}from"./FormTitle-0ed850ee.js";const x=e.div`
+import{s as e,N as i,L as s,j as o,r as d,O as a}from"./index-90405ce0.js";import{F as c}from"./FormTitle-46ddad6a.js";const x=e.div`
     background-color: ${t=>t.theme.background.wight};
     width: 458px;
     height: 540px;
