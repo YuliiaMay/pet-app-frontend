@@ -39,7 +39,7 @@ export const ButtonFilters = styled(NavLink)`
   }
 `;
 
-export const ButtonAdd = styled.button`
+export const ButtonAdd = styled(NavLink)`
   padding: 8px 20px;
   justify-content: center;
   align-items: center;
