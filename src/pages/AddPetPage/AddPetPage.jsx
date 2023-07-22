@@ -1,7 +1,20 @@
+import { Suspense } from "react";
+import { NavLink, Outlet } from "react-router-dom";
+
+
+
 const AddPetPage = () => {
   return (
     <>
-      <div>AddPet Page</div>
+      <nav>
+        <NavLink to='option'>Choose  option</NavLink>
+        <NavLink to='details'>Personal details</NavLink>
+        <NavLink to='more-info'>More info</NavLink>
+      </nav>
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet/>
+      </Suspense>
     </>
   );
 };
