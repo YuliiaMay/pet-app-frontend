@@ -1,6 +1,8 @@
+import { Title } from "./FormTitle.styled";
+
 const FormTitle = () => {
     return (
-        <h1>Add pet</h1>
+        <Title>Add pet</Title>
     );
 }
 
