@@ -7,10 +7,12 @@ import {
   Frenchie,
   MainTitle,
 } from "./MainPage.styled";
-import frenchie from "../images/mainPage/mn-des-1@1x.png";
-import frenchie2 from "../images/mainPage/mn-des-1@2x.png";
-import brownie from "../images/mainPage/mn-des-2@2x.png";
-import cat from "../images/mainPage/mn-des-3@2x.png";
+
+
+import frenchie from "../../images/mainPage/mn-des-1@1x.png";
+import frenchie2 from "../../images/mainPage/mn-des-1@2x.png";
+import brownie from "../../images/mainPage/mn-des-2@2x.png";
+import cat from "../../images/mainPage/mn-des-3@2x.png";
 
 const MainPage = () => {
   return (
