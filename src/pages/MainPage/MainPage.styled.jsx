@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import paws from "../images/backgraund/bg-des@1x.png";
+import paws from "../../images/backgraund/bg-des@1x.png";
 export const Container = styled.div`
   background-image: url(${paws});
   /* margin-right: -190px; */
