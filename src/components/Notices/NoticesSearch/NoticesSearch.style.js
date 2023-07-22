@@ -59,10 +59,10 @@ export const ButtonSearch = styled.button`
   background-color: inherit;
   transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-  right: ${(props) => (props.isActive ? "47px" : "20px")};
+  right: ${(props) => (props.position ? "47px" : "20px")};
 
   @media (max-width: 479px) {
-    right: ${(props) => (props.isActive ? "37px" : "12px")};
+    right: ${(props) => (props.position ? "37px" : "12px")};
   }
 `;
 

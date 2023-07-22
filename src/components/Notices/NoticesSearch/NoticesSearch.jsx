@@ -42,7 +42,7 @@ export const NoticesSearch = () => {
           value={searchQuery}
           onChange={handleChangeSearchQuery}
         />
-        <ButtonSearch type="submit" isActive={searchQuery}>
+        <ButtonSearch type="submit" position={searchQuery}>
           <BsSearch color={"#54ADFF"} size={24} />
         </ButtonSearch>
         {searchQuery !== "" && (
