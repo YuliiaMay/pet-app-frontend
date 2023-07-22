@@ -1,36 +1,26 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/styles";
 
-import { lazy, useEffect } from "react";
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import SharedLayout from "./components/SharedLayout/SharedLayout"
 
 
-import { fetchPets } from "./redux/petsSlice/operations";
-
-
-const MainPage = lazy(() => import("./pages/MainPage"));
-const RegisterPage = lazy(() => import("./pages/RegisterPage"));
-const LoginPage = lazy(() => import("./pages/LoginPage"));
-const NoticesPage = lazy(() => import("./pages/NoticesPage"));
-const NewsPage = lazy(() => import("./pages/NewsPage"));
-const FriendsPage = lazy(() => import("./pages/FriendsPage"));
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
-const UserPage = lazy(() => import("./pages/UserPage"));
-const AddPetPage = lazy(() => import("./pages/AddPetPage"));
+const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
+const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage"));
+const FriendsPage = lazy(() => import("./pages/FriendsPage/FriendsPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
+const UserPage = lazy(() => import("./pages/UserPage/UserPage"));
+const AddPetPage = lazy(() => import("./pages/AddPetPage/AddPetPage"));
 
 const NoticesCategoriesList = lazy(() =>
   import("./components/Notices/NoticesCategoriesList/NoticesCategoriesList")
 );
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPets());
-  }, [dispatch]);
-
   return (
     <ThemeProvider theme={theme}>
       <Routes>

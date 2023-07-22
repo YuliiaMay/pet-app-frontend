@@ -1,3 +1,4 @@
+
 import {
   Container,
   PhotoBox,
@@ -6,7 +7,6 @@ import {
   Frenchie,
   MainTitle,
 } from "./MainPage.styled";
-
 import frenchie from "../images/mainPage/mn-des-1@1x.png";
 import frenchie2 from "../images/mainPage/mn-des-1@2x.png";
 import brownie from "../images/mainPage/mn-des-2@2x.png";
