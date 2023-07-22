@@ -1,11 +1,12 @@
 import { NoticesSearch } from "../../components/Notices/NoticesSearch/NoticesSearch";
-import { Section } from "./NoticesPage.style";
+import { NoticesFilters } from "../../components/Notices/NoticesFilters/NoticesFilters";
 
 const NoticesPage = () => {
   return (
-    <Section>
+    <>
       <NoticesSearch />
-    </Section>
+      <NoticesFilters />
+    </>
   );
 };
 
