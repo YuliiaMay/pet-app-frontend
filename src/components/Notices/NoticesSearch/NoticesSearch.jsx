@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-// import { FiX } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 
 import {
-  // ButtonClose,
+  ButtonClose,
   ButtonSearch,
   FormSearch,
   InputSearch,
   Section,
   TitleSearch,
 } from "./NoticesSearch.style";
-// import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
 
 export const NoticesSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,7 +19,6 @@ export const NoticesSearch = () => {
     const searchQuery = e.currentTarget.value.toLowerCase();
     setSearchQuery(searchQuery);
   };
-  console.log(searchQuery);
 
   //*  Передаємо в App значення searchQuery і очищуємо форму
   const handleSubmit = (e) => {
@@ -33,28 +31,29 @@ export const NoticesSearch = () => {
     setSearchQuery("");
   };
 
+  const handleDelete = () => {
+    setSearchQuery("");
+  };
+
   return (
     <Section>
-      {/* <ResponsiveContainer> */}
-        <TitleSearch>Find your favorite pet</TitleSearch>
-        <FormSearch onSubmit={handleSubmit}>
-          <InputSearch
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={handleChangeSearchQuery}
-          />
-          <ButtonSearch type="submit">
-            <BsSearch color={"#54ADFF"} size={24} />
-          </ButtonSearch>
-          {/* {searchQuery &
-          (
-            <ButtonClose type="button">
-              <FiX color={"#FFC107"} size={24} />
-            </ButtonClose>
-          )} */}
-        </FormSearch>
-      {/* </ResponsiveContainer> */}
+      <TitleSearch>Find your favorite pet</TitleSearch>
+      <FormSearch onSubmit={handleSubmit}>
+        <InputSearch
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleChangeSearchQuery}
+        />
+        <ButtonSearch type="submit" position={searchQuery}>
+          <BsSearch color={"#54ADFF"} size={24} />
+        </ButtonSearch>
+        {searchQuery !== "" && (
+          <ButtonClose type="button" onClick={handleDelete}>
+            <FiX color={"#FFC107"} size={24} />
+          </ButtonClose>
+        )}
+      </FormSearch>
     </Section>
   );
 };

@@ -1,31 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-    html {
-        // mobile
-        @media screen and (min-width: 320px) {
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        // tablet
-        @media screen and (min-width: 768px) {
-            max-width: 768px;
-            padding: 0 32px;
-        }
-
-        // desktop
-        @media screen and (min-width: 1280px) {
-            max-width: 1280px;
-            padding: 0 16px;
-        }        
-    };
     
     body {
         font-family: 'Manrope', sans-serif;
         font-weight: 400;
         font-size: 16px;
-        background-color: #FFFFFF;
+        background-color: #FEF9F9;
         color: #111111;
         margin: 0;
     };
