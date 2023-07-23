@@ -19,7 +19,6 @@ export const NoticesSearch = () => {
     const searchQuery = e.currentTarget.value.toLowerCase();
     setSearchQuery(searchQuery);
   };
-  console.log(searchQuery);
 
   //*  Передаємо в App значення searchQuery і очищуємо форму
   const handleSubmit = (e) => {
@@ -29,6 +28,10 @@ export const NoticesSearch = () => {
       return;
     }
     // onSubmit(searchQuery);
+    setSearchQuery("");
+  };
+
+  const handleDelete = () => {
     setSearchQuery("");
   };
 
@@ -46,7 +49,7 @@ export const NoticesSearch = () => {
           <BsSearch color={"#54ADFF"} size={24} />
         </ButtonSearch>
         {searchQuery !== "" && (
-          <ButtonClose type="button">
+          <ButtonClose type="button" onClick={handleDelete}>
             <FiX color={"#FFC107"} size={24} />
           </ButtonClose>
         )}
