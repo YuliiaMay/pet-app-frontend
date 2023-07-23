@@ -72,6 +72,7 @@ export const BurgerLogInBtn = styled(NavLink)`
   border: 1px;
   width: 165px;
 `;
+
 export const BurgerRegisterBtn = styled(NavLink)`
   font-size: 16px;
   font-weight: 600;
@@ -99,20 +100,20 @@ export const BurgerNavList = styled.ul`
   margin-top: 92px;
 `;
 
-export const BurgerNavItem = styled(NavLink)`
-  font-size: 48px;
-  font-weight: 500;
-  letter-spacing: 1.92px;
-  &:hover {
-    color: #ffc107;
-  }
-  &:focus {
-    color: #ffc107;
-  }
-  &:active {
-    color: #ffc107;
-  }
-`;
+// export const BurgerNavItem = styled(NavLink)`
+//   font-size: 48px;
+//   font-weight: 500;
+//   letter-spacing: 1.92px;
+//   &:hover {
+//     color: #ffc107;
+//   }
+//   &:focus {
+//     color: #ffc107;
+//   }
+//   &:active {
+//     color: #ffc107;
+//   }
+// `;
 
 export const CloseBtn = styled(RxCross1)`
   width: 24px;

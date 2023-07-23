@@ -2,19 +2,19 @@ import PropTypes from "prop-types";
 import {
   BurgerMenu,
   BurgerContainer,
-  BurgerNavItem,
   BurgerNavList,
   BurgerIcon,
   BurgerBar,
   BurgerLogInBtn,
   BurgerBtnWrapper,
   BurgerRegisterBtn,
-  BurgerPawIcon,
   CloseBtn,
+  BurgerPawIcon,
 } from "./Burger.styled";
-
+import BurgerNavigationItem from "./BurgerNavigationItem";
 import bglogo from "../Logo/LogoPet.jpg";
 import { Link } from "react-router-dom";
+// import { useAuth } from "./../../../hooks/useAuth";
 export const Burger = ({ isOpen, toggleMenu }) => {
   return (
     <div>
@@ -26,7 +26,6 @@ export const Burger = ({ isOpen, toggleMenu }) => {
             </Link>
             <CloseBtn onClick={toggleMenu} />
           </BurgerBar>
-
           <BurgerMenu>
             <BurgerBtnWrapper>
               <BurgerLogInBtn to="/login">
@@ -35,11 +34,16 @@ export const Burger = ({ isOpen, toggleMenu }) => {
               </BurgerLogInBtn>
               <BurgerRegisterBtn to="/register">Registration</BurgerRegisterBtn>
             </BurgerBtnWrapper>
-
             <BurgerNavList>
-              <BurgerNavItem to="/news">News</BurgerNavItem>
-              <BurgerNavItem to="/notices">Find pet</BurgerNavItem>
-              <BurgerNavItem to="/friends">Our friends</BurgerNavItem>
+              <BurgerNavigationItem to="/news" toggleMenu={toggleMenu}>
+                News
+              </BurgerNavigationItem>
+              <BurgerNavigationItem to="/notices" toggleMenu={toggleMenu}>
+                Find pet
+              </BurgerNavigationItem>
+              <BurgerNavigationItem to="/friends" toggleMenu={toggleMenu}>
+                Our friends
+              </BurgerNavigationItem>
             </BurgerNavList>
           </BurgerMenu>
         </BurgerContainer>

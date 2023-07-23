@@ -1,9 +1,25 @@
 import styled from "styled-components";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const LogoutBtn = styled(NavLink)`
+  font-weight: 700;
+  background-color: #54adff;
+  border-radius: 40px;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  @media screen and (max-width: 1279px) {
+    display: none;
+  }
 `;
 
 export const Avatar = styled(FaRegCircleUser)`

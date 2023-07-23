@@ -6,12 +6,15 @@ export const Container = styled.div`
   background-image: url(${paws});
   display: flex;
   position: relative;
+  padding: 0 16px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     background-image: url(${pawsTab});
+    padding: 0 32px;
   }
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
     background-image: url(${pawsMob});
+    padding: 0 20px;
   }
 `;
 export const MainTitle = styled.h1`
