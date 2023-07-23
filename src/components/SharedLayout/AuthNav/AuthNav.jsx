@@ -1,12 +1,21 @@
-import { Avatar, UserName, Wrapper } from "./AuthNav.styled";
+import {
+  AuthList,
+  BtnWrapper,
+  LogInBtn,
+  PawIcon,
+  RegisterBtn,
+} from "./AuthNav.styled";
 
-const AuthNav = () => {
+export const AuthNav = () => {
   return (
-    <Wrapper>
-      <Avatar />
-      <UserName>Anna</UserName>
-    </Wrapper>
+    <AuthList>
+      <BtnWrapper>
+        <LogInBtn to="/login">
+          Log IN
+          <PawIcon />
+        </LogInBtn>
+        <RegisterBtn to="/register">Registration</RegisterBtn>
+      </BtnWrapper>
+    </AuthList>
   );
 };
-
-export default AuthNav;
