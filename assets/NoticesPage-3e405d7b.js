@@ -1,4 +1,4 @@
-import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";function u(t){return s({tag:"svg",attr:{fill:"currentColor",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"}}]})(t)}function g(t){return s({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"line",attr:{x1:"12",y1:"5",x2:"12",y2:"19"}},{tag:"line",attr:{x1:"5",y1:"12",x2:"19",y2:"12"}}]})(t)}function m(t){return s({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"line",attr:{x1:"18",y1:"6",x2:"6",y2:"18"}},{tag:"line",attr:{x1:"6",y1:"6",x2:"18",y2:"18"}}]})(t)}const b=o.div`
+import{G as s,s as o,a as p,j as e,N as c,u as h}from"./index-64898a0a.js";import u from"./NoticesCategoriesList-36f0c79d.js";import"./useDispatch-1a8a7ec0.js";function g(t){return s({tag:"svg",attr:{fill:"currentColor",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"}}]})(t)}function m(t){return s({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"line",attr:{x1:"12",y1:"5",x2:"12",y2:"19"}},{tag:"line",attr:{x1:"5",y1:"12",x2:"19",y2:"12"}}]})(t)}function b(t){return s({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"line",attr:{x1:"18",y1:"6",x2:"6",y2:"18"}},{tag:"line",attr:{x1:"6",y1:"6",x2:"18",y2:"18"}}]})(t)}const f=o.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@ import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";funct
   @media (max-width: 479px) {
     margin-top: 40px;
   }
-`,f=o.h2`
+`,j=o.h2`
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 40px;
@@ -16,7 +16,7 @@ import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";funct
     font-size: 24px;
     margin-bottom: 24px;
   }
-`,j=o.form`
+`,w=o.form`
   display: flex;
   position: relative;
   align-items: center;
@@ -25,7 +25,7 @@ import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";funct
   @media (max-width: 479px) {
     width: 280px;
   }
-`,w=o.input`
+`,y=o.input`
   width: 100%;
   font-size: 20px;
   font-weight: 400;
@@ -46,7 +46,7 @@ import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";funct
     letter-spacing: 0.56px;
     padding: 14px 20px;
   }
-`,y=o.button`
+`,v=o.button`
   position: absolute;
   width: 24px;
   height: 24px;
@@ -59,14 +59,14 @@ import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";funct
   @media (max-width: 479px) {
     right: ${t=>t.position?"37px":"12px"};
   }
-`,v=o.button`
+`,k=o.button`
   position: absolute;
   width: 24px;
   height: 24px;
   right: 13px;
   border: none;
   background-color: inherit;
-`,k=()=>{const[t,i]=p.useState(""),a=r=>{const d=r.currentTarget.value.toLowerCase();i(d)},l=r=>{r.preventDefault(),t.trim()!==""&&i("")},x=()=>{i("")};return e.jsxs(b,{children:[e.jsx(f,{children:"Find your favorite pet"}),e.jsxs(j,{onSubmit:l,children:[e.jsx(w,{type:"text",placeholder:"Search",value:t,onChange:a}),e.jsx(y,{type:"submit",position:t,children:e.jsx(u,{color:"#54ADFF",size:24})}),t!==""&&e.jsx(v,{type:"button",onClick:x,children:e.jsx(m,{color:"#FFC107",size:24})})]})]})},z=o.div`
+`,z=()=>{const[t,i]=p.useState(""),a=r=>{const d=r.currentTarget.value.toLowerCase();i(d)},l=r=>{r.preventDefault(),t.trim()!==""&&i("")},x=()=>{i("")};return e.jsxs(f,{children:[e.jsx(j,{children:"Find your favorite pet"}),e.jsxs(w,{onSubmit:l,children:[e.jsx(y,{type:"text",placeholder:"Search",value:t,onChange:a}),e.jsx(v,{type:"submit",position:t,children:e.jsx(g,{color:"#54ADFF",size:24})}),t!==""&&e.jsx(k,{type:"button",onClick:x,children:e.jsx(b,{color:"#FFC107",size:24})})]})]})},S=o.div`
   display: flex;
   justify-content: space-between;
   margin-top: 43px;
@@ -74,7 +74,7 @@ import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";funct
   @media (max-width: 767px) {
     justify-content: none;
   }
-`,S=o.div`
+`,F=o.div`
   display: flex;
   gap: 12px;
 
@@ -98,7 +98,7 @@ import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";funct
     background-color: ${t=>t.theme.color.blue};
     color: ${t=>t.theme.color.wight};
   }
-`,F=o(c)`
+`,C=o(c)`
   padding: 8px 20px;
   justify-content: center;
   align-items: center;
@@ -114,4 +114,4 @@ import{G as s,s as o,a as p,j as e,N as c,b as h}from"./index-f7d787c7.js";funct
   margin-left: 8px;
   justify-content: center;
   align-items: center;
-`,C=()=>{const{isLoggedIn:t}=h();return e.jsxs(z,{children:[e.jsxs(S,{children:[e.jsx(n,{to:"/notices/sell",children:"sell"}),e.jsx(n,{to:"/notices/lost-found",children:"lost/found"}),e.jsx(n,{to:"/notices/for-free",children:"in good hands"}),t&&e.jsxs(e.Fragment,{children:[e.jsx(n,{to:"/notices/favorite",children:"favorite ads"}),e.jsx(n,{to:"/notices/own",children:"my ads"})]})]}),e.jsxs(F,{to:"/add-pet",children:["Add Pet",e.jsx(B,{children:e.jsx(g,{})})]})]})},L=()=>e.jsxs(e.Fragment,{children:[e.jsx(k,{}),e.jsx(C,{})]});export{L as default};
+`,$=()=>{const{isLoggedIn:t}=h();return e.jsxs(S,{children:[e.jsxs(F,{children:[e.jsx(n,{to:"/notices/sell",children:"sell"}),e.jsx(n,{to:"/notices/lost-found",children:"lost/found"}),e.jsx(n,{to:"/notices/for-free",children:"in good hands"}),t&&e.jsxs(e.Fragment,{children:[e.jsx(n,{to:"/notices/favorite",children:"favorite ads"}),e.jsx(n,{to:"/notices/own",children:"my ads"})]})]}),e.jsxs(C,{to:"/add-pet",children:["Add Pet",e.jsx(B,{children:e.jsx(m,{})})]})]})},I=()=>e.jsxs(e.Fragment,{children:[e.jsx(z,{}),e.jsx($,{}),e.jsx(u,{})]});export{I as default};
