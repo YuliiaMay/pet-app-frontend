@@ -7,7 +7,7 @@ import { fetchNotices } from "../../../redux/noticesSlice/operations";
 const NoticesCategoriesList = () => {
   const notieces = useSelector(selectNotieces);
   const dispatch = useDispatch();
-  console.log(notieces);
+  // console.log(notieces);
 
 
   useEffect(() => {
