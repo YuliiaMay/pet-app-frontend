@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styled from "styled-components";
 import * as Yup from "yup";
@@ -44,6 +45,8 @@ const RegisterForm = () => {
         ></Input>
         <ErrorMessage name="confirmPassword" component="div" />
         <button type="submit">Registration</button>
+        <p>Already have a account?</p>
+        <Link to="/login">Login</Link>
       </Form>
     </Formik>
   );
