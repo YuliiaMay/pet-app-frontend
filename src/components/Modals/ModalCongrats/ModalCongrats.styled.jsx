@@ -3,37 +3,14 @@ import styled from "styled-components";
 import { HiXMark } from "react-icons/hi2";
 import { PiPawPrintThin } from "react-icons/pi";
 
-export const Overlay = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  background: rgba(43, 43, 43, 0.6);
-`;
-
-export const ModalSt = styled.div`
+export const WrapperModal = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   position: relative;
   width: 608px;
-  /* height: 354px; */
+
   padding: 60px 0;
-
-  top: -112px;
-  border-radius: 40px;
-
-  background: #ffffff;
-  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 `;
 
 export const Title = styled.h2`
