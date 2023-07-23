@@ -1,5 +1,17 @@
 import { styled } from "styled-components";
 
+
+export const List = styled.ul`
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+
+  width: 100%;
+  margin-bottom: 60px;
+
+  gap: 24px; 
+`;
+
 export const Info = styled.li`
     background-color: #fff;
     border-radius: 0 0 40px 40px;
