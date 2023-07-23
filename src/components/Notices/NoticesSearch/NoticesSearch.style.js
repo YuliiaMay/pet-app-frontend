@@ -4,6 +4,11 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 80px;
+
+  @media (max-width: 479px) {
+    margin-top: 40px;
+  }
 `;
 
 export const TitleSearch = styled.h2`
