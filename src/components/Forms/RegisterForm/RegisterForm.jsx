@@ -1,13 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-//import { object, string } from "yup";
-import * as Yup from "yup";
-
 import styled from "styled-components";
-
-const Input = styled(Field)`
-  margin-right: 20px;
-  margin-bottom: 20px;
-`;
+import * as Yup from "yup";
 
 const userSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -23,8 +16,10 @@ const initialValues = {
   confirmPassword: "",
 };
 
+const Input = styled(Field)`
+  margin: 20px;
+`;
 const RegisterForm = () => {
-  console.log("email");
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
@@ -32,24 +27,23 @@ const RegisterForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={userSchema}
       onSubmit={handleSubmit}
+      validationSchema={userSchema}
     >
       <Form autoComplete="off">
-        <Input type="text" name="name" placeholder="Name" />
+        <Input type="text" name="name" placeholder="Name"></Input>
         <ErrorMessage name="name" component="div" />
-        <Input type="text" name="email" placeholder="Email" />
+        <Input type="text" name="email" placeholder="Email"></Input>
         <ErrorMessage name="email" component="div" />
-        <Input type="password" name="password" placeholder="Password" />
+        <Input type="password" name="password" placeholder="Password"></Input>
         <ErrorMessage name="password" component="div" />
         <Input
           type="password"
           name="confirmPassword"
-          placeholder="Confirm password"
-        />
+          placeholder="confirmPassword"
+        ></Input>
         <ErrorMessage name="confirmPassword" component="div" />
         <button type="submit">Registration</button>
-        <p>Already have an account? Login</p>
       </Form>
     </Formik>
   );
