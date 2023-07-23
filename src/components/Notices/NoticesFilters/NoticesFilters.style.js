@@ -6,7 +6,7 @@ export const Section = styled.div`
   justify-content: space-between;
   margin-top: 43px;
 
-  @media (max-width: 479px) {
+  @media (max-width: 767px) {
     justify-content: none;
   }
 `;
@@ -15,9 +15,9 @@ export const Container = styled.div`
   display: flex;
   gap: 12px;
 
-  @media (max-width: 479px) {
-    display: block;
-    align-items: flex-start;
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    width: 205px;
     gap: 8px;
   }
 `;
