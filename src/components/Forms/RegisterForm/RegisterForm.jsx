@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import * as Yup from "yup";
+import { register } from "../../../redux/authSlice/operations"
 
 const userSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -20,10 +22,15 @@ const Input = styled(Field)`
   margin: 20px;
 `;
 const RegisterForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm();
+  const dispatch = useDispatch();
+
+
+  const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    dispatch(
+      register({ name, email, password }))
+      .then(response => !response.error && resetForm());
   };
+
   return (
     <Formik
       initialValues={initialValues}
