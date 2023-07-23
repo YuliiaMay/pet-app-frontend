@@ -1,0 +1,1 @@
+import{b as o,a as c,f as i,j as e}from"./index-537169cc.js";import{u as r}from"./useDispatch-c3f4068a.js";const a=s=>s.notices.items,f=()=>{const s=o(a),t=r();return console.log(s),c.useEffect(()=>{t(i())},[t]),e.jsx(e.Fragment,{children:e.jsx("div",{children:"gallery"})})};export{f as default};
