@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
-import { ReactComponent as Delete } from "../../svg/userPage/delete.svg";
+// import { ReactComponent as Delete } from "../../svg/userPage/delete.svg";
 
 export const UserPetsSection = () => {
     // const user = useSelector(user);
@@ -25,7 +25,7 @@ export const UserPetsSection = () => {
                 return (
                     <div key={pet.id}>
                         <button type='button' onClick={deleteClickHandler}>
-                            <Delete />
+                            {/* <Delete /> */}
                         </button>
                         <div>
                             <img src={pet.img} alt='' />

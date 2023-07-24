@@ -5,7 +5,10 @@ import {
   selectIsRefreshing,
 } from "../redux/authSlice/selectors";
 
-export const PrivateRoute = ({ component: Component, redirectTo = "/" }) => {
+export const PrivateRoute = ({
+  component: Component,
+  redirectTo = "/notices/sell",
+}) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
 

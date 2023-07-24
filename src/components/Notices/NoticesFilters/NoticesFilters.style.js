@@ -43,30 +43,51 @@ export const ButtonFilters = styled(NavLink)`
   border: none;
   color: ${(props) => props.theme.color.blue};
   background-color: ${(props) => props.theme.background.lightBlue};
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.active {
     background-color: ${(props) => props.theme.color.blue};
     color: ${(props) => props.theme.color.wight};
   }
+
+  &:hover {
+    box-shadow: ${(props) => props.theme.color.blue} 0px 2px 8px 0px;
+  }
 `;
 
 export const ButtonAdd = styled(NavLink)`
   display: flex;
-  padding: 8px 20px;
   justify-content: center;
   align-items: center;
+  height: 24px;
+  padding: 8px 20px;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.64px;
-
   border-radius: 40px;
   border: none;
   color: ${(props) => props.theme.color.wight};
   background-color: ${(props) => props.theme.color.blue};
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: ${(props) => props.theme.color.blue};
+    background-color: ${(props) => props.theme.background.lightBlue};
+    box-shadow: ${(props) => props.theme.color.blue} 0px 2px 8px 0px;
+  }
+
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    padding: 0px;
+  }
+
+  span {
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
 `;
 
 export const BtnIcon = styled.svg`
@@ -77,4 +98,8 @@ export const BtnIcon = styled.svg`
   justify-content: center;
   align-items: center;
   fill: #fef9f9;
+
+  @media (max-width: 767px) {
+    margin-left: 0px;
+  }
 `;

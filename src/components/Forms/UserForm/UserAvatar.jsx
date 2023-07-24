@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /** @format */
 
 import { useState } from "react";
@@ -5,10 +6,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import PropTypes from "prop-types";
-import { ReactComponent as EditAvatar } from "../../../svg/userPage/camera.svg";
-import { ReactComponent as Confirm } from "../../../svg/userPage/confirm.svg";
-import { ReactComponent as Decline } from "../../../svg/userPage/decline.svg";
+
+// import { ReactComponent as EditAvatar } from "../../../svg/userPage/camera.svg";
+// import { ReactComponent as Confirm } from "../../../svg/userPage/confirm.svg";
+// import { ReactComponent as Decline } from "../../../svg/userPage/decline.svg";
+
 import { UserAvatarImg } from "./UserAvatar.styled";
+
 
 export const UserAvatar = ({ isFormDisabled }) => {
   const dispatch = useDispatch();
@@ -67,7 +71,7 @@ export const UserAvatar = ({ isFormDisabled }) => {
               />
               {!isImgUpdating ? (
                 <button type='button' onClick={handleAvatarEditing}>
-                  <EditAvatar />
+                  {/* <EditAvatar /> */}
                   Edit photo
                 </button>
               ) : (
