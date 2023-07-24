@@ -69,6 +69,8 @@ function App() {
               />
             }
           >
+
+            
             <Route
               path="sell"
               element={
@@ -149,6 +151,11 @@ function App() {
               />
             }
           />
+
+          {/* <Route path="/login" element={<LoginPage />} />    
+
+          <Route path="/user" element={<UserPage />} />           */}
+
           <Route
             path="/user"
             element={
@@ -156,12 +163,23 @@ function App() {
             }
           />
 
-          <Route
+            <Route
+              path="/user"
+              element={
+                <PrivateRoute
+                  redirectTo="/user"
+                  component={<UserPage />}
+                />
+              }
+            />          
+
+          {/* <Route
             path="/add-pet"
             element={
               <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
             }
-          >
+          > */}
+          <Route path="/add-pet" element={<AddPetPage />} >
             <Route path="option" element={<OptionForm />} />
             <Route path="details" element={<PersonalDetailsForm />} />
             <Route path="more-info" element={<MoreInfoForm />} />
