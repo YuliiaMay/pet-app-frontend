@@ -126,7 +126,8 @@ export const UserForm = ({ isFormDisabled }) => {
               </button>
             ) : (
               <button type='button'>
-                <LogOutSvg /> Log Out
+                  {/* <LogOutSvg /> */}
+                  Log Out
               </button>
             )}
           </UserForm>

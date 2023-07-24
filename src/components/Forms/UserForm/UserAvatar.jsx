@@ -71,7 +71,7 @@ export const UserAvatar = ({ isFormDisabled }) => {
               />
               {!isImgUpdating ? (
                 <button type='button' onClick={handleAvatarEditing}>
-                  <EditAvatar />
+                  {/* <EditAvatar /> */}
                   Edit photo
                 </button>
               ) : (

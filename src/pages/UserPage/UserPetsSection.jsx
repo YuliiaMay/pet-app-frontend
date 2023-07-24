@@ -25,7 +25,7 @@ export const UserPetsSection = () => {
                 return (
                     <div key={pet.id}>
                         <button type='button' onClick={deleteClickHandler}>
-                            <Delete />
+                            {/* <Delete /> */}
                         </button>
                         <div>
                             <img src={pet.img} alt='' />
