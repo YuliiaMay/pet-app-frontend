@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
 import * as Yup from "yup";
-import { register } from "../../../redux/authSlice/operations"
+import { register } from "../../../redux/authSlice/operations";
+import {
+  Container,
+  StyledForm,
+  StyledTitle,
+  StyledField,
+  ErrorText,
+  SubmitButton,
+  StyledLink,
+  StyledSpan,
+} from "./RegisterForm.styled.js";
 
 const userSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -22,11 +30,10 @@ const initialValues = {
 const RegisterForm = () => {
   const dispatch = useDispatch();
 
-
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
-    dispatch(
-      register({ name, email, password }))
-      .then(response => !response.error && resetForm());
+    dispatch(register({ name, email, password })).then(
+      (response) => !response.error && resetForm()
+    );
   };
 
   return (
@@ -35,25 +42,36 @@ const RegisterForm = () => {
       onSubmit={handleSubmit}
       validationSchema={userSchema}
     >
-      <Form autoComplete="off">
-        <Field type="text" name="name" placeholder="Name"></Field>
-        <ErrorMessage name="name" component="div" />
-        <Field type="text" name="email" placeholder="Email"></Field>
-        <ErrorMessage name="email" component="div" />
-        <Field type="password" name="password" placeholder="Password"></Field>
-        <ErrorMessage name="password" component="div" />
-        <Field
-          type="password"
-          name="confirmPassword"
-          placeholder="confirmPassword"
-        ></Field>
-        <ErrorMessage name="confirmPassword" component="div" />
-        <button type="submit">Registration</button>
-        {/* <p>Already have a account?</p> */}
-        <Link to="/login">
-          Already have a account? <span>Login</span>
-        </Link>
-      </Form>
+      <Container>
+        <StyledForm autoComplete="off">
+          <StyledTitle>Registration</StyledTitle>
+          <StyledField type="text" name="name" placeholder="Name"></StyledField>
+          <ErrorText name="name" component="div" />
+          <StyledField
+            type="text"
+            name="email"
+            // isInvalid={errors.email && touched.email}
+            placeholder="Email"
+          ></StyledField>
+          <ErrorText name="email" component="div" />
+          <StyledField
+            type="password"
+            name="password"
+            placeholder="Password"
+          ></StyledField>
+          <ErrorText name="password" component="div" />
+          <StyledField
+            type="password"
+            name="confirmPassword"
+            placeholder="confirmPassword"
+          ></StyledField>
+          <ErrorText name="confirmPassword" component="div" />
+          <SubmitButton type="submit">Registration</SubmitButton>
+          <StyledLink to="/login">
+            Already have a account? <StyledSpan>Login</StyledSpan>
+          </StyledLink>
+        </StyledForm>
+      </Container>
     </Formik>
   );
 };
