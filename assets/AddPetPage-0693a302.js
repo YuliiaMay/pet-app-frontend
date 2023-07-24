@@ -1,4 +1,4 @@
-import{s as e,N as i,L as s,j as o,a as d,O as a}from"./index-d70c3973.js";import{F as c}from"./FormTitle-db214b67.js";const x=e.div`
+import{s as e,N as i,L as s,j as o,a as d,O as a}from"./index-f6a409a1.js";import{F as c}from"./FormTitle-35cc2602.js";import"./formik.esm-070e343b.js";const x=e.div`
     background-color: ${t=>t.theme.background.wight};
     width: 458px;
     height: 540px;
@@ -47,13 +47,13 @@ import{s as e,N as i,L as s,j as o,a as d,O as a}from"./index-d70c3973.js";impor
     &:focus {
         border: ${t=>t.theme.border.shadow};
     }   
-`,g=e(s)`
+`,m=e(s)`
     color: ${t=>t.theme.color.blue};
     font-weight: 700;
     font-size: 16px;
     margin-left: auto;
     margin-right: auto;    
-`,m=e.button`
+`,g=e.button`
     width: 248px;
     height: 40px;
     background-color: ${t=>t.theme.background.accentBlue};
@@ -70,4 +70,4 @@ import{s as e,N as i,L as s,j as o,a as d,O as a}from"./index-d70c3973.js";impor
     color: ${t=>t.theme.color.wight};
     font-weight: 700;
     font-size: 16px;
-`,j=()=>o.jsxs(l,{children:[o.jsx(p,{children:o.jsx(g,{children:"Cancel"})}),o.jsx(m,{children:o.jsx(u,{children:"Next"})})]}),b=()=>o.jsxs(x,{children:[o.jsx(c,{}),o.jsxs(h,{children:[o.jsx("div",{children:o.jsxs(r,{to:"option",children:["Choose  option",o.jsx(n,{})]})}),o.jsx("div",{children:o.jsxs(r,{to:"details",children:["Personal details",o.jsx(n,{})]})}),o.jsx("div",{children:o.jsxs(r,{to:"more-info",children:["More info",o.jsx(n,{})]})})]}),o.jsx(d.Suspense,{fallback:o.jsx("div",{children:"Loading..."}),children:o.jsx(a,{})}),o.jsx(j,{})]}),k=()=>o.jsx(o.Fragment,{children:o.jsx(b,{})});export{k as default};
+`,j=()=>o.jsxs(l,{children:[o.jsx(p,{children:o.jsx(m,{children:"Cancel"})}),o.jsx(g,{children:o.jsx(u,{children:"Next"})})]}),b=()=>o.jsx("form",{children:o.jsx(d.Suspense,{fallback:o.jsx("div",{children:"Loading..."}),children:o.jsx(a,{})})}),f=()=>o.jsxs(x,{children:[o.jsx(c,{}),o.jsxs(h,{children:[o.jsx("div",{children:o.jsxs(r,{to:"option",children:["Choose  option",o.jsx(n,{})]})}),o.jsx("div",{children:o.jsxs(r,{to:"details",children:["Personal details",o.jsx(n,{})]})}),o.jsx("div",{children:o.jsxs(r,{to:"more-info",children:["More info",o.jsx(n,{})]})})]}),o.jsx(b,{}),o.jsx(j,{})]}),B=()=>o.jsx(o.Fragment,{children:o.jsx(f,{})});export{B as default};
