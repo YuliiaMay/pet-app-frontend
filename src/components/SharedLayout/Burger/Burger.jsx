@@ -2,51 +2,77 @@ import PropTypes from "prop-types";
 import {
   BurgerMenu,
   BurgerContainer,
-  BurgerNavItem,
   BurgerNavList,
   BurgerIcon,
   BurgerBar,
   BurgerLogInBtn,
   BurgerBtnWrapper,
   BurgerRegisterBtn,
-  BurgerPawIcon,
   CloseBtn,
 } from "./Burger.styled";
-
+import BurgerNavigationItem from "./BurgerNavigationItem";
 import bglogo from "../Logo/LogoPet.jpg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
+import { Icon } from "../../Icon/Icon";
+
 export const Burger = ({ isOpen, toggleMenu }) => {
   return (
-    <div>
+    <>
       {isOpen ? (
-        <BurgerContainer>
-          <BurgerBar>
-            <Link to="/main">
-              <img src={bglogo} alt="logotype" />
-            </Link>
-            <CloseBtn onClick={toggleMenu} />
-          </BurgerBar>
+        <ResponsiveContainer>
+          <BurgerContainer>
+            <BurgerBar>
+              <NavLink to="/main">
+                <img src={bglogo} alt="logotype" />
+              </NavLink>
+              <div>
+                <CloseBtn onClick={toggleMenu} />
+              </div>
 
-          <BurgerMenu>
-            <BurgerBtnWrapper>
-              <BurgerLogInBtn to="/login">
-                Log IN
-                <BurgerPawIcon />
-              </BurgerLogInBtn>
-              <BurgerRegisterBtn to="/register">Registration</BurgerRegisterBtn>
-            </BurgerBtnWrapper>
-
-            <BurgerNavList>
-              <BurgerNavItem to="/news">News</BurgerNavItem>
-              <BurgerNavItem to="/notices">Find pet</BurgerNavItem>
-              <BurgerNavItem to="/friends">Our friends</BurgerNavItem>
-            </BurgerNavList>
-          </BurgerMenu>
-        </BurgerContainer>
+              {/* <Icon
+                onClick={toggleMenu}
+                iconName={"icon-cross"}
+                width={"24px"}
+                height={"24px"}
+                stroke={"#ffc107"}
+                fill={"#ffc107"}
+              /> */}
+            </BurgerBar>
+            <BurgerMenu>
+              <BurgerBtnWrapper>
+                <BurgerLogInBtn to="/login">
+                  Log IN
+                  <Icon
+                    iconName={"icon-pawprint"}
+                    width={"24px"}
+                    height={"24px"}
+                    stroke={"#ffffff"}
+                    fill={"#ffffff"}
+                  />
+                </BurgerLogInBtn>
+                <BurgerRegisterBtn to="/register">
+                  Registration
+                </BurgerRegisterBtn>
+              </BurgerBtnWrapper>
+              <BurgerNavList>
+                <BurgerNavigationItem to="/news" toggleMenu={toggleMenu}>
+                  News
+                </BurgerNavigationItem>
+                <BurgerNavigationItem to="/notices" toggleMenu={toggleMenu}>
+                  Find pet
+                </BurgerNavigationItem>
+                <BurgerNavigationItem to="/friends" toggleMenu={toggleMenu}>
+                  Our friends
+                </BurgerNavigationItem>
+              </BurgerNavList>
+            </BurgerMenu>
+          </BurgerContainer>
+        </ResponsiveContainer>
       ) : (
         <BurgerIcon onClick={toggleMenu} />
       )}
-    </div>
+    </>
   );
 };
 Burger.propTypes = {

@@ -38,69 +38,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route
-            path="/main"
-            element={
-              <PublicRoute
-                redirectTo="/user"
-                component={<MainPage />}
-                restricted
-              />
-            }
-          />
-          <Route
-            path="/news"
-            element={
-              <PublicRoute
-                redirectTo="/user"
-                component={<NewsPage />}
-                restricted
-              />
-            }
-          />
+          <Route index element={<NoticesPage />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/news" element={<NewsPage />} />
 
-          <Route
-            path="/notices"
-            element={
-              <PublicRoute
-                redirectTo="/user"
-                component={<NoticesPage />}
-                restricted
-              />
-            }
-          >
-
-            
-            <Route
-              path="sell"
-              element={
-                <PublicRoute
-                  redirectTo="/user"
-                  component={<NoticesCategoriesList />}
-                  restricted
-                />
-              }
-            />
-            <Route
-              path="lost-found"
-              element={
-                <PublicRoute
-                  redirectTo="/user"
-                  component={<NoticesCategoriesList />}
-                  restricted
-                />
-              }
-            />
-            <Route
-              path="for-free"
-              element={
-                <PublicRoute
-                  redirectTo="/user"
-                  component={<NoticesCategoriesList />}
-                  restricted
-                />
-              }
-            />
+          <Route path="/notices" element={<NoticesPage />}>
+            <Route path="sell" element={<NoticesCategoriesList />} />
+            <Route path="lost-found" element={<NoticesCategoriesList />} />
+            <Route path="for-free" element={<NoticesCategoriesList />} />
             <Route
               path="favorite"
               element={
@@ -121,16 +66,7 @@ function App() {
             />
           </Route>
 
-          <Route
-            path="/friends"
-            element={
-              <PublicRoute
-                redirectTo="/user"
-                component={<FriendsPage />}
-                restricted
-              />
-            }
-          />
+          <Route path="/friends" element={<FriendsPage />} />
           <Route
             path="/register"
             element={
@@ -151,11 +87,6 @@ function App() {
               />
             }
           />
-
-          {/* <Route path="/login" element={<LoginPage />} />    
-
-          <Route path="/user" element={<UserPage />} />           */}
-
           <Route
             path="/user"
             element={
@@ -163,23 +94,12 @@ function App() {
             }
           />
 
-            <Route
-              path="/user"
-              element={
-                <PrivateRoute
-                  redirectTo="/user"
-                  component={<UserPage />}
-                />
-              }
-            />          
-
-          {/* <Route
+          <Route
             path="/add-pet"
             element={
               <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
             }
-          > */}
-          <Route path="/add-pet" element={<AddPetPage />} >
+          >
             <Route path="option" element={<OptionForm />} />
             <Route path="details" element={<PersonalDetailsForm />} />
             <Route path="more-info" element={<MoreInfoForm />} />

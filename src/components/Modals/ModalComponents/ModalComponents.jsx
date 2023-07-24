@@ -6,7 +6,6 @@ import { Overlay, ModalSt } from "../ModalComponents/ModalComponents.styled";
 const modalRoot = document.querySelector("#modal-root");
 
 export function ModalComponents({ active, onClose, children }) {
-  console.log("active", active);
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === "Escape") {
@@ -42,3 +41,16 @@ export function ModalComponents({ active, onClose, children }) {
 //     </button>
 //     <ModalCongrats active={showModal} setShow={setShowModal} />
 //     <ModalNotice active={showModalNotice} setShow={setShowModalNotice} />
+
+// //////////////////////////////////////////////////////////!
+// const [showModal, setShowModal] = useState(false);
+// const [oneCard, setOneCard] = useState(null);
+//  <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
+// const handleClickCards = (item) => {
+//   setShowModal(true);
+//   setOneCard(item);
+// };
+
+//  <button type="button" onClick={() => handleClickCards(it)}>
+//    Click Open Model ... ModalCongrats //
+//  </button>;

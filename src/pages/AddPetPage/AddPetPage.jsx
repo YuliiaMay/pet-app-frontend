@@ -1,11 +1,8 @@
-import AddPetFormsContainer from "../../components/Forms/AddPetForm/AddPetFormsContainer/AddPetFormsContainer";
-
-
-
+import AddPetMultiStepForm from "../../components/Forms/AddPetForm/AddPetMultiStepForm";
 const AddPetPage = () => {
   return (
     <>
-      <AddPetFormsContainer />
+      <AddPetMultiStepForm/>
     </>
   );
 };
