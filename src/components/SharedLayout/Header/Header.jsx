@@ -25,8 +25,6 @@ export const Header = () => {
       <Navigation />
       {isLoggedIn ? <UserNav /> : <AuthNav />}
       <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
-
-      {/* <UserNav /> */}
     </Wrapper>
   );
 };

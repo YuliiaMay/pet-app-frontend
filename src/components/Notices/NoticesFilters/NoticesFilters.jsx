@@ -9,7 +9,6 @@ import { BsPlus } from "react-icons/bs";
 import { useAuth } from "../../../hooks/useAuth";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-// import { Icon } from "../../../images/Icon/Icon.svg";
 
 export const NoticesFilters = () => {
   const { isLoggedIn } = useAuth();
@@ -30,17 +29,7 @@ export const NoticesFilters = () => {
           )}
         </Container>
         <ButtonAdd to="/add-pet">
-          Add Pet
-          {/* <Icon
-            iconName={"icon-location"}
-            width={"24px"}
-            height={"24px"}
-            stroke={"#54ADFF"}
-            fill={"#54ADFF"}
-          /> */}
-          {/* <BtnIcon>
-            <use href={Icon + "#icon-icon-plus-small"}></use>
-          </BtnIcon> */}
+          <span>Add Pet</span>
           <BtnIcon>
             <BsPlus size={"24px"} />
           </BtnIcon>
