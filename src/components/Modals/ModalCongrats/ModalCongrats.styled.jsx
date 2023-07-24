@@ -55,8 +55,9 @@ export const GoProfileBtn = styled.button`
     outline: 2px solid #54adff;
     background: #ffffff;
     color: #54adff;
-    & svg {
-      color: #54adff;
+    & use {
+      fill: #54adff;
+      stroke: #54adff;
     }
   }
 `;

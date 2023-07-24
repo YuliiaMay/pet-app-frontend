@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { AiOutlineMenu } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import { PiPawPrint } from "react-icons/pi";
 import { RxCross1 } from "react-icons/rx";
 
 export const BurgerIcon = styled(AiOutlineMenu)`
@@ -12,9 +11,6 @@ export const BurgerIcon = styled(AiOutlineMenu)`
   margin-left: 24px;
   @media screen and (min-width: 1280px) {
     display: none;
-  }
-  @media screen and (max-width: 767px) {
-    margin-left: 0;
   }
 `;
 
@@ -28,14 +24,16 @@ export const BurgerContainer = styled.div`
   flex-direction: column;
   background-color: white;
   z-index: 1;
-  padding: 32px 32px;
+  /* padding: 22px 20px; */
+  padding-top: 22px;
   @media screen and (min-width: 1280px) {
     display: none;
   }
 `;
 export const BurgerBar = styled.div`
   display: flex;
-  justify-content: space-around;
+
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -63,6 +61,7 @@ export const BurgerLogInBtn = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   color: #fef9f9;
   background-color: #ffc107;
   font-size: 16px;
@@ -72,6 +71,7 @@ export const BurgerLogInBtn = styled(NavLink)`
   border: 1px;
   width: 165px;
 `;
+
 export const BurgerRegisterBtn = styled(NavLink)`
   font-size: 16px;
   font-weight: 600;
@@ -82,13 +82,7 @@ export const BurgerRegisterBtn = styled(NavLink)`
   width: 165px;
   text-align: center;
 `;
-export const BurgerPawIcon = styled(PiPawPrint)`
-  fill: white;
-  width: 24px;
-  height: 21px;
-  transform: rotate(30deg);
-  margin-left: 8px;
-`;
+
 //////////////////////////////////////////////////////
 
 export const BurgerNavList = styled.ul`
@@ -97,20 +91,9 @@ export const BurgerNavList = styled.ul`
   text-align: center;
   gap: 60px;
   margin-top: 92px;
-`;
-
-export const BurgerNavItem = styled(NavLink)`
-  font-size: 48px;
-  font-weight: 500;
-  letter-spacing: 1.92px;
-  &:hover {
-    color: #ffc107;
-  }
-  &:focus {
-    color: #ffc107;
-  }
-  &:active {
-    color: #ffc107;
+  @media screen and (max-width: 767px) {
+    gap: 20px;
+    margin-top: 45px;
   }
 `;
 
@@ -119,4 +102,5 @@ export const CloseBtn = styled(RxCross1)`
   height: 24px;
   stroke: #ffc107;
   cursor: pointer;
+  margin-left: auto;
 `;

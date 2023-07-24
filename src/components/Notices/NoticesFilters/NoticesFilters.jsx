@@ -5,14 +5,16 @@ import {
   Container,
   Section,
 } from "./NoticesFilters.style";
-import { FiPlus } from "react-icons/fi";
 import { useAuth } from "../../../hooks/useAuth";
-import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import { ReactComponent as PlusSmall } from "../../../images/Icon/PlusSmall.svg";
+
 export const NoticesFilters = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <ResponsiveContainer>
+    <>
       <Section>
         <Container>
           <ButtonFilters to="/notices/sell">sell</ButtonFilters>
@@ -27,12 +29,15 @@ export const NoticesFilters = () => {
           )}
         </Container>
         <ButtonAdd to="/add-pet">
-          Add Pet
+          <span>Add Pet</span>
           <BtnIcon>
-            <FiPlus />
+            <PlusSmall />
           </BtnIcon>
         </ButtonAdd>
       </Section>
-    </ResponsiveContainer>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
+    </>
   );
 };

@@ -4,7 +4,7 @@ import { selectIsLoggedIn } from "../redux/authSlice/selectors";
 
 export const PublicRoute = ({
   component,
-  redirectTo = "/",
+  redirectTo = "/notices/sell",
   restricted = false,
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
