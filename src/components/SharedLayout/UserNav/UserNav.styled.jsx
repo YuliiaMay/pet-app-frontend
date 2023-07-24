@@ -9,6 +9,8 @@ export const Wrapper = styled.div`
 
 export const LogoutBtn = styled(NavLink)`
   font-weight: 700;
+  letter-spacing: 0.64px;
+  color: #ffffff;
   background-color: #54adff;
   border-radius: 40px;
   padding: 8px 20px;
