@@ -26,11 +26,11 @@ const UserPage = () => {
         <UserCardInfo>
           {isUserEditing ? (
             <button type='button' onClick={handleCloseButton}>
-              <CloseSvg />
+              {/* <CloseSvg /> */}
             </button>
           ) : (
             <button type='button' onClick={handleEditButton}>
-              <EditSvg />
+              {/* <EditSvg /> */}
             </button>
           )}
           <UserAvatar isFormDisabled={isUserEditing} />
@@ -41,7 +41,7 @@ const UserPage = () => {
         <h2>My pets</h2>
         <Link to='..add pet page'>
           Add Pet
-          <AddSvg />
+          {/* <AddSvg /> */}
         </Link>
         <PetCardInfo>
           <UserPetsSection />
