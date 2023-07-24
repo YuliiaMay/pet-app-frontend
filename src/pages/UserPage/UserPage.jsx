@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { UserAvatar } from "../../components/Forms/UserForm/UserAvatar";
 import { UserForm } from "../../components/Forms/UserForm/UserForm";
-import { ReactComponent as CloseSvg } from '../../svg/userPage/close.svg'
-import { ReactComponent as EditSvg } from '../../svg/userPage/editProfile.svg'
-import { ReactComponent as AddSvg } from "../../svg/userPage/add.svg";
+// import { ReactComponent as CloseSvg } from '../../svg/userPage/close.svg'
+// import { ReactComponent as EditSvg } from '../../svg/userPage/editProfile.svg'
+// import { ReactComponent as AddSvg } from "../../svg/userPage/add.svg";
 import { UserPetsSection } from "./UserPetsSection";
 import { Link } from "react-router-dom";
 

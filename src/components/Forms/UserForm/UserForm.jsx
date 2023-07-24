@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from 'prop-types'
 import { useState } from "react";
-import { ReactComponent as LogOutSvg } from "../../../svg/userPage/logout.svg";
+// import { ReactComponent as LogOutSvg } from "../../../svg/userPage/logout.svg";
 
 export const UserForm = ({ isFormDisabled }) => {
   const [isEditing, setIsEditing] = useState(false);

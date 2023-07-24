@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import PropTypes from "prop-types";
-import { ReactComponent as EditAvatar } from "../../../svg/userPage/camera.svg";
-import { ReactComponent as Confirm } from "../../../svg/userPage/confirm.svg";
-import { ReactComponent as Decline } from "../../../svg/userPage/decline.svg";
+// import { ReactComponent as EditAvatar } from "../../../svg/userPage/camera.svg";
+// import { ReactComponent as Confirm } from "../../../svg/userPage/confirm.svg";
+// import { ReactComponent as Decline } from "../../../svg/userPage/decline.svg";
 
 export const UserAvatar = ({ isFormDisabled }) => {
   const dispatch = useDispatch();

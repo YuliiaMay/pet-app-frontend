@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ReactComponent as Delete } from "../../svg/userPage/delete.svg";
+// import { ReactComponent as Delete } from "../../svg/userPage/delete.svg";
 
 export const UserPetsSection = () => {
     const user = useSelector(user);
