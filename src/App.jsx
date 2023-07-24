@@ -38,6 +38,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
+          <Route index element={<NoticesPage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
 

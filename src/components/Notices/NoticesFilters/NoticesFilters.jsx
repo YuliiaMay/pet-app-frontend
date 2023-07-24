@@ -5,10 +5,10 @@ import {
   Container,
   Section,
 } from "./NoticesFilters.style";
-import { BsPlus } from "react-icons/bs";
 import { useAuth } from "../../../hooks/useAuth";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { ReactComponent as PlusSmall } from "../../../images/Icon/PlusSmall.svg";
 
 export const NoticesFilters = () => {
   const { isLoggedIn } = useAuth();
@@ -31,7 +31,7 @@ export const NoticesFilters = () => {
         <ButtonAdd to="/add-pet">
           <span>Add Pet</span>
           <BtnIcon>
-            <BsPlus size={"24px"} />
+            <PlusSmall />
           </BtnIcon>
         </ButtonAdd>
       </Section>
