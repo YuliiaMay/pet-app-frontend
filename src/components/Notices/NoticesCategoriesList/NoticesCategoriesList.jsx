@@ -20,7 +20,7 @@ import {
   Div3,
   P1,
   Button1,
-} from "../NoticesPetsCardList/NoticesPetCard.styled";
+} from "./NoticesPetCard.styled";
 
 const NoticesCategoriesList = () => {
   const notieces = useSelector(selectNotieces);
