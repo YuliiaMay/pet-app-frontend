@@ -137,5 +137,5 @@ export const UserForm = ({ isFormDisabled }) => {
 
 
 UserForm.propTypes = {
-  isFormDisabled: PropTypes.bool.isRequired,
+  isFormDisabled: PropTypes.bool,
 };

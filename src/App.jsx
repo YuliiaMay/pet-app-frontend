@@ -159,10 +159,10 @@ function App() {
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           /> */}
-          <Route
+          {/* <Route
             path='/user'
             element={<UserPage />}
-          />
+          /> */}
 
           <Route
             path='/user'
