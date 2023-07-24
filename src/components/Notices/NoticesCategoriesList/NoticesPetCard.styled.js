@@ -203,14 +203,13 @@ export const Button1 = styled.button`
    &:hover,
     &:focus  {
         border: transparent;
-        background-color: linear-gradient(315deg, rgb(65, 158, 241) 0%, rgb(155, 208, 255) 100%);
+        background: linear-gradient(315deg, rgb(65, 158, 241) 0%, rgb(155, 208, 255) 100%);
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         color: ${props => props.theme.color.wight}
         
     }
-
      &:hover svg use,
-      &:focus svg use {
+     &:focus svg use {
     fill: ${props => props.theme.color.wight}
     transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
   }
