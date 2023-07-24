@@ -20,7 +20,7 @@ import {
   Div3,
   P1,
   Button1,
-} from "../NoticesPetsCardList/NoticesPetCard.styled";
+} from "./NoticesPetCard.styled";
 
 const NoticesCategoriesList = () => {
   const notieces = useSelector(selectNotieces);
@@ -87,7 +87,7 @@ const NoticesCategoriesList = () => {
               </Ul>
             </Div>
             <Div3>
-              <P1>{item.title}</P1>
+              <P1>Сute dog looking for a home</P1>
               <Button1>
                 <span>Learn more</span>
                 <Icon
