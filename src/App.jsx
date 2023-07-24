@@ -37,22 +37,22 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
+        <Route path='/' element={<SharedLayout />}>
           <Route
-            path="/main"
+            path='/main'
             element={
               <PublicRoute
-                redirectTo="/user"
+                redirectTo='/user'
                 component={<MainPage />}
                 restricted
               />
             }
           />
           <Route
-            path="/news"
+            path='/news'
             element={
               <PublicRoute
-                redirectTo="/user"
+                redirectTo='/user'
                 component={<NewsPage />}
                 restricted
               />
@@ -60,61 +60,58 @@ function App() {
           />
 
           <Route
-            path="/notices"
+            path='/notices'
             element={
               <PublicRoute
-                redirectTo="/user"
+                redirectTo='/user'
                 component={<NoticesPage />}
                 restricted
               />
-            }
-          >
-
-            
+            }>
             <Route
-              path="sell"
+              path='sell'
               element={
                 <PublicRoute
-                  redirectTo="/user"
+                  redirectTo='/user'
                   component={<NoticesCategoriesList />}
                   restricted
                 />
               }
             />
             <Route
-              path="lost-found"
+              path='lost-found'
               element={
                 <PublicRoute
-                  redirectTo="/user"
+                  redirectTo='/user'
                   component={<NoticesCategoriesList />}
                   restricted
                 />
               }
             />
             <Route
-              path="for-free"
+              path='for-free'
               element={
                 <PublicRoute
-                  redirectTo="/user"
+                  redirectTo='/user'
                   component={<NoticesCategoriesList />}
                   restricted
                 />
               }
             />
             <Route
-              path="favorite"
+              path='favorite'
               element={
                 <PrivateRoute
-                  redirectTo="/login"
+                  redirectTo='/login'
                   component={<NoticesCategoriesList />}
                 />
               }
             />
             <Route
-              path="own"
+              path='own'
               element={
                 <PrivateRoute
-                  redirectTo="/login"
+                  redirectTo='/login'
                   component={<NoticesCategoriesList />}
                 />
               }
@@ -122,30 +119,30 @@ function App() {
           </Route>
 
           <Route
-            path="/friends"
+            path='/friends'
             element={
               <PublicRoute
-                redirectTo="/user"
+                redirectTo='/user'
                 component={<FriendsPage />}
                 restricted
               />
             }
           />
           <Route
-            path="/register"
+            path='/register'
             element={
               <PublicRoute
-                redirectTo="/user"
+                redirectTo='/user'
                 component={<RegisterPage />}
                 restricted
               />
             }
           />
           <Route
-            path="/login"
+            path='/login'
             element={
               <PublicRoute
-                redirectTo="/user"
+                redirectTo='/user'
                 component={<LoginPage />}
                 restricted
               />
@@ -156,22 +153,23 @@ function App() {
 
           <Route path="/user" element={<UserPage />} />           */}
 
-          <Route
+          {/* <Route
             path="/user"
             element={
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
+          /> */}
+          <Route
+            path='/user'
+            element={<UserPage />}
           />
 
-            <Route
-              path="/user"
-              element={
-                <PrivateRoute
-                  redirectTo="/user"
-                  component={<UserPage />}
-                />
-              }
-            />          
+          <Route
+            path='/user'
+            element={
+              <PrivateRoute redirectTo='/user' component={<UserPage />} />
+            }
+          />
 
           {/* <Route
             path="/add-pet"
@@ -179,13 +177,13 @@ function App() {
               <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
             }
           > */}
-          <Route path="/add-pet" element={<AddPetPage />} >
-            <Route path="option" element={<OptionForm />} />
-            <Route path="details" element={<PersonalDetailsForm />} />
-            <Route path="more-info" element={<MoreInfoForm />} />
+          <Route path='/add-pet' element={<AddPetPage />}>
+            <Route path='option' element={<OptionForm />} />
+            <Route path='details' element={<PersonalDetailsForm />} />
+            <Route path='more-info' element={<MoreInfoForm />} />
           </Route>
 
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
       </Routes>
     </ThemeProvider>

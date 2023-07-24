@@ -24,4 +24,9 @@ export const theme = Object.freeze({
         shadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', 
         
     },
+    sizes: {
+        mobile:'320px',
+        tab: '768px',
+        desk: '1280px',
+    }
 })
