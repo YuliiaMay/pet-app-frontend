@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const UserNav = () => {
   return (
-
     <Wrapper>
       <LogoutBtn to="/logout">
         Log out
@@ -16,10 +15,11 @@ const UserNav = () => {
           fill={"#ffffff"}
         />
       </LogoutBtn>
-      <Avatar />
-      <UserName>Anna</UserName>
+      <Link to="/user">
+        <Avatar />
+        <UserName>Anna</UserName>
+      </Link>
     </Wrapper>
-
   );
 };
 
