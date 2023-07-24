@@ -13,4 +13,8 @@ export const BurgerNavItem = styled(NavLink)`
   &:active {
     color: #ffc107;
   }
+  @media screen and (max-width: 767px) {
+    font-size: 32px;
+    letter-spacing: 1.28px;
+  }
 `;
