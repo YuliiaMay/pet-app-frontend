@@ -18,7 +18,6 @@ const UserPage = () => {
     setIsUserEditing(true);
   };
 
-
   return (
     <>
       <div>

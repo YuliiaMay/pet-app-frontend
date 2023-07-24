@@ -1,18 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
-import RegularWoff from '../fonts/Manrope-Regular.woff';
-import RegularWoff2 from '../fonts/Manrope-Regular.woff2';
-import MediumWoff from '../fonts/Manrope-Medium.woff';
-import MediumWoff2 from '../fonts/Manrope-Medium.woff2';
-import SemiBoldWoff from '../fonts/Manrope-Regular.woff';
-import SemiBoldWoff2 from '../fonts/Manrope-SemiBold.woff2';
-import BoldWoff from '../fonts/Manrope-Regular.woff';
-import BoldWoff2 from '../fonts/Manrope-Regular.woff2';
-import ExtraBoldWoff from '../fonts/Manrope-Regular.woff';
-import ExtraBoldWoff2 from '../fonts/Manrope-Regular.woff2';
 
-
-
+import RegularWoff from "../fonts/Manrope-Regular.woff";
+import RegularWoff2 from "../fonts/Manrope-Regular.woff2";
+import MediumWoff from "../fonts/Manrope-Medium.woff";
+import MediumWoff2 from "../fonts/Manrope-Medium.woff2";
+import SemiBoldWoff from "../fonts/Manrope-Regular.woff";
+import SemiBoldWoff2 from "../fonts/Manrope-SemiBold.woff2";
+import BoldWoff from "../fonts/Manrope-Regular.woff";
+import BoldWoff2 from "../fonts/Manrope-Regular.woff2";
+import ExtraBoldWoff from "../fonts/Manrope-Regular.woff";
+import ExtraBoldWoff2 from "../fonts/Manrope-Regular.woff2";
 
 export const FontStyles = createGlobalStyle`
     @font-face {
@@ -65,8 +63,8 @@ export const FontStyles = createGlobalStyle`
             local('Manrope'), 
             url(${ExtraBoldWoff}) format('woff'),
             url(${ExtraBoldWoff2}), format('woff2');
-        font-weight: 700;
+        font-weight: 800;
         font-style: normal;
         font-display: swap;
     }
-`
+`;

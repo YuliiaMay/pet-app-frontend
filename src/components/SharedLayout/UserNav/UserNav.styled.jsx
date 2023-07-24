@@ -1,29 +1,37 @@
 import styled from "styled-components";
-
-export const Wrapper = styled.div``;
-
-export const AuthList = styled.nav`
+import { FaRegCircleUser } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
+export const Wrapper = styled.div`
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const LogInBtn = styled.button`
-  display: flex;
-  color: #fef9f9;
-  background-color: #ffc107;
-  font-size: 16px;
-  font-family: Manrope;
+export const LogoutBtn = styled(NavLink)`
   font-weight: 700;
-  padding: 8px 20px;
+  background-color: #54adff;
   border-radius: 40px;
-  border: 1px;
-`;
-export const RegisterBtn = styled.button`
-  font-size: 16px;
-  font-family: Manrope;
-  font-weight: 700;
   padding: 8px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  @media screen and (max-width: 1279px) {
+    display: none;
+  }
+`;
+
+export const Avatar = styled(FaRegCircleUser)`
+  width: 28px;
+  height: 28px;
+  fill: #ffc107;
+  margin-right: 12px;
+`;
+
+export const UserName = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.64px;
   color: #ffc107;
-  border: 1px solid #ffc107;
-  border-radius: 40px;
 `;

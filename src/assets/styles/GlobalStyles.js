@@ -1,16 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
-
 export const GlobalStyle = createGlobalStyle`
+    
     body {
         font-family: 'Manrope', sans-serif;
         font-weight: 400;
         font-size: 16px;
-        background-color: #FFFFFF;
+        background-color: #FEF9F9;
         color: #111111;
         margin: 0;
-        display: flex;
-        place-items: center;
     };
 
     h1,
