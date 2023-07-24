@@ -14,8 +14,6 @@ export const ResponsiveContainer = styled.div`
   @media screen and (min-width: 768px) {
     max-width: 768px;
     padding: 0 32px;
-    background-color: #111111;
-    
   }
 
   // desktop
