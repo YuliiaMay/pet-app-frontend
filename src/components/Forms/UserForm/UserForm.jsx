@@ -7,7 +7,8 @@ import { Formik, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from 'prop-types'
 import { useState } from "react";
-// import { ReactComponent as LogOutSvg } from "../../../svg/userPage/logout.svg";
+import { UserFormStyled } from "./UserForm.styled";
+
 
 export const UserForm = ({ isFormDisabled }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -62,7 +63,7 @@ export const UserForm = ({ isFormDisabled }) => {
         validate={schema}
         onSubmit={SubmitHandler}>
         {({ isSubmitting }) => (
-          <UserForm>
+          <UserFormStyled>
             <label htmlFor='name'>
               Name
               <Field
@@ -130,7 +131,7 @@ export const UserForm = ({ isFormDisabled }) => {
                   Log Out
               </button>
             )}
-          </UserForm>
+          </UserFormStyled>
         )}
       </Formik>
     </div>
@@ -139,5 +140,5 @@ export const UserForm = ({ isFormDisabled }) => {
 
 
 UserForm.propTypes = {
-  isFormDisabled: PropTypes.bool.isRequired,
+  isFormDisabled: PropTypes.bool,
 };
