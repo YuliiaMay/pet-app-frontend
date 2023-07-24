@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-useless-escape */
 /** @format */
 import * as yup from "yup";
