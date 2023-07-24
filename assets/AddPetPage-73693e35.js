@@ -1,4 +1,4 @@
-import{s as e,N as i,L as s,j as o,a as d,O as a}from"./index-999f1daf.js";import{F as c}from"./FormTitle-7fbd1b47.js";import"./formik.esm-026362d2.js";const x=e.div`
+import{s as e,N as i,L as s,j as o,a as d,O as a}from"./index-3b6d3c7a.js";import{F as c}from"./FormTitle-561a442c.js";import"./formik.esm-ce73c5bd.js";const x=e.div`
     background-color: ${t=>t.theme.background.wight};
     width: 458px;
     height: 540px;
