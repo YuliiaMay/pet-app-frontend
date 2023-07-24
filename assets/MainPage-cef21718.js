@@ -1,4 +1,4 @@
-import{s as n,j as t}from"./index-f6a409a1.js";const p="/pet-app-frontend/assets/bg-des@1x-82264fa3.png",i="/pet-app-frontend/assets/bg-tab@1x-21060262.png",d="/pet-app-frontend/assets/bg-mob@1x-4334f90e.png",o=n.div`
+import{s as n,j as t}from"./index-da34e171.js";const p="/pet-app-frontend/assets/bg-des@1x-82264fa3.png",i="/pet-app-frontend/assets/bg-tab@1x-21060262.png",d="/pet-app-frontend/assets/bg-mob@1x-4334f90e.png",o=n.div`
   background-image: url(${p});
   display: flex;
   position: relative;
