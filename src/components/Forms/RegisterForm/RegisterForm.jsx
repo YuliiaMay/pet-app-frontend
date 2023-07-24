@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import * as Yup from "yup";
+import { register } from "../../../redux/authSlice/operations"
 
 const userSchema = Yup.object().shape({
   name: Yup.string().required(),
-  email: Yup.string().min(6).max(12).email().required(),
-  password: Yup.string().min(8).required(),
-  confirmPassword: Yup.string().min(8).required(),
+  email: Yup.string().min(6).email().required(),
+  password: Yup.string().required(),
+  confirmPassword: Yup.string().required(),
 });
 
 const initialValues = {
@@ -16,14 +19,16 @@ const initialValues = {
   confirmPassword: "",
 };
 
-const Input = styled(Field)`
-  margin: 20px;
-`;
 const RegisterForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm();
+  const dispatch = useDispatch();
+
+
+  const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    dispatch(
+      register({ name, email, password }))
+      .then(response => !response.error && resetForm());
   };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -31,19 +36,23 @@ const RegisterForm = () => {
       validationSchema={userSchema}
     >
       <Form autoComplete="off">
-        <Input type="text" name="name" placeholder="Name"></Input>
+        <Field type="text" name="name" placeholder="Name"></Field>
         <ErrorMessage name="name" component="div" />
-        <Input type="text" name="email" placeholder="Email"></Input>
+        <Field type="text" name="email" placeholder="Email"></Field>
         <ErrorMessage name="email" component="div" />
-        <Input type="password" name="password" placeholder="Password"></Input>
+        <Field type="password" name="password" placeholder="Password"></Field>
         <ErrorMessage name="password" component="div" />
-        <Input
+        <Field
           type="password"
           name="confirmPassword"
           placeholder="confirmPassword"
-        ></Input>
+        ></Field>
         <ErrorMessage name="confirmPassword" component="div" />
         <button type="submit">Registration</button>
+        {/* <p>Already have a account?</p> */}
+        <Link to="/login">
+          Already have a account? <span>Login</span>
+        </Link>
       </Form>
     </Formik>
   );

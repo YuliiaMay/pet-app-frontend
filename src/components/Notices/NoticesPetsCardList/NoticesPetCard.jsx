@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import { Icon } from "../../../images/Icon";
+import { Icon } from "../../../components/Icon/Icon";
 import {
+  List,
   Info,
   Div,
   Img,
@@ -14,17 +15,17 @@ import {
   Div3,
   P1,
   Button1,
-} from "./petCard.styled";
+} from "./NoticesPetCard.styled";
 
-export const PetCard = (props) => {
+export const NoticesPetCardList = (items) => {
   return (
-    <>
-      {props.pets.map((pet) => (
-        <Info key={pet.name}>
+    <List>
+      {items.map((item) => (
+        <Info key={item.name}>
           <Div>
-            <Img src={pet.imgUrl} alt="pet" loading="lazy"></Img>
+            <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
             <Div1>
-              <PP>{pet.category}</PP>
+              <PP>{item.category}</PP>
               <Div2>
                 <Button aria-label="add to favorites">
                   <Icon
@@ -46,7 +47,7 @@ export const PetCard = (props) => {
                   stroke={"#54ADFF"}
                   fill={"#54ADFF"}
                 />
-                <Span>{pet.place}</Span>
+                <Span>{item.place}</Span>
               </Li>
               <Li>
                 <Icon
@@ -56,22 +57,22 @@ export const PetCard = (props) => {
                   stroke={"#54ADFF"}
                   fill={"#54ADFF"}
                 />
-                <Span>{pet.birthday}</Span>
+                <Span>{item.birthday}</Span>
               </Li>
               <Li>
                 <Icon
-                  iconName={"icon-female"}
+                  iconName={item.sex === "Female" ? "icon-female" : "icon-male"}
                   width={"24px"}
                   height={"24px"}
                   stroke={"#54ADFF"}
                   fill={"#54ADFF"}
                 />
-                <Span>{pet.sex}</Span>
+                <Span>{item.sex}</Span>
               </Li>
             </Ul>
           </Div>
           <Div3>
-            <P1>{pet.title}</P1>
+            <P1>{item.title}</P1>
             <Button1>
               <span>Learn more</span>
               <Icon
@@ -85,10 +86,10 @@ export const PetCard = (props) => {
           </Div3>
         </Info>
       ))}
-    </>
+    </List>
   );
 };
 
-PetCard.propTypes = {
+NoticesPetCardList.propTypes = {
   props: PropTypes.object,
 };

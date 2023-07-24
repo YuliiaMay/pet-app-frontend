@@ -1,13 +1,13 @@
-import { AuthList, LogInBtn, PawIcon, RegisterBtn } from "./UserNav.styled";
+import { Avatar, LogoutBtn, UserName, Wrapper } from "./UserNav.styled";
 
-export const UserNav = () => {
+const UserNav = () => {
   return (
-    <AuthList>
-      <LogInBtn to="/login">
-        Log IN
-        <PawIcon />
-      </LogInBtn>
-      <RegisterBtn to="/register">Registration</RegisterBtn>
-    </AuthList>
+    <Wrapper>
+      <LogoutBtn to="/logout">Log out</LogoutBtn>
+      <Avatar />
+      <UserName>Anna</UserName>
+    </Wrapper>
   );
 };
+
+export default UserNav;
