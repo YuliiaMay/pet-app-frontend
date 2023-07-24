@@ -1,7 +1,8 @@
 /* eslint-disable no-useless-escape */
 /** @format */
 import * as yup from "yup";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
+// eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from 'prop-types'
 import { useState } from "react";
@@ -11,7 +12,14 @@ export const UserForm = ({ isFormDisabled }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const dispatch = useDispatch();
-  const user = useSelector(user);
+  const user = {
+    name: "Anna",
+    email: "anna00@gmail.com",
+    birthday: "00.00.0000",
+    phone: 38000000000,
+    city: "Kiev",
+  };
+  // const user = useSelector(user);
 
   const schema = yup.object().shape({
     name: yup.string().min(3).max(30).required(),
@@ -20,7 +28,7 @@ export const UserForm = ({ isFormDisabled }) => {
       .email()
       .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Invalid email")
       .required(),
-    birthday: yup.date().min().max().required(),
+    birthday: yup.string().required(),
     phone: yup.number().min(3).max(30).required(),
     city: yup.string().min(3).max(30).required(),
   });
@@ -53,16 +61,18 @@ export const UserForm = ({ isFormDisabled }) => {
         validate={schema}
         onSubmit={SubmitHandler}>
         {({ isSubmitting }) => (
-          <Form>
-            <label htmlFor='name'>Name</label>
-            <Field
-              type='text'
-              name='name'
-              id='name'
-              disabled={isSubmitting || isFormDisabled}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
+          <UserForm>
+            <label htmlFor='name'>
+              Name
+              <Field
+                type='text'
+                name='name'
+                id='name'
+                disabled={isSubmitting || isFormDisabled}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </label>
             <ErrorMessage name='name' component='div' />
 
             <label htmlFor='email'>Email</label>
@@ -118,7 +128,7 @@ export const UserForm = ({ isFormDisabled }) => {
                 <LogOutSvg /> Log Out
               </button>
             )}
-          </Form>
+          </UserForm>
         )}
       </Formik>
     </div>
