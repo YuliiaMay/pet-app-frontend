@@ -45,6 +45,7 @@ function App() {
             <Route path="sell" element={<NoticesCategoriesList />} />
             <Route path="lost-found" element={<NoticesCategoriesList />} />
             <Route path="for-free" element={<NoticesCategoriesList />} />
+
             <Route
               path="favorite"
               element={
@@ -86,6 +87,7 @@ function App() {
               />
             }
           />
+
           <Route
             path="/user"
             element={
@@ -93,12 +95,17 @@ function App() {
             }
           />
 
-          <Route
-            path="/add-pet"
-            element={
-              <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
-            }
-          >
+            <Route
+              path="/user"
+              element={
+                <PrivateRoute
+                  redirectTo="/user"
+                  component={<UserPage />}
+                />
+              }
+            />          
+
+          <Route path="/add-pet" element={<AddPetPage />} >
             <Route path="option" element={<OptionForm />} />
             <Route path="details" element={<PersonalDetailsForm />} />
             <Route path="more-info" element={<MoreInfoForm />} />
