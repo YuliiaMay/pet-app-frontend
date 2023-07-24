@@ -39,6 +39,7 @@ export const GlobalStyle = createGlobalStyle`
     button {
         display: block;
         cursor: pointer;
+        background-color: none;
         padding: 0;
         margin: 0;
     }

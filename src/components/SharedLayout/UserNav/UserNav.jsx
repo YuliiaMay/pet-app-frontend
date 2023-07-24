@@ -1,8 +1,10 @@
 import { Icon } from "../../Icon/Icon";
 import { Avatar, LogoutBtn, UserName, Wrapper } from "./UserNav.styled";
+import { Link } from "react-router-dom";
 
 const UserNav = () => {
   return (
+
     <Wrapper>
       <LogoutBtn to="/logout">
         Log out
@@ -17,6 +19,7 @@ const UserNav = () => {
       <Avatar />
       <UserName>Anna</UserName>
     </Wrapper>
+
   );
 };
 

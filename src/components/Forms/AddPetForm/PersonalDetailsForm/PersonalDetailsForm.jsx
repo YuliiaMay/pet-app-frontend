@@ -1,24 +1,26 @@
-import FormTitle from "../FormTitle/FormTitle";
+import { DetailsFormWrapper } from "./PersonaleDetailsForm.styled";
 
 
 const PersonaleDetailsForm = () => {
     return (
         <>
-            <FormTitle />
-            <div>
+
+            <DetailsFormWrapper>
                 <label htmlFor="pet-name">
                     Pet’s name
-                    <input type="text" id="pet-name"/>
                 </label>
+                <input type="text" id="pet-name" />
+                
                 <label htmlFor="pet-birth">
                     Date of birth
-                    <input type="text" id="pet-birth"/>
-                </label>      
+                </label> 
+                <input type="text" id="pet-birth" />
+                
                 <label htmlFor="pet-breed">
                     Breed
-                    <input type="text" id="pet-breed"/>
-                </label>                
-            </div>
+                </label>
+                <input type="text" id="pet-breed"/>                
+            </DetailsFormWrapper>
         </>
     );
 };
