@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BsSearch } from "react-icons/bs";
-import { FiX } from "react-icons/fi";
+import { ReactComponent as Search } from "../../../images/Icon/Search.svg";
+import { ReactComponent as Cross } from "../../../images/Icon/Cross.svg";
 
 import {
   ButtonClose,
@@ -46,11 +46,11 @@ export const NoticesSearch = () => {
           onChange={handleChangeSearchQuery}
         />
         <ButtonSearch type="submit" position={searchQuery}>
-          <BsSearch color={"#54ADFF"} size={24} />
+          <Search />
         </ButtonSearch>
         {searchQuery !== "" && (
           <ButtonClose type="button" onClick={handleDelete}>
-            <FiX color={"#FFC107"} size={24} />
+            <Cross />
           </ButtonClose>
         )}
       </FormSearch>

@@ -6,7 +6,7 @@ export const Section = styled.div`
   align-items: center;
   margin-top: 80px;
 
-  @media (max-width: 479px) {
+  @media (min-width: 320px) {
     margin-top: 40px;
   }
 `;
@@ -48,7 +48,7 @@ export const InputSearch = styled.input`
     outline: none;
   }
 
-  @media (max-width: 479px) {
+  @media (max-width: 480px) {
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.56px;
@@ -66,8 +66,8 @@ export const ButtonSearch = styled.button`
     color 0.1s cubic-bezier(0.4, 0, 0.2, 1);
   right: ${(props) => (props.position ? "47px" : "20px")};
 
-  @media (max-width: 479px) {
-    right: ${(props) => (props.position ? "37px" : "12px")};
+  @media (max-width: 480px) {
+    right: ${(props) => (props.position ? "37px" : "13px")};
   }
 `;
 

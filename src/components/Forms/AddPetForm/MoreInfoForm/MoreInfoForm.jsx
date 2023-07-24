@@ -11,14 +11,17 @@ const MoreInfoForm = () => {
                 <div>
                     <img src={defaultAvatar} alt="default avatar" />
                 </div>
-                <label htmlFor="comment">
-                    <textarea
-                        type="text" id="comment">
-                    </textarea>
-                </label>
+                
+                <label htmlFor="comment">Comments</label>
+                <textarea
+                    type="text"
+                    id="comment"
+                    placeholder="Type of pet"
+                ></textarea>
             </div>
         </>
         
     );
 }
+
 export default MoreInfoForm;

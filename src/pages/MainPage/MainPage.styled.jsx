@@ -31,8 +31,6 @@ export const MainTitle = styled.h1`
 `;
 
 export const PhotoBox = styled.div`
-  padding: 0;
-  margin: 0;
   position: fixed;
 `;
 
@@ -51,9 +49,9 @@ export const Frenchie = styled.picture`
   @media screen and (min-width: 320px) and (max-width: 767px) {
     position: absolute;
     left: -20px;
-    top: 300px;
+    top: 230px;
     & img {
-      width: 255px;
+      width: 225px;
     }
   }
 `;
@@ -74,7 +72,7 @@ export const Brownie = styled.picture`
     left: 13px;
     top: 100px;
     & img {
-      width: 360px;
+      width: 310px;
     }
   }
 `;
@@ -90,10 +88,10 @@ export const Cat = styled.picture`
     top: 710px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    top: 420px;
+    top: 380px;
     left: 130px;
     & img {
-      width: 220px;
+      width: 170px;
     }
   }
 `;

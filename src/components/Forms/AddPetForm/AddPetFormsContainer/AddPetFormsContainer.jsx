@@ -1,19 +1,19 @@
-import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
 import {
-    Form,
+    AddPetContainer,
     FormNav,
     FormStepTitle,
     FormStepIndication
 } from "./AddPetFormsContainer.styled";
 import FormTitle from "../FormTitle/FormTitle";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
+import AddPetForm from "../AddPetForm/AddPetForm";
 
 
 const AddPetFormsContainer = () => {
     return (
-        <Form>
+        <AddPetContainer>
             <FormTitle />
+
             <FormNav>
                 <div>
                     <FormStepTitle to='option'>
@@ -35,13 +35,10 @@ const AddPetFormsContainer = () => {
                 </div>                  
             </FormNav>
 
-            <Suspense fallback={<div>Loading...</div>}>
-                <Outlet/>
-            </Suspense>
 
-
+            <AddPetForm/>
             <FormBtnNav/>
-        </Form>
+        </AddPetContainer>
     );
 }
 

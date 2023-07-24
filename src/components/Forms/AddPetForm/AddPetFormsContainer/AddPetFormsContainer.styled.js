@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Form = styled.div`
+export const AddPetContainer = styled.div`
     background-color: ${props => props.theme.background.wight};
     width: 458px;
     height: 540px;
