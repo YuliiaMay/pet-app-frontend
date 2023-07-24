@@ -68,12 +68,11 @@ export const ButtonAdd = styled(NavLink)`
   border: none;
   color: ${(props) => props.theme.color.wight};
   background-color: ${(props) => props.theme.color.blue};
+  filter: drop-shadow(3px 8px 14px rgba(136, 198, 253, 0.19));
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: ${(props) => props.theme.color.blue};
-    background-color: ${(props) => props.theme.background.lightBlue};
-    box-shadow: ${(props) => props.theme.color.blue} 0px 2px 8px 0px;
+    background: linear-gradient(315deg, #419ef1 0%, #9bd0ff 100%);
   }
 
   @media (max-width: 480px) {
