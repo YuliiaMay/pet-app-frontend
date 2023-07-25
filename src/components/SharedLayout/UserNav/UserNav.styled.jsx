@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 `;
 
 export const LogoutBtn = styled(NavLink)`
@@ -17,7 +18,7 @@ export const LogoutBtn = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+
   cursor: pointer;
   @media screen and (max-width: 1279px) {
     display: none;
