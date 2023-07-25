@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/styles";
 
 import { lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import { PublicRoute } from "./routes/PublicRoute";
 import { PrivateRoute } from "./routes/PrivateRoute";
@@ -38,11 +38,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<NoticesPage />} />
+          <Route index element={<Navigate to="/notices/sell" />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
 
           <Route path="/notices" element={<NoticesPage />}>
+            <Route index element={<Navigate to="/notices/sell" />} />
             <Route path="sell" element={<NoticesCategoriesList />} />
             <Route path="lost-found" element={<NoticesCategoriesList />} />
             <Route path="for-free" element={<NoticesCategoriesList />} />
