@@ -43,9 +43,11 @@ export const InputSearch = styled.input`
   padding: 10px 20px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   color: ${(props) => props.theme.color.grey};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus {
-    outline: none;
+    outline: transparent;
+    box-shadow: ${(props) => props.theme.color.blue} 0px 2px 8px 0px;
   }
 
   @media (max-width: 480px) {
