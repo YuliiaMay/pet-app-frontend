@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
+
 import { Icon } from "../../../components/Icon/Icon";
 import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
 import { formatYears } from "../../../utils";
@@ -27,6 +28,7 @@ import {
 } from "./NoticesPetCard.styled";
 import { useLocation } from "react-router-dom";
 
+
 const NoticesCategoriesList = () => {
   const [visibleCards, setVisibleCards] = useState([]);
   const [fetching, setFetching] = useState(true);
@@ -38,6 +40,7 @@ const NoticesCategoriesList = () => {
   const notices = useSelector(selectNotieces);
 
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (!fetching) return;
@@ -138,6 +141,7 @@ const NoticesCategoriesList = () => {
       </List>
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
     </ResponsiveContainer>
+
   );
 };
 
