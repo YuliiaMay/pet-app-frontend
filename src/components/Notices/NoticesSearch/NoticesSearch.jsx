@@ -38,7 +38,6 @@ export const NoticesSearch = () => {
 
   const queryMovies = searchParams.get("query") ?? "";
 
-  console.log(queryMovies);
   const handleDelete = () => {
     setSearchQuery("");
     setSearchParams();
