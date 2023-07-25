@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
+
 import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
-import PropTypes from "prop-types";
 import { Icon } from "../../../components/Icon/Icon";
 import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
+import { formatYears } from "../../../utils";
+import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
+
 import {
   List,
   Info,
@@ -21,19 +25,48 @@ import {
   P1,
   Button1,
 } from "./NoticesPetCard.styled";
+import { useLocation } from "react-router-dom";
 
 const NoticesCategoriesList = () => {
-  const notieces = useSelector(selectNotieces);
+  const [visibleCards, setVisibleCards] = useState([]);
+  const [fetching, setFetching] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
+  const [oneCard, setOneCard] = useState(null);
+  const location = useLocation();
+
+  const notices = useSelector(selectNotieces);
+
   const dispatch = useDispatch();
-  // console.log(notieces);
 
   useEffect(() => {
+    if (!fetching) return;
     dispatch(fetchNotices());
-  }, [dispatch]);
+    setFetching(false);
+  }, [dispatch, fetching]);
+
+  const handleClickCards = (item) => {
+    setShowModal(true);
+    setOneCard(item);
+  };
+
+  useEffect(() => {
+    let visible = [];
+    if (location.pathname === "/notices/sell") {
+      visible = notices.filter((ite) => ite.category === "sale");
+    } else if (location.pathname === "/notices/lost-found") {
+      visible = notices.filter((ite) => ite.category === "lost/found");
+    } else if (location.pathname === "/notices/for-free") {
+      visible = notices.filter((ite) => ite.category === "in good hands");
+    }
+
+    setVisibleCards(visible);
+  }, [location.pathname, notices]);
+  console.log("visibleCards", notices);
   return (
     <ResponsiveContainer>
       <List>
-        {notieces.map((item) => (
+        {visibleCards.map((item) => (
           <Info key={item._id}>
             <Div>
               <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
@@ -70,7 +103,7 @@ const NoticesCategoriesList = () => {
                     stroke={"#54ADFF"}
                     fill={"#54ADFF"}
                   />
-                  <Span>{item.birthday}</Span>
+                  <Span>{formatYears(item.birthday)} year</Span>
                 </Li>
                 <Li>
                   <Icon
@@ -87,8 +120,9 @@ const NoticesCategoriesList = () => {
               </Ul>
             </Div>
             <Div3>
+              {/* {item.title} */}
               <P1>Сute dog looking for a home</P1>
-              <Button1>
+              <Button1 onClick={() => handleClickCards(item)}>
                 <span>Learn more</span>
                 <Icon
                   iconName={"icon-pawprint"}
@@ -102,6 +136,7 @@ const NoticesCategoriesList = () => {
           </Info>
         ))}
       </List>
+      <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
     </ResponsiveContainer>
   );
 };

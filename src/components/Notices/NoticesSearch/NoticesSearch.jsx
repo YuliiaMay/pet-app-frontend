@@ -11,28 +11,37 @@ import {
   TitleSearch,
 } from "./NoticesSearch.style";
 
+import { useSearchParams } from "react-router-dom";
+
 export const NoticesSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   //* Значення інпута записуємо в стейт
   const handleChangeSearchQuery = (e) => {
     const searchQuery = e.currentTarget.value.toLowerCase();
+    setSearchParams({ query: searchQuery });
     setSearchQuery(searchQuery);
   };
 
   //*  Передаємо в App значення searchQuery і очищуємо форму
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (searchQuery.trim() === "") {
+      setSearchParams();
       return;
     }
+
     // onSubmit(searchQuery);
     setSearchQuery("");
   };
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const queryMovies = searchParams.get("query") ?? "";
+
+  console.log(queryMovies);
   const handleDelete = () => {
     setSearchQuery("");
+    setSearchParams();
   };
 
   return (
