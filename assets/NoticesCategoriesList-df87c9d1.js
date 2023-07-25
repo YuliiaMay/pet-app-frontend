@@ -1,4 +1,4 @@
-import{s as t,c as l,a,f as p,j as i,R as d,I as n,P as x}from"./index-8ea674bb.js";import{u as h}from"./useDispatch-971ce40f.js";const g=e=>e.notices.items,u=t.ul`
+import{s as t,c as l,a,f as p,j as i,R as d,I as n,P as x}from"./index-e79e555f.js";import{u as h}from"./useDispatch-009b4134.js";const g=e=>e.notices.items,u=t.ul`
   display: flex;
   align-items: stretch;
   flex-direction: column;
