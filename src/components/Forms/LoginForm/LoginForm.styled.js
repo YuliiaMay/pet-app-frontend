@@ -1,29 +1,28 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Form, Field, ErrorMessage } from "formik";
 
 export const Container = styled.div`
-  margin-top: 42px;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   width: 280px;
-  min-height: 479px;
+  min-height: 425px;
   background-color: ${(props) => props.theme.background.wight};
   border: 1px solid ${(props) => props.theme.border.blue};
   border-radius: ${(props) => props.theme.border.radius};
   box-shadow: ${(props) => props.theme.border.shadow};
 
   @media screen and (min-width: 768px) {
-    margin-top: 88px;
-    margin-bottom: 416px;
+    margin-top: 82px;
+    //margin-bottom: 564px;
     width: 608px;
-    min-height: 629px;
+    min-height: 481px;
   }
 
   @media screen and (min-width: 1280px) {
     margin-top: 91px;
-    margin-bottom: 75px;
-    min-height: 617px;
+    // margin-bottom: 141px;
   }
 `;
 
@@ -43,11 +42,12 @@ export const StyledTitle = styled.h2`
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 1.44px;
-  margin-top: 26px;
-  margin-bottom: 6px;
+  margin-top: 40px;
+  //margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;
+    //margin-bottom: 40px;
     font-size: 36px;
   }
 `;
@@ -55,7 +55,7 @@ export const StyledTitle = styled.h2`
 export const StyledField = styled(Field)`
   padding-left: 16px;
   margin-top: 14px;
-  width: 224px;
+  width: 248px;
   height: 48px;
   border-radius: ${(props) => props.theme.border.radius};
   cursor: pointer;
@@ -96,19 +96,16 @@ export const SubmitButton = styled.button`
 
   color: ${(props) => props.theme.color.wight};
   font-size: 20px;
-  font-style: normal;
   font-weight: 600;
 
   @media screen and (min-width: 768px) {
     width: 458px;
-    height: 48px;
-    padding: 10px 20px;
-    margin-top: 52px;
-    margin-bottom: 16px;
+    margin-top: 60px;
+    margin-bottom: 20px;
   }
 `;
 
-export const StyledLink = styled(NavLink)`
+export const StyledLink = styled(Link)`
   text-align: center;
   margin-bottom: 40px;
   color: ${(props) => props.theme.color.grey};

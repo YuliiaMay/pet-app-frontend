@@ -65,6 +65,7 @@ const RegisterForm = () => {
             name="confirmPassword"
             placeholder="confirmPassword"
           ></StyledField>
+
           <ErrorText name="confirmPassword" component="div" />
           <SubmitButton type="submit">Registration</SubmitButton>
           <StyledLink to="/login">
