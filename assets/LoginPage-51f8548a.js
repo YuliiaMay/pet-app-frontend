@@ -1,27 +1,26 @@
-import{s as t,N as l,j as r,r as x}from"./index-f0a325f4.js";import{F as h,a as g,E as u,c as b,b as o,d as w}from"./index.esm-be6d8867.js";import{u as f}from"./useDispatch-4c52eadb.js";const j=t.div`
-  margin-top: 42px;
+import{s as o,L as c,j as t,l}from"./index-8755cb88.js";import{F as x,a as h,E as g,c as u,b as r,d as b}from"./index.esm-6d7687a1.js";import{u as w}from"./useDispatch-137ba32f.js";const f=o.div`
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   width: 280px;
-  min-height: 479px;
+  min-height: 425px;
   background-color: ${e=>e.theme.background.wight};
   border: 1px solid ${e=>e.theme.border.blue};
   border-radius: ${e=>e.theme.border.radius};
   box-shadow: ${e=>e.theme.border.shadow};
 
   @media screen and (min-width: 768px) {
-    margin-top: 88px;
-    margin-bottom: 416px;
+    margin-top: 82px;
+    //margin-bottom: 564px;
     width: 608px;
-    min-height: 629px;
+    min-height: 481px;
   }
 
   @media screen and (min-width: 1280px) {
     margin-top: 91px;
-    margin-bottom: 75px;
-    min-height: 617px;
+    // margin-bottom: 141px;
   }
-`,$=t(h)`
+`,$=o(x)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,23 +28,24 @@ import{s as t,N as l,j as r,r as x}from"./index-f0a325f4.js";import{F as h,a as 
 
   @media screen and (min-width: 768px) {
   }
-`,y=t.h2`
+`,j=o.h2`
   color: ${e=>e.theme.color.main};
   text-align: center;
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 1.44px;
-  margin-top: 26px;
-  margin-bottom: 6px;
+  margin-top: 40px;
+  //margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;
+    //margin-bottom: 40px;
     font-size: 36px;
   }
-`,i=t(g)`
+`,i=o(h)`
   padding-left: 16px;
   margin-top: 14px;
-  width: 224px;
+  width: 248px;
   height: 48px;
   border-radius: ${e=>e.theme.border.radius};
   cursor: pointer;
@@ -69,9 +69,9 @@ import{s as t,N as l,j as r,r as x}from"./index-f0a325f4.js";import{F as h,a as 
     height: 48px;
     margin-top: 32px;
   }
-`,n=t(u)`
+`,n=o(g)`
   color: red;
-`,S=t.button`
+`,y=o.button`
   width: 256px;
   height: 48px;
   margin-top: 40px;
@@ -82,17 +82,14 @@ import{s as t,N as l,j as r,r as x}from"./index-f0a325f4.js";import{F as h,a as 
 
   color: ${e=>e.theme.color.wight};
   font-size: 20px;
-  font-style: normal;
   font-weight: 600;
 
   @media screen and (min-width: 768px) {
     width: 458px;
-    height: 48px;
-    padding: 10px 20px;
-    margin-top: 52px;
-    margin-bottom: 16px;
+    margin-top: 60px;
+    margin-bottom: 20px;
   }
-`,F=t(l)`
+`,S=o(c)`
   text-align: center;
   margin-bottom: 40px;
   color: ${e=>e.theme.color.grey};
@@ -103,9 +100,9 @@ import{s as t,N as l,j as r,r as x}from"./index-f0a325f4.js";import{F as h,a as 
   @media screen and (min-width: 768px) {
     margin-bottom: 60px;
   }
-`,v=t.span`
+`,F=o.span`
   color: ${e=>e.theme.color.blue};
   font-size: 12px;
   letter-spacing: 0.48px;
   text-decoration-line: underline;
-`,P=b().shape({name:o().required(),email:o().min(6).email().required(),password:o().required(),confirmPassword:o().required()}),k={name:"",email:"",password:"",confirmPassword:""},z=()=>{const e=f(),a=({name:s,email:d,password:m},{resetForm:p})=>{e(x({name:s,email:d,password:m})).then(c=>!c.error&&p())};return r.jsx(w,{initialValues:k,onSubmit:a,validationSchema:P,children:r.jsx(j,{children:r.jsxs($,{autoComplete:"off",children:[r.jsx(y,{children:"Registration"}),r.jsx(i,{type:"text",name:"name",placeholder:"Name"}),r.jsx(n,{name:"name",component:"div"}),r.jsx(i,{type:"text",name:"email",placeholder:"Email"}),r.jsx(n,{name:"email",component:"div"}),r.jsx(i,{type:"password",name:"password",placeholder:"Password"}),r.jsx(n,{name:"password",component:"div"}),r.jsx(i,{type:"password",name:"confirmPassword",placeholder:"confirmPassword"}),r.jsx(n,{name:"confirmPassword",component:"div"}),r.jsx(S,{type:"submit",children:"Registration"}),r.jsxs(F,{to:"/login",children:["Already have a account? ",r.jsx(v,{children:"Login"})]})]})})})},L=()=>r.jsx(r.Fragment,{children:r.jsx(z,{})});export{L as default};
+`,L=u().shape({email:r().required(),password:r().required()}),k={email:"",password:""},v=()=>{const e=w(),a=({email:s,password:d},{resetForm:m})=>{e(l({email:s,password:d})).then(p=>!p.error&&m())};return t.jsx(b,{initialValues:k,onSubmit:a,validationSchema:L,children:t.jsx(f,{children:t.jsxs($,{autoComplete:"off",children:[t.jsx(j,{children:"Login"}),t.jsx(i,{type:"text",name:"email",placeholder:"Email"}),t.jsx(n,{name:"email",component:"div"}),t.jsx(i,{type:"password",name:"password",placeholder:"Password"}),t.jsx(n,{name:"password",component:"div"}),t.jsx(y,{type:"submit",children:"Login"}),t.jsxs(S,{to:"/register",children:["Does not have an account? ",t.jsx(F,{children:"Registration"})]})]})})})},C=()=>t.jsx(t.Fragment,{children:t.jsx(v,{})});export{C as default};
