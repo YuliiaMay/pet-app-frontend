@@ -43,7 +43,6 @@ export function ModalNotice({ active, setShow, card }) {
   const handleClickFavorite = () => {};
 
   const checkFavorite = (favorite) => {
-    console.log("favorite", favorite);
     return favorite ? (
       <>
         Favorite
@@ -53,7 +52,7 @@ export function ModalNotice({ active, setShow, card }) {
           height={"24px"}
           stroke={"#C5DFF6"}
           fill={"#C5DFF6"}
-        />{" "}
+        />
       </>
     ) : (
       <>

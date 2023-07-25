@@ -1,8 +1,15 @@
+import PropTypes from "prop-types";
 import { Icon } from "../../Icon/Icon";
-import { Avatar, LogoutBtn, UserName, Wrapper } from "./UserNav.styled";
-import { Link } from "react-router-dom";
+import {
+  Avatar,
+  Box,
+  LogoutBtn,
+  UserLink,
+  UserName,
+  Wrapper,
+} from "./UserNav.styled";
 
-const UserNav = () => {
+const UserNav = ({ toggleMenu }) => {
   return (
     <Wrapper>
       <LogoutBtn to="/logout">
@@ -15,12 +22,17 @@ const UserNav = () => {
           fill={"#ffffff"}
         />
       </LogoutBtn>
-      <Link to="/user">
-        <Avatar />
-        <UserName>Anna</UserName>
-      </Link>
+      <UserLink to="/user" onClick={toggleMenu}>
+        <Box>
+          <Avatar />
+          <UserName>Anna</UserName>
+        </Box>
+      </UserLink>
     </Wrapper>
   );
 };
 
 export default UserNav;
+UserNav.propTypes = {
+  toggleMenu: PropTypes.func.isRequired,
+};

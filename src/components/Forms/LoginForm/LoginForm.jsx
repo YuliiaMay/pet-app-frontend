@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+//import { Link } from "react-router-dom";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { login } from "../../../redux/authSlice/operations";
-
+import {
+  Container,
+  StyledForm,
+  StyledTitle,
+  StyledField,
+  ErrorText,
+  SubmitButton,
+  StyledLink,
+  StyledSpan,
+} from "./LoginForm.styled.js";
 
 const userSchema = Yup.object().shape({
   email: Yup.string().required(),
@@ -18,13 +27,11 @@ const initialValues = {
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-
   const handleSubmit = ({ email, password }, { resetForm }) => {
-    dispatch(
-      login({ email, password }))
-      .then(response => !response.error && resetForm());
+    dispatch(login({ email, password })).then(
+      (response) => !response.error && resetForm()
+    );
   };
-
 
   return (
     <Formik
@@ -32,17 +39,27 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
       validationSchema={userSchema}
     >
-      <Form autoComplete="off">
-        <Field type="text" name="email" placeholder="Email"></Field>
-        <ErrorMessage name="email" component="div" />
-        <Field type="password" name="password" placeholder="Password"></Field>
-        <ErrorMessage name="password" component="div" />
-        <button type="submit">Login</button>
-        {/* <p>Already have a account?</p> */}
-        <Link to="/register">
-          Does not have an account? <span>Registration</span>
-        </Link>
-      </Form>
+      <Container>
+        <StyledForm autoComplete="off">
+          <StyledTitle>Login</StyledTitle>
+          <StyledField
+            type="text"
+            name="email"
+            placeholder="Email"
+          ></StyledField>
+          <ErrorText name="email" component="div" />
+          <StyledField
+            type="password"
+            name="password"
+            placeholder="Password"
+          ></StyledField>
+          <ErrorText name="password" component="div" />
+          <SubmitButton type="submit">Login</SubmitButton>
+          <StyledLink to="/register">
+            Does not have an account? <StyledSpan>Registration</StyledSpan>
+          </StyledLink>
+        </StyledForm>
+      </Container>
     </Formik>
   );
 };

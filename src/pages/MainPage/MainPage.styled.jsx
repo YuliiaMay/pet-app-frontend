@@ -32,6 +32,7 @@ export const MainTitle = styled.h1`
 
 export const PhotoBox = styled.div`
   position: fixed;
+  z-index: 0;
 `;
 
 export const Frenchie = styled.picture`

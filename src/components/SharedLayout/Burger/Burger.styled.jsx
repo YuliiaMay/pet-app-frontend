@@ -23,18 +23,23 @@ export const BurgerContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
-  z-index: 1;
-  /* padding: 22px 20px; */
-  padding-top: 22px;
+
   @media screen and (min-width: 1280px) {
     display: none;
+  }
+  @media screen and (max-width: 767px) {
+    /* justify-content: space-between; */
+    gap: 40px;
   }
 `;
 export const BurgerBar = styled.div`
   display: flex;
-
   justify-content: space-between;
   align-items: center;
+  margin: 20px 22px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    display: flex;
+  }
 `;
 
 export const BurgerMenu = styled.div`
@@ -42,6 +47,11 @@ export const BurgerMenu = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 84px;
+  @media screen and (max-width: 767px) {
+    justify-content: space-between;
+    /* flex: 1  auto; */
+  }
 `;
 ////////////////////////////////////////////////////////////
 
@@ -53,6 +63,19 @@ export const BurgerBtnWrapper = styled.div`
   gap: 12px;
   margin-top: 40px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
+    display: none;
+  }
+`;
+
+export const BurgerBtnTabWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 1280px) {
     display: none;
   }
 `;
@@ -93,7 +116,7 @@ export const BurgerNavList = styled.ul`
   margin-top: 92px;
   @media screen and (max-width: 767px) {
     gap: 20px;
-    margin-top: 45px;
+    margin-top: 0;
   }
 `;
 
@@ -103,4 +126,55 @@ export const CloseBtn = styled(RxCross1)`
   stroke: #ffc107;
   cursor: pointer;
   margin-left: auto;
+`;
+
+export const LogoutMobBtn = styled(NavLink)`
+  font-weight: 700;
+  letter-spacing: 0.64px;
+  color: #ffffff;
+  background-color: #54adff;
+  border-radius: 40px;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-right: 40px;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  @media screen and (max-width: 767px) {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 135px;
+    margin-right: auto;
+  }
+`;
+
+export const LogoutTabBtn = styled(NavLink)`
+  font-weight: 700;
+  letter-spacing: 0.64px;
+  color: #ffffff;
+  background-color: #54adff;
+  border-radius: 40px;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 1279px) {
+    display: none;
+  }
+`;
+
+export const LoginTabBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 `;

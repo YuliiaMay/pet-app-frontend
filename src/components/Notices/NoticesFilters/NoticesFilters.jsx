@@ -1,14 +1,9 @@
-import {
-  BtnIcon,
-  ButtonAdd,
-  ButtonFilters,
-  Container,
-  Section,
-} from "./NoticesFilters.style";
+import { ButtonFilters, Container, Section } from "./NoticesFilters.style";
 import { useAuth } from "../../../hooks/useAuth";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { ReactComponent as PlusSmall } from "../../../images/Icon/PlusSmall.svg";
+import { AddPetButton } from "../AddPetButton/AddPetButton";
+import { Loader } from "../../Loader/Loader";
 
 export const NoticesFilters = () => {
   const { isLoggedIn } = useAuth();
@@ -28,14 +23,9 @@ export const NoticesFilters = () => {
             </>
           )}
         </Container>
-        <ButtonAdd to="/add-pet">
-          <span>Add Pet</span>
-          <BtnIcon>
-            <PlusSmall />
-          </BtnIcon>
-        </ButtonAdd>
+        <AddPetButton />
       </Section>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>
