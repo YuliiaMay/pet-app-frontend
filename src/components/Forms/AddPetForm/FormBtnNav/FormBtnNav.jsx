@@ -7,14 +7,17 @@ import {
 } from "./FormBtnNav.styled";
 
 
-const FormBtnNav = () => {
+const FormBtnNav = ({onSubmit}) => {
     return (
         <BtnNav>
             <LinkBackBox>
                 <LinkBack>Cancel</LinkBack>
             </LinkBackBox>
             
-            <BtnNext>
+            <BtnNext
+                onSubmit={onSubmit}
+                type="button"
+            >
                 <BtnNextText>Next</BtnNextText>
             </BtnNext>
         </BtnNav>        
