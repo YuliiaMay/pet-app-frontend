@@ -62,7 +62,7 @@ const NoticesCategoriesList = () => {
 
     setVisibleCards(visible);
   }, [location.pathname, notices]);
-  console.log("visibleCards", notices);
+
   return (
     <ResponsiveContainer>
       <List>
