@@ -1,16 +1,23 @@
 /* eslint-disable no-useless-escape */
 /** @format */
 import * as yup from "yup";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik, ErrorMessage } from "formik";
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from 'prop-types'
-import { useState } from "react";
-import { ReactComponent as LogOutSvg } from "../../../svg/userPage/logout.svg";
-import { UserFormStyled } from "./UserForm.styled";
+import {
+  ErrorText,
+  FieldLabel,
+  FieldLabelWrapper,
+  FormContainer,
+  LogOutBtn,
+  LogOutSvgStyled,
+  StyledField,
+  SubmitButton,
+  UserFormStyled
+} from "./UserForm.styled";
 
-export const UserForm = ({ isFormDisabled }) => {
-  const [isEditing, setIsEditing] = useState(false);
+export const UserForm = ({ isFormEnable }) => {
 
   const dispatch = useDispatch();
   const user = {
@@ -47,96 +54,90 @@ export const UserForm = ({ isFormDisabled }) => {
     city: user.city,
   };
 
-  const handleChange = () => {
-    setIsEditing(true);
-  };
-
-  const handleBlur = () => {
-    setIsEditing(false);
-  };
-
   return (
-    <div>
+    <FormContainer>
       <Formik
         initialValues={initialValues}
         validate={schema}
         onSubmit={SubmitHandler}>
         {({ isSubmitting }) => (
           <UserFormStyled>
-            <label htmlFor='name'>
-              Name
-              <Field
+            <FieldLabelWrapper>
+              <FieldLabel htmlFor='name'>Name:</FieldLabel>
+              <StyledField
                 type='text'
                 name='name'
                 id='name'
-                disabled={isSubmitting || isFormDisabled}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                disabled={isSubmitting || !isFormEnable}
               />
-            </label>
+            </FieldLabelWrapper>
             <ErrorMessage name='name' component='div' />
 
-            <label htmlFor='email'>Email</label>
-            <Field
-              type='email'
-              name='email'
-              id='email'
-              disabled={isSubmitting || isFormDisabled}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <ErrorMessage name='email' component='div' />
+            <FieldLabelWrapper>
+              <FieldLabel htmlFor='email'>Email:</FieldLabel>
+              <StyledField
+                type='email'
+                name='email'
+                id='email'
+                disabled={isSubmitting || !isFormEnable}
+              />
+            </FieldLabelWrapper>
 
-            <label htmlFor='birthday'>Birthday</label>
-            <Field
-              type='date'
-              name='birthday'
-              id='birthday'
-              disabled={isSubmitting || isFormDisabled}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <ErrorMessage name='birthday' component='div' />
+            <ErrorText name='email' component='div' />
 
-            <label htmlFor='phone'>Phone</label>
-            <Field
-              type='number'
-              name='phone'
-              id='phone'
-              disabled={isSubmitting || isFormDisabled}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <ErrorMessage name='phone' component='div' />
+            <FieldLabelWrapper>
+              <FieldLabel htmlFor='birthday'>Birthday:</FieldLabel>
+              <StyledField
+                type='text'
+                name='birthday'
+                id='birthday'
+                disabled={isSubmitting || !isFormEnable}
+              />
+            </FieldLabelWrapper>
+            <ErrorText name='birthday' component='div' />
 
-            <label htmlFor='city'>City</label>
-            <Field
-              type='text'
-              name='city'
-              id='city'
-              disabled={isSubmitting || isFormDisabled}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <ErrorMessage name='city' component='div' />
+            <FieldLabelWrapper>
+              <FieldLabel htmlFor='phone'>Phone:</FieldLabel>
+              <StyledField
+                type='number'
+                name='phone'
+                id='phone'
+                disabled={isSubmitting || !isFormEnable}
+              />
+            </FieldLabelWrapper>
+            <ErrorText name='phone' component='div' />
 
-            {isEditing ? (
-              <button type='submit' disabled={isSubmitting || isFormDisabled}>
+            <FieldLabelWrapper>
+              <FieldLabel htmlFor='city'>City:</FieldLabel>
+              <StyledField
+                type='text'
+                name='city'
+                id='city'
+                disabled={isSubmitting || !isFormEnable}
+              />
+            </FieldLabelWrapper>
+            <ErrorText name='city' component='div' />
+
+            {isFormEnable ? (
+              <SubmitButton
+                type='submit'
+                disabled={isSubmitting || !isFormEnable}>
                 Save
-              </button>
+              </SubmitButton>
             ) : (
-              <button type='button'>
-                <LogOutSvg /> Log Out
-              </button>
+              <LogOutBtn type='button'>
+                <LogOutSvgStyled />
+                Log Out
+              </LogOutBtn>
             )}
           </UserFormStyled>
         )}
       </Formik>
-    </div>
+    </FormContainer>
   );
 };
 
 
 UserForm.propTypes = {
-  isFormDisabled: PropTypes.bool,
+  isFormEnable: PropTypes.bool,
 };
