@@ -43,38 +43,14 @@ export const ButtonFilters = styled(NavLink)`
   border: none;
   color: ${(props) => props.theme.color.blue};
   background-color: ${(props) => props.theme.background.lightBlue};
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.active {
     background-color: ${(props) => props.theme.color.blue};
     color: ${(props) => props.theme.color.wight};
   }
-`;
 
-export const ButtonAdd = styled(NavLink)`
-  display: flex;
-  padding: 8px 20px;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.64px;
-
-  border-radius: 40px;
-  border: none;
-  color: ${(props) => props.theme.color.wight};
-  background-color: ${(props) => props.theme.color.blue};
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-`;
-
-export const BtnIcon = styled.svg`
-  display: flex;
-  width: 24px;
-  height: 24px;
-  margin-left: 8px;
-  justify-content: center;
-  align-items: center;
-  fill: #fef9f9;
+  &:hover {
+    box-shadow: ${(props) => props.theme.color.blue} 0px 2px 8px 0px;
+  }
 `;

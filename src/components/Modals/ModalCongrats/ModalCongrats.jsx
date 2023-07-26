@@ -9,6 +9,7 @@ import {
   WrapperModal,
 } from "./ModalCongrats.styled";
 import { ModalComponents } from "../ModalComponents/ModalComponents";
+import { Icon } from "../../Icon/Icon";
 
 export function ModalCongrats({ active, setShow }) {
   const handleClickClose = (e) => {
@@ -24,7 +25,14 @@ export function ModalCongrats({ active, setShow }) {
           <CloseIcon onClick={handleClickClose}>X</CloseIcon>
           <SideInfo>Your registration is successful</SideInfo>
           <GoProfileBtn onClick={handleClickClose}>
-            Go to profile <PawIcon></PawIcon>
+            Go to profile{" "}
+            <Icon
+              iconName={"icon-pawprint"}
+              width={"24px"}
+              height={"24px"}
+              stroke={"#ffffff"}
+              fill={"#ffffff"}
+            />
           </GoProfileBtn>
         </WrapperModal>
       </ModalComponents>

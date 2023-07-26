@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-useless-escape */
 /** @format */
 import * as yup from "yup";
@@ -5,6 +6,7 @@ import { Formik, ErrorMessage } from "formik";
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from 'prop-types'
+
 import {
   ErrorText,
   FieldLabel,
@@ -18,7 +20,6 @@ import {
 } from "./UserForm.styled";
 
 export const UserForm = ({ isFormEnable }) => {
-
   const dispatch = useDispatch();
   const user = {
     name: "Anna",
@@ -129,6 +130,7 @@ export const UserForm = ({ isFormEnable }) => {
                 <LogOutSvgStyled />
                 Log Out
               </LogOutBtn>
+
             )}
           </UserFormStyled>
         )}

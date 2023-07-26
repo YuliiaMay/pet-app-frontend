@@ -1,15 +1,9 @@
-import {
-  BtnIcon,
-  ButtonAdd,
-  ButtonFilters,
-  Container,
-  Section,
-} from "./NoticesFilters.style";
-import { BsPlus } from "react-icons/bs";
+import { ButtonFilters, Container, Section } from "./NoticesFilters.style";
 import { useAuth } from "../../../hooks/useAuth";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-// import { Icon } from "../../../images/Icon/Icon.svg";
+import { AddPetButton } from "../AddPetButton/AddPetButton";
+import { Loader } from "../../Loader/Loader";
 
 export const NoticesFilters = () => {
   const { isLoggedIn } = useAuth();
@@ -29,24 +23,9 @@ export const NoticesFilters = () => {
             </>
           )}
         </Container>
-        <ButtonAdd to="/add-pet">
-          Add Pet
-          {/* <Icon
-            iconName={"icon-location"}
-            width={"24px"}
-            height={"24px"}
-            stroke={"#54ADFF"}
-            fill={"#54ADFF"}
-          /> */}
-          {/* <BtnIcon>
-            <use href={Icon + "#icon-icon-plus-small"}></use>
-          </BtnIcon> */}
-          <BtnIcon>
-            <BsPlus size={"24px"} />
-          </BtnIcon>
-        </ButtonAdd>
+        <AddPetButton />
       </Section>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>

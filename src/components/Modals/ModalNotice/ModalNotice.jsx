@@ -1,5 +1,10 @@
 import PropTypes from "prop-types";
+
 import { ModalComponents } from "../ModalComponents/ModalComponents";
+import { Icon } from "../../Icon/Icon";
+
+import { formatDate, convertPhone, checkPoster } from "../../../utils";
+
 import {
   WrapperModal,
   CloseIcon,
@@ -12,23 +17,74 @@ import {
   ImgWrapper,
   WrapperBtn,
   ContactLink,
-} from "./ModalNotice.slyled";
+  ImgCards,
+} from "./ModalNotice.styled";
 
-export function ModalNotice({ active, setShow }) {
-  const handleClickClose = (e) => {
-    if (e.currentTarget === e.target) {
-      setShow(false);
-    }
+export function ModalNotice({ active, setShow, card }) {
+  if (!card) return;
+
+  const {
+    imgUrl,
+    name,
+    birthday,
+    breed,
+    place,
+    sex,
+    email,
+    phone,
+    text,
+    favorite,
+  } = card;
+
+  const handleClickClose = () => {
+    setShow(false);
   };
+
+  const handleClickFavorite = () => {};
+
+  const checkFavorite = (favorite) => {
+    return favorite ? (
+      <>
+        Favorite
+        <Icon
+          iconName={"icon-heart-full"}
+          width={"24px"}
+          height={"24px"}
+          stroke={"#C5DFF6"}
+          fill={"#C5DFF6"}
+        />
+      </>
+    ) : (
+      <>
+        Add to
+        <Icon
+          iconName={"icon-heart"}
+          width={"24px"}
+          height={"24px"}
+          stroke={"#ffffff"}
+          fill={"#ffffff"}
+        />
+      </>
+    );
+  };
+
   return (
     <>
       <ModalComponents onClose={setShow} active={active}>
         <WrapperModal>
-          <CloseIcon onClick={handleClickClose}>X</CloseIcon>
+          <CloseIcon onClick={handleClickClose}>
+            <Icon
+              iconName={"icon-cross"}
+              width={"24px"}
+              height={"24px"}
+              stroke={"#54ADFF"}
+              fill={"#54ADFF"}
+            />
+          </CloseIcon>
           <ContainerInfo>
             <ImgWrapper>
               <span>In good hands</span>
-              <img src="https://via.placeholder.com/262x298" alt="name image" />
+              <ImgCards src={checkPoster(imgUrl)} alt="name image" />
             </ImgWrapper>
             <WrapperInfo>
               <Title>Cute dog looking for a home</Title>
@@ -39,43 +95,43 @@ export function ModalNotice({ active, setShow }) {
                     <tr>
                       <td>Name:</td>
                       <td>
-                        <span>Rich</span>
+                        <span>{name}</span>
                       </td>
                     </tr>
                     <tr>
                       <td>Birthday:</td>
                       <td>
-                        <span>21.09.2020</span>
+                        <span>{formatDate(birthday)}</span>
                       </td>
                     </tr>
                     <tr>
                       <td>Type:</td>
                       <td>
-                        <span>Pomeranian</span>
+                        <span>{breed}</span>
                       </td>
                     </tr>
                     <tr>
                       <td>Place:</td>
                       <td>
-                        <span>Lviv</span>
+                        <span>{place}</span>
                       </td>
                     </tr>
                     <tr>
                       <td>The sex:</td>
                       <td>
-                        <span>male</span>
+                        <span>{sex}</span>
                       </td>
                     </tr>
                     <tr>
                       <td>Email:</td>
                       <td>
-                        <a href="mailto:user@mail.com">user@mail.com</a>
+                        <a href={`mailto:${email}`}>{email}</a>
                       </td>
                     </tr>
                     <tr>
                       <td>Phone:</td>
                       <td>
-                        <a href="tel:+380971234567"> +380971234567</a>
+                        <a href={`tel:${phone}`}>{convertPhone(phone)}</a>
                       </td>
                     </tr>
                   </tbody>
@@ -85,15 +141,14 @@ export function ModalNotice({ active, setShow }) {
           </ContainerInfo>
           <SideInfo>
             Comments:
-            <span>
-              Rich would be the perfect addition to an active family that loves
-              to play and go on walks. I bet he would love having a doggy
-              playmate too!
-            </span>
+            <span>{text}</span>
           </SideInfo>
           <WrapperBtn>
-            <GoProfileBtn onClick={handleClickClose}>Add to</GoProfileBtn>
-            <ContactLink href="+380971234567">Contact</ContactLink>
+            <GoProfileBtn onClick={handleClickFavorite}>
+              {checkFavorite(favorite)}
+            </GoProfileBtn>
+
+            <ContactLink href={`tel:${phone}`}>Contact</ContactLink>
           </WrapperBtn>
         </WrapperModal>
       </ModalComponents>
@@ -104,4 +159,21 @@ export function ModalNotice({ active, setShow }) {
 ModalNotice.propTypes = {
   active: PropTypes.bool,
   setShow: PropTypes.func,
+  card: PropTypes.object,
 };
+
+// Add to
+//             <Icon
+//               iconName={"icon-heart"}
+//               width={"24px"}
+//               height={"24px"}
+//               stroke={"#ffffff"}
+//               fill={"#ffffff"}
+//             />
+//             <Icon
+//               iconName={"icon-heart-full"}
+//               width={"24px"}
+//               height={"24px"}
+//               stroke={"#ffffff"}
+//               fill={"#340cf9"}
+//             />

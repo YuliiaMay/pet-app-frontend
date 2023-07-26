@@ -2,8 +2,10 @@
 
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
+
 import { DeleteBtn, PetImg, PetInfoCard, PetInfoDescription, PetInfoPart, PetInfoTextName } from "./UserPetsSection.styled";
 import { ReactComponent as Delete } from "../../svg/userPage/delete.svg";
+
 
 export const UserPetsSection = () => {
   // const user = useSelector(user);
@@ -62,3 +64,4 @@ export const UserPetsSection = () => {
     </div>
   );
 };
+

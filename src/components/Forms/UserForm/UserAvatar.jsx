@@ -4,7 +4,6 @@
  * @format
  */
 
-/** @format */
 
 import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
@@ -82,6 +81,7 @@ export const UserAvatar = ({ isFormEnable }) => {
               {!isImgUpdating ? (
                 <EditPhotoBtn type='button' onClick={handleAvatarEditing}>
                   <EditAvatar />
+
                   Edit photo
                 </EditPhotoBtn>
               ) : (

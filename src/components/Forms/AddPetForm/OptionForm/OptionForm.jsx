@@ -1,26 +1,88 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OptionList, CategoryOption } from "./OptionForm.styled";
-
+import { useDispatch, useSelector } from "react-redux";
+import { selectCategory, selectCurrentStage, selectAllPetData } from "../../../../redux/petsSlice/selectors";
+import { formStage, optionForm } from "../../../../redux/petsSlice/petsSlice";
+import FormBtnNav from "../FormBtnNav/FormBtnNav";
 
 
 const OptionForm = () => {
+    const dispatch = useDispatch();
+    const currentPage = useSelector(selectCurrentStage);
+    const category = useSelector(selectCategory);
+    const all = useSelector(selectAllPetData);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+     // form values initial state
+    const [formData, setFormData] = useState({
+        category: category || ""
+    });
+    
+     // form values onClick
+    const handleSelectCategory = ({ target: { value } }) => {
+        const selectedCategory = value;
+
+        setFormData({
+            ...formData,
+            category: selectedCategory,
+        });
+    };
+
+    const handleClick = () => {
+        // e.preventDefault();
+        setIsSubmitted(true);
+    };
+
+
+    useEffect(() => {
+        if (isSubmitted) {
+            dispatch(
+                formStage(2)
+            );
+            dispatch(
+                optionForm({
+                    category: formData.category,
+                }))
+        }
+    }, [formData, isSubmitted, dispatch]);
+
+    console.log(isSubmitted);
+
     return (
-        <div>
+        <form onClick={handleClick}>
             <OptionList>
                 <li>
-                    <CategoryOption type="button">your pet</CategoryOption>
+                    <CategoryOption
+                        type="button"
+                        value={"pet"}
+                        onClick={handleSelectCategory}
+                    >your pet</CategoryOption>
                 </li>
                 <li>
-                    <CategoryOption type="button">sell</CategoryOption>
+                    <CategoryOption
+                        type="button"
+                        value={"sell"}
+                        onClick={handleSelectCategory}                        
+                    >sell</CategoryOption>
                 </li>
                 <li>
-                    <CategoryOption type="button">lost/found</CategoryOption>
+                    <CategoryOption
+                        type="button"
+                        value={"lost-found"}
+                        onClick={handleSelectCategory}                        
+                    >lost/found</CategoryOption>
                 </li>
                 <li>
-                    <CategoryOption type="button">in good hands</CategoryOption>
+                    <CategoryOption
+                        type="button"
+                        value={"in-good-hands"}
+                        onClick={handleSelectCategory}                        
+                    >in good hands</CategoryOption>
                 </li>                    
             </OptionList>
-        </div>
+
+            <FormBtnNav  />
+        </form>
     );
 };
 
