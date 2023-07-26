@@ -28,7 +28,6 @@ import {
 } from "./NoticesPetCard.styled";
 import { useLocation } from "react-router-dom";
 
-
 const NoticesCategoriesList = () => {
   const [visibleCards, setVisibleCards] = useState([]);
   const [fetching, setFetching] = useState(true);
@@ -41,7 +40,6 @@ const NoticesCategoriesList = () => {
 
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     if (!fetching) return;
     dispatch(fetchNotices());
@@ -51,6 +49,14 @@ const NoticesCategoriesList = () => {
   const handleClickCards = (item) => {
     setShowModal(true);
     setOneCard(item);
+  };
+
+  const formattingOverview = (text) => {
+    let newFormat = text;
+    if (newFormat.length > 20) {
+      newFormat = text.slice(0, 20) + "...";
+    }
+    return newFormat;
   };
 
   useEffect(() => {
@@ -111,7 +117,7 @@ const NoticesCategoriesList = () => {
                 <Li>
                   <Icon
                     iconName={
-                      item.sex === "Female" ? "icon-female" : "icon-male"
+                      item.sex === "female" ? "icon-female" : "icon-male"
                     }
                     width={"24px"}
                     height={"24px"}
@@ -124,7 +130,7 @@ const NoticesCategoriesList = () => {
             </Div>
             <Div3>
               {/* {item.title} */}
-              <P1>Сute dog looking for a home</P1>
+              <P1>{formattingOverview(item.title)}</P1>
               <Button1 onClick={() => handleClickCards(item)}>
                 <span>Learn more</span>
                 <Icon
@@ -141,7 +147,6 @@ const NoticesCategoriesList = () => {
       </List>
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
     </ResponsiveContainer>
-
   );
 };
 
