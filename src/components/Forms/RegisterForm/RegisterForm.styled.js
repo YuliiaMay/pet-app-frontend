@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Form, Field, ErrorMessage } from "formik";
 
 export const Container = styled.div`
@@ -32,9 +32,6 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @media screen and (min-width: 768px) {
-  }
 `;
 
 export const StyledTitle = styled.h2`
@@ -52,19 +49,30 @@ export const StyledTitle = styled.h2`
   }
 `;
 
+export const InputContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
 export const StyledField = styled(Field)`
   padding-left: 16px;
   margin-top: 14px;
   width: 224px;
   height: 48px;
   border-radius: ${(props) => props.theme.border.radius};
-  cursor: pointer;
 
-  border: 1px solid ${(props) => (props.theme.error ? "#F43F5E" : "#54adff")};
+  /* border: 2px solid
+    ${(props) =>
+    props.error ? props.theme.border.error : props.theme.border.blue}; */
+
+  border: 2px solid
+    ${(props) =>
+      props.error ? props.theme.color.error : props.theme.color.blue};
 
   &:hover,
   &:focus {
-    border: 1px solid ${(props) => props.theme.border.success};
+    border: 2px solid ${(props) => props.theme.color.success};
     color: ${(props) => props.theme.color.success};
   }
 
@@ -81,6 +89,32 @@ export const StyledField = styled(Field)`
   }
 `;
 
+export const InputIcon = styled.span`
+  position: absolute;
+  top: 65%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: ${(props) =>
+    props.error ? props.theme.color.error : props.theme.color.success};
+
+  @media screen and (min-width: 768px) {
+    top: 72%;
+  }
+`;
+
+export const InputIcon2 = styled.span`
+  position: absolute;
+  top: 65%;
+  right: 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: ${(props) => props.theme.color.error};
+  color: #f43f5e;
+
+  @media screen and (min-width: 768px) {
+    top: 72%;
+  }
+`;
 export const ErrorText = styled(ErrorMessage)`
   color: red;
 `;
@@ -108,7 +142,7 @@ export const SubmitButton = styled.button`
   }
 `;
 
-export const StyledLink = styled(NavLink)`
+export const StyledLink = styled(Link)`
   text-align: center;
   margin-bottom: 40px;
   color: ${(props) => props.theme.color.grey};

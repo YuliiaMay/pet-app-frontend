@@ -62,6 +62,10 @@ export const StyledField = styled(Field)`
 
   border: 1px solid ${(props) => (props.theme.error ? "#F43F5E" : "#54adff")};
 
+  /* width: 100%;
+  padding: 10px 40px 10px 30px;
+  border: 1px solid ${(props) => (props.error ? "red" : "#ccc")};
+  border-radius: 4px; */
   &:hover,
   &:focus {
     border: 1px solid ${(props) => props.theme.border.success};
@@ -83,6 +87,7 @@ export const StyledField = styled(Field)`
 
 export const ErrorText = styled(ErrorMessage)`
   color: red;
+  margin-top: 4px;
 `;
 
 export const SubmitButton = styled.button`
