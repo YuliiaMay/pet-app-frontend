@@ -18,6 +18,7 @@ export const BurgerContainer = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
+  z-index: 999;
   top: 0;
   left: 0;
   display: flex;
@@ -50,7 +51,7 @@ export const BurgerMenu = styled.div`
   gap: 84px;
   @media screen and (max-width: 767px) {
     justify-content: space-between;
-    /* flex: 1  auto; */
+    flex: 1 auto;
   }
 `;
 ////////////////////////////////////////////////////////////
@@ -177,4 +178,16 @@ export const LoginTabBox = styled.div`
   justify-content: center;
   align-items: center;
   gap: 24px;
+`;
+
+export const UserTabBox = styled.div`
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+export const UserMobBox = styled.div`
+  margin-bottom: -170px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
