@@ -25,7 +25,6 @@ const OptionForm = () => {
             || category === "lost-found"
             || category === "in-good-hands"
         ) {
-            console.log("work");
             dispatch(
                 formStage(2)
             );

@@ -4,7 +4,7 @@ import FormTitle from "./FormTitle/FormTitle";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { selectCurrentStage } from "../../../redux/petsSlice/selectors";
 import OptionForm from "./OptionForm/OptionForm";
-import DetailsForm from "./PersonalDetailsForm/DetailsForm";
+import DetailsForm from "./DetailsForm/DetailsForm";
 import MoreInfoForm from "./MoreInfoForm/MoreInfoForm";
 
 

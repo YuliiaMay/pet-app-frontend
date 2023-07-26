@@ -3,16 +3,17 @@ import { Form } from "./DetailsForm.styled";
 import { useDispatch } from "react-redux";
 import { detailsForm, formStage } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
+import { selectBirthday, selectBreed, selectName, selectTitle, selectType } from "../../../../redux/petsSlice/selectors";
 
 
 const DetailsForm = () => {
     const dispatch = useDispatch();
     const [detailsData, setDetailsData] = useState({
-        name: "",
-        birthday: "",
-        breed: "",
-        title: "",
-        type: ""
+        name: selectName || "",
+        birthday: selectBirthday || "",
+        breed: selectBreed || "",
+        title: selectTitle || "",
+        type: selectType || ""
     });
 
 
@@ -39,7 +40,6 @@ const DetailsForm = () => {
         dispatch(
             formStage(3)
         );
-
     }
 
 
