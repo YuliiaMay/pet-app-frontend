@@ -1,7 +1,7 @@
-import { DetailsFormWrapper } from "./PersonaleDetailsForm.styled";
+import { DetailsFormWrapper } from "./DetailsForm.styled";
 
 
-const PersonaleDetailsForm = () => {
+const DetailsForm = ({stage}) => {
     return (
         <>
 
@@ -26,4 +26,4 @@ const PersonaleDetailsForm = () => {
 };
 
 
-export default PersonaleDetailsForm;
+export default DetailsForm;

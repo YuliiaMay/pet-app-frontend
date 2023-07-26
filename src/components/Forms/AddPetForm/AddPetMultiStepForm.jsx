@@ -1,73 +1,38 @@
 import { useSelector } from "react-redux";
-import { selectCurrentStage } from "../../../redux/petsSlice/selectors";
-import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
-import {
-    AddPetContainer,
-    FormNav,
-    OptionStepTitle,
-    OptionIndication,
-    DataStepTitle,
-    DataIndication,
-    MoreInfoStepTitle,
-    MoreInfoIndication
-} from "./AddPetMultiStepForm.styled";
+import { AddPetContainer } from "./AddPetMultiStepForm.styled";
 import FormTitle from "./FormTitle/FormTitle";
+import ProgressBar from "./ProgressBar/ProgressBar";
+import { selectCurrentStage } from "../../../redux/petsSlice/selectors";
+import OptionForm from "./OptionForm/OptionForm";
+import DetailsForm from "./PersonalDetailsForm/DetailsForm";
+import MoreInfoForm from "./MoreInfoForm/MoreInfoForm";
 import FormBtnNav from "./FormBtnNav/FormBtnNav";
 
 
-
 const AddPetMultiStepForm = () => {
-    const formStage = useSelector(selectCurrentStage);
-    console.log(formStage);
-
-
+    const currentStage = useSelector(selectCurrentStage);
     return (
         <AddPetContainer>
             <FormTitle />
+            <ProgressBar />
 
-            <FormNav>
-                <div>
-                    <OptionStepTitle
-                        to='option'
-                        $formStage={formStage}
-                    >
-                            Choose  option
-                            <OptionIndication
-                                $formStage={formStage} />
-                    </OptionStepTitle>
-                </div>
-                
-                <div>
-                    <DataStepTitle
-                        to='details'
-                        $formStage={formStage}
-                    >
-                            Personal details
-                            <DataIndication
-                                $formStage={formStage} />
-                    </DataStepTitle>
-                </div>
-                
-                <div>
-                    <MoreInfoStepTitle
-                        to='more-info'
-                        $formStage={formStage}
-                    >
-                            More info
-                            <MoreInfoIndication
-                                $formStage={formStage} />
-                    </MoreInfoStepTitle>
-                </div>                  
-            </FormNav>
+            {
+                currentStage === 1
+                    && <OptionForm stage={currentStage} />
+            }
 
+            {
+                currentStage === 2
+                    && <DetailsForm stage={currentStage} />
+            }   
 
+            {
+                (currentStage === 3 || currentStage === "success")
+                    && <MoreInfoForm stage={currentStage} />
+            }
+            
 
-            <Suspense fallback={<div>Loading...</div>}>
-                <Outlet/>
-            </Suspense>
-
-            <FormBtnNav/>
+            <FormBtnNav  />
         </AddPetContainer>
     );
 }

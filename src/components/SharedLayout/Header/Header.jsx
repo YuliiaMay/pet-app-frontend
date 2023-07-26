@@ -20,11 +20,13 @@ export const Header = () => {
   const { isLoggedIn } = useAuth();
 
   return (
+
       <Wrapper>
         <Logo />
         <Navigation />
         {isLoggedIn ? <UserNav /> : <AuthNav />}
         <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
       </Wrapper>
+
   );
 };
