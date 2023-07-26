@@ -52,8 +52,24 @@ const NoticesCategoriesList = () => {
 
   const formattingOverview = (text) => {
     let newFormat = text;
-    if (newFormat.length > 20) {
-      newFormat = text.slice(0, 20) + "...";
+    if (newFormat.length > 15) {
+      newFormat = text.slice(0, 15) + "...";
+    }
+    return newFormat;
+  };
+
+  const formattingOverviewCity = (text) => {
+    let newFormat = text;
+    if (newFormat.length > 6) {
+      newFormat = text.slice(0, 4) + "...";
+    }
+    return newFormat;
+  };
+
+  const formattingOverviewYear = (text) => {
+    let newFormat = text;
+    if (newFormat.length > 6) {
+      newFormat = text.slice(0, 4) + "...";
     }
     return newFormat;
   };
@@ -87,17 +103,16 @@ const NoticesCategoriesList = () => {
                       width={"24px"}
                       height={"24px"}
                       stroke={"#54ADFF"}
-                      fill={"#54ADFF"}
                     />
                   </Button>
                 </Div2>
               </Div1>
               <Ul>
                 <CommonItemList iconName={"icon-location"}>
-                  {item.place}
+                  {formattingOverviewCity(item.place)}
                 </CommonItemList>
                 <CommonItemList iconName={"icon-clock"}>
-                  {formatYears(item.birthday)} year
+                  {formattingOverviewYear(formatYears(item.birthday) + " year")}
                 </CommonItemList>
                 <CommonItemList
                   iconName={item.sex === "female" ? "icon-female" : "icon-male"}
