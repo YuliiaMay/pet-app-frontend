@@ -96,7 +96,7 @@ export const SubmitButton = styled.button`
   }
 
   @media screen and (min-width: ${(props) => props.theme.sizes.desk}) {
-
+    margin: 0px 0px 0px 138px;
   }
 `;
 
@@ -122,7 +122,7 @@ export const LogOutBtn = styled.button`
 export const LogOutSvgStyled = styled(LogOutSvg)``;
 
 export const FormContainer = styled.div`
-  margin-top: 60px;
+  // margin-top: 60px;
   @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
     margin: 0;
   }

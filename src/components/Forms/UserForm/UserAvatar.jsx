@@ -4,11 +4,12 @@
  * @format
  */
 
+/** @format */
 
 import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
-import { Field, Form, Formik } from "formik";
+import { Formik } from "formik";
 import PropTypes from "prop-types";
 
 import { ReactComponent as EditAvatar } from "../../../svg/userPage/camera.svg";
@@ -19,6 +20,8 @@ import {
   AvatarFormWrapper,
   ConfirmWrapper,
   EditPhotoBtn,
+  FileInput,
+  FormAvatar,
   UserAvatarImg,
 } from "./UserAvatar.styled";
 
@@ -64,24 +67,22 @@ export const UserAvatar = ({ isFormEnable }) => {
   return (
     <AvatarFormWrapper>
       {isFormatErr && <p>Only img can be uploaded</p>}
-
       <UserAvatarImg src={user.avatar} alt='' />
       {isFormEnable && (
         <Formik initialValues={initialValues} onSubmit={inputUploadHandler}>
           {({ values, setFieldValue }) => (
-            <Form encType='multipart/form-data'>
-              <Field
+            <FormAvatar encType='multipart/form-data'>
+              <FileInput
                 type='file'
                 id='avatar'
                 name='avatar'
                 accept='image/*'
-                value={undefined}
-                hidden
+                value={""}
+                onChange={handleAvatarEditing}
               />
               {!isImgUpdating ? (
-                <EditPhotoBtn type='button' onClick={handleAvatarEditing}>
+                <EditPhotoBtn type='button'>
                   <EditAvatar />
-
                   Edit photo
                 </EditPhotoBtn>
               ) : (
@@ -101,7 +102,7 @@ export const UserAvatar = ({ isFormEnable }) => {
                   )}
                 </ConfirmWrapper>
               )}
-            </Form>
+            </FormAvatar>
           )}
         </Formik>
       )}

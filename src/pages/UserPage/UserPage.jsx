@@ -60,7 +60,7 @@ const UserPage = () => {
       <div>
         <AddPetWrapper>
           <MyPetsText>My pets</MyPetsText>
-          <AddPetLink to='..add pet page'>
+          <AddPetLink to='/add-pet'>
             Add Pet
             <AddSvg />
           </AddPetLink>
