@@ -17,17 +17,6 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const UserPage = lazy(() => import("./pages/UserPage/UserPage"));
 const AddPetPage = lazy(() => import("./pages/AddPetPage/AddPetPage"));
 
-const OptionForm = lazy(() =>
-  import("./components/Forms/AddPetForm/OptionForm/OptionForm")
-);
-const PersonalDetailsForm = lazy(() =>
-  import(
-    "./components/Forms/AddPetForm/PersonalDetailsForm/PersonalDetailsForm"
-  )
-);
-const MoreInfoForm = lazy(() =>
-  import("./components/Forms/AddPetForm/MoreInfoForm/MoreInfoForm")
-);
 
 const NoticesCategoriesList = lazy(() =>
   import("./components/Notices/NoticesCategoriesList/NoticesCategoriesList")
@@ -100,11 +89,8 @@ function App() {
             element={
               <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
             }
-          >
-            <Route path="option" element={<OptionForm />} />
-            <Route path="details" element={<PersonalDetailsForm />} />
-            <Route path="more-info" element={<MoreInfoForm />} />
-          </Route>
+          />
+
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

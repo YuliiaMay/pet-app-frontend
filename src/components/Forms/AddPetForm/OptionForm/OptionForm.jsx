@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { OptionList, CategoryOption } from "./OptionForm.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCategory, selectCurrentStage, selectAllPetData } from "../../../../redux/petsSlice/selectors";
+import { selectCategory, selectAllPetData } from "../../../../redux/petsSlice/selectors";
 import { formStage, optionForm } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
 
 
-const OptionForm = () => {
+const OptionForm = ({stage}) => {
     const dispatch = useDispatch();
-    const currentPage = useSelector(selectCurrentStage);
     const category = useSelector(selectCategory);
-    const all = useSelector(selectAllPetData);
+    // const all = useSelector(selectAllPetData);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
      // form values initial state
@@ -28,8 +27,8 @@ const OptionForm = () => {
         });
     };
 
-    const handleClick = () => {
-        // e.preventDefault();
+    const handleClick = (e) => {
+        e.preventDefault();
         setIsSubmitted(true);
     };
 
@@ -80,8 +79,6 @@ const OptionForm = () => {
                     >in good hands</CategoryOption>
                 </li>                    
             </OptionList>
-
-            <FormBtnNav  />
         </form>
     );
 };
