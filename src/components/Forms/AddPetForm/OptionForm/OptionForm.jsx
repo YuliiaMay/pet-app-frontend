@@ -1,29 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OptionList, CategoryOption } from "./OptionForm.styled";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCategory, selectCurrentStage, selectAllPetData } from "../../../../redux/petsSlice/selectors";
+import { formStage, optionForm } from "../../../../redux/petsSlice/petsSlice";
+import FormBtnNav from "../FormBtnNav/FormBtnNav";
 
 
 const OptionForm = () => {
-    // const dispatch = useDispatch();
-
+    const dispatch = useDispatch();
     const currentPage = useSelector(selectCurrentStage);
     const category = useSelector(selectCategory);
     const all = useSelector(selectAllPetData);
-    console.log(all);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
      // form values initial state
-    const [categoryData, setCategoryData] = useState(category);
+    const [formData, setFormData] = useState({
+        category: category || ""
+    });
     
      // form values onClick
-    const handleSelectCategory = ({target: value}) => {
+    const handleSelectCategory = ({ target: { value } }) => {
         const selectedCategory = value;
-        setCategoryData(selectedCategory);
 
-    }
+        setFormData({
+            ...formData,
+            category: selectedCategory,
+        });
+    };
+
+    const handleClick = () => {
+        // e.preventDefault();
+        setIsSubmitted(true);
+    };
+
+
+    useEffect(() => {
+        if (isSubmitted) {
+            dispatch(
+                formStage(2)
+            );
+            dispatch(
+                optionForm({
+                    category: formData.category,
+                }))
+        }
+    }, [formData, isSubmitted, dispatch]);
+
+    console.log(isSubmitted);
 
     return (
-        <div>
+        <form onClick={handleClick}>
             <OptionList>
                 <li>
                     <CategoryOption
@@ -54,7 +80,9 @@ const OptionForm = () => {
                     >in good hands</CategoryOption>
                 </li>                    
             </OptionList>
-        </div>
+
+            <FormBtnNav  />
+        </form>
     );
 };
 
