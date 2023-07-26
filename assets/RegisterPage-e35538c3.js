@@ -1,4 +1,4 @@
-import{s as t,N as l,j as r,r as x}from"./index-256b5008.js";import{F as h,a as g,E as u,c as b,b as o,d as w}from"./index.esm-42c79f3f.js";import{u as f}from"./useDispatch-e1273b18.js";const j=t.div`
+import{s as r,N as l,u as x,j as t,r as h}from"./index-b5977883.js";import{F as g,a as u,E as b,c as w,b as o,d as f}from"./index.esm-8c66217d.js";const j=r.div`
   margin-top: 42px;
   margin-left: auto;
   margin-right: auto;
@@ -21,7 +21,7 @@ import{s as t,N as l,j as r,r as x}from"./index-256b5008.js";import{F as h,a as 
     margin-bottom: 75px;
     min-height: 617px;
   }
-`,$=t(h)`
+`,$=r(g)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,7 +29,7 @@ import{s as t,N as l,j as r,r as x}from"./index-256b5008.js";import{F as h,a as 
 
   @media screen and (min-width: 768px) {
   }
-`,y=t.h2`
+`,y=r.h2`
   color: ${e=>e.theme.color.main};
   text-align: center;
   font-size: 24px;
@@ -42,7 +42,7 @@ import{s as t,N as l,j as r,r as x}from"./index-256b5008.js";import{F as h,a as 
     margin-top: 60px;
     font-size: 36px;
   }
-`,i=t(g)`
+`,i=r(u)`
   padding-left: 16px;
   margin-top: 14px;
   width: 224px;
@@ -69,9 +69,9 @@ import{s as t,N as l,j as r,r as x}from"./index-256b5008.js";import{F as h,a as 
     height: 48px;
     margin-top: 32px;
   }
-`,n=t(u)`
+`,n=r(b)`
   color: red;
-`,S=t.button`
+`,S=r.button`
   width: 256px;
   height: 48px;
   margin-top: 40px;
@@ -92,7 +92,7 @@ import{s as t,N as l,j as r,r as x}from"./index-256b5008.js";import{F as h,a as 
     margin-top: 52px;
     margin-bottom: 16px;
   }
-`,F=t(l)`
+`,F=r(l)`
   text-align: center;
   margin-bottom: 40px;
   color: ${e=>e.theme.color.grey};
@@ -103,9 +103,9 @@ import{s as t,N as l,j as r,r as x}from"./index-256b5008.js";import{F as h,a as 
   @media screen and (min-width: 768px) {
     margin-bottom: 60px;
   }
-`,v=t.span`
+`,v=r.span`
   color: ${e=>e.theme.color.blue};
   font-size: 12px;
   letter-spacing: 0.48px;
   text-decoration-line: underline;
-`,P=b().shape({name:o().required(),email:o().min(6).email().required(),password:o().required(),confirmPassword:o().required()}),k={name:"",email:"",password:"",confirmPassword:""},z=()=>{const e=f(),a=({name:s,email:d,password:m},{resetForm:p})=>{e(x({name:s,email:d,password:m})).then(c=>!c.error&&p())};return r.jsx(w,{initialValues:k,onSubmit:a,validationSchema:P,children:r.jsx(j,{children:r.jsxs($,{autoComplete:"off",children:[r.jsx(y,{children:"Registration"}),r.jsx(i,{type:"text",name:"name",placeholder:"Name"}),r.jsx(n,{name:"name",component:"div"}),r.jsx(i,{type:"text",name:"email",placeholder:"Email"}),r.jsx(n,{name:"email",component:"div"}),r.jsx(i,{type:"password",name:"password",placeholder:"Password"}),r.jsx(n,{name:"password",component:"div"}),r.jsx(i,{type:"password",name:"confirmPassword",placeholder:"confirmPassword"}),r.jsx(n,{name:"confirmPassword",component:"div"}),r.jsx(S,{type:"submit",children:"Registration"}),r.jsxs(F,{to:"/login",children:["Already have a account? ",r.jsx(v,{children:"Login"})]})]})})})},L=()=>r.jsx(r.Fragment,{children:r.jsx(z,{})});export{L as default};
+`,P=w().shape({name:o().required(),email:o().min(6).email().required(),password:o().required(),confirmPassword:o().required()}),k={name:"",email:"",password:"",confirmPassword:""},z=()=>{const e=x(),a=({name:s,email:d,password:m},{resetForm:p})=>{e(h({name:s,email:d,password:m})).then(c=>!c.error&&p())};return t.jsx(f,{initialValues:k,onSubmit:a,validationSchema:P,children:t.jsx(j,{children:t.jsxs($,{autoComplete:"off",children:[t.jsx(y,{children:"Registration"}),t.jsx(i,{type:"text",name:"name",placeholder:"Name"}),t.jsx(n,{name:"name",component:"div"}),t.jsx(i,{type:"text",name:"email",placeholder:"Email"}),t.jsx(n,{name:"email",component:"div"}),t.jsx(i,{type:"password",name:"password",placeholder:"Password"}),t.jsx(n,{name:"password",component:"div"}),t.jsx(i,{type:"password",name:"confirmPassword",placeholder:"confirmPassword"}),t.jsx(n,{name:"confirmPassword",component:"div"}),t.jsx(S,{type:"submit",children:"Registration"}),t.jsxs(F,{to:"/login",children:["Already have a account? ",t.jsx(v,{children:"Login"})]})]})})})},q=()=>t.jsx(t.Fragment,{children:t.jsx(z,{})});export{q as default};

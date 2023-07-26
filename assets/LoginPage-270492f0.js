@@ -1,4 +1,4 @@
-import{s as o,L as c,j as t,l}from"./index-256b5008.js";import{F as x,a as h,E as g,c as u,b as r,d as b}from"./index.esm-42c79f3f.js";import{u as w}from"./useDispatch-e1273b18.js";const f=o.div`
+import{s as o,L as c,u as l,j as t,l as x}from"./index-b5977883.js";import{F as h,a as g,E as u,c as b,b as r,d as w}from"./index.esm-8c66217d.js";const f=o.div`
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -20,7 +20,7 @@ import{s as o,L as c,j as t,l}from"./index-256b5008.js";import{F as x,a as h,E a
     margin-top: 91px;
     // margin-bottom: 141px;
   }
-`,$=o(x)`
+`,$=o(h)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,7 +42,7 @@ import{s as o,L as c,j as t,l}from"./index-256b5008.js";import{F as x,a as h,E a
     //margin-bottom: 40px;
     font-size: 36px;
   }
-`,i=o(h)`
+`,i=o(g)`
   padding-left: 16px;
   margin-top: 14px;
   width: 248px;
@@ -69,7 +69,7 @@ import{s as o,L as c,j as t,l}from"./index-256b5008.js";import{F as x,a as h,E a
     height: 48px;
     margin-top: 32px;
   }
-`,n=o(g)`
+`,n=o(u)`
   color: red;
 `,y=o.button`
   width: 256px;
@@ -105,4 +105,4 @@ import{s as o,L as c,j as t,l}from"./index-256b5008.js";import{F as x,a as h,E a
   font-size: 12px;
   letter-spacing: 0.48px;
   text-decoration-line: underline;
-`,L=u().shape({email:r().required(),password:r().required()}),k={email:"",password:""},v=()=>{const e=w(),a=({email:s,password:d},{resetForm:m})=>{e(l({email:s,password:d})).then(p=>!p.error&&m())};return t.jsx(b,{initialValues:k,onSubmit:a,validationSchema:L,children:t.jsx(f,{children:t.jsxs($,{autoComplete:"off",children:[t.jsx(j,{children:"Login"}),t.jsx(i,{type:"text",name:"email",placeholder:"Email"}),t.jsx(n,{name:"email",component:"div"}),t.jsx(i,{type:"password",name:"password",placeholder:"Password"}),t.jsx(n,{name:"password",component:"div"}),t.jsx(y,{type:"submit",children:"Login"}),t.jsxs(S,{to:"/register",children:["Does not have an account? ",t.jsx(F,{children:"Registration"})]})]})})})},C=()=>t.jsx(t.Fragment,{children:t.jsx(v,{})});export{C as default};
+`,L=b().shape({email:r().required(),password:r().required()}),k={email:"",password:""},v=()=>{const e=l(),a=({email:s,password:d},{resetForm:m})=>{e(x({email:s,password:d})).then(p=>!p.error&&m())};return t.jsx(w,{initialValues:k,onSubmit:a,validationSchema:L,children:t.jsx(f,{children:t.jsxs($,{autoComplete:"off",children:[t.jsx(j,{children:"Login"}),t.jsx(i,{type:"text",name:"email",placeholder:"Email"}),t.jsx(n,{name:"email",component:"div"}),t.jsx(i,{type:"password",name:"password",placeholder:"Password"}),t.jsx(n,{name:"password",component:"div"}),t.jsx(y,{type:"submit",children:"Login"}),t.jsxs(S,{to:"/register",children:["Does not have an account? ",t.jsx(F,{children:"Registration"})]})]})})})},q=()=>t.jsx(t.Fragment,{children:t.jsx(v,{})});export{q as default};
