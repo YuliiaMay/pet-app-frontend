@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     FormStage: 1,
     OptionForm: {
-        category: ""
+        category: null
     },
     DetailsForm: {
         name: "",
@@ -19,6 +19,7 @@ const initialState = {
         location: "",
         price: ""
     },
+    // isSubmitted: false,
     isLoading: false,
     error: null    
 };
