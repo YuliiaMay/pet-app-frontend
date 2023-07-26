@@ -42,6 +42,11 @@ export const AvatarFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 49px 46px 49px;
+
+  @media (min-width: ${(props) => props.theme.sizes.tab}) {
+    margin: 18px 34px 46px 71px;
+  }
 `;
 
 export const ConfirmWrapper = styled.div`

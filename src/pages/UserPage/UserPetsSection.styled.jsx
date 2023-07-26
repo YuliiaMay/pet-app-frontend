@@ -11,15 +11,28 @@ export const PetImg = styled.img`
 export const PetInfoCard = styled.div`
   padding: 16px 20px 40px 20px;
   border-radius: 20px;
+  width: 280px;
   background-color: ${(props) => props.theme.background.wight};
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   text-align: center;
+
+  @media (min-width: ${(props) => props.theme.sizes.tab}) {
+    position: relative;
+    width: 704px;
+    height: 268px;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
 `;
 
 export const PetInfoPart = styled.div`
   display: flex;
   margin-top: 12px;
   position: relative;
+  @media (min-width: ${(props) => props.theme.sizes.tab}) {
+    position: static;
+  }
 `;
 
 export const PetInfoTextName = styled.p`
@@ -43,4 +56,17 @@ export const PetInfoDescription = styled.p`
 export const DeleteBtn = styled.button`
   position: absolute;
   right: 0;
+  @media (min-width: ${(props) => props.theme.sizes.tab}) {
+    right: 20px;
+    top: 20px;
+  }
+`;
+
+export const UserPetsList = styled.div`
+  display: flex;
+  @media (min-width: ${(props) => props.theme.sizes.tab}) {
+    display: flex;
+    flex-direction:column;
+    gap: 24px;
+  }
 `;

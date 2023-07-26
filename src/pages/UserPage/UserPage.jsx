@@ -19,6 +19,7 @@ import {
   AddPetWrapper,
   EditButton,
   MyInfoText,
+  MyInfoTextWrapper,
   MyPetsText,
   PetCardInfo,
   UserCardInfo,
@@ -39,10 +40,11 @@ const UserPage = () => {
   return (
     <UserPageContainer>
       <div>
-        <MyInfoText>My information</MyInfoText>
+        <MyInfoTextWrapper>
+          <MyInfoText>My information</MyInfoText>
+        </MyInfoTextWrapper>
         <UserCardInfo>
           {isUserEditing ? (
-
             <EditButton type='button' onClick={handleCloseButton}>
               <CloseSvg />
             </EditButton>
@@ -50,14 +52,12 @@ const UserPage = () => {
             <EditButton type='button' onClick={handleEditButton}>
               <EditSvg />
             </EditButton>
-
           )}
           <UserAvatar isFormEnable={isUserEditing} />
           <UserForm isFormEnable={isUserEditing} />
         </UserCardInfo>
       </div>
       <div>
-
         <AddPetWrapper>
           <MyPetsText>My pets</MyPetsText>
           <AddPetLink to='..add pet page'>

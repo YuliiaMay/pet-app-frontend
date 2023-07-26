@@ -8,15 +8,17 @@ export const UserFormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  margin-bottom: 16px;
 
   @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
+    align-items: center;
+    margin-bottom: 24px;
   }
 `;
 
 export const StyledField = styled(Field)`
-  margin-top: 14px;
   width: 190px;
-  height: 24px;
+  font-size: 12px;
   padding: 4px 12px;
   border-radius: ${(props) => props.theme.border.radius};
   cursor: pointer;
@@ -38,13 +40,13 @@ export const StyledField = styled(Field)`
   }
 
   @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
-    width: 458px;
-    height: 48px;
-    margin-top: 32px;
+    width: 255px;
+    padding: 4px 12px;
+    align-items: center;
+    font-size: 16px;
   }
 
   @media screen and (min-width: ${(props) => props.theme.sizes.desk}) {
-
   }
 `;
 
@@ -55,6 +57,9 @@ export const FieldLabel = styled.label`
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.56px;
+  @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
+    font-size: 18px;
+  }
 `;
 
 export const ErrorText = styled(ErrorMessage)`
@@ -63,18 +68,18 @@ export const ErrorText = styled(ErrorMessage)`
 
 export const FieldLabelWrapper = styled.div`
   display: flex;
+  gap: 10px;
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 12px;
 `;
 
 export const SubmitButton = styled.button`
-  height: 48px;
   width: 248px;
   padding: 6px 107px;
-  margin: 21px auto 0px auto;
-  margin-top: 40px;
-  margin-bottom: 8px;
+  margin-top: 20px;
+  width: 100%;
   background-color: ${(props) => props.theme.color.blue};
   border: none;
   border-radius: ${(props) => props.theme.border.radius};
@@ -85,14 +90,13 @@ export const SubmitButton = styled.button`
   font-weight: 600;
 
   @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
-    width: 458px;
-    height: 48px;
-    padding: 10px 20px;
-    margin-top: 52px;
-    margin-bottom: 16px;
+    width: 255px;
+    padding: 5px 108px;
+    margin: 0px 0px 0px 100px;
   }
 
   @media screen and (min-width: ${(props) => props.theme.sizes.desk}) {
+
   }
 `;
 
@@ -107,11 +111,19 @@ export const LogOutBtn = styled.button`
   line-height: normal;
   letter-spacing: 0.64px;
   color: ${(props) => props.theme.color.grey};
-  margin-top: 30px;
+
+  @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
+    position: absolute;
+    left: 16px;
+    bottom: 20px;
+  }
 `;
 
 export const LogOutSvgStyled = styled(LogOutSvg)``;
 
 export const FormContainer = styled.div`
   margin-top: 60px;
+  @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
+    margin: 0;
+  }
 `;
