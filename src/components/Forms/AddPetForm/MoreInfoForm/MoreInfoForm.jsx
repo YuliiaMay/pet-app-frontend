@@ -2,7 +2,7 @@ import FormTitle from "../FormTitle/FormTitle";
 import defaultAvatar from "../../../../images/default-avatar.png"
 
 
-const MoreInfoForm = () => {
+const MoreInfoForm = ({stage}) => {
     return ( 
         <>
             <FormTitle />
