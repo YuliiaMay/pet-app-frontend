@@ -20,13 +20,12 @@ import {
   Div2,
   Button,
   Ul,
-  Li,
-  Span,
   Div3,
   P1,
   Button1,
 } from "./NoticesPetCard.styled";
 import { useLocation } from "react-router-dom";
+import { CommonItemList } from "../CommonItemList/CommonItemList";
 
 const NoticesCategoriesList = () => {
   const [visibleCards, setVisibleCards] = useState([]);
@@ -94,42 +93,20 @@ const NoticesCategoriesList = () => {
                 </Div2>
               </Div1>
               <Ul>
-                <Li>
-                  <Icon
-                    iconName={"icon-location"}
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{item.place}</Span>
-                </Li>
-                <Li>
-                  <Icon
-                    iconName={"icon-clock"}
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{formatYears(item.birthday)} year</Span>
-                </Li>
-                <Li>
-                  <Icon
-                    iconName={
-                      item.sex === "female" ? "icon-female" : "icon-male"
-                    }
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{item.sex}</Span>
-                </Li>
+                <CommonItemList iconName={"icon-location"}>
+                  {item.place}
+                </CommonItemList>
+                <CommonItemList iconName={"icon-clock"}>
+                  {formatYears(item.birthday)} year
+                </CommonItemList>
+                <CommonItemList
+                  iconName={item.sex === "female" ? "icon-female" : "icon-male"}
+                >
+                  {item.sex}
+                </CommonItemList>
               </Ul>
             </Div>
             <Div3>
-              {/* {item.title} */}
               <P1>{formattingOverview(item.title)}</P1>
               <Button1 onClick={() => handleClickCards(item)}>
                 <span>Learn more</span>
