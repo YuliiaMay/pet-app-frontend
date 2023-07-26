@@ -13,7 +13,7 @@ import {
     MoreInfoIndication
 } from "./AddPetMultiStepForm.styled";
 import FormTitle from "./FormTitle/FormTitle";
-import FormBtnNav from "./FormBtnNav/FormBtnNav";
+
 
 
 
@@ -61,13 +61,10 @@ const AddPetMultiStepForm = () => {
                 </div>                  
             </FormNav>
 
-
-
             <Suspense fallback={<div>Loading...</div>}>
                 <Outlet/>
             </Suspense>
 
-            <FormBtnNav/>
         </AddPetContainer>
     );
 }
