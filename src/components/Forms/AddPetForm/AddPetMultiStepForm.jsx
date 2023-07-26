@@ -6,11 +6,11 @@ import { selectCurrentStage } from "../../../redux/petsSlice/selectors";
 import OptionForm from "./OptionForm/OptionForm";
 import DetailsForm from "./PersonalDetailsForm/DetailsForm";
 import MoreInfoForm from "./MoreInfoForm/MoreInfoForm";
-import FormBtnNav from "./FormBtnNav/FormBtnNav";
 
 
 const AddPetMultiStepForm = () => {
     const currentStage = useSelector(selectCurrentStage);
+
     return (
         <AddPetContainer>
             <FormTitle />
@@ -32,7 +32,7 @@ const AddPetMultiStepForm = () => {
             }
             
 
-            <FormBtnNav  />
+            {/* <FormBtnNav onClick={onNextStep} /> */}
         </AddPetContainer>
     );
 }

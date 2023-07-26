@@ -1,8 +1,9 @@
 import FormTitle from "../FormTitle/FormTitle";
 import defaultAvatar from "../../../../images/default-avatar.png"
+import FormBtnNav from "../FormBtnNav/FormBtnNav";
 
-
-const MoreInfoForm = ({stage}) => {
+const MoreInfoForm = () => {
+    
     return ( 
         <>
             <FormTitle />
@@ -19,6 +20,7 @@ const MoreInfoForm = ({stage}) => {
                     placeholder="Type of pet"
                 ></textarea>
             </div>
+            <FormBtnNav />
         </>
         
     );
