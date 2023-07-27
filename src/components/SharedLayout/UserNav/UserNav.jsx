@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../../redux/authSlice/selectors";
 import { Icon } from "../../Icon/Icon";
 import {
   Avatar,
@@ -8,15 +10,24 @@ import {
   UserName,
   Wrapper,
 } from "./UserNav.styled";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../../redux/authSlice/selectors";
+
+import { logout } from "../../../redux/authSlice/operations";
 
 const UserNav = ({ toggleMenu }) => {
-  const {user} = useSelector(selectUser);
+  console.log("UserNav rendering");
+  // const user = useSelector(selectUser);
 
+  const dispatch = useDispatch();
+  // if (!user.user) {
+  //   return (
+  //     <Wrapper>
+  //       <p>Loading...</p>
+  //     </Wrapper>
+  //   );
+  // }
   return (
     <Wrapper>
-      <LogoutBtn to="/logout">
+      <LogoutBtn to="/logout" onClick={() => dispatch(logout())}>
         Log out
         <Icon
           iconName={"icon-logout"}
@@ -29,7 +40,12 @@ const UserNav = ({ toggleMenu }) => {
       <UserLink to="/user" onClick={toggleMenu}>
         <Box>
           <Avatar />
-          <UserName>{user.name}</UserName>
+          {/* /* {user && user.user.name ? (
+            <div>{user.user.name}</div>
+          ) : (
+            <div>No user data</div>
+          )} */}
+          <UserName>Alex</UserName>
         </Box>
       </UserLink>
     </Wrapper>

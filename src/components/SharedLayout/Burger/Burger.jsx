@@ -19,11 +19,14 @@ import BurgerNavigationItem from "./BurgerNavigationItem";
 import bglogo from "../Logo/LogoPet.jpg";
 import { NavLink } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
 import { Icon } from "../../Icon/Icon";
 import { useAuth } from "../../../hooks/useAuth";
 import UserNav from "../UserNav/UserNav";
+import { logout } from "../../../redux/authSlice/operations";
 
 export const Burger = ({ isOpen, toggleMenu }) => {
+  const dispatch = useDispatch();
   const { isLoggedIn } = useAuth();
   return (
     <>
@@ -36,7 +39,7 @@ export const Burger = ({ isOpen, toggleMenu }) => {
             <LoginTabBox>
               {isLoggedIn ? (
                 <>
-                  <LogoutTabBtn to="/logout" onClick={toggleMenu}>
+                  <LogoutTabBtn to="/logout" onClick={() => dispatch(logout())}>
                     Log out
                     <Icon
                       iconName={"icon-logout"}
@@ -47,7 +50,7 @@ export const Burger = ({ isOpen, toggleMenu }) => {
                     />
                   </LogoutTabBtn>
                   <UserTabBox onClick={toggleMenu}>
-                    <UserNav />
+                    <UserNav toggleMenu={toggleMenu} />
                   </UserTabBox>
                 </>
               ) : (
@@ -99,7 +102,7 @@ export const Burger = ({ isOpen, toggleMenu }) => {
             )}
             {isLoggedIn && (
               <UserMobBox>
-                <UserNav />
+                <UserNav toggleMenu={toggleMenu} />
               </UserMobBox>
             )}
             <BurgerNavList>
@@ -114,7 +117,7 @@ export const Burger = ({ isOpen, toggleMenu }) => {
               </BurgerNavigationItem>
             </BurgerNavList>
             {isLoggedIn && (
-              <LogoutMobBtn to="/logout" onClick={toggleMenu}>
+              <LogoutMobBtn to="/logout" onClick={() => dispatch(logout())}>
                 Log out
                 <Icon
                   iconName={"icon-logout"}
