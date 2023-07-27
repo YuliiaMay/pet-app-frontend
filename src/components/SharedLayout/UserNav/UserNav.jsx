@@ -8,8 +8,12 @@ import {
   UserName,
   Wrapper,
 } from "./UserNav.styled";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../redux/authSlice/selectors";
 
 const UserNav = ({ toggleMenu }) => {
+  const {user} = useSelector(selectUser);
+
   return (
     <Wrapper>
       <LogoutBtn to="/logout">
@@ -25,7 +29,7 @@ const UserNav = ({ toggleMenu }) => {
       <UserLink to="/user" onClick={toggleMenu}>
         <Box>
           <Avatar />
-          <UserName>Anna</UserName>
+          <UserName>{user.name}</UserName>
         </Box>
       </UserLink>
     </Wrapper>

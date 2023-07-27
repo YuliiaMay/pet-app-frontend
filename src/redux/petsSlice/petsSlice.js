@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { addPet } from "./operations";
+
 
 const initialState = {
     FormStage: 1,
     OptionForm: {
-        category: ""
+        category: null
     },
     DetailsForm: {
         name: "",
@@ -19,8 +21,18 @@ const initialState = {
         location: "",
         price: ""
     },
+    // isSubmitted: false,
     isLoading: false,
     error: null    
+};
+
+const handlePending = state => {
+    state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
 };
 
 const petSlice = createSlice({
@@ -31,6 +43,14 @@ const petSlice = createSlice({
         optionForm: (state, action) => { state.OptionForm = action.payload },
         detailsForm: (state, action) => { state.DetailsForm = action.payload },
         moreInfoForm: (state, action) => { state.MoreInfoForm = action.payload },
+    },
+    extraReducers: {
+        [addPet.pending]: handlePending,
+        [addPet.refected]: handleRejected,
+        [addPet.fulfilled](state, action) {
+            state.isLoading = false;
+            state.error = null
+        }
     }
 });
 

@@ -8,11 +8,11 @@ export const selectCategory = state => state.pet.OptionForm.category;
 
 
 // DetailsForm 
-export const selectName = state => state.pet.DataForm.name;
-export const selectBirthday = state => state.pet.DataForm.birthday;
-export const selectBreed = state => state.pet.DataForm.breed;
-export const selectTitle = state => state.pet.DataForm.title;
-export const selectType = state => state.pet.DataForm.type;
+export const selectName = state => state.pet.DetailsForm.name;
+export const selectBirthday = state => state.pet.DetailsForm.birthday;
+export const selectBreed = state => state.pet.DetailsForm.breed;
+export const selectTitle = state => state.pet.DetailsForm.title;
+export const selectType = state => state.pet.DetailsForm.type;
 
 
 // MoreInfoForm 

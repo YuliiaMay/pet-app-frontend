@@ -1,7 +1,13 @@
+import { NewsWrapper } from "./NewsPage.styled";
+import NewsList from "../../components/News/NewsList/NewsList";
+import { NewsSearch } from "../../components/News/NewsSearch/NewsSearch";
 const NewsPage = () => {
   return (
     <>
-      <div>News Page</div>
+      <NewsWrapper>
+        <NewsSearch/>
+        <NewsList />
+      </NewsWrapper>
     </>
   );
 };

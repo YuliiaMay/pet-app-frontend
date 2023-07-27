@@ -1,20 +1,31 @@
-/* eslint-disable react/jsx-no-undef */
+/**
+ * eslint-disable react/jsx-no-undef
+ *
+ * @format
+ */
+
 /** @format */
 
 import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
-import { Field, Form, Formik } from "formik";
+import { Formik } from "formik";
 import PropTypes from "prop-types";
 
-// import { ReactComponent as EditAvatar } from "../../../svg/userPage/camera.svg";
-// import { ReactComponent as Confirm } from "../../../svg/userPage/confirm.svg";
-// import { ReactComponent as Decline } from "../../../svg/userPage/decline.svg";
+import { ReactComponent as EditAvatar } from "../../../svg/userPage/camera.svg";
+import { ReactComponent as Confirm } from "../../../svg/userPage/confirm.svg";
+import { ReactComponent as Decline } from "../../../svg/userPage/decline.svg";
 
-import { UserAvatarImg } from "./UserAvatar.styled";
+import {
+  AvatarFormWrapper,
+  ConfirmWrapper,
+  EditPhotoBtn,
+  FileInput,
+  FormAvatar,
+  UserAvatarImg,
+} from "./UserAvatar.styled";
 
-
-export const UserAvatar = ({ isFormDisabled }) => {
+export const UserAvatar = ({ isFormEnable }) => {
   const dispatch = useDispatch();
   // const user = useSelector(user);
 
@@ -54,28 +65,28 @@ export const UserAvatar = ({ isFormDisabled }) => {
   };
 
   return (
-    <>
+    <AvatarFormWrapper>
       {isFormatErr && <p>Only img can be uploaded</p>}
-
       <UserAvatarImg src={user.avatar} alt='' />
-      {!isFormDisabled && (
+      {isFormEnable && (
         <Formik initialValues={initialValues} onSubmit={inputUploadHandler}>
           {({ values, setFieldValue }) => (
-            <Form encType='multipart/form-data'>
-              <Field
+            <FormAvatar encType='multipart/form-data'>
+              <FileInput
                 type='file'
                 id='avatar'
                 name='avatar'
                 accept='image/*'
-                value={undefined}
+                value={""}
+                onChange={handleAvatarEditing}
               />
               {!isImgUpdating ? (
-                <button type='button' onClick={handleAvatarEditing}>
-                  {/* <EditAvatar /> */}
+                <EditPhotoBtn type='button'>
+                  <EditAvatar />
                   Edit photo
-                </button>
+                </EditPhotoBtn>
               ) : (
-                <>
+                <ConfirmWrapper>
                   <button type='submit'>
                     <Confirm />
                   </button>
@@ -89,16 +100,16 @@ export const UserAvatar = ({ isFormDisabled }) => {
                       <Decline />
                     </button>
                   )}
-                </>
+                </ConfirmWrapper>
               )}
-            </Form>
+            </FormAvatar>
           )}
         </Formik>
       )}
-    </>
+    </AvatarFormWrapper>
   );
 };
 
 UserAvatar.propTypes = {
-  isFormDisabled: PropTypes.bool.isRequired,
+  isFormEnable: PropTypes.bool.isRequired,
 };
