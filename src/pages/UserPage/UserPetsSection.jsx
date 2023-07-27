@@ -3,7 +3,7 @@
 // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
 
-import { DeleteBtn, PetImg, PetInfoCard, PetInfoDescription, PetInfoPart, PetInfoTextName } from "./UserPetsSection.styled";
+import { DeleteBtn, PetImg, PetInfoCard, PetInfoDescription, PetInfoPart, PetInfoTextName, UserPetsList } from "./UserPetsSection.styled";
 import { ReactComponent as Delete } from "../../svg/userPage/delete.svg";
 
 
@@ -26,42 +26,40 @@ export const UserPetsSection = () => {
     dispatch(deletePetFromFavorite(e.target.id));
   };
   return (
-    <div>
+    <UserPetsList>
       {pets.map((pet) => {
         return (
           <PetInfoCard key={pet.id}>
+            <PetImg src={pet.img} alt='' />
             <div>
-              <PetImg src={pet.img} alt='' />
-              <div>
-                <PetInfoPart>
-                  <DeleteBtn type='button' onClick={deleteClickHandler}>
-                    <Delete />
-                  </DeleteBtn>
-                  <PetInfoTextName>Name: </PetInfoTextName>
-                  <PetInfoDescription>{pet.name}</PetInfoDescription>
-                </PetInfoPart>
-                <PetInfoPart>
-                  <PetInfoTextName>Date of birth: </PetInfoTextName>
-                  <PetInfoDescription>{pet.dateofbirth}</PetInfoDescription>
-                </PetInfoPart>
-                <PetInfoPart>
-                  <PetInfoTextName>Type: </PetInfoTextName>
-                  <PetInfoDescription>{pet.type}</PetInfoDescription>
-                </PetInfoPart>
-                <PetInfoPart>
-                  <PetInfoTextName>Date of birth: </PetInfoTextName>
-                  <PetInfoDescription>{pet.dateofbirth}</PetInfoDescription>
-                </PetInfoPart>
-                <PetInfoPart>
-                  <PetInfoTextName>Comments: </PetInfoTextName>
-                  <PetInfoDescription>{pet.comments}</PetInfoDescription>
-                </PetInfoPart>
-              </div>
+              <PetInfoPart>
+                <DeleteBtn type='button' onClick={deleteClickHandler}>
+                  <Delete />
+                </DeleteBtn>
+                <PetInfoTextName>Name: </PetInfoTextName>
+                <PetInfoDescription>{pet.name}</PetInfoDescription>
+              </PetInfoPart>
+              <PetInfoPart>
+                <PetInfoTextName>Date of birth: </PetInfoTextName>
+                <PetInfoDescription>{pet.dateofbirth}</PetInfoDescription>
+              </PetInfoPart>
+              <PetInfoPart>
+                <PetInfoTextName>Type: </PetInfoTextName>
+                <PetInfoDescription>{pet.type}</PetInfoDescription>
+              </PetInfoPart>
+              <PetInfoPart>
+                <PetInfoTextName>Date of birth: </PetInfoTextName>
+                <PetInfoDescription>{pet.dateofbirth}</PetInfoDescription>
+              </PetInfoPart>
+              <PetInfoPart>
+                <PetInfoTextName>Comments: </PetInfoTextName>
+                <PetInfoDescription>{pet.comments}</PetInfoDescription>
+              </PetInfoPart>
             </div>
           </PetInfoCard>
         );
       })}
-    </div>
+    </UserPetsList>
   );
 };
 

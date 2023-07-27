@@ -83,7 +83,9 @@ export const PP = styled.p`
 
 export const Div2 = styled.div`
   display: block;
+  
 `;
+
 
 export const Button = styled.button`
   align-items: center;
@@ -98,11 +100,17 @@ export const Button = styled.button`
   margin: 0;
   padding: 0;
   width: 40px;
+  fill: #CCE4FB;
   &:hover,
   focus {
-    // background-color: #3498db;
-    transition: color 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    background-color: ${props => props.theme.background.lightBlue};
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+ &:hover >  svg {
+    stroke: ${(props) => props.theme.color.blue};
+     fill: ${(props) => props.theme.color.blue};
+    //  box-shadow: ${(props) => props.theme.color.blue} 0px 2px 8px 0px;
+    }      
 `;
 
 export const Ul = styled.ul`
@@ -130,33 +138,7 @@ export const Ul = styled.ul`
   }
 `;
 
-export const Li = styled.li`
-    cursor: pointer;
-    align-items: center;
-    background-color: ${(props) => props.theme.background.lightBlue};
-    border-radius: 16px;
-    color: ${(props) => props.theme.color.main};
-    stroke: ${(props) => props.theme.color.blue};
-    display: flex;
-    gap: 3px;
-    justify-content: center;
-    width: 81px;
-    height: 28px;
-    padding: 0 5px;
 
-    transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
-
-    &:hover,
-    &:focus {
-        background-color: ${(props) => props.theme.background.accentBlue} 
-        transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
-        color: ${(props) => props.theme.color.wight}
-    }
-    &:hover > svg {
-    stroke: ${(props) => props.theme.color.wight}
-    transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
-  }
-`;
 
 export const Span = styled.span`
   font-size: 12px;
@@ -165,12 +147,16 @@ export const Span = styled.span`
   line-height: 16px;
 `;
 
+
 export const Div3 = styled.div`
   display: flex;
   flex-direction: column;
   height: 120px;
   justify-content: space-between;
-  padding: 20px;
+  padding-top: 20px;
+  padding-left: 20px
+  padding-button: 0px 
+  padding-right: 20px;
 `;
 
 export const P1 = styled.p`
@@ -180,6 +166,7 @@ export const P1 = styled.p`
   font-weight: 700;
   line-height: 33px;
 `;
+
 
 export const Button1 = styled.button`
     align-items: center;
@@ -198,7 +185,7 @@ export const Button1 = styled.button`
     padding: 8px 28px 8px 28px;
     position: relative;
     width: 248px;
-   &:hover,
+    &:hover,
     &:focus  {
         border: transparent;
         background: linear-gradient(315deg, rgb(65, 158, 241) 0%, rgb(155, 208, 255) 100%);
@@ -209,4 +196,34 @@ export const Button1 = styled.button`
          fill: ${props => props.theme.color.wight};
     }        
   }
+`;
+
+
+export const Li = styled.li`
+    cursor: pointer;
+    align-items: center;
+    background-color: ${(props) => props.theme.background.lightBlue};
+    border-radius: 16px;
+    color: ${(props) => props.theme.color.main};
+    stroke: ${(props) => props.theme.color.blue};
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    width: 81px;
+    height: 28px;
+    padding: 0 5px;
+
+    transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
+
+    &:hover,
+    &:focus {
+        background-color: ${(props) => props.theme.background.accentBlue};
+        transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
+        color: ${(props) => props.theme.color.wight};
+         & use {
+        stroke: ${props => props.theme.color.wight};
+         fill: ${props => props.theme.color.wight};
+    }  
+    }
+         
 `;

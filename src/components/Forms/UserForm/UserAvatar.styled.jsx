@@ -1,5 +1,5 @@
 /** @format */
-import { Field } from "formik";
+import { Field, Form } from "formik";
 import styled from "styled-components";
 
 export const UserAvatarImg = styled.img`
@@ -14,8 +14,21 @@ export const UserAvatarImg = styled.img`
   }
 `;
 
+export const FormAvatar = styled(Form)`
+  position: relative;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const FileInput = styled(Field)`
+  position: absolute;
+  transform: translate(32%, 0%);
   color: transparent;
+  background-color: transparent;
+  opacity: 0;
+  z-index: 2;
 `;
 
 export const EditPhotoBtn = styled.button`
@@ -27,11 +40,12 @@ export const EditPhotoBtn = styled.button`
   line-height: 22px;
   letter-spacing: 0.48px;
 
-  position: absolute;
-  transform: translate(-50%, 0);
+  // position: absolute;
+  // transform: translate(-50%, 0);
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 92px;
 
   @media (min-width: ${(props) => props.theme.sizes.mobile}) {
   }
@@ -42,6 +56,11 @@ export const AvatarFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 49px 46px 49px;
+
+  @media (min-width: ${(props) => props.theme.sizes.tab}) {
+    margin: 18px 34px 46px 71px;
+  }
 `;
 
 export const ConfirmWrapper = styled.div`
