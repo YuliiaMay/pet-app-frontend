@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form } from "./DetailsForm.styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { detailsForm, formStage } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
 import { selectBirthday, selectBreed, selectName, selectTitle, selectType } from "../../../../redux/petsSlice/selectors";
@@ -8,19 +8,20 @@ import { selectBirthday, selectBreed, selectName, selectTitle, selectType } from
 
 const DetailsForm = () => {
     const dispatch = useDispatch();
-    const [detailsData, setDetailsData] = useState({
-        name: selectName || "",
-        birthday: selectBirthday || "",
-        breed: selectBreed || "",
-        title: selectTitle || "",
-        type: selectType || ""
+    const [secondStageData, setSecondStageData] = useState({
+        name: useSelector(selectName) || "",
+        birthday: useSelector(selectBirthday) || "",
+        breed: useSelector(selectBreed) || "",
+        title: useSelector(selectTitle) || "",
+        type: useSelector(selectType) || ""
     });
 
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
-        setDetailsData({
-            ...detailsData,
+        
+        setSecondStageData({
+            ...secondStageData,
             [name]: value
         })
     };
@@ -30,11 +31,11 @@ const DetailsForm = () => {
         e.preventDefault();
         dispatch(
             detailsForm({
-                name: detailsData.name,
-                birthday: detailsData.birthday,
-                breed: detailsData.breed,
-                title: "",
-                type: ""                
+                name: secondStageData.name,
+                birthday: secondStageData.birthday,
+                breed: secondStageData.breed,
+                title: secondStageData.title,
+                type: secondStageData.type                
             })
         )
         dispatch(
@@ -66,13 +67,13 @@ const DetailsForm = () => {
                     onChange={handleChange}
                 />
                 
-                <label htmlFor="pet-breed">
-                    Breed
+                <label htmlFor="pet-type">
+                    Type
                 </label>
                 <input
                     type="text"
-                    id="pet-breed"
-                    name="breed"
+                    id="pet-type"
+                    name="type"
                     onChange={handleChange}
                 /> 
 
