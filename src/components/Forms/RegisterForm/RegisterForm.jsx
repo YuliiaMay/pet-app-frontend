@@ -15,11 +15,12 @@ import {
   InputContainer,
   InputIcon,
   InputIcon2,
+  InputIcon3,
 } from "./RegisterForm.styled.js";
 
 import showPasswordIcon from "/src/svg/registerPage/eyeOpen.svg";
 import hidePasswordIcon from "/src/svg/registerPage/eyeClosed.svg";
-//import successIcon from "/src/svg/registerPage/check.svg"
+import successIcon from "/src/svg/registerPage/check.svg";
 import errorIcon from "/src/svg/registerPage/cross.svg";
 
 const userSchema = Yup.object().shape({
@@ -49,7 +50,6 @@ const RegisterForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
-  // const [emailError, setEmailError] = useState("");
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -72,7 +72,12 @@ const RegisterForm = () => {
           <StyledForm autoComplete="off">
             <StyledTitle>Registration</StyledTitle>
 
-            <StyledField type="text" name="name" placeholder="Name" />
+            <StyledField
+              type="text"
+              name="name"
+              placeholder="Name"
+              border={errors.name && "1px solid red"}
+            />
             <ErrorText name="name" component="div" />
 
             <InputContainer>
@@ -80,12 +85,15 @@ const RegisterForm = () => {
                 type="text"
                 name="email"
                 placeholder="Email"
+                //border={errors.email && "props.theme.border.error"}
                 border={errors.email && "1px solid red"}
               />
-
-              <InputIcon2>
-                <img src={errorIcon} alt="error" width="24" height="24" />
-              </InputIcon2>
+              {/* <InputIcon showError={touched.email && !!errors.email}>📧</InputIcon> */}
+              {errors.email && (
+                <InputIcon2 color="red">
+                  <img src={errorIcon} alt="error" width="24" height="24" />
+                </InputIcon2>
+              )}
             </InputContainer>
             <ErrorText name="email" component="div" />
 
@@ -94,9 +102,12 @@ const RegisterForm = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Password"
-                border={errors.password && "1px solid red"}
                 error={errors.password || passwordError}
+                border={errors.password && "1px solid red"}
               />
+              <InputIcon3 isValid={showPassword}>
+                <img src={successIcon} alt="error" width="24" height="24" />
+              </InputIcon3>
               <InputIcon onClick={handleTogglePassword}>
                 <img
                   src={showPassword ? hidePasswordIcon : showPasswordIcon}
@@ -139,7 +150,7 @@ const RegisterForm = () => {
               Already have a account? <StyledSpan>Login</StyledSpan>
             </StyledLink>
           </StyledForm>
-          {/* )} */}
+          dd
         </Container>
       )}
     </Formik>

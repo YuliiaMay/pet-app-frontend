@@ -62,7 +62,7 @@ export const StyledField = styled(Field)`
   height: 48px;
   border-radius: ${(props) => props.theme.border.radius};
   outline: none;
-  border: ${(props) => props.border || props.theme.border.blue};
+  border: ${(props) => props.theme.border.blue};
   outline: none;
 
   &:hover,
@@ -110,6 +110,21 @@ export const InputIcon2 = styled.span`
     top: 72%;
   }
 `;
+
+export const InputIcon3 = styled.span`
+  position: absolute;
+  top: 65%;
+  right: 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: ${(props) => props.theme.color.success};
+  //color: #f43f5e;
+
+  @media screen and (min-width: 768px) {
+    top: 72%;
+  }
+`;
+
 export const ErrorText = styled(ErrorMessage)`
   color: red;
 `;
