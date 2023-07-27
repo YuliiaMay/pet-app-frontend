@@ -1,4 +1,4 @@
-import{s as i,a as n,b as m,j as e,N as x,c as g,d as u,O as b}from"./index-18a549ce.js";import{S as f,a as w}from"./Cross-7ee044c4.js";import j from"./NoticesCategoriesList-9bcdc8b6.js";import"./formatDate-791aee65.js";const y=i.div`
+import{s as i,a as n,b as m,j as e,N as x,c as g,d as u,O as b}from"./index-d1279074.js";import{S as f,a as w}from"./Cross-a25a05e4.js";import j from"./NoticesCategoriesList-2f3703a9.js";import"./ModalComponents-10728d6d.js";import"./formatDate-791aee65.js";const y=i.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,4 +159,4 @@ import{s as i,a as n,b as m,j as e,N as x,c as g,d as u,O as b}from"./index-18a5
   @media (max-width: 767px) {
     margin-left: 0px;
   }
-`,E=()=>e.jsxs(P,{to:"/add-pet",children:[e.jsx("span",{children:"Add Pet"}),e.jsx(N,{children:e.jsx(L,{})})]}),A=()=>{const{isLoggedIn:t}=g();return e.jsxs(e.Fragment,{children:[e.jsxs(B,{children:[e.jsxs(C,{children:[e.jsx(o,{to:"/notices/sell",children:"sell"}),e.jsx(o,{to:"/notices/lost-found",children:"lost/found"}),e.jsx(o,{to:"/notices/for-free",children:"in good hands"}),t&&e.jsxs(e.Fragment,{children:[e.jsx(o,{to:"/notices/favorite",children:"favorite ads"}),e.jsx(o,{to:"/notices/own",children:"my ads"})]})]}),e.jsx(E,{})]}),e.jsx(n.Suspense,{fallback:e.jsx(u,{}),children:e.jsx(b,{})})]})},M=()=>e.jsxs(e.Fragment,{children:[e.jsx(z,{}),e.jsx(A,{}),e.jsx(j,{})]});export{M as default};
+`,E=()=>e.jsxs(P,{to:"/add-pet",children:[e.jsx("span",{children:"Add Pet"}),e.jsx(N,{children:e.jsx(L,{})})]}),A=()=>{const{isLoggedIn:t}=g();return e.jsxs(e.Fragment,{children:[e.jsxs(B,{children:[e.jsxs(C,{children:[e.jsx(o,{to:"/notices/sell",children:"sell"}),e.jsx(o,{to:"/notices/lost-found",children:"lost/found"}),e.jsx(o,{to:"/notices/for-free",children:"in good hands"}),t&&e.jsxs(e.Fragment,{children:[e.jsx(o,{to:"/notices/favorite",children:"favorite ads"}),e.jsx(o,{to:"/notices/own",children:"my ads"})]})]}),e.jsx(E,{})]}),e.jsx(n.Suspense,{fallback:e.jsx(u,{}),children:e.jsx(b,{})})]})},O=()=>e.jsxs(e.Fragment,{children:[e.jsx(z,{}),e.jsx(A,{}),e.jsx(j,{})]});export{O as default};
