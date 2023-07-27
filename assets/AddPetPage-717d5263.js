@@ -1,4 +1,4 @@
-import{s as n,j as t,i as r,L as R,u as x,o as E,k as p,a as g,m as Y,n as U,p as I}from"./index-c4a8dc9d.js";const J=n.div`
+import{s as n,j as t,i as r,L as R,u as x,o as E,k as p,a as g,m as Y,n as U,p as I}from"./index-07a4f5ed.js";const J=n.div`
     background-color: ${e=>e.theme.background.wight};
     width: 458px;
     height: 540px;
