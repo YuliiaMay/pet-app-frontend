@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
+import Pagination from "rc-pagination";
+
 import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
 
@@ -24,26 +26,28 @@ import {
   P1,
   Button1,
 } from "./NoticesPetCard.styled";
+import "../../../assets/index.less";
 import { useLocation } from "react-router-dom";
 import { CommonItemList } from "../CommonItemList/CommonItemList";
 
 const NoticesCategoriesList = () => {
   const [visibleCards, setVisibleCards] = useState([]);
   const [fetching, setFetching] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [showModal, setShowModal] = useState(false);
   const [oneCard, setOneCard] = useState(null);
   const location = useLocation();
 
   const notices = useSelector(selectNotieces);
-
+  console.log("notices", notices.length);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!fetching) return;
-    dispatch(fetchNotices());
+    dispatch(fetchNotices({ page: currentPage, category: "lost/found" }));
     setFetching(false);
-  }, [dispatch, fetching]);
+  }, [currentPage, dispatch, fetching]);
 
   const handleClickCards = (item) => {
     setShowModal(true);
@@ -86,6 +90,11 @@ const NoticesCategoriesList = () => {
 
     setVisibleCards(visible);
   }, [location.pathname, notices]);
+
+  const onChange = (page) => {
+    setCurrentPage(page);
+    setFetching(true);
+  };
 
   return (
     <ResponsiveContainer>
@@ -137,6 +146,7 @@ const NoticesCategoriesList = () => {
           </Info>
         ))}
       </List>
+      <Pagination onChange={onChange} total={250} />
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
     </ResponsiveContainer>
   );

@@ -14,7 +14,7 @@ import {
 import { logout } from "../../../redux/authSlice/operations";
 
 const UserNav = ({ toggleMenu }) => {
-  console.log("UserNav rendering");
+  // console.log("UserNav rendering");
   // const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
