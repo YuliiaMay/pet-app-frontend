@@ -1,4 +1,4 @@
-import{s as n,j as t,i as r,L as R,u as x,o as E,k as p,a as g,m as Y,n as U,p as I}from"./index-07a4f5ed.js";const J=n.div`
+import{s as n,j as t,i as r,L as R,u as x,o as E,k as p,a as g,m as Y,p as U,q as I}from"./index-18a549ce.js";const J=n.div`
     background-color: ${e=>e.theme.background.wight};
     width: 458px;
     height: 540px;
@@ -28,12 +28,12 @@ import{s as n,j as t,i as r,L as R,u as x,o as E,k as p,a as g,m as Y,n as U,p a
     border-radius: 8px;
     margin-top: 12px;
     background-color: ${e=>{if(e.$formStage===1)return e.theme.background.blue;if(e.$formStage>1||e.$formStage==="success")return e.theme.background.success}};           
-`,Z=n.div`
-`,$=n.h2`
+`,q=n.div`
+`,Z=n.h2`
     font-size: 16px;
     font-weight: 500;    
     color: ${e=>e.$formStage===2?e.theme.color.blue:e.$formStage>2||e.$formStage==="success"?e.theme.color.success:e.theme.color.grey}
-`,q=n.div`
+`,$=n.div`
     width: 120px;
     height: 8px;
     border-radius: 8px;
@@ -50,7 +50,7 @@ import{s as n,j as t,i as r,L as R,u as x,o as E,k as p,a as g,m as Y,n as U,p a
     border-radius: 8px;
     margin-top: 12px;
     background-color: ${e=>e.$formStage===3?e.theme.background.blue:e.$formStage==="success"?e.theme.background.success:e.theme.background.lightBlue};         
-`,P=()=>{const e=r(f);return t.jsxs(K,{children:[t.jsxs(L,{children:[t.jsx(V,{$formStage:e,children:"Choose  option"}),t.jsx(W,{$formStage:e})]}),t.jsx(Z,{children:t.jsxs($,{$formStage:e,children:["Personal details",t.jsx(q,{$formStage:e})]})}),t.jsxs(z,{children:[t.jsx(G,{$formStage:e,children:"More info"}),t.jsx(H,{$formStage:e})]})]})},O=n.ul`
+`,P=()=>{const e=r(f);return t.jsxs(K,{children:[t.jsxs(L,{children:[t.jsx(V,{$formStage:e,children:"Choose  option"}),t.jsx(W,{$formStage:e})]}),t.jsx(q,{children:t.jsxs(Z,{$formStage:e,children:["Personal details",t.jsx($,{$formStage:e})]})}),t.jsxs(z,{children:[t.jsx(G,{$formStage:e,children:"More info"}),t.jsx(H,{$formStage:e})]})]})},O=n.ul`
     display: flex;
     flex-direction: column;
     gap: 12px;

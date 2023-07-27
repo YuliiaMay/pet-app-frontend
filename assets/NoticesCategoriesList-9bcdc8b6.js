@@ -1,4 +1,4 @@
-import{s as i,a as x,q as $,j as e,P as d,I as g,t as F,v as C,i as D,u as z,w as N,R as B}from"./index-07a4f5ed.js";import{f as I}from"./formatDate-791aee65.js";const P=t=>t.notices.items,S="/pet-app-frontend/assets/defaultPoster-d1161abc.jpeg",E=t=>t||S,L=t=>t.replace(/[.\-/\\\s]/g,"");function M(t){if(!t)return;const r=new Date,s=new Date(r.getFullYear(),r.getMonth(),r.getDate()),l=new Date(t),c=new Date(s.getFullYear(),l.getMonth(),l.getDate());let a;return a=s.getFullYear()-l.getFullYear(),s<c&&(a=a-1),a}const T=i.div`
+import{s as i,a as x,t as $,j as e,P as d,I as g,v as F,w as C,i as D,u as z,x as N,R as B}from"./index-18a549ce.js";import{f as I}from"./formatDate-791aee65.js";const P=t=>t.notices.items,S="/pet-app-frontend/assets/defaultPoster-d1161abc.jpeg",E=t=>t||S,L=t=>t.replace(/[.\-/\\\s]/g,"");function M(t){if(!t)return;const r=new Date,s=new Date(r.getFullYear(),r.getMonth(),r.getDate()),l=new Date(t),c=new Date(s.getFullYear(),l.getMonth(),l.getDate());let a;return a=s.getFullYear()-l.getFullYear(),s<c&&(a=a-1),a}const T=i.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,13 +73,13 @@ import{s as i,a as x,q as $,j as e,P as d,I as g,t as F,v as C,i as D,u as z,w a
     right: 24px;
     top: 24px;
   }
-`,q=i.div`
+`,U=i.div`
   @media screen and (min-width: 768px) {
     margin-bottom: 30px;
 
     display: flex;
   }
-`,U=i.div`
+`,q=i.div`
   max-width: 240px;
   height: 240px;
 
@@ -256,7 +256,7 @@ import{s as i,a as x,q as $,j as e,P as d,I as g,t as F,v as C,i as D,u as z,w a
     /* display: inline-flex;
     justify-content: end; */
   }
-`;function k({active:t,setShow:r,card:s}){if(!s)return;const{imgUrl:l,name:c,birthday:a,breed:u,place:b,sex:h,email:p,phone:f,text:w,favorite:j}=s,v=()=>{r(!1)},y=()=>{},n=o=>o?e.jsxs(e.Fragment,{children:["Favorite",e.jsx(g,{iconName:"icon-heart-full",width:"24px",height:"24px",stroke:"#C5DFF6",fill:"#C5DFF6"})]}):e.jsxs(e.Fragment,{children:["Add to",e.jsx(g,{iconName:"icon-heart",width:"24px",height:"24px",stroke:"#ffffff",fill:"#ffffff"})]});return e.jsx(e.Fragment,{children:e.jsx(O,{onClose:r,active:t,children:e.jsxs(R,{children:[e.jsx(W,{onClick:v,children:e.jsx(g,{iconName:"icon-cross",width:"24px",height:"24px",stroke:"#54ADFF",fill:"#54ADFF"})}),e.jsxs(q,{children:[e.jsxs(U,{children:[e.jsx("span",{children:"In good hands"}),e.jsx(G,{src:E(l),alt:"name image"})]}),e.jsxs(V,{children:[e.jsx(K,{children:"Cute dog looking for a home"}),e.jsx(_,{children:e.jsx("table",{children:e.jsxs("tbody",{children:[e.jsxs("tr",{children:[e.jsx("td",{children:"Name:"}),e.jsx("td",{children:e.jsx("span",{children:c})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Birthday:"}),e.jsx("td",{children:e.jsx("span",{children:I(a)})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Type:"}),e.jsx("td",{children:e.jsx("span",{children:u})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Place:"}),e.jsx("td",{children:e.jsx("span",{children:b})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"The sex:"}),e.jsx("td",{children:e.jsx("span",{children:h})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Email:"}),e.jsx("td",{children:e.jsx("a",{href:`mailto:${p}`,children:p})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Phone:"}),e.jsx("td",{children:e.jsx("a",{href:`tel:${f}`,children:L(f)})})]})]})})})]})]}),e.jsxs(H,{children:["Comments:",e.jsx("span",{children:w})]}),e.jsxs(J,{children:[e.jsx(Q,{onClick:y,children:n(j)}),e.jsx(X,{href:`tel:${f}`,children:"Contact"})]})]})})})}k.propTypes={active:d.bool,setShow:d.func,card:d.object};const Z=i.ul`
+`;function k({active:t,setShow:r,card:s}){if(!s)return;const{imgUrl:l,name:c,birthday:a,breed:u,place:b,sex:h,email:p,phone:f,text:w,favorite:j}=s,v=()=>{r(!1)},y=()=>{},n=o=>o?e.jsxs(e.Fragment,{children:["Favorite",e.jsx(g,{iconName:"icon-heart-full",width:"24px",height:"24px",stroke:"#C5DFF6",fill:"#C5DFF6"})]}):e.jsxs(e.Fragment,{children:["Add to",e.jsx(g,{iconName:"icon-heart",width:"24px",height:"24px",stroke:"#ffffff",fill:"#ffffff"})]});return e.jsx(e.Fragment,{children:e.jsx(O,{onClose:r,active:t,children:e.jsxs(R,{children:[e.jsx(W,{onClick:v,children:e.jsx(g,{iconName:"icon-cross",width:"24px",height:"24px",stroke:"#54ADFF",fill:"#54ADFF"})}),e.jsxs(U,{children:[e.jsxs(q,{children:[e.jsx("span",{children:"In good hands"}),e.jsx(G,{src:E(l),alt:"name image"})]}),e.jsxs(V,{children:[e.jsx(K,{children:"Cute dog looking for a home"}),e.jsx(_,{children:e.jsx("table",{children:e.jsxs("tbody",{children:[e.jsxs("tr",{children:[e.jsx("td",{children:"Name:"}),e.jsx("td",{children:e.jsx("span",{children:c})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Birthday:"}),e.jsx("td",{children:e.jsx("span",{children:I(a)})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Type:"}),e.jsx("td",{children:e.jsx("span",{children:u})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Place:"}),e.jsx("td",{children:e.jsx("span",{children:b})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"The sex:"}),e.jsx("td",{children:e.jsx("span",{children:h})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Email:"}),e.jsx("td",{children:e.jsx("a",{href:`mailto:${p}`,children:p})})]}),e.jsxs("tr",{children:[e.jsx("td",{children:"Phone:"}),e.jsx("td",{children:e.jsx("a",{href:`tel:${f}`,children:L(f)})})]})]})})})]})]}),e.jsxs(H,{children:["Comments:",e.jsx("span",{children:w})]}),e.jsxs(J,{children:[e.jsx(Q,{onClick:y,children:n(j)}),e.jsx(X,{href:`tel:${f}`,children:"Contact"})]})]})})})}k.propTypes={active:d.bool,setShow:d.func,card:d.object};const Z=i.ul`
   display: flex;
   align-items: stretch;
   flex-direction: column;

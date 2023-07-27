@@ -1,27 +1,26 @@
-import{s as r,N as l,u as x,j as t,r as h}from"./index-07a4f5ed.js";import{F as g,a as u,E as b,c as w,b as o,d as f}from"./index.esm-9aba0521.js";const j=r.div`
-  margin-top: 42px;
+import{s as o,L as c,u as l,j as t,l as x}from"./index-18a549ce.js";import{F as h,a as g,E as u,c as b,b as r,d as w}from"./index.esm-3dd42c43.js";const f=o.div`
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   width: 280px;
-  min-height: 479px;
+  min-height: 425px;
   background-color: ${e=>e.theme.background.wight};
   border: 1px solid ${e=>e.theme.border.blue};
   border-radius: ${e=>e.theme.border.radius};
   box-shadow: ${e=>e.theme.border.shadow};
 
   @media screen and (min-width: 768px) {
-    margin-top: 88px;
-    margin-bottom: 416px;
+    margin-top: 82px;
+    //margin-bottom: 564px;
     width: 608px;
-    min-height: 629px;
+    min-height: 481px;
   }
 
   @media screen and (min-width: 1280px) {
     margin-top: 91px;
-    margin-bottom: 75px;
-    min-height: 617px;
+    // margin-bottom: 141px;
   }
-`,$=r(g)`
+`,$=o(h)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,23 +28,24 @@ import{s as r,N as l,u as x,j as t,r as h}from"./index-07a4f5ed.js";import{F as 
 
   @media screen and (min-width: 768px) {
   }
-`,y=r.h2`
+`,j=o.h2`
   color: ${e=>e.theme.color.main};
   text-align: center;
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 1.44px;
-  margin-top: 26px;
-  margin-bottom: 6px;
+  margin-top: 40px;
+  //margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;
+    //margin-bottom: 40px;
     font-size: 36px;
   }
-`,i=r(u)`
+`,i=o(g)`
   padding-left: 16px;
   margin-top: 14px;
-  width: 224px;
+  width: 248px;
   height: 48px;
   border-radius: ${e=>e.theme.border.radius};
   cursor: pointer;
@@ -69,9 +69,9 @@ import{s as r,N as l,u as x,j as t,r as h}from"./index-07a4f5ed.js";import{F as 
     height: 48px;
     margin-top: 32px;
   }
-`,n=r(b)`
+`,n=o(u)`
   color: red;
-`,S=r.button`
+`,y=o.button`
   width: 256px;
   height: 48px;
   margin-top: 40px;
@@ -82,17 +82,14 @@ import{s as r,N as l,u as x,j as t,r as h}from"./index-07a4f5ed.js";import{F as 
 
   color: ${e=>e.theme.color.wight};
   font-size: 20px;
-  font-style: normal;
   font-weight: 600;
 
   @media screen and (min-width: 768px) {
     width: 458px;
-    height: 48px;
-    padding: 10px 20px;
-    margin-top: 52px;
-    margin-bottom: 16px;
+    margin-top: 60px;
+    margin-bottom: 20px;
   }
-`,F=r(l)`
+`,S=o(c)`
   text-align: center;
   margin-bottom: 40px;
   color: ${e=>e.theme.color.grey};
@@ -103,9 +100,9 @@ import{s as r,N as l,u as x,j as t,r as h}from"./index-07a4f5ed.js";import{F as 
   @media screen and (min-width: 768px) {
     margin-bottom: 60px;
   }
-`,v=r.span`
+`,F=o.span`
   color: ${e=>e.theme.color.blue};
   font-size: 12px;
   letter-spacing: 0.48px;
   text-decoration-line: underline;
-`,P=w().shape({name:o().required(),email:o().min(6).email().required(),password:o().required(),confirmPassword:o().required()}),k={name:"",email:"",password:"",confirmPassword:""},z=()=>{const e=x(),a=({name:s,email:d,password:m},{resetForm:p})=>{e(h({name:s,email:d,password:m})).then(c=>!c.error&&p())};return t.jsx(f,{initialValues:k,onSubmit:a,validationSchema:P,children:t.jsx(j,{children:t.jsxs($,{autoComplete:"off",children:[t.jsx(y,{children:"Registration"}),t.jsx(i,{type:"text",name:"name",placeholder:"Name"}),t.jsx(n,{name:"name",component:"div"}),t.jsx(i,{type:"text",name:"email",placeholder:"Email"}),t.jsx(n,{name:"email",component:"div"}),t.jsx(i,{type:"password",name:"password",placeholder:"Password"}),t.jsx(n,{name:"password",component:"div"}),t.jsx(i,{type:"password",name:"confirmPassword",placeholder:"confirmPassword"}),t.jsx(n,{name:"confirmPassword",component:"div"}),t.jsx(S,{type:"submit",children:"Registration"}),t.jsxs(F,{to:"/login",children:["Already have a account? ",t.jsx(v,{children:"Login"})]})]})})})},q=()=>t.jsx(t.Fragment,{children:t.jsx(z,{})});export{q as default};
+`,L=b().shape({email:r().required(),password:r().required()}),k={email:"",password:""},v=()=>{const e=l(),a=({email:s,password:d},{resetForm:m})=>{e(x({email:s,password:d})).then(p=>!p.error&&m())};return t.jsx(w,{initialValues:k,onSubmit:a,validationSchema:L,children:t.jsx(f,{children:t.jsxs($,{autoComplete:"off",children:[t.jsx(j,{children:"Login"}),t.jsx(i,{type:"text",name:"email",placeholder:"Email"}),t.jsx(n,{name:"email",component:"div"}),t.jsx(i,{type:"password",name:"password",placeholder:"Password"}),t.jsx(n,{name:"password",component:"div"}),t.jsx(y,{type:"submit",children:"Login"}),t.jsxs(S,{to:"/register",children:["Does not have an account? ",t.jsx(F,{children:"Registration"})]})]})})})},q=()=>t.jsx(t.Fragment,{children:t.jsx(v,{})});export{q as default};

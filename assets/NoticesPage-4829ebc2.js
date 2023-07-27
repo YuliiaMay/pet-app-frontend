@@ -1,4 +1,4 @@
-import{s as i,a as n,b as m,j as e,N as x,c as g,d as u,O as b}from"./index-07a4f5ed.js";import{S as f,a as w}from"./Cross-89195814.js";import j from"./NoticesCategoriesList-b0022b5d.js";import"./formatDate-791aee65.js";const y=i.div`
+import{s as i,a as n,b as m,j as e,N as x,c as g,d as u,O as b}from"./index-18a549ce.js";import{S as f,a as w}from"./Cross-7ee044c4.js";import j from"./NoticesCategoriesList-9bcdc8b6.js";import"./formatDate-791aee65.js";const y=i.div`
   display: flex;
   flex-direction: column;
   align-items: center;
