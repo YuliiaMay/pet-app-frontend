@@ -61,14 +61,9 @@ export const StyledField = styled(Field)`
   width: 224px;
   height: 48px;
   border-radius: ${(props) => props.theme.border.radius};
-
-  /* border: 2px solid
-    ${(props) =>
-    props.error ? props.theme.border.error : props.theme.border.blue}; */
-
-  border: 2px solid
-    ${(props) =>
-      props.error ? props.theme.color.error : props.theme.color.blue};
+  outline: none;
+  border: ${(props) => props.border || props.theme.border.blue};
+  outline: none;
 
   &:hover,
   &:focus {

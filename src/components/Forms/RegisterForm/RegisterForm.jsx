@@ -49,6 +49,7 @@ const RegisterForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  // const [emailError, setEmailError] = useState("");
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -79,13 +80,12 @@ const RegisterForm = () => {
                 type="text"
                 name="email"
                 placeholder="Email"
-                error={errors.email}
+                border={errors.email && "1px solid red"}
               />
-              {errors.email && (
-                <InputIcon2>
-                  <img src={errorIcon} alt="error" width="24" height="24" />
-                </InputIcon2>
-              )}
+
+              <InputIcon2>
+                <img src={errorIcon} alt="error" width="24" height="24" />
+              </InputIcon2>
             </InputContainer>
             <ErrorText name="email" component="div" />
 
@@ -94,6 +94,7 @@ const RegisterForm = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Password"
+                border={errors.password && "1px solid red"}
                 error={errors.password || passwordError}
               />
               <InputIcon onClick={handleTogglePassword}>
@@ -112,6 +113,7 @@ const RegisterForm = () => {
                 type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Confirm password"
+                border={errors.confirmPassword && "1px solid red"}
                 error={errors.confirmPassword || confirmPasswordError}
               />
               <InputIcon onClick={handleToggleConfirmPassword}>
