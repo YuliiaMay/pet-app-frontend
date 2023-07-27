@@ -18,7 +18,6 @@ export const Header = () => {
   };
 
   const { isLoggedIn } = useAuth();
-  console.log(isLoggedIn);
 
   return (
     <Wrapper>

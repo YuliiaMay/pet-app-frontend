@@ -27,18 +27,18 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       ////////////////////////////////////////////////////
-      // .addCase(logout.pending, (state) => state)
-      // .addCase(logout.fulfilled, (state) => {
-      //   state.user = { name: null, email: null };
-      //   state.token = null;
-      //   state.isLoggedIn = false;
-      // })
-      // .addCase(logout.rejected, (state) => state)
+      .addCase(logout.pending, (state) => state)
       .addCase(logout.fulfilled, (state) => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
+      .addCase(logout.rejected, (state) => state)
+      // .addCase(logout.fulfilled, (state) => {
+      //   state.user = { name: null, email: null };
+      //   state.token = null;
+      //   state.isLoggedIn = false;
+      // })
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })

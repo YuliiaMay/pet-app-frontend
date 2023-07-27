@@ -12,25 +12,19 @@ import {
 } from "./UserNav.styled";
 
 import { logout } from "../../../redux/authSlice/operations";
-// import useAuth from "../../../redux/authSlice/useAuth";
-
-// import { useAuth } from "../../../redux/authSlice/useAuth";
 
 const UserNav = ({ toggleMenu }) => {
   console.log("UserNav rendering");
-  // const { user } = useAuth();
-  // console.log(user.user);
-  const user = useSelector(selectUser);
-  // const { isLoggedIn, user } = useAuth();
-  console.log(user.user.name);
+  // const user = useSelector(selectUser);
+
   const dispatch = useDispatch();
-  if (!user) {
-    return (
-      <Wrapper>
-        <p>Loading...</p>
-      </Wrapper>
-    );
-  }
+  // if (!user.user) {
+  //   return (
+  //     <Wrapper>
+  //       <p>Loading...</p>
+  //     </Wrapper>
+  //   );
+  // }
   return (
     <Wrapper>
       <LogoutBtn to="/logout" onClick={() => dispatch(logout())}>
@@ -46,12 +40,12 @@ const UserNav = ({ toggleMenu }) => {
       <UserLink to="/user" onClick={toggleMenu}>
         <Box>
           <Avatar />
-          {user && user.user.name ? (
+          {/* /* {user && user.user.name ? (
             <div>{user.user.name}</div>
           ) : (
             <div>No user data</div>
-          )}
-          {/* <UserName>{user.name}</UserName> */}
+          )} */}
+          <UserName>Alex</UserName>
         </Box>
       </UserLink>
     </Wrapper>
