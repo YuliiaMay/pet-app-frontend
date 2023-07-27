@@ -131,30 +131,30 @@ export const Ul = styled.ul`
 `;
 
 export const Li = styled.li`
-    cursor: pointer;
-    align-items: center;
-    background-color: ${(props) => props.theme.background.lightBlue};
-    border-radius: 16px;
-    color: ${(props) => props.theme.color.main};
-    stroke: ${(props) => props.theme.color.blue};
-    display: flex;
-    gap: 3px;
-    justify-content: center;
-    width: 81px;
-    height: 28px;
-    padding: 0 5px;
+  cursor: pointer;
+  align-items: center;
+  background-color: ${(props) => props.theme.background.lightBlue};
+  border-radius: 16px;
+  color: ${(props) => props.theme.color.main};
+  stroke: ${(props) => props.theme.color.blue};
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  width: 81px;
+  height: 28px;
+  padding: 0 5px;
 
-    transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
+  transition: 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
-    &:hover,
-    &:focus {
-        background-color: ${(props) => props.theme.background.accentBlue} 
-        transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
-        color: ${(props) => props.theme.color.wight}
-    }
-    &:hover > svg {
-    stroke: ${(props) => props.theme.color.wight}
-    transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
+  &:hover,
+  &:focus {
+    background-color: ${(props) => props.theme.background.accentBlue};
+    transition: 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    color: ${(props) => props.theme.color.wight};
+  }
+  &:hover > svg {
+    stroke: ${(props) => props.theme.color.wight};
+    transition: 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 `;
 
@@ -182,31 +182,93 @@ export const P1 = styled.p`
 `;
 
 export const Button1 = styled.button`
-    align-items: center;
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid ${(props) => props.theme.background.accentBlue};
+  border-radius: 40px;
+  color: #54adff;
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  gap: 12px;
+  height: 38px;
+  justify-content: center;
+  letter-spacing: 0.64px;
+  margin: auto;
+  padding: 8px 28px 8px 28px;
+  position: relative;
+  width: 248px;
+  &:hover,
+  &:focus {
+    border: transparent;
+    background: linear-gradient(
+      315deg,
+      rgb(65, 158, 241) 0%,
+      rgb(155, 208, 255) 100%
+    );
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: ${(props) => props.theme.color.wight};
+    & use {
+      stroke: ${(props) => props.theme.color.wight};
+      fill: ${(props) => props.theme.color.wight};
+    }
+  }
+`;
+
+export const WrapperPagination = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: flex-end;
+  margin-bottom: 30px;
+  gap: 8px;
+
+  button {
+    line-height: 10px;
+    width: 35px;
+    height: 35px;
     background-color: transparent;
+    border-radius: 50%;
+    text-align: center;
     border: 2px solid ${(props) => props.theme.background.accentBlue};
-    border-radius: 40px;
-    color: #54adff;
-    display: flex;
-    font-size: 16px;
-    font-weight: 600;
-    gap: 12px;
-    height: 38px;
-    justify-content: center;
-    letter-spacing: 0.64px;
-    margin: auto;
-    padding: 8px 28px 8px 28px;
-    position: relative;
-    width: 248px;
-   &:hover,
-    &:focus  {
-        border: transparent;
-        background: linear-gradient(315deg, rgb(65, 158, 241) 0%, rgb(155, 208, 255) 100%);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        color: ${(props) => props.theme.color.wight};
-       & use {
-        stroke: ${props => props.theme.color.wight};
-         fill: ${props => props.theme.color.wight};
-    }        
+    &:hover {
+      background-color: ${(props) => props.theme.background.accentBlue};
+      color: white;
+    }
+    &.active {
+      cursor: not-allowed;
+      background-color: ${(props) => props.theme.background.accentBlue};
+      color: white;
+    }
+  }
+`;
+
+export const PrevPageBtn = styled.button`
+  margin-right: 40px;
+  width: 35px;
+  height: 35px;
+
+  &.disabled {
+    color: gray;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const NextPageBtm = styled.button`
+  margin-left: 40px;
+  color: #111111;
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
   }
 `;

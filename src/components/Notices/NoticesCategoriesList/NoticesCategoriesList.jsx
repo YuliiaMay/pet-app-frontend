@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+
 import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
 
@@ -25,8 +27,12 @@ import {
   Div3,
   P1,
   Button1,
+  WrapperPagination,
+  PrevPageBtn,
+  NextPageBtm,
 } from "./NoticesPetCard.styled";
 import { useLocation } from "react-router-dom";
+import usePagination from "../../UI/Pagination/usePagination";
 
 const NoticesCategoriesList = () => {
   const [visibleCards, setVisibleCards] = useState([]);
@@ -59,6 +65,20 @@ const NoticesCategoriesList = () => {
     return newFormat;
   };
 
+  const {
+    firstContentIndex,
+    lastContentIndex,
+    nextPage,
+    prevPage,
+    page,
+    gaps,
+    setPage,
+    totalPages,
+  } = usePagination({
+    contentPerPage: 2,
+    count: visibleCards.length,
+  });
+
   useEffect(() => {
     let visible = [];
     if (location.pathname === "/notices/sell") {
@@ -73,80 +93,129 @@ const NoticesCategoriesList = () => {
   }, [location.pathname, notices]);
 
   return (
-    <ResponsiveContainer>
-      <List>
-        {visibleCards.map((item) => (
-          <Info key={item._id}>
-            <Div>
-              <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
-              <Div1>
-                <PP>{item.category}</PP>
-                <Div2>
-                  <Button aria-label="add to favorites">
-                    <Icon
-                      iconName={"icon-heart"}
-                      width={"24px"}
-                      height={"24px"}
-                      stroke={"#54ADFF"}
-                      fill={"#54ADFF"}
-                    />
-                  </Button>
-                </Div2>
-              </Div1>
-              <Ul>
-                <Li>
-                  <Icon
-                    iconName={"icon-location"}
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{item.place}</Span>
-                </Li>
-                <Li>
-                  <Icon
-                    iconName={"icon-clock"}
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{formatYears(item.birthday)} year</Span>
-                </Li>
-                <Li>
-                  <Icon
-                    iconName={
-                      item.sex === "female" ? "icon-female" : "icon-male"
-                    }
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{item.sex}</Span>
-                </Li>
-              </Ul>
-            </Div>
-            <Div3>
-              {/* {item.title} */}
-              <P1>{formattingOverview(item.title)}</P1>
-              <Button1 onClick={() => handleClickCards(item)}>
-                <span>Learn more</span>
-                <Icon
-                  iconName={"icon-pawprint"}
-                  width={"24px"}
-                  height={"24px"}
-                  stroke={"#54ADFF"}
-                  fill={"#54ADFF"}
-                />
-              </Button1>
-            </Div3>
-          </Info>
-        ))}
-      </List>
-      <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
-    </ResponsiveContainer>
+    <>
+      <ResponsiveContainer>
+        <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
+        <>
+          <List>
+            {visibleCards
+              .slice(firstContentIndex, lastContentIndex)
+              .map((item) => (
+                <Info key={item._id}>
+                  <Div>
+                    <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
+                    <Div1>
+                      <PP>{item.category}</PP>
+                      <Div2>
+                        <Button aria-label="add to favorites">
+                          <Icon
+                            iconName={"icon-heart"}
+                            width={"24px"}
+                            height={"24px"}
+                            stroke={"#54ADFF"}
+                            fill={"#54ADFF"}
+                          />
+                        </Button>
+                      </Div2>
+                    </Div1>
+                    <Ul>
+                      <Li>
+                        <Icon
+                          iconName={"icon-location"}
+                          width={"24px"}
+                          height={"24px"}
+                          stroke={"#54ADFF"}
+                          fill={"#54ADFF"}
+                        />
+                        <Span>{item.place}</Span>
+                      </Li>
+                      <Li>
+                        <Icon
+                          iconName={"icon-clock"}
+                          width={"24px"}
+                          height={"24px"}
+                          stroke={"#54ADFF"}
+                          fill={"#54ADFF"}
+                        />
+                        <Span>{formatYears(item.birthday)} year</Span>
+                      </Li>
+                      <Li>
+                        <Icon
+                          iconName={
+                            item.sex === "female" ? "icon-female" : "icon-male"
+                          }
+                          width={"24px"}
+                          height={"24px"}
+                          stroke={"#54ADFF"}
+                          fill={"#54ADFF"}
+                        />
+                        <Span>{item.sex}</Span>
+                      </Li>
+                    </Ul>
+                  </Div>
+                  <Div3>
+                    {/* {item.title} */}
+                    <P1>{formattingOverview(item.title)}</P1>
+                    <Button1 onClick={() => handleClickCards(item)}>
+                      <span>Learn more</span>
+                      <Icon
+                        iconName={"icon-pawprint"}
+                        width={"24px"}
+                        height={"24px"}
+                        stroke={"#54ADFF"}
+                        fill={"#54ADFF"}
+                      />
+                    </Button1>
+                  </Div3>
+                </Info>
+              ))}
+          </List>
+        </>
+        <p>
+          {page}/{totalPages}
+        </p>
+        {visibleCards.length >= 10 && (
+          <WrapperPagination>
+            <PrevPageBtn
+              onClick={prevPage}
+              className={`page ${page === 1 && "disabled"}`}
+            >
+              <GoArrowLeft />
+            </PrevPageBtn>
+            <button
+              onClick={() => setPage(1)}
+              className={`page ${page === 1 && "active"}`}
+            >
+              1
+            </button>
+            {gaps.before ? "..." : null}
+
+            {gaps.paginationGroup.map((el) => (
+              <button
+                onClick={() => setPage(el)}
+                key={el}
+                className={`page ${page === el ? "active" : ""}`}
+              >
+                {el}
+              </button>
+            ))}
+            {gaps.after ? "..." : null}
+            <button
+              onClick={() => setPage(totalPages)}
+              className={`page ${page === totalPages && "active"}`}
+            >
+              {totalPages}
+            </button>
+            <NextPageBtm
+              onClick={nextPage}
+              className={`page ${page === totalPages && "disabled"}`}
+            >
+              <GoArrowRight />
+            </NextPageBtm>
+          </WrapperPagination>
+        )}
+      </ResponsiveContainer>
+    </>
   );
 };
 
