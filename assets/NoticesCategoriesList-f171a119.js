@@ -1,4 +1,4 @@
-import{s as i,a as x,n as D,j as e,P as g,I as l,p as C,i as z,u as $,q as N,R as A}from"./index-c8bc82c5.js";import{f as P}from"./formatDate-791aee65.js";const I=t=>t.notices.items,B="/pet-app-frontend/assets/defaultPoster-d1161abc.jpeg",S=t=>t||B,E=t=>t.replace(/[.\-/\\\s]/g,"");function L(t){if(!t)return;const o=new Date,r=new Date(o.getFullYear(),o.getMonth(),o.getDate()),d=new Date(t),c=new Date(r.getFullYear(),d.getMonth(),d.getDate());let s;return s=r.getFullYear()-d.getFullYear(),r<c&&(s=s-1),s}const M=i.div`
+import{s as i,a as x,n as D,j as e,P as g,I as l,p as C,i as z,u as $,q as N,R as A}from"./index-b8a133f9.js";import{f as P}from"./formatDate-791aee65.js";const I=t=>t.notices.items,B="/pet-app-frontend/assets/defaultPoster-d1161abc.jpeg",S=t=>t||B,E=t=>t.replace(/[.\-/\\\s]/g,"");function L(t){if(!t)return;const o=new Date,r=new Date(o.getFullYear(),o.getMonth(),o.getDate()),d=new Date(t),c=new Date(r.getFullYear(),d.getMonth(),d.getDate());let s;return s=r.getFullYear()-d.getFullYear(),r<c&&(s=s-1),s}const M=i.div`
   display: flex;
   justify-content: center;
   align-items: center;
