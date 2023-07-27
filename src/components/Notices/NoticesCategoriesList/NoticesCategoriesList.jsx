@@ -26,12 +26,15 @@ import {
 } from "./NoticesPetCard.styled";
 import { useLocation } from "react-router-dom";
 import { CommonItemList } from "../CommonItemList/CommonItemList";
+import ModalApproveDelete from "../../Modals/ModalApproveDelete/ModalApproveDelete";
 
 const NoticesCategoriesList = () => {
   const [visibleCards, setVisibleCards] = useState([]);
   const [fetching, setFetching] = useState(true);
 
   const [showModal, setShowModal] = useState(false);
+
+  const [showModalDelete, setShowModalDelete] = useState(true);
   const [oneCard, setOneCard] = useState(null);
   const location = useLocation();
 
@@ -48,6 +51,10 @@ const NoticesCategoriesList = () => {
   const handleClickCards = (item) => {
     setShowModal(true);
     setOneCard(item);
+  };
+
+  const handleClickDelete = () => {
+    setShowModalDelete(true);
   };
 
   const formattingOverview = (text) => {
@@ -105,6 +112,14 @@ const NoticesCategoriesList = () => {
                       stroke={"#54ADFF"}
                     />
                   </Button>
+                  <Button type="button" onClick={() => handleClickDelete()}>
+                    <Icon
+                      iconName={"icon-trash"}
+                      width={"24px"}
+                      height={"24px"}
+                      stroke={"#54ADFF"}
+                    />
+                  </Button>
                 </Div2>
               </Div1>
               <Ul>
@@ -121,6 +136,7 @@ const NoticesCategoriesList = () => {
                 </CommonItemList>
               </Ul>
             </Div>
+
             <Div3>
               <P1>{formattingOverview(item.title)}</P1>
               <Button1 onClick={() => handleClickCards(item)}>
@@ -138,6 +154,11 @@ const NoticesCategoriesList = () => {
         ))}
       </List>
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
+
+      <ModalApproveDelete
+        active={showModalDelete}
+        setShow={setShowModalDelete}
+      />
     </ResponsiveContainer>
   );
 };
