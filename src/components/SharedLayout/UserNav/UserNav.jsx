@@ -17,13 +17,20 @@ import { logout } from "../../../redux/authSlice/operations";
 // import { useAuth } from "../../../redux/authSlice/useAuth";
 
 const UserNav = ({ toggleMenu }) => {
+  console.log("UserNav rendering");
   // const { user } = useAuth();
   // console.log(user.user);
-  // const user = useSelector(selectUser);
-  // console.log(user);
+  const user = useSelector(selectUser);
   // const { isLoggedIn, user } = useAuth();
-  // console.log(isLoggedIn, user.user.name);
+  console.log(user.user.name);
   const dispatch = useDispatch();
+  if (!user) {
+    return (
+      <Wrapper>
+        <p>Loading...</p>
+      </Wrapper>
+    );
+  }
   return (
     <Wrapper>
       <LogoutBtn to="/logout" onClick={() => dispatch(logout())}>
@@ -39,7 +46,12 @@ const UserNav = ({ toggleMenu }) => {
       <UserLink to="/user" onClick={toggleMenu}>
         <Box>
           <Avatar />
-          {/* <UserName>{user.user.name}</UserName> */}
+          {user && user.user.name ? (
+            <div>{user.user.name}</div>
+          ) : (
+            <div>No user data</div>
+          )}
+          {/* <UserName>{user.name}</UserName> */}
         </Box>
       </UserLink>
     </Wrapper>
