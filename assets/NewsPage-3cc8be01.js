@@ -1,8 +1,8 @@
-import{s,e as c,f as x,P as h,j as e,a,u as g,R as f}from"./index-f76223bf.js";import{f as m}from"./formatDate-791aee65.js";const w=s.div`
+import{s,e as c,f as x,P as h,j as e,a as n,u as g,R as f,d as m}from"./index-82b2997e.js";import{f as w}from"./formatDate-791aee65.js";const u=s.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`,u=s.h1`
+`,b=s.h1`
   font-size: 24px;
   line-height: 1.375;
   margin: 0;
@@ -12,7 +12,7 @@ import{s,e as c,f as x,P as h,j as e,a,u as g,R as f}from"./index-f76223bf.js";i
     font-size: 48px;
     padding: 80px 0 0 0;
   }
-`,b=s.ul`
+`,j=s.ul`
   display: flex;
   flex-direction: column;
   row-gap: 44px;
@@ -29,7 +29,7 @@ import{s,e as c,f as x,P as h,j as e,a,u as g,R as f}from"./index-f76223bf.js";i
     row-gap: 46px;
     margin-top: 80px;
   }
-`;c.defaults.baseURL="https://pets-zywq.onrender.com/api";const j=x("news/getall",async(i,n)=>{try{return(await c.get("/news/getall")).data}catch(t){return n.rejectWithValue(t.message)}}),y=s.li`
+`;c.defaults.baseURL="https://pets-zywq.onrender.com/api";const y=x("news/getall",async(o,i)=>{try{return(await c.get("/news/getall")).data}catch(t){return i.rejectWithValue(t.message)}}),N=s.li`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ import{s,e as c,f as x,P as h,j as e,a,u as g,R as f}from"./index-f76223bf.js";i
   border-radius: 20px;
   min-height: 578px;
   width: 280px;
-  background-color: ${i=>i.theme.color.wight};
+  background-color: ${o=>o.theme.color.wight};
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
@@ -67,7 +67,7 @@ import{s,e as c,f as x,P as h,j as e,a,u as g,R as f}from"./index-f76223bf.js";i
   @media (min-width: 1280px) {
     width: calc((100% - 32px * 2) / 3);
   }
-`,N=s.div`
+`,v=s.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -77,7 +77,7 @@ import{s,e as c,f as x,P as h,j as e,a,u as g,R as f}from"./index-f76223bf.js";i
 
   border-radius: 20px;
   overflow: hidden;
-`,v=s.div`
+`,D=s.div`
   display: flex;
   flex-direction: column;
   padding: 16px 12px 12px;
@@ -86,7 +86,7 @@ import{s,e as c,f as x,P as h,j as e,a,u as g,R as f}from"./index-f76223bf.js";i
 
   font-size: 16px;
   line-height: 1.38;
-`,D=s.h4`
+`,L=s.h4`
   margin-bottom: 15px;
   display: block;
 
@@ -107,11 +107,11 @@ import{s,e as c,f as x,P as h,j as e,a,u as g,R as f}from"./index-f76223bf.js";i
   color: #888888;
 `,R=s.a`
   font-weight: medium;
-  color: ${i=>i.theme.color.blue};
+  color: ${o=>o.theme.color.blue};
   text-decoration: none;
 
   &:hover,
   :focus {
-    color: ${i=>i.theme.color.yellow};
+    color: ${o=>o.theme.color.yellow};
   }
-`,p=({dataNews:i})=>{const n=t=>{let r=t;return r.length>50&&(r=t.slice(0,80)+"..."),r};return e.jsx(e.Fragment,{children:i.map(t=>e.jsxs(y,{children:[e.jsx(N,{children:e.jsx("img",{src:t.imgUrl,alt:t.title})}),e.jsxs(v,{children:[e.jsx(D,{children:t.title}),e.jsx(T,{children:n(t.text)}),e.jsxs(k,{children:[e.jsx(z,{children:m(t.date)}),e.jsx(R,{href:t.url,target:"_blank",rel:"noreferrer",children:"Read more"})]})]})]},t._id))})};p.propTypes={dataNews:h.array};function F(){const[i,n]=a.useState([]),[t,r]=a.useState(!0),l=g();a.useEffect(()=>(t&&(async()=>{try{const o=await l(j());n(o.payload)}catch(o){console.log(o.message)}r(!1)})(),()=>{r(!1)}),[l,t]);const d=i.slice(0,20);return e.jsx(f,{children:e.jsx(b,{children:e.jsx(p,{dataNews:d})})})}const I=()=>e.jsx(e.Fragment,{children:e.jsxs(w,{children:[e.jsx(u,{children:"News"}),e.jsx(F,{})]})});export{I as default};
+`,p=({dataNews:o})=>{const i=t=>{let r=t;return r.length>50&&(r=t.slice(0,80)+"..."),r};return e.jsx(e.Fragment,{children:o.map(t=>e.jsxs(N,{children:[e.jsx(v,{children:e.jsx("img",{src:t.imgUrl,alt:t.title})}),e.jsxs(D,{children:[e.jsx(L,{children:t.title}),e.jsx(T,{children:i(t.text)}),e.jsxs(k,{children:[e.jsx(z,{children:w(t.date)}),e.jsx(R,{href:t.url,target:"_blank",rel:"noreferrer",children:"Read more"})]})]})]},t._id))})};p.propTypes={dataNews:h.array};function I(){const[o,i]=n.useState([]),[t,r]=n.useState(!0),l=g();n.useEffect(()=>{(async()=>{try{const a=await l(y());i(a.payload)}catch(a){console.log(a.message)}r(!1)})()},[l]);const d=o.slice(0,20);return e.jsx(f,{children:e.jsx(j,{children:t?e.jsx(m,{}):e.jsx(p,{dataNews:d})})})}const P=()=>e.jsx(e.Fragment,{children:e.jsxs(u,{children:[e.jsx(b,{children:"News"}),e.jsx(I,{})]})});export{P as default};
