@@ -25,7 +25,7 @@ export function ModalCongrats({ active, setShow }) {
           <CloseIcon onClick={handleClickClose}>X</CloseIcon>
           <SideInfo>Your registration is successful</SideInfo>
           <GoProfileBtn onClick={handleClickClose}>
-            Go to profile{" "}
+            Go to profile
             <Icon
               iconName={"icon-pawprint"}
               width={"24px"}
