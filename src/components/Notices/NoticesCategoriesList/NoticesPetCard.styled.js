@@ -182,31 +182,36 @@ export const P1 = styled.p`
 `;
 
 export const Button1 = styled.button`
-    align-items: center;
-    background-color: transparent;
-    border: 2px solid ${(props) => props.theme.background.accentBlue};
-    border-radius: 40px;
-    color: #54adff;
-    display: flex;
-    font-size: 16px;
-    font-weight: 600;
-    gap: 12px;
-    height: 38px;
-    justify-content: center;
-    letter-spacing: 0.64px;
-    margin: auto;
-    padding: 8px 28px 8px 28px;
-    position: relative;
-    width: 248px;
-   &:hover,
-    &:focus  {
-        border: transparent;
-        background: linear-gradient(315deg, rgb(65, 158, 241) 0%, rgb(155, 208, 255) 100%);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        color: ${(props) => props.theme.color.wight};
-       & use {
-        stroke: ${props => props.theme.color.wight};
-         fill: ${props => props.theme.color.wight};
-    }        
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid ${(props) => props.theme.background.accentBlue};
+  border-radius: 40px;
+  color: #54adff;
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  gap: 12px;
+  height: 38px;
+  justify-content: center;
+  letter-spacing: 0.64px;
+  margin: auto;
+  padding: 8px 28px 8px 28px;
+  position: relative;
+  width: 248px;
+  &:hover,
+  &:focus {
+    border: transparent;
+    background: linear-gradient(
+      315deg,
+      rgb(65, 158, 241) 0%,
+      rgb(155, 208, 255) 100%
+    );
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: ${(props) => props.theme.color.wight};
+    & use {
+      stroke: ${(props) => props.theme.color.wight};
+      fill: ${(props) => props.theme.color.wight};
+    }
   }
 `;
