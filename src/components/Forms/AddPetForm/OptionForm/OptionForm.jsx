@@ -20,10 +20,10 @@ const OptionForm = () => {
     };
 
     const onNextStep = () => {
-        if (category === "pet"
+        if (category === "your pet"
             || category === "sell"
-            || category === "lost-found"
-            || category === "in-good-hands"
+            || category === "lost"
+            || category === "good hands"
         ) {
             dispatch(
                 formStage(2)
@@ -37,7 +37,7 @@ const OptionForm = () => {
                 <li>
                     <CategoryOption
                         type="button"
-                        value={"pet"}
+                        value={"your pet"}
                         onClick={handleSelectCategory}
                     >your pet</CategoryOption>
                 </li>
@@ -51,14 +51,14 @@ const OptionForm = () => {
                 <li>
                     <CategoryOption
                         type="button"
-                        value={"lost-found"}
+                        value={"lost"}
                         onClick={handleSelectCategory}                        
                     >lost/found</CategoryOption>
                 </li>
                 <li>
                     <CategoryOption
                         type="button"
-                        value={"in-good-hands"}
+                        value={"good hands"}
                         onClick={handleSelectCategory}                        
                     >in good hands</CategoryOption>
                 </li>                    
