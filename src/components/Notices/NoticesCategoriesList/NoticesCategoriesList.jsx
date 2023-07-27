@@ -1,10 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
+
 import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
-import PropTypes from "prop-types";
+
 import { Icon } from "../../../components/Icon/Icon";
 import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
+import { formatYears } from "../../../utils";
+import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
+
 import {
   List,
   Info,
@@ -15,25 +20,77 @@ import {
   Div2,
   Button,
   Ul,
-  Li,
-  Span,
   Div3,
   P1,
   Button1,
 } from "./NoticesPetCard.styled";
+import { useLocation } from "react-router-dom";
+import { CommonItemList } from "../CommonItemList/CommonItemList";
 
 const NoticesCategoriesList = () => {
-  const notieces = useSelector(selectNotieces);
+  const [visibleCards, setVisibleCards] = useState([]);
+  const [fetching, setFetching] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
+  const [oneCard, setOneCard] = useState(null);
+  const location = useLocation();
+
+  const notices = useSelector(selectNotieces);
+
   const dispatch = useDispatch();
-  // console.log(notieces);
 
   useEffect(() => {
+    if (!fetching) return;
     dispatch(fetchNotices());
-  }, [dispatch]);
+    setFetching(false);
+  }, [dispatch, fetching]);
+
+  const handleClickCards = (item) => {
+    setShowModal(true);
+    setOneCard(item);
+  };
+
+  const formattingOverview = (text) => {
+    let newFormat = text;
+    if (newFormat.length > 15) {
+      newFormat = text.slice(0, 15) + "...";
+    }
+    return newFormat;
+  };
+
+  const formattingOverviewCity = (text) => {
+    let newFormat = text;
+    if (newFormat.length > 6) {
+      newFormat = text.slice(0, 4) + "...";
+    }
+    return newFormat;
+  };
+
+  const formattingOverviewYear = (text) => {
+    let newFormat = text;
+    if (newFormat.length > 6) {
+      newFormat = text.slice(0, 4) + "...";
+    }
+    return newFormat;
+  };
+
+  useEffect(() => {
+    let visible = [];
+    if (location.pathname === "/notices/sell") {
+      visible = notices.filter((ite) => ite.category === "sale");
+    } else if (location.pathname === "/notices/lost-found") {
+      visible = notices.filter((ite) => ite.category === "lost/found");
+    } else if (location.pathname === "/notices/for-free") {
+      visible = notices.filter((ite) => ite.category === "in good hands");
+    }
+
+    setVisibleCards(visible);
+  }, [location.pathname, notices]);
+
   return (
     <ResponsiveContainer>
       <List>
-        {notieces.map((item) => (
+        {visibleCards.map((item) => (
           <Info key={item._id}>
             <Div>
               <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
@@ -46,49 +103,27 @@ const NoticesCategoriesList = () => {
                       width={"24px"}
                       height={"24px"}
                       stroke={"#54ADFF"}
-                      fill={"#54ADFF"}
                     />
                   </Button>
                 </Div2>
               </Div1>
               <Ul>
-                <Li>
-                  <Icon
-                    iconName={"icon-location"}
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{item.place}</Span>
-                </Li>
-                <Li>
-                  <Icon
-                    iconName={"icon-clock"}
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{item.birthday}</Span>
-                </Li>
-                <Li>
-                  <Icon
-                    iconName={
-                      item.sex === "Female" ? "icon-female" : "icon-male"
-                    }
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                  <Span>{item.sex}</Span>
-                </Li>
+                <CommonItemList iconName={"icon-location"}>
+                  {formattingOverviewCity(item.place)}
+                </CommonItemList>
+                <CommonItemList iconName={"icon-clock"}>
+                  {formattingOverviewYear(formatYears(item.birthday) + " year")}
+                </CommonItemList>
+                <CommonItemList
+                  iconName={item.sex === "female" ? "icon-female" : "icon-male"}
+                >
+                  {item.sex}
+                </CommonItemList>
               </Ul>
             </Div>
             <Div3>
-              <P1>Сute dog looking for a home</P1>
-              <Button1>
+              <P1>{formattingOverview(item.title)}</P1>
+              <Button1 onClick={() => handleClickCards(item)}>
                 <span>Learn more</span>
                 <Icon
                   iconName={"icon-pawprint"}
@@ -102,6 +137,7 @@ const NoticesCategoriesList = () => {
           </Info>
         ))}
       </List>
+      <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
     </ResponsiveContainer>
   );
 };

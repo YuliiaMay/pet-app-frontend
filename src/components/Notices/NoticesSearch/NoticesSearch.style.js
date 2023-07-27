@@ -64,12 +64,11 @@ export const ButtonSearch = styled.button`
   height: 24px;
   border: none;
   background-color: inherit;
-  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-  right: ${(props) => (props.pos ? "47px" : "20px")};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  right: ${(props) => (props.position ? "47px" : "20px")};
 
   @media (max-width: 480px) {
-    right: ${(props) => (props.pos ? "37px" : "13px")};
+    right: ${(props) => (props.position ? "37px" : "13px")};
   }
 `;
 

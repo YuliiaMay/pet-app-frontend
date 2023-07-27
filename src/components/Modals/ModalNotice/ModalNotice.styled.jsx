@@ -61,6 +61,7 @@ export const ImgWrapper = styled.div`
   margin: 0 auto;
 
   overflow: hidden;
+  /* object-fit: cover; */
 
   border-radius: 0px 0px 40px 40px;
   span {
@@ -85,6 +86,7 @@ export const ImgWrapper = styled.div`
 export const ImgCards = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `;
 
 export const Title = styled.h2`
