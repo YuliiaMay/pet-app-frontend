@@ -169,7 +169,7 @@ export const WrapperBtn = styled.div`
 
   margin-bottom: 0;
   @media screen and (min-width: 768px) {
-    display: inline-flex;
+    display: flex;
     justify-content: end;
 
     flex-direction: row;
@@ -246,7 +246,7 @@ export const ContactLink = styled.a`
     color: #ffffff;
   }
   @media screen and (min-width: 768px) {
-    /* display: inline-flex;
-    justify-content: end; */
+    display: inline-flex;
+    justify-content: end;
   }
 `;

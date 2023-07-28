@@ -19,7 +19,7 @@ export const NoticesSearch = () => {
   //* Значення інпута записуємо в стейт
   const handleChangeSearchQuery = (e) => {
     const searchQuery = e.currentTarget.value.toLowerCase();
-    setSearchParams({ query: searchQuery });
+
     setSearchQuery(searchQuery);
   };
 
@@ -31,12 +31,14 @@ export const NoticesSearch = () => {
       return;
     }
 
+    setSearchParams({ search: searchQuery });
+    setSearchQuery(searchQuery);
     // onSubmit(searchQuery);
     setSearchQuery("");
   };
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const queryMovies = searchParams.get("query") ?? "";
+  searchParams.get("search") ?? "";
 
   const handleDelete = () => {
     setSearchQuery("");
@@ -51,9 +53,14 @@ export const NoticesSearch = () => {
           type="text"
           placeholder="Search"
           value={searchQuery}
+          autoComplete="off"
           onChange={handleChangeSearchQuery}
         />
-        <ButtonSearch type="submit" position={searchQuery}>
+        <ButtonSearch
+          type="submit"
+          position={searchQuery}
+          onSubmit={handleSubmit}
+        >
           <Search />
         </ButtonSearch>
         {searchQuery !== "" && (

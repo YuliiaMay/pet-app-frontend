@@ -6,14 +6,15 @@ axios.defaults.baseURL = "https://pets-zywq.onrender.com/api";
 export const fetchNotices = createAsyncThunk(
   "notices/getAll",
   async (data, thunkAPI) => {
-    const { page, category } = data;
+    const { page, category, search } = data;
 
     try {
-      const response = await axios.get("/notices/search?", {
+      const response = await axios.get("/notices/search", {
         params: {
           category: category,
           page: page,
-          limit: 5,
+          limit: 10,
+          word: search,
         },
       });
 

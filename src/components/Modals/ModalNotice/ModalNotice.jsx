@@ -34,6 +34,8 @@ export function ModalNotice({ active, setShow, card }) {
     phone,
     text,
     favorite,
+    title,
+    category,
   } = card;
 
   const handleClickClose = () => {
@@ -83,11 +85,11 @@ export function ModalNotice({ active, setShow, card }) {
           </CloseIcon>
           <ContainerInfo>
             <ImgWrapper>
-              <span>In good hands</span>
+              <span>{category}</span>
               <ImgCards src={checkPoster(imgUrl)} alt="name image" />
             </ImgWrapper>
             <WrapperInfo>
-              <Title>Cute dog looking for a home</Title>
+              <Title>{title}</Title>
 
               <WrapperListInfo>
                 <table>

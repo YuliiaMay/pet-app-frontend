@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import Pagination from "rc-pagination";
 import PropTypes from "prop-types";
 
-import Pagination from "rc-pagination";
-
+import { Icon } from "../../../components/Icon/Icon";
 import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
 
-import { Icon } from "../../../components/Icon/Icon";
-
-import { formatYears } from "../../../utils";
 import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
+import { CommonItemList } from "../CommonItemList/CommonItemList";
+
+import { formatYears, scrollToTop } from "../../../utils";
 
 import {
   List,
@@ -27,11 +28,7 @@ import {
   Button1,
   WrapperPagination,
 } from "./NoticesPetCard.styled";
-
 import "../../../assets/index.less";
-import { useLocation } from "react-router-dom";
-import { CommonItemList } from "../CommonItemList/CommonItemList";
-import scrollToTop from "../../../utils/scrollToTop";
 
 const NoticesCategoriesList = () => {
   const [fetching, setFetching] = useState(true);
@@ -43,16 +40,27 @@ const NoticesCategoriesList = () => {
   const [oneCard, setOneCard] = useState(null);
   const location = useLocation();
 
-  const notices = useSelector(selectNotieces);
+  const search = new URLSearchParams(location.search).get("search");
+
+  const resp = useSelector(selectNotieces);
+
+  const { notices, lenght } = resp;
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!fetching) return;
-    dispatch(fetchNotices({ page: currentPage, category: currentCategory }));
+  useMemo(() => {
+    dispatch(
+      fetchNotices({
+        page: currentPage,
+        category: currentCategory,
+        search: search,
+      })
+    );
+    // if (!fetching) return;
+
     scrollToTop();
     setFetching(false);
-  }, [currentCategory, currentPage, dispatch, fetching]);
+  }, [currentCategory, currentPage, dispatch, search]);
 
   const handleClickCards = (item) => {
     setShowModal(true);
@@ -91,7 +99,7 @@ const NoticesCategoriesList = () => {
       setCurrentCategory("lost/found");
       setFetching(true);
     } else if (location.pathname === "/notices/for-free") {
-      setCurrentCategory("for/free");
+      setCurrentCategory("in good hands");
       setFetching(true);
     }
     setCurrentPage(1);
@@ -105,61 +113,68 @@ const NoticesCategoriesList = () => {
   return (
     <>
       <List>
-        {notices.map((item) => (
-          <Info key={item._id}>
-            <Div>
-              <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
-              <Div1>
-                <PP>{item.category}</PP>
-                <Div2>
-                  <Button aria-label="add to favorites">
-                    <Icon
-                      iconName={"icon-heart"}
-                      width={"24px"}
-                      height={"24px"}
-                      stroke={"#54ADFF"}
-                    />
-                  </Button>
-                </Div2>
-              </Div1>
-              <Ul>
-                <CommonItemList iconName={"icon-location"}>
-                  {formattingOverviewCity(item.place)}
-                </CommonItemList>
-                <CommonItemList iconName={"icon-clock"}>
-                  {formattingOverviewYear(formatYears(item.birthday) + " year")}
-                </CommonItemList>
-                <CommonItemList
-                  iconName={item.sex === "female" ? "icon-female" : "icon-male"}
-                >
-                  {item.sex}
-                </CommonItemList>
-              </Ul>
-            </Div>
-            <Div3>
-              <P1>{formattingOverview(item.title)}</P1>
-              <Button1 onClick={() => handleClickCards(item)}>
-                <span>Learn more</span>
-                <Icon
-                  iconName={"icon-pawprint"}
-                  width={"24px"}
-                  height={"24px"}
-                  stroke={"#54ADFF"}
-                  fill={"#54ADFF"}
-                />
-              </Button1>
-            </Div3>
-          </Info>
-        ))}
+        {notices &&
+          notices.map((item) => (
+            <Info key={item._id}>
+              <Div>
+                <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
+                <Div1>
+                  <PP>{item.category}</PP>
+                  <Div2>
+                    <Button aria-label="add to favorites">
+                      <Icon
+                        iconName={"icon-heart"}
+                        width={"24px"}
+                        height={"24px"}
+                        stroke={"#54ADFF"}
+                      />
+                    </Button>
+                  </Div2>
+                </Div1>
+                <Ul>
+                  <CommonItemList iconName={"icon-location"}>
+                    {formattingOverviewCity(item.place)}
+                  </CommonItemList>
+                  <CommonItemList iconName={"icon-clock"}>
+                    {formattingOverviewYear(
+                      formatYears(item.birthday) + " year"
+                    )}
+                  </CommonItemList>
+                  <CommonItemList
+                    iconName={
+                      item.sex === "female" ? "icon-female" : "icon-male"
+                    }
+                  >
+                    {item.sex}
+                  </CommonItemList>
+                </Ul>
+              </Div>
+              <Div3>
+                <P1>{formattingOverview(item.title)}</P1>
+                <Button1 onClick={() => handleClickCards(item)}>
+                  <span>Learn more</span>
+                  <Icon
+                    iconName={"icon-pawprint"}
+                    width={"24px"}
+                    height={"24px"}
+                    stroke={"#54ADFF"}
+                    fill={"#54ADFF"}
+                  />
+                </Button1>
+              </Div3>
+            </Info>
+          ))}
       </List>
       <WrapperPagination>
-        <Pagination
-          onChange={onChange}
-          current={currentPage}
-          showLessItems
-          total={40}
-          showTitle={false}
-        />
+        {lenght <= 10 || (
+          <Pagination
+            onChange={onChange}
+            current={currentPage}
+            showLessItems
+            total={lenght}
+            showTitle={false}
+          />
+        )}
       </WrapperPagination>
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
     </>
