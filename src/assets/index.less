@@ -1,13 +1,13 @@
 @pagination-prefix-cls: rc-pagination;
 
 @primary-color: #ffffff;
-@pagination-item-bg: #1e263d;
+@pagination-item-bg: #ffffff;
 @pagination-item-size: 48px;
-@pagination-item-size-sm: 24px;
+@pagination-item-size-sm: 16px;
 @pagination-font-family: Arial;
 @pagination-font-weight-active: 700;
-@pagination-item-bg-active: #3657cb;
-@pagination-item-link-bg: #1e263d;
+@pagination-item-bg-active: #54adff;
+@pagination-item-link-bg: #ffffff;
 @pagination-item-disabled-color-active: #fff;
 @pagination-item-disabled-bg-active: darken(hsv(0, 0, 96%), 10%);
 @pagination-item-input-bg: #fff;
@@ -15,7 +15,7 @@
 .@{pagination-prefix-cls} {
   margin: 0;
   padding: 0;
-  font-size: 14px;
+  font-size: 16px;
 
   ul,
   ol {
@@ -30,7 +30,8 @@
     height: 0;
     overflow: hidden;
     visibility: hidden;
-    content: " ";
+
+    content: "";
   }
 
   &-total-text {
@@ -42,8 +43,8 @@
   }
 
   &-item {
-    width: 73px;
-    height: 73px;
+    width: 35px;
+    height: 35px;
     display: inline-block;
     min-width: @pagination-item-size;
     height: @pagination-item-size;
@@ -54,8 +55,8 @@
     vertical-align: middle;
     list-style: none;
     background-color: @pagination-item-bg;
-    border: none;
-    border-radius: 15px;
+    border-radius: 50%;
+
     outline: 0;
     cursor: pointer;
     user-select: none;
@@ -63,11 +64,16 @@
     a {
       display: block;
       padding: 0 6px;
-      color: rgba(255, 255, 255, 0.85);
+      color: #000;
       transition: none;
+      border-radius: 50%;
+      border: 2px solid #54adff;
+      transition: all 0.3s;
 
       &:hover {
         text-decoration: none;
+
+        background: #54adff;
       }
     }
 
@@ -91,7 +97,7 @@
 
       &:focus,
       &:hover {
-        border-color: #40a9ff;
+        border-color: #005fad;
       }
 
       &:focus a,
@@ -109,6 +115,10 @@
       background: transparent;
       border: none;
       cursor: pointer;
+      color: #40a9ff;
+      background: #000;
+      margin: 0 auto;
+
       color: #666;
     }
 
@@ -153,6 +163,7 @@
 
     &:hover button {
       border-color: #40a9ff;
+      background: #54adff;
     }
 
     .@{pagination-prefix-cls}-item-link {
@@ -163,10 +174,12 @@
       text-align: center;
       background-color: @pagination-item-link-bg;
       border: none;
-      border-radius: 20px;
+      border-radius: 50%;
+      border: 2px solid #54adff;
+
       outline: none;
       transition: all 0.3s;
-      color: #ffffff;
+      color: #54adff;
     }
 
     &:focus .@{pagination-prefix-cls}-item-link,
@@ -177,12 +190,12 @@
   }
 
   &-prev button:after {
-    content: "‹";
+    content: "‹-";
     display: block;
   }
 
   &-next button:after {
-    content: "›";
+    content: "-›";
     display: block;
   }
 
@@ -219,7 +232,7 @@
     &-size-changer.rc-select {
       display: inline-block;
       width: auto;
-      margin-right: 8px;
+      margin-right: 18px;
     }
 
     &-quick-jumper {

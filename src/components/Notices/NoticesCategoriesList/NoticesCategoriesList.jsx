@@ -25,6 +25,7 @@ import {
   Div3,
   P1,
   Button1,
+  WrapperPagination,
 } from "./NoticesPetCard.styled";
 import "../../../assets/index.less";
 import { useLocation } from "react-router-dom";
@@ -95,7 +96,15 @@ const NoticesCategoriesList = () => {
     setCurrentPage(page);
     setFetching(true);
   };
-
+  const buttonItemRender = (current, type, element) => {
+    if (type === "prev") {
+      return <button type="button">Prev</button>;
+    }
+    if (type === "next") {
+      return <button type="button">Next</button>;
+    }
+    return element;
+  };
   return (
     <ResponsiveContainer>
       <List>
@@ -146,7 +155,14 @@ const NoticesCategoriesList = () => {
           </Info>
         ))}
       </List>
-      <Pagination onChange={onChange} total={250} />
+      <WrapperPagination>
+        <Pagination
+          onChange={onChange}
+          itemRender={buttonItemRender}
+          current={currentPage}
+          total={250}
+        />
+      </WrapperPagination>
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
     </ResponsiveContainer>
   );

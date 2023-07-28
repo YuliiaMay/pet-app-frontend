@@ -83,9 +83,7 @@ export const PP = styled.p`
 
 export const Div2 = styled.div`
   display: block;
-  
 `;
-
 
 export const Button = styled.button`
   align-items: center;
@@ -100,17 +98,17 @@ export const Button = styled.button`
   margin: 0;
   padding: 0;
   width: 40px;
-  fill: #CCE4FB;
+  fill: #cce4fb;
   &:hover,
   focus {
-    background-color: ${props => props.theme.background.lightBlue};
+    background-color: ${(props) => props.theme.background.lightBlue};
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
- &:hover >  svg {
+  &:hover > svg {
     stroke: ${(props) => props.theme.color.blue};
-     fill: ${(props) => props.theme.color.blue};
+    fill: ${(props) => props.theme.color.blue};
     //  box-shadow: ${(props) => props.theme.color.blue} 0px 2px 8px 0px;
-    }      
+  }
 `;
 
 export const Ul = styled.ul`
@@ -138,15 +136,12 @@ export const Ul = styled.ul`
   }
 `;
 
-
-
 export const Span = styled.span`
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
   line-height: 16px;
 `;
-
 
 export const Div3 = styled.div`
   display: flex;
@@ -167,63 +162,74 @@ export const P1 = styled.p`
   line-height: 33px;
 `;
 
-
 export const Button1 = styled.button`
-    align-items: center;
-    background-color: transparent;
-    border: 2px solid ${(props) => props.theme.background.accentBlue};
-    border-radius: 40px;
-    color: #54adff;
-    display: flex;
-    font-size: 16px;
-    font-weight: 600;
-    gap: 12px;
-    height: 38px;
-    justify-content: center;
-    letter-spacing: 0.64px;
-    margin: auto;
-    padding: 8px 28px 8px 28px;
-    position: relative;
-    width: 248px;
-    &:hover,
-    &:focus  {
-        border: transparent;
-        background: linear-gradient(315deg, rgb(65, 158, 241) 0%, rgb(155, 208, 255) 100%);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        color: ${(props) => props.theme.color.wight};
-       & use {
-        stroke: ${props => props.theme.color.wight};
-         fill: ${props => props.theme.color.wight};
-    }        
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid ${(props) => props.theme.background.accentBlue};
+  border-radius: 40px;
+  color: #54adff;
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  gap: 12px;
+  height: 38px;
+  justify-content: center;
+  letter-spacing: 0.64px;
+  margin: auto;
+  padding: 8px 28px 8px 28px;
+  position: relative;
+  width: 248px;
+  &:hover,
+  &:focus {
+    border: transparent;
+    background: linear-gradient(
+      315deg,
+      rgb(65, 158, 241) 0%,
+      rgb(155, 208, 255) 100%
+    );
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: ${(props) => props.theme.color.wight};
+    & use {
+      stroke: ${(props) => props.theme.color.wight};
+      fill: ${(props) => props.theme.color.wight};
+    }
   }
 `;
 
-
 export const Li = styled.li`
-    cursor: pointer;
-    align-items: center;
-    background-color: ${(props) => props.theme.background.lightBlue};
-    border-radius: 16px;
-    color: ${(props) => props.theme.color.main};
-    stroke: ${(props) => props.theme.color.blue};
-    display: flex;
-    gap: 3px;
-    justify-content: center;
-    width: 81px;
-    height: 28px;
-    padding: 0 5px;
+  cursor: pointer;
+  align-items: center;
+  background-color: ${(props) => props.theme.background.lightBlue};
+  border-radius: 16px;
+  color: ${(props) => props.theme.color.main};
+  stroke: ${(props) => props.theme.color.blue};
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  width: 81px;
+  height: 28px;
+  padding: 0 5px;
 
-    transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
+  transition: 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
-    &:hover,
-    &:focus {
-        background-color: ${(props) => props.theme.background.accentBlue};
-        transition: 250ms cubic-bezier(0.215,0.61,0.355,1);
-        color: ${(props) => props.theme.color.wight};
-         & use {
-        stroke: ${props => props.theme.color.wight};
-         fill: ${props => props.theme.color.wight};
-    }  
+  &:hover,
+  &:focus {
+    background-color: ${(props) => props.theme.background.accentBlue};
+    transition: 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    color: ${(props) => props.theme.color.wight};
+    & use {
+      stroke: ${(props) => props.theme.color.wight};
+      fill: ${(props) => props.theme.color.wight};
     }
-         
+  }
+`;
+
+export const WrapperPagination = styled.div`
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+  /* align-items: flex-end; */
+  margin-bottom: 30px;
+  /* gap: 8px; */
 `;
