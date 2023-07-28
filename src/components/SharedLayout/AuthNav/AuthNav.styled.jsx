@@ -25,16 +25,12 @@ export const LogInBtn = styled(NavLink)`
   align-items: center;
   color: #fef9f9;
   background-color: #ffc107;
-  font-size: 16px;
-  font-family: Manrope;
   font-weight: 700;
   padding: 8px 20px;
   border-radius: 40px;
   border: 1px;
 `;
 export const RegisterBtn = styled(NavLink)`
-  font-size: 16px;
-  font-family: Manrope;
   font-weight: 700;
   padding: 8px 20px;
   color: #ffc107;
