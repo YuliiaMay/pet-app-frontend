@@ -7,25 +7,22 @@ export const fetchNotices = createAsyncThunk(
   "notices/getAll",
   async (data, thunkAPI) => {
     const { page, category } = data;
-    console.log("page", category);
+
     try {
       const response = await axios.get("/notices/search?", {
         params: {
           category: category,
           page: page,
-          limit: 4,
+          limit: 5,
         },
       });
-      console.log("response", response);
+
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.mesaage);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-// "lost/found";
-// sale;
-// "Red ant";
 
 export const fetchNoticeById = createAsyncThunk(
   "notices/getById",
@@ -34,7 +31,7 @@ export const fetchNoticeById = createAsyncThunk(
       const response = await axios.get(`/notices/${id}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.mesaage);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

@@ -8,7 +8,7 @@ import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
 
 import { Icon } from "../../../components/Icon/Icon";
-import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
+
 import { formatYears } from "../../../utils";
 import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
 
@@ -27,28 +27,32 @@ import {
   Button1,
   WrapperPagination,
 } from "./NoticesPetCard.styled";
+
 import "../../../assets/index.less";
 import { useLocation } from "react-router-dom";
 import { CommonItemList } from "../CommonItemList/CommonItemList";
+import scrollToTop from "../../../utils/scrollToTop";
 
 const NoticesCategoriesList = () => {
-  const [visibleCards, setVisibleCards] = useState([]);
   const [fetching, setFetching] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [currentCategory, setCurrentCategory] = useState("sale");
 
   const [showModal, setShowModal] = useState(false);
   const [oneCard, setOneCard] = useState(null);
   const location = useLocation();
 
   const notices = useSelector(selectNotieces);
-  console.log("notices", notices.length);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!fetching) return;
-    dispatch(fetchNotices({ page: currentPage, category: "lost/found" }));
+    dispatch(fetchNotices({ page: currentPage, category: currentCategory }));
+    scrollToTop();
     setFetching(false);
-  }, [currentPage, dispatch, fetching]);
+  }, [currentCategory, currentPage, dispatch, fetching]);
 
   const handleClickCards = (item) => {
     setShowModal(true);
@@ -80,35 +84,28 @@ const NoticesCategoriesList = () => {
   };
 
   useEffect(() => {
-    let visible = [];
     if (location.pathname === "/notices/sell") {
-      visible = notices.filter((ite) => ite.category === "sale");
+      setCurrentCategory("sale");
+      setFetching(true);
     } else if (location.pathname === "/notices/lost-found") {
-      visible = notices.filter((ite) => ite.category === "lost/found");
+      setCurrentCategory("lost/found");
+      setFetching(true);
     } else if (location.pathname === "/notices/for-free") {
-      visible = notices.filter((ite) => ite.category === "in good hands");
+      setCurrentCategory("for/free");
+      setFetching(true);
     }
-
-    setVisibleCards(visible);
-  }, [location.pathname, notices]);
+    setCurrentPage(1);
+  }, [location.pathname]);
 
   const onChange = (page) => {
     setCurrentPage(page);
     setFetching(true);
   };
-  const buttonItemRender = (current, type, element) => {
-    if (type === "prev") {
-      return <button type="button">Prev</button>;
-    }
-    if (type === "next") {
-      return <button type="button">Next</button>;
-    }
-    return element;
-  };
+
   return (
-    <ResponsiveContainer>
+    <>
       <List>
-        {visibleCards.map((item) => (
+        {notices.map((item) => (
           <Info key={item._id}>
             <Div>
               <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
@@ -158,13 +155,14 @@ const NoticesCategoriesList = () => {
       <WrapperPagination>
         <Pagination
           onChange={onChange}
-          itemRender={buttonItemRender}
           current={currentPage}
-          total={250}
+          showLessItems
+          total={40}
+          showTitle={false}
         />
       </WrapperPagination>
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
-    </ResponsiveContainer>
+    </>
   );
 };
 
