@@ -27,14 +27,15 @@ import {
 import { useLocation } from "react-router-dom";
 import { CommonItemList } from "../CommonItemList/CommonItemList";
 import ModalApproveDelete from "../../Modals/ModalApproveDelete/ModalApproveDelete";
+import ModalAttention from "../../Modals/ModalAttention/ModalAttention";
 
 const NoticesCategoriesList = () => {
   const [visibleCards, setVisibleCards] = useState([]);
   const [fetching, setFetching] = useState(true);
 
   const [showModal, setShowModal] = useState(false);
-
-  const [showModalDelete, setShowModalDelete] = useState(true);
+  const [showModalAttention, setShowModalAttention] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const [oneCard, setOneCard] = useState(null);
   const location = useLocation();
 
@@ -57,10 +58,13 @@ const NoticesCategoriesList = () => {
     setShowModalDelete(true);
   };
 
+  const handleOpenAttention = () => {
+    setShowModalAttention(true);
+  };
   const formattingOverview = (text) => {
     let newFormat = text;
     if (newFormat.length > 15) {
-      newFormat = text.slice(0, 15) + "...";
+      newFormat = text.slice(0, 21) + "...";
     }
     return newFormat;
   };
@@ -104,7 +108,11 @@ const NoticesCategoriesList = () => {
               <Div1>
                 <PP>{item.category}</PP>
                 <Div2>
-                  <Button aria-label="add to favorites">
+                  <Button
+                    aria-label="add to favorites"
+                    type="button"
+                    onClick={() => handleOpenAttention()}
+                  >
                     <Icon
                       iconName={"icon-heart"}
                       width={"24px"}
@@ -158,6 +166,11 @@ const NoticesCategoriesList = () => {
       <ModalApproveDelete
         active={showModalDelete}
         setShow={setShowModalDelete}
+      />
+
+      <ModalAttention
+        active={showModalAttention}
+        setShow={setShowModalAttention}
       />
     </ResponsiveContainer>
   );
