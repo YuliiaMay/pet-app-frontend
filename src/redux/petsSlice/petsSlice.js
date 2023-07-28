@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addPet } from "./operations";
+// import { addPet } from "./operations";
 
 
 const initialState = {
@@ -16,8 +16,8 @@ const initialState = {
     },
     MoreInfoForm: {
         sex: "",
-        imgUrl: "",
-        text: "",
+        avatar: "https://www.vetstreet.com/wp-content/uploads/2022/10/default-image.png",
+        comments: "",
         location: "",
         price: ""
     },
@@ -26,14 +26,14 @@ const initialState = {
     error: null    
 };
 
-const handlePending = state => {
-    state.isLoading = true;
-};
+// const handlePending = state => {
+//     state.isLoading = true;
+// };
 
-const handleRejected = (state, action) => {
-    state.isLoading = false;
-    state.error = action.payload;
-};
+// const handleRejected = (state, action) => {
+//     state.isLoading = false;
+//     state.error = action.payload;
+// };
 
 const petSlice = createSlice({
     name: 'pet',
@@ -44,14 +44,15 @@ const petSlice = createSlice({
         detailsForm: (state, action) => { state.DetailsForm = action.payload },
         moreInfoForm: (state, action) => { state.MoreInfoForm = action.payload },
     },
-    extraReducers: {
-        [addPet.pending]: handlePending,
-        [addPet.refected]: handleRejected,
-        [addPet.fulfilled](state, action) {
-            state.isLoading = false;
-            state.error = null
-        }
-    }
+    // extraReducers: {
+    //     [addPet.pending]: handlePending,
+    //     [addPet.refected]: handleRejected,
+    //     [addPet.fulfilled](state, action) {
+    //         state.isLoading = false;
+    //         state.error = null;
+    //         state.items.push(action.payload);
+    //     }
+    // }
 });
 
 export const { formStage, optionForm, detailsForm, moreInfoForm } = petSlice.actions
