@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import defaultAvatar from "../../../../images/default-avatar.png"
 
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
-import { useRef, useState } from "react";
-import { formStage, moreInfoForm } from "../../../../redux/petsSlice/petsSlice";
+import { useState } from "react";
+import { formStage } from "../../../../redux/petsSlice/petsSlice";
 import {
     selectAvatarURL,
-    selectComment,
+    selectComments,
     selectLocation,
     selectPrice,
     selectSex,
@@ -15,15 +15,20 @@ import {
     selectBirthday,
     selectBreed,
     selectTitle,
-    selectType
+    selectType,
 } from "../../../../redux/petsSlice/selectors";
 import { addPet } from "../../../../redux/petsSlice/operations";
+// import UploadImage from "../UploadImage/UploadImage";
+
 
 
 const MoreInfoForm = () => {
-    const dispatch = useDispatch();
-    const inputRef = useRef(null);
     const [image, setImage] = useState(null);
+    const [imageInfo, setImageInfo] = useState('');
+    const dispatch = useDispatch();
+
+    
+
     const [thirdStageData, setThirdStageData] = useState({
             category: useSelector(selectCategory) || "",
             name: useSelector(selectName) || "",
@@ -32,45 +37,47 @@ const MoreInfoForm = () => {
             title: useSelector(selectTitle) || "",
             type: useSelector(selectType) || "",
             sex: useSelector(selectSex) || "",
-            imgUrl: useSelector(selectAvatarURL) || "",
-            text: useSelector(selectComment) || "",
+            avatar: useSelector(selectAvatarURL) || "",
+            comments: useSelector(selectComments) || "",
             location: useSelector(selectLocation) || "",
             price: useSelector(selectPrice) || ""
     });
 
-    const handleChange = ({target}) => {
-        const { name, value } = target;
 
+    const handleGetFile = (e) => {
+        let file = e.target.files[0];
+        setImageInfo(file);
+
+
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setImage(reader.result)
+        };
+        reader.readAsDataURL(file);
+
+        // setThirdStageData({
+        //     ...thirdStageData,
+        //     avatar: imageInfo
+        // })        
+    };
+
+
+    const handleChange = ({ target }) => {
+        const { name, value } = target;
 
         setThirdStageData({
             ...thirdStageData,
-            [name]: value
+            [name]: value,
         })
-    }
-
-    const handleUploadAvatar = () => {
-        inputRef.current.click();
     };
 
-    const handleImageChange = ({ target }) => {
-        const file = target.files[0];
-        setImage(file);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(
-            moreInfoForm({
-                sex: thirdStageData.sex,
-                imgUrl: thirdStageData.imgUrl,
-                text: thirdStageData.text,
-                location: thirdStageData.location,
-                price: thirdStageData.price               
-            })
-        )
-        dispatch(
-            formStage("success")
-        );
+
+        // const formData = new FormData();
+        // formData.append('avatar', imageInfo)
 
         const newPetOrPost = {
             category: thirdStageData.category,
@@ -80,57 +87,52 @@ const MoreInfoForm = () => {
             title: thirdStageData.title,
             type: thirdStageData.type,
             sex: thirdStageData.sex,
-            imgUrl: thirdStageData.imgUrl,
-            text: thirdStageData.text,
+            avatar: imageInfo,
+            comments: thirdStageData.comments,
             location: thirdStageData.location,
-            price: thirdStageData.price             
-        }
-
-        console.log(newPetOrPost);
+            price: thirdStageData.price
+        };
 
         dispatch(addPet(newPetOrPost));
+
+        dispatch(
+            formStage("success")
+        );
+
     }
 
 
     return ( 
         <>
             <div>
-                <div onClick={handleUploadAvatar}>
-                    <label htmlFor="pet-avatar">Load the pet’s image:</label>
-                    <input
-                        id="pet-avatar"
-                        type="file"
-                        ref={inputRef}
-                        name="imgUrl"
-                        onClick={handleImageChange}
-                        onChange={handleChange}
-                        style={{display: "none"}}
-                    />
-                    {
-                        image
-                            ? <img
-                                id="image"
-                                src={URL.createObjectURL(image)}
-                                alt="pet`s photo"
-                                style={{ width: 182, height: 182}}/>
-                            : <img
-                                src={defaultAvatar}
-                                alt="pet`s photo" />
-                    }
-                    
-                </div>
 
+                <div>
+                    <label htmlFor="upload"></label>
+                    <div>
+                        {
+                            !image && <img src={defaultAvatar} alt="pet`s photo" />
+                        }
+                    </div>
+                    <input
+                        type="file"
+                        name="upload"
+                        id="upload"
+                        onChange={(e) => handleGetFile(e)}
+                    />
+                </div>
                 <div>
                     <label htmlFor="comment">Comments</label>
                     <textarea
                         type="text"
                         id="comment"
                         placeholder="Type of pet"
-                        name="text"
+                        name="comments"
                         onChange={handleChange}
                     ></textarea>
                 </div>
-                <FormBtnNav onClick={handleSubmit} />
+                <FormBtnNav
+                    onClick={handleSubmit}
+                />
             </div>
         </>
         
