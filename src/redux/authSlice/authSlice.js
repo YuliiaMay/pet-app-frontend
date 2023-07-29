@@ -3,8 +3,16 @@ import { register, login, logout, refreshUser } from "./operations";
 
 const initialStateAuth = {
   user: {
+    avatar: null,
+    favorites: [],
+    _id: null,
     name: null,
     email: null,
+    password: null,
+    pets: [],
+    token: null,
+    phone: null,
+    city: null
   },
   token: null,
   isLoggedIn: false,
