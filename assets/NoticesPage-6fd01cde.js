@@ -1,4 +1,4 @@
-import{s as o,r as n,b as f,c as b,j as t,N as l,d as w,e as j,O as S}from"./index-73a3c5b5.js";import{S as y,a as v}from"./Cross-2cd6eceb.js";import"./NoticesCategoriesList-21217096.js";import"./index-7c6f2bda.js";import"./ModalComponents-8e521fe2.js";const k=o.div`
+import{s as o,r as n,b as f,c as b,j as t,N as l,d as w,e as j,O as S}from"./index-4cbd0a26.js";import{S as y,a as v}from"./Cross-7f516238.js";import"./NoticesCategoriesList-e3635689.js";import"./index-0e75b309.js";import"./ModalComponents-ed4e6788.js";const k=o.div`
   display: flex;
   flex-direction: column;
   align-items: center;
