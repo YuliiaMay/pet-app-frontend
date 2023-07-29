@@ -31,8 +31,7 @@ import {
 
 import "../../../assets/index.less";
 
-import { useLocation } from "react-router-dom";
-import { CommonItemList } from "../CommonItemList/CommonItemList";
+
 import ModalApproveDelete from "../../Modals/ModalApproveDelete/ModalApproveDelete";
 import ModalAttention from "../../Modals/ModalAttention/ModalAttention";
 
@@ -82,13 +81,13 @@ const NoticesCategoriesList = () => {
   };
 
 
-  const handleClickDelete = () => {
-    setShowModalDelete(true);
-  };
+  // const handleClickDelete = () => {
+  //   setShowModalDelete(true);
+  // };
 
-  const handleOpenAttention = () => {
-    setShowModalAttention(true);
-  };
+  // const handleOpenAttention = () => {
+  //   setShowModalAttention(true);
+  // };
 
   const formattingOverview = (text) => {
     let newFormat = text;
@@ -188,7 +187,7 @@ const NoticesCategoriesList = () => {
             </Info>
           ))}
 
-        {visibleCards.map((item) => (
+        {/* {visibleCards.map((item) => (
           <Info key={item._id}>
             <Div>
               <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
@@ -246,7 +245,7 @@ const NoticesCategoriesList = () => {
               </Button1>
             </Div3>
           </Info>
-        ))}
+        ))} */}
 
       </List>
       <WrapperPagination>
@@ -262,9 +261,6 @@ const NoticesCategoriesList = () => {
       </WrapperPagination>
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
 
-    </>
-
-
       <ModalApproveDelete
         active={showModalDelete}
         setShow={setShowModalDelete}
@@ -273,10 +269,13 @@ const NoticesCategoriesList = () => {
       <ModalAttention
         active={showModalAttention}
         setShow={setShowModalAttention}
-      />
-    </ResponsiveContainer>
+      />      
+
+    </>
   );
 };
+
+
 
 NoticesCategoriesList.propTypes = {
   props: PropTypes.object,
