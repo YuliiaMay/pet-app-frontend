@@ -87,3 +87,63 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+/*
+ * PATCH @ /users/update
+ */
+export const updateUser = createAsyncThunk(
+  "/users/update",
+  async (user, thunkAPI) => {
+    try {
+      const response = await axios.patch('/users/update', user);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
+
+/*
+ * DELETE @ /notices/delpet/${id}
+ */
+export const deletePet = createAsyncThunk(
+  "/pet/delete",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/notices/delpet/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
+
+/*
+ * DELETE @ /notices/delnotice/${id}
+ */
+export const deleteNotices = createAsyncThunk(
+  "/notices/delete",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/notices/delnotice/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
+
+/*
+ * PATCH @ /notices/favorite/${id}
+ */
+export const addNoticeToFavorite = createAsyncThunk(
+  "/pet/delete",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/notices/favorite/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)

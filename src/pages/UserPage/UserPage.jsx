@@ -5,12 +5,14 @@
  * @format
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserAvatar } from "../../components/Forms/UserForm/UserAvatar";
 import { UserForm } from "../../components/Forms/UserForm/UserForm";
 import { ReactComponent as CloseSvg } from "../../svg/userPage/close.svg";
 import { ReactComponent as EditSvg } from "../../svg/userPage/editProfile.svg";
 import { ReactComponent as AddSvg } from "../../svg/userPage/add.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../redux/authSlice/operations";
 
 
 import { UserPetsSection } from "./UserPetsSection";
@@ -25,9 +27,17 @@ import {
   UserCardInfo,
   UserPageContainer,
 } from "./UserPage.styled";
+import { selectUser } from "../../redux/authSlice/selectors";
 
 const UserPage = () => {
   const [isUserEditing, setIsUserEditing] = useState(false);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(updateUser());
+  }, [dispatch]);
 
   const handleCloseButton = () => {
     setIsUserEditing(false);

@@ -30,15 +30,10 @@ const NoticesCategoriesList = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  const state = useSelector(selectState);
-
 
   useEffect(() => {
       dispatch(refreshUser());
   }, [dispatch]);
-
-
-  console.log(state);
 
   return isRefreshing ? (
     <Loader />

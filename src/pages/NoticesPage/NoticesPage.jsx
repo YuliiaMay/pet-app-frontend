@@ -2,7 +2,10 @@ import { NoticesSearch } from "../../components/Notices/NoticesSearch/NoticesSea
 import { NoticesFilters } from "../../components/Notices/NoticesFilters/NoticesFilters";
 import NoticesCategoriesList from "../../components/Notices/NoticesCategoriesList/NoticesCategoriesList";
 
+
 const NoticesPage = () => {
+
+
   return (
     <>
       <NoticesSearch />
