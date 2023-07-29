@@ -52,7 +52,7 @@ const NoticesCategoriesList = () => {
 
   const resp = useSelector(selectNotieces);
   const { notices, lenght } = resp;
-  console.log("notices", resp);
+  // console.log("notices", resp);
   const dispatch = useDispatch();
 
   useMemo(() => {

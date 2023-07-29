@@ -6,12 +6,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import { PublicRoute } from "./routes/PublicRoute";
 import { PrivateRoute } from "./routes/PrivateRoute";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { refreshUser } from "./redux/authSlice/operations";
 import { useAuth } from "./hooks/useAuth";
 import { Loader } from "./components/Loader/Loader";
-import { selectState, selectToken, selectIsLoggedIn } from "./redux/authSlice/selectors";
-import { selectIsLoading } from "./redux/selectors";
+
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
@@ -27,13 +26,19 @@ const NoticesCategoriesList = lazy(() =>
   import("./components/Notices/NoticesCategoriesList/NoticesCategoriesList")
 );
 
+
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+  const { isLoggedIn } = useAuth();
+
 
   useEffect(() => {
+    if (isLoggedIn) {
       dispatch(refreshUser());
-  }, [dispatch]);
+    }
+  }, [dispatch, isLoggedIn]);
+
 
   return isRefreshing ? (
     <Loader />

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, refreshUser } from "./operations";
+import { register, login, logout, refreshUser, updateUser, deletePet } from "./operations";
+import { addPetOrNotice } from "../petsSlice/operations";
 
 const initialStateAuth = {
   user: {
@@ -57,7 +58,21 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
-      }),
+      })
+      .addCase(addPetOrNotice.fulfilled, (state, { payload }) => {
+        if (payload.category === "your pet") {
+          state.user.pets.push(payload);
+        }
+        return;
+      })  
+      .addCase(deletePet.fulfilled, (state, { payload }) => {
+        const index = state.user.pets.findIndex(pet => pet._id === payload._id);
+        state.user.pets.splice(index, 1);           
+      }) 
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
+      })
+  
 });
 
 export const authReducer = authSlice.reducer;

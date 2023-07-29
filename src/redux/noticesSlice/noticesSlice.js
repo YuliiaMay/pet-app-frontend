@@ -3,8 +3,9 @@ import {
     fetchNotices,
     fetchNoticeById,
     deleteNotice,
-    addNotice
+    // addPetOrNotice as addNotice
 } from "./operations";
+import { addPetOrNotice as addNotice }  from "../petsSlice/operations";
 
 const extraOperations = [fetchNotices, fetchNoticeById, deleteNotice, addNotice];
 const getOperations = (type) =>
@@ -32,11 +33,17 @@ const fetchNoticesSuccessReduser = (state, {payload}) => {
 };
 
 const addNoticesSuccessReduser = (state, {payload}) => {
-    state.items.push(payload);
+    if (payload.addedNotice.category === "sell" ||
+        payload.addedNotice.category === "lost" ||
+        payload.addedNotice.category === "good hands"
+    ) {
+        state.items.push(payload.addedNotice);
+    }
+    return;
 };
 
 const deleteNoticesSuccessReduser = (state, {payload}) => {
-    const index = state.items.findIndex(contact => contact.id === payload.id);
+    const index = state.items.findIndex(notice => notice._id === payload._id);
     state.items.splice(index, 1);   
 };
 

@@ -37,17 +37,17 @@ export const fetchNoticeById = createAsyncThunk(
   }
 );
 
-export const addNotice = createAsyncThunk(
-  "notices/addNotices",
-  async (notice, thunkAPI) => {
-    try {
-      const response = await axios.post("/notices", notice);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const addNotice = createAsyncThunk(
+//   "notices/addNotices",
+//   async (notice, thunkAPI) => {
+//     try {
+//       const response = await axios.post("/notices/add", notice);
+//       return response.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const deleteNotice = createAsyncThunk(
   "notices/deleteNotices",

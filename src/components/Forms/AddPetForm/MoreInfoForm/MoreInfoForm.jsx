@@ -17,7 +17,7 @@ import {
   selectTitle,
   selectType,
 } from "../../../../redux/petsSlice/selectors";
-import { addPet } from "../../../../redux/petsSlice/operations";
+import { addPetOrNotice } from "../../../../redux/petsSlice/operations";
 
 const MoreInfoForm = () => {
   //   const [formData, setFormData] = useState(new FormData());
@@ -92,7 +92,7 @@ const MoreInfoForm = () => {
 
     // setFormData(updatedFormData);
 
-    dispatch(addPet(updatedFormData));
+    dispatch(addPetOrNotice(updatedFormData));
 
     dispatch(formStage("success"));
   };

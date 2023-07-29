@@ -39,7 +39,6 @@ const UserNav = ({ toggleMenu }) => {
       <UserLink to="/user" onClick={toggleMenu}>
         <Box>
           <Avatar />
-          <Avatar />
           {
             user && user.name
               ? (<UserName>{user.name}</UserName>)
