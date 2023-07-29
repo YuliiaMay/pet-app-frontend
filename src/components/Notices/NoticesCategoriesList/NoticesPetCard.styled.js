@@ -195,6 +195,7 @@ export const Button1 = styled.button`
       stroke: ${(props) => props.theme.color.wight};
       fill: ${(props) => props.theme.color.wight};
     }
+    
     @media screen and (max-width: 767px) {
       /* gap: 5px; */
     }
@@ -249,3 +250,4 @@ export const WrapperPagination = styled.div`
     width: 100%;
   }
 `;
+

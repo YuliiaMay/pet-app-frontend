@@ -1,140 +1,129 @@
 import { useDispatch, useSelector } from "react-redux";
-import defaultAvatar from "../../../../images/default-avatar.png"
+import defaultAvatar from "../../../../images/default-avatar.png";
 
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
-import { useRef, useState } from "react";
-import { formStage, moreInfoForm } from "../../../../redux/petsSlice/petsSlice";
+import { useState } from "react";
+import { formStage } from "../../../../redux/petsSlice/petsSlice";
 import {
-    selectAvatarURL,
-    selectComment,
-    selectLocation,
-    selectPrice,
-    selectSex,
-    selectCategory,
-    selectName,
-    selectBirthday,
-    selectBreed,
-    selectTitle,
-    selectType
+  selectAvatarURL,
+  selectComments,
+  selectLocation,
+  selectPrice,
+  selectSex,
+  selectCategory,
+  selectName,
+  selectBirthday,
+  selectBreed,
+  selectTitle,
+  selectType,
 } from "../../../../redux/petsSlice/selectors";
 import { addPet } from "../../../../redux/petsSlice/operations";
 
-
 const MoreInfoForm = () => {
-    const dispatch = useDispatch();
-    const inputRef = useRef(null);
-    const [image, setImage] = useState(null);
-    const [thirdStageData, setThirdStageData] = useState({
-            category: useSelector(selectCategory) || "",
-            name: useSelector(selectName) || "",
-            birthday: useSelector(selectBirthday) || "",
-            breed: useSelector(selectBreed) || "",
-            title: useSelector(selectTitle) || "",
-            type: useSelector(selectType) || "",
-            sex: useSelector(selectSex) || "",
-            imgUrl: useSelector(selectAvatarURL) || "",
-            text: useSelector(selectComment) || "",
-            location: useSelector(selectLocation) || "",
-            price: useSelector(selectPrice) || ""
+  //   const [formData, setFormData] = useState(new FormData());
+  const [image, setImage] = useState(null);
+  const [imageInfo, setImageInfo] = useState("");
+  const dispatch = useDispatch();
+
+  const [thirdStageData, setThirdStageData] = useState({
+    category: useSelector(selectCategory) || "",
+    name: useSelector(selectName) || "",
+    birthday: useSelector(selectBirthday) || "",
+    breed: useSelector(selectBreed) || "",
+    title: useSelector(selectTitle) || "",
+    type: useSelector(selectType) || "",
+    sex: useSelector(selectSex) || "",
+    file: useSelector(selectAvatarURL) || "",
+    comments: useSelector(selectComments) || "",
+    location: useSelector(selectLocation) || "",
+    price: useSelector(selectPrice) || "",
+  });
+
+  const handleGetFile = (e) => {
+    let file = e.target.files[0];
+    setImageInfo(file);
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+
+    setThirdStageData({
+      ...thirdStageData,
+      [name]: value,
     });
+  };
 
-    const handleChange = ({target}) => {
-        const { name, value } = target;
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-
-        setThirdStageData({
-            ...thirdStageData,
-            [name]: value
-        })
-    }
-
-    const handleUploadAvatar = () => {
-        inputRef.current.click();
+    const newPetOrPost = {
+      category: thirdStageData.category,
+      name: thirdStageData.name,
+      birthday: thirdStageData.birthday,
+      breed: thirdStageData.breed,
+      title: thirdStageData.title,
+      type: thirdStageData.type,
+      sex: thirdStageData.sex,
+      file: imageInfo,
+      comments: thirdStageData.comments,
+      location: thirdStageData.location,
+      price: thirdStageData.price,
     };
 
-    const handleImageChange = ({ target }) => {
-        const file = target.files[0];
-        setImage(file);
-    };
+    const updatedFormData = new FormData();
+    updatedFormData.append("category", newPetOrPost.category);
+    updatedFormData.append("name", newPetOrPost.name);
+    updatedFormData.append("birthday", newPetOrPost.birthday);
+    updatedFormData.append("breed", newPetOrPost.breed);
+    updatedFormData.append("title", newPetOrPost.title);
+    updatedFormData.append("type", newPetOrPost.type);
+    updatedFormData.append("sex", newPetOrPost.sex);
+    updatedFormData.append("file", newPetOrPost.file);
+    updatedFormData.append("comments", newPetOrPost.comments);
+    updatedFormData.append("location", newPetOrPost.location);
+    updatedFormData.append("price", newPetOrPost.price);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(
-            moreInfoForm({
-                sex: thirdStageData.sex,
-                imgUrl: thirdStageData.imgUrl,
-                text: thirdStageData.text,
-                location: thirdStageData.location,
-                price: thirdStageData.price               
-            })
-        )
-        dispatch(
-            formStage("success")
-        );
+    // setFormData(updatedFormData);
 
-        const newPetOrPost = {
-            category: thirdStageData.category,
-            name: thirdStageData.name,
-            birthday: thirdStageData.birthday,
-            breed: thirdStageData.breed,
-            title: thirdStageData.title,
-            type: thirdStageData.type,
-            sex: thirdStageData.sex,
-            imgUrl: thirdStageData.imgUrl,
-            text: thirdStageData.text,
-            location: thirdStageData.location,
-            price: thirdStageData.price             
-        }
+    dispatch(addPet(updatedFormData));
 
-        console.log(newPetOrPost);
+    dispatch(formStage("success"));
+  };
 
-        dispatch(addPet(newPetOrPost));
-    }
-
-
-    return ( 
-        <>
-            <div>
-                <div onClick={handleUploadAvatar}>
-                    <label htmlFor="pet-avatar">Load the pet’s image:</label>
-                    <input
-                        id="pet-avatar"
-                        type="file"
-                        ref={inputRef}
-                        name="imgUrl"
-                        onClick={handleImageChange}
-                        onChange={handleChange}
-                        style={{display: "none"}}
-                    />
-                    {
-                        image
-                            ? <img
-                                id="image"
-                                src={URL.createObjectURL(image)}
-                                alt="pet`s photo"
-                                style={{ width: 182, height: 182}}/>
-                            : <img
-                                src={defaultAvatar}
-                                alt="pet`s photo" />
-                    }
-                    
-                </div>
-
-                <div>
-                    <label htmlFor="comment">Comments</label>
-                    <textarea
-                        type="text"
-                        id="comment"
-                        placeholder="Type of pet"
-                        name="text"
-                        onChange={handleChange}
-                    ></textarea>
-                </div>
-                <FormBtnNav onClick={handleSubmit} />
-            </div>
-        </>
-        
-    );
-}
+  return (
+    <>
+      <div>
+        <div>
+          <label htmlFor="upload"></label>
+          <div>{!image && <img src={defaultAvatar} alt="pet`s photo" />}</div>
+          <input
+            type="file"
+            name="upload"
+            id="upload"
+            onChange={(e) => handleGetFile(e)}
+          />
+        </div>
+        <div>
+          <label htmlFor="comment">Comments</label>
+          <textarea
+            type="text"
+            id="comment"
+            placeholder="Type of pet"
+            name="comments"
+            onChange={handleChange}
+          ></textarea>
+        </div>
+        <FormBtnNav onClick={handleSubmit} />
+      </div>
+    </>
+  );
+};
 
 export default MoreInfoForm;
