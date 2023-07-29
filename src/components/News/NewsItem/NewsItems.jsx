@@ -20,6 +20,7 @@ export const NewsItem = ({ dataNews }) => {
     }
     return newFormat;
   };
+
   return (
     <>
       {dataNews.map((item) => (

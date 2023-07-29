@@ -237,6 +237,8 @@ export const WrapperPagination = styled.div`
   width: 100%;
 
   /* margin: 0 auto; */
+  margin-top: 60px;
+
   margin-bottom: 30px;
 
   @media screen and (min-width: 768px) {

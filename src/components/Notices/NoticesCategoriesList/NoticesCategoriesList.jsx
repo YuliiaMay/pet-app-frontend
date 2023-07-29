@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import Pagination from "rc-pagination";
+import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { Icon } from "../../../components/Icon/Icon";
@@ -9,8 +9,8 @@ import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
 
 import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
-import { CommonItemList } from "../CommonItemList/CommonItemList";
 
+import { CommonItemList } from "../CommonItemList/CommonItemList";
 import { formatYears, scrollToTop } from "../../../utils";
 
 import {
@@ -43,9 +43,8 @@ const NoticesCategoriesList = () => {
   const search = new URLSearchParams(location.search).get("search");
 
   const resp = useSelector(selectNotieces);
-
   const { notices, lenght } = resp;
-
+  console.log("notices", resp);
   const dispatch = useDispatch();
 
   useMemo(() => {
@@ -58,13 +57,18 @@ const NoticesCategoriesList = () => {
     );
     // if (!fetching) return;
 
-    scrollToTop();
     setFetching(false);
   }, [currentCategory, currentPage, dispatch, search]);
 
   const handleClickCards = (item) => {
     setShowModal(true);
     setOneCard(item);
+  };
+
+  const onChange = (page) => {
+    setCurrentPage(page);
+    setFetching(true);
+    scrollToTop();
   };
 
   const formattingOverview = (text) => {
@@ -105,10 +109,9 @@ const NoticesCategoriesList = () => {
     setCurrentPage(1);
   }, [location.pathname]);
 
-  const onChange = (page) => {
-    setCurrentPage(page);
-    setFetching(true);
-  };
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
 
   return (
     <>
