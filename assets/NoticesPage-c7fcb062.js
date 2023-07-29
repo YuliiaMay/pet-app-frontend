@@ -1,4 +1,4 @@
-import{s as o,r as n,b as f,c as b,j as t,N as l,d as w,e as j,O as S}from"./index-4cbd0a26.js";import{S as y,a as v}from"./Cross-7f516238.js";import"./NoticesCategoriesList-e3635689.js";import"./index-0e75b309.js";import"./ModalComponents-ed4e6788.js";const k=o.div`
+import{s as o,r as n,b as f,c as b,j as t,N as l,d as w,e as j,O as S}from"./index-a8383fd6.js";import{S as y,a as v}from"./Cross-5632a635.js";const k=o.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,4 +159,4 @@ import{s as o,r as n,b as f,c as b,j as t,N as l,d as w,e as j,O as S}from"./ind
   @media (max-width: 767px) {
     margin-left: 0px;
   }
-`,I=()=>t.jsxs(A,{to:"/add-pet",children:[t.jsx("span",{children:"Add Pet"}),t.jsx(Q,{children:t.jsx(N,{})})]}),D=()=>{const{isLoggedIn:e}=w();return t.jsxs(t.Fragment,{children:[t.jsxs(L,{children:[t.jsxs(E,{children:[t.jsx(i,{to:"/notices/sell",children:"sell"}),t.jsx(i,{to:"/notices/lost-found",children:"lost/found"}),t.jsx(i,{to:"/notices/for-free",children:"in good hands"}),e&&t.jsxs(t.Fragment,{children:[t.jsx(i,{to:"/notices/favorite",children:"favorite ads"}),t.jsx(i,{to:"/notices/own",children:"my ads"})]})]}),t.jsx(I,{})]}),t.jsx(n.Suspense,{fallback:t.jsx(j,{}),children:t.jsx(S,{})})]})},W=()=>t.jsxs(t.Fragment,{children:[t.jsx(B,{}),t.jsx(D,{})]});export{W as default};
+`,I=()=>t.jsxs(A,{to:"/add-pet",children:[t.jsx("span",{children:"Add Pet"}),t.jsx(Q,{children:t.jsx(N,{})})]}),D=()=>{const{isLoggedIn:e}=w();return t.jsxs(t.Fragment,{children:[t.jsxs(L,{children:[t.jsxs(E,{children:[t.jsx(i,{to:"/notices/sell",children:"sell"}),t.jsx(i,{to:"/notices/lost-found",children:"lost/found"}),t.jsx(i,{to:"/notices/for-free",children:"in good hands"}),e&&t.jsxs(t.Fragment,{children:[t.jsx(i,{to:"/notices/favorite",children:"favorite ads"}),t.jsx(i,{to:"/notices/own",children:"my ads"})]})]}),t.jsx(I,{})]}),t.jsx(n.Suspense,{fallback:t.jsx(j,{}),children:t.jsx(S,{})})]})},T=()=>t.jsxs(t.Fragment,{children:[t.jsx(B,{}),t.jsx(D,{})]});export{T as default};
