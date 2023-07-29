@@ -10,7 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/authSlice/operations";
 import { useAuth } from "./hooks/useAuth";
 import { Loader } from "./components/Loader/Loader";
-import { selectUser } from "./redux/authSlice/selectors";
+import { selectState, selectToken, selectIsLoggedIn } from "./redux/authSlice/selectors";
+import { selectIsLoading } from "./redux/selectors";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
@@ -29,9 +30,15 @@ const NoticesCategoriesList = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+  const state = useSelector(selectState);
+
+
   useEffect(() => {
-    dispatch(refreshUser());
+      dispatch(refreshUser());
   }, [dispatch]);
+
+
+  console.log(state);
 
   return isRefreshing ? (
     <Loader />

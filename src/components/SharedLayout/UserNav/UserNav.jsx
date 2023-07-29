@@ -14,8 +14,7 @@ import {
 import { logout } from "../../../redux/authSlice/operations";
 
 const UserNav = ({ toggleMenu }) => {
-  // console.log("UserNav rendering");
-  // const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
   // if (!user.user) {
@@ -40,12 +39,12 @@ const UserNav = ({ toggleMenu }) => {
       <UserLink to="/user" onClick={toggleMenu}>
         <Box>
           <Avatar />
-          {/* /* {user && user.user.name ? (
-            <div>{user.user.name}</div>
-          ) : (
-            <div>No user data</div>
-          )} */}
-          <UserName>Alex</UserName>
+          <Avatar />
+          {
+            user && user.name
+              ? (<UserName>{user.name}</UserName>)
+              : (<div>No user data</div>)
+          }
         </Box>
       </UserLink>
     </Wrapper>
