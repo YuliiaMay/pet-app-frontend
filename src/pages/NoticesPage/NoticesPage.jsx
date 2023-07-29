@@ -7,7 +7,7 @@ const NoticesPage = () => {
     <>
       <NoticesSearch />
       <NoticesFilters />
-      <NoticesCategoriesList />
+      {/* <NoticesCategoriesList /> */}
     </>
   );
 };

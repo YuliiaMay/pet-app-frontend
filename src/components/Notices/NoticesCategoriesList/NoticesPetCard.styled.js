@@ -24,11 +24,12 @@ export const List = styled.ul`
 `;
 
 export const Info = styled.li`
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
   width: 280px;
   padding-bottom: 24px;
-
   border-radius: 0 0 40px 40px;
 
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
@@ -82,9 +83,7 @@ export const PP = styled.p`
 `;
 
 export const Div2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: block;
 `;
 
 export const Button = styled.button`
@@ -151,8 +150,8 @@ export const Div3 = styled.div`
   height: 120px;
   justify-content: space-between;
   padding-top: 20px;
-  padding-left: 20px
-  padding-button: 0px 
+  padding-left: 20px;
+  /* padding-button: 0px; */
   padding-right: 20px;
 `;
 
@@ -196,6 +195,10 @@ export const Button1 = styled.button`
       stroke: ${(props) => props.theme.color.wight};
       fill: ${(props) => props.theme.color.wight};
     }
+    
+    @media screen and (max-width: 767px) {
+      /* gap: 5px; */
+    }
   }
 `;
 
@@ -226,3 +229,25 @@ export const Li = styled.li`
     }
   }
 `;
+
+export const WrapperPagination = styled.div`
+  display: inline-flex;
+  justify-content: center;
+
+  align-items: center;
+  width: 100%;
+
+  /* margin: 0 auto; */
+  margin-top: 60px;
+
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    /* justify-content: center; */
+
+    /* width: 357px; */
+    width: 100%;
+  }
+`;
+

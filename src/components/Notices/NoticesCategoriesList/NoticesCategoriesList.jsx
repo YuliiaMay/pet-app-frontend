@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Pagination from "rc-pagination";
+import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import { Icon } from "../../../components/Icon/Icon";
 import { selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
 
-import { Icon } from "../../../components/Icon/Icon";
-import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
-import { formatYears } from "../../../utils";
 import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
+
+import { CommonItemList } from "../CommonItemList/CommonItemList";
+import { formatYears, scrollToTop } from "../../../utils";
 
 import {
   List,
@@ -23,15 +26,22 @@ import {
   Div3,
   P1,
   Button1,
+  WrapperPagination,
 } from "./NoticesPetCard.styled";
+
+import "../../../assets/index.less";
+
 import { useLocation } from "react-router-dom";
 import { CommonItemList } from "../CommonItemList/CommonItemList";
 import ModalApproveDelete from "../../Modals/ModalApproveDelete/ModalApproveDelete";
 import ModalAttention from "../../Modals/ModalAttention/ModalAttention";
 
+
 const NoticesCategoriesList = () => {
-  const [visibleCards, setVisibleCards] = useState([]);
   const [fetching, setFetching] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [currentCategory, setCurrentCategory] = useState("sale");
 
   const [showModal, setShowModal] = useState(false);
   const [showModalAttention, setShowModalAttention] = useState(false);
@@ -39,20 +49,38 @@ const NoticesCategoriesList = () => {
   const [oneCard, setOneCard] = useState(null);
   const location = useLocation();
 
-  const notices = useSelector(selectNotieces);
+  const search = new URLSearchParams(location.search).get("search");
 
+  const resp = useSelector(selectNotieces);
+  const { notices, lenght } = resp;
+  console.log("notices", resp);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!fetching) return;
-    dispatch(fetchNotices());
+  useMemo(() => {
+    dispatch(
+      fetchNotices({
+        page: currentPage,
+        category: currentCategory,
+        search: search,
+      })
+    );
+    // if (!fetching) return;
+
     setFetching(false);
-  }, [dispatch, fetching]);
+  }, [currentCategory, currentPage, dispatch, search]);
 
   const handleClickCards = (item) => {
     setShowModal(true);
     setOneCard(item);
   };
+
+
+  const onChange = (page) => {
+    setCurrentPage(page);
+    setFetching(true);
+    scrollToTop();
+  };
+
 
   const handleClickDelete = () => {
     setShowModalDelete(true);
@@ -61,6 +89,7 @@ const NoticesCategoriesList = () => {
   const handleOpenAttention = () => {
     setShowModalAttention(true);
   };
+
   const formattingOverview = (text) => {
     let newFormat = text;
     if (newFormat.length > 15) {
@@ -86,21 +115,79 @@ const NoticesCategoriesList = () => {
   };
 
   useEffect(() => {
-    let visible = [];
     if (location.pathname === "/notices/sell") {
-      visible = notices.filter((ite) => ite.category === "sale");
+      setCurrentCategory("sale");
+      setFetching(true);
     } else if (location.pathname === "/notices/lost-found") {
-      visible = notices.filter((ite) => ite.category === "lost/found");
+      setCurrentCategory("lost/found");
+      setFetching(true);
     } else if (location.pathname === "/notices/for-free") {
-      visible = notices.filter((ite) => ite.category === "in good hands");
+      setCurrentCategory("in good hands");
+      setFetching(true);
     }
+    setCurrentPage(1);
+  }, [location.pathname]);
 
-    setVisibleCards(visible);
-  }, [location.pathname, notices]);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
 
   return (
-    <ResponsiveContainer>
+    <>
       <List>
+
+        {notices &&
+          notices.map((item) => (
+            <Info key={item._id}>
+              <Div>
+                <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
+                <Div1>
+                  <PP>{item.category}</PP>
+                  <Div2>
+                    <Button aria-label="add to favorites">
+                      <Icon
+                        iconName={"icon-heart"}
+                        width={"24px"}
+                        height={"24px"}
+                        stroke={"#54ADFF"}
+                      />
+                    </Button>
+                  </Div2>
+                </Div1>
+                <Ul>
+                  <CommonItemList iconName={"icon-location"}>
+                    {formattingOverviewCity(item.place)}
+                  </CommonItemList>
+                  <CommonItemList iconName={"icon-clock"}>
+                    {formattingOverviewYear(
+                      formatYears(item.birthday) + " year"
+                    )}
+                  </CommonItemList>
+                  <CommonItemList
+                    iconName={
+                      item.sex === "female" ? "icon-female" : "icon-male"
+                    }
+                  >
+                    {item.sex}
+                  </CommonItemList>
+                </Ul>
+              </Div>
+              <Div3>
+                <P1>{formattingOverview(item.title)}</P1>
+                <Button1 onClick={() => handleClickCards(item)}>
+                  <span>Learn more</span>
+                  <Icon
+                    iconName={"icon-pawprint"}
+                    width={"24px"}
+                    height={"24px"}
+                    stroke={"#54ADFF"}
+                    fill={"#54ADFF"}
+                  />
+                </Button1>
+              </Div3>
+            </Info>
+          ))}
+
         {visibleCards.map((item) => (
           <Info key={item._id}>
             <Div>
@@ -160,8 +247,23 @@ const NoticesCategoriesList = () => {
             </Div3>
           </Info>
         ))}
+
       </List>
+      <WrapperPagination>
+        {lenght <= 10 || (
+          <Pagination
+            onChange={onChange}
+            current={currentPage}
+            showLessItems
+            total={lenght}
+            showTitle={false}
+          />
+        )}
+      </WrapperPagination>
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
+
+    </>
+
 
       <ModalApproveDelete
         active={showModalDelete}

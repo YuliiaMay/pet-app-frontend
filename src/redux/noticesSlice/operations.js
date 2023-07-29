@@ -5,12 +5,22 @@ axios.defaults.baseURL = "https://pets-zywq.onrender.com/api";
 
 export const fetchNotices = createAsyncThunk(
   "notices/getAll",
-  async (_, thunkAPI) => {
+  async (data, thunkAPI) => {
+    const { page, category, search } = data;
+
     try {
-      const response = await axios.get("/notices/getall");
+      const response = await axios.get("/notices/search", {
+        params: {
+          category: category,
+          page: page,
+          limit: 10,
+          word: search,
+        },
+      });
+
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.mesaage);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -22,7 +32,7 @@ export const fetchNoticeById = createAsyncThunk(
       const response = await axios.get(`/notices/${id}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.mesaage);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
