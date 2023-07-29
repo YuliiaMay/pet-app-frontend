@@ -78,7 +78,7 @@ export const refreshUser = createAsyncThunk(
     }
     setAuthHeader(persistedToken);
     try {
-      // setAuthHeader(persistedToken);
+      setAuthHeader(persistedToken);
       const response = await axios.get("/users/current");
       console.log("refresh", response.data);
       return response.data;
@@ -110,7 +110,7 @@ export const deletePet = createAsyncThunk(
   "/pet/delete",
   async (id, thunkAPI) => {
     try {
-      const response = await axios.patch(`/notices/delpet/${id}`);
+      const response = await axios.delete(`/notices/delpet/${id}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
