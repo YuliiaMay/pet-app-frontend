@@ -1,6 +1,6 @@
 import formatDate from "../../../utils/formatDate";
 import PropTypes from "prop-types";
-
+import { checkPoster } from "../../../utils";
 import {
   Item,
   ImageWrapper,
@@ -28,7 +28,7 @@ export const NewsItem = ({ dataNews }) => {
       {dataNews.map((item) => (
         <Item key={item._id}>
           <ImageWrapper>
-            <img src={item.imgUrl} alt={item.title} />
+            <img src={checkPoster(item.imgUrl)} alt={item.title} />
           </ImageWrapper>
           <TextContent>
             <NewsTitle>{item.title}</NewsTitle>

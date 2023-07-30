@@ -19,13 +19,14 @@ import {
   formattingCitName,
   formattingAge,
   formattingTitle,
+  checkPoster,
 } from "../../../utils";
 
 export const CommonItemList = ({ item, children }) => {
   return (
     <Info>
       <Div>
-        <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
+        <Img src={checkPoster(item.imgUrl)} alt="pet" loading="lazy"></Img>
         <Div1>
           <PP>{item.category}</PP>
           <Div2>

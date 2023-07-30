@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectAllNews } from "../../../redux/newsSlice/selectors";
@@ -27,7 +27,7 @@ export default function NewsList() {
 
   const dispatch = useDispatch();
 
-  useMemo(() => {
+  useEffect(() => {
     dispatch(fetchNews({ page: currentPage, search: query }));
 
     setIsLoading(false);
