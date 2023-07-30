@@ -7,38 +7,21 @@ import {
   Info,
   PP,
   Ul,
+  Li,
+  Span,
 } from "./CommonItemList.styled";
 import PropTypes from "prop-types";
 
 import { Icon } from "../../../components/Icon/Icon";
 import { Div3, P1 } from "../NoticesCategoriesList/NoticesPetCard.styled";
-import { formatYears } from "../../../utils";
+import {
+  formatYears,
+  formattingCitName,
+  formattingAge,
+  formattingTitle,
+} from "../../../utils";
 
 export const CommonItemList = ({ item, children }) => {
-  const formattingOverview = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 15) {
-      newFormat = text.slice(0, 21) + "...";
-    }
-    return newFormat;
-  };
-
-  const formattingOverviewCity = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 6) {
-      newFormat = text.slice(0, 4) + "...";
-    }
-    return newFormat;
-  };
-
-  const formattingOverviewYear = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 6) {
-      newFormat = text.slice(0, 4) + "...";
-    }
-    return newFormat;
-  };
-
   return (
     <Info>
       <Div>
@@ -57,34 +40,37 @@ export const CommonItemList = ({ item, children }) => {
           </Div2>
         </Div1>
         <Ul>
-          <Icon
-            iconName={"icon-location"}
-            width={"24px"}
-            height={"24px"}
-            stroke={"#54ADFF"}
-          >
-            {formattingOverviewCity(item.place)}
-          </Icon>
-          <Icon
-            iconName={"icon-clock"}
-            width={"24px"}
-            height={"24px"}
-            stroke={"#54ADFF"}
-          >
-            {formattingOverviewYear(formatYears(item.birthday) + " year")}
-          </Icon>
-          <Icon
-            iconName={item.sex === "female" ? "icon-female" : "icon-male"}
-            width={"24px"}
-            height={"24px"}
-            stroke={"#54ADFF"}
-          >
-            {item.sex}
-          </Icon>
+          <Li>
+            <Icon
+              iconName={"icon-location"}
+              width={"24px"}
+              height={"24px"}
+              stroke={"#54ADFF"}
+            ></Icon>
+            <Span> {formattingCitName(item.place)}</Span>
+          </Li>
+          <Li>
+            <Icon
+              iconName={"icon-clock"}
+              width={"24px"}
+              height={"24px"}
+              stroke={"#54ADFF"}
+            ></Icon>
+            <Span>{formattingAge(formatYears(item.birthday) + " year")}</Span>
+          </Li>
+          <Li>
+            <Icon
+              iconName={item.sex === "female" ? "icon-female" : "icon-male"}
+              width={"24px"}
+              height={"24px"}
+              stroke={"#54ADFF"}
+            ></Icon>
+            <Span>{item.sex}</Span>
+          </Li>
         </Ul>
       </Div>
       <Div3>
-        <P1>{formattingOverview(item.title)}</P1>
+        <P1>{formattingTitle(item.title)}</P1>
         {children}
       </Div3>
     </Info>
