@@ -1,7 +1,10 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
+
 import { authReducer } from "./authSlice/authSlice";
 import { noticesReducer } from "./noticesSlice/noticesSlice";
+import { petReducer } from "./petsSlice/petsSlice";
+import { newsReducer } from "./newsSlice/newsSlice";
 
 import {
   persistStore,
@@ -13,7 +16,6 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { petReducer } from "./petsSlice/petsSlice";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -34,6 +36,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     notices: noticesReducer,
     pet: petReducer,
+    news: newsReducer,
   },
   middleware,
 

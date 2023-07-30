@@ -18,14 +18,12 @@ export const NoticesSearch = () => {
   const [CurrentPathname, setCurrentPathname] = useState("");
   const location = useLocation();
 
-  //* Значення інпута записуємо в стейт
   const handleChangeSearchQuery = (e) => {
     const searchQuery = e.currentTarget.value.toLowerCase();
 
     setSearchQuery(searchQuery);
   };
 
-  //*  Передаємо в App значення searchQuery і очищуємо форму
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim() === "") {
