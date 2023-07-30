@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Form } from "./DetailsForm.styled";
+import { StyledForm, Label, Input} from "./DetailsForm.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { detailsForm, formStage } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
-import { selectBirthday, selectBreed, selectName, selectTitle, selectType } from "../../../../redux/petsSlice/selectors";
+import { selectAllPetData, selectBirthday, selectBreed, selectCategory, selectName, selectTitle, selectType } from "../../../../redux/petsSlice/selectors";
+import { Formik } from "formik";
 
 
 const DetailsForm = () => {
     const dispatch = useDispatch();
+    const category = useSelector(selectCategory);
     const [secondStageData, setSecondStageData] = useState({
         name: useSelector(selectName) || "",
         birthday: useSelector(selectBirthday) || "",
@@ -16,15 +18,15 @@ const DetailsForm = () => {
         type: useSelector(selectType) || ""
     });
 
-
-    const handleChange = ({ target }) => {
-        const { name, value } = target;
-        
-        setSecondStageData({
-            ...secondStageData,
-            [name]: value
-        })
+    const initialDetailsFormStep = {
+        name: secondStageData.name,
+        birthday: secondStageData.birthday,
+        breed: secondStageData.breed,
+        title: secondStageData.title,
+        type: secondStageData.type   
     };
+
+
 
 
     const onNextStep = (e) => {
@@ -38,48 +40,76 @@ const DetailsForm = () => {
                 type: secondStageData.type                
             })
         )
+        // dispatch(
+        //     detailsForm(initialDetailsFormStep)
+        // )        
         dispatch(
             formStage(3)
         );
     }
 
+    const all = useSelector(selectAllPetData)
+    console.log(all);
 
     return (
-        <>
-            <Form>
-                <label htmlFor="pet-name">
+        <Formik
+            initialValues={initialDetailsFormStep}      
+            onSubmit={onNextStep}            
+        >
+            <StyledForm>
+                {
+                    (category === "sell" || "lost" || "good hands") && 
+                        <>
+                            <Label htmlFor="title">
+                                Title of add
+                            </Label>
+                            <Input
+                                placeholder="Type title for adv"
+                                type="text"
+                                id="title"
+                                name="title"
+                                // onChange={handleChange}
+                            />      
+                        </>                        
+                }
+
+                
+                <Label htmlFor="pet-name">
                     Pet’s name
-                </label>
-                <input
+                </Label>
+                <Input
+                    placeholder="Type name pet"
                     type="text"
                     id="pet-name"
                     name="name"
-                    onChange={handleChange}
+                    // onChange={handleChange}
                 />
                 
-                <label htmlFor="pet-birth">
+                <Label htmlFor="pet-birth">
                     Date of birth
-                </label> 
-                <input
+                </Label> 
+                <Input
+                    // placeholder="Type date of birth"
                     type="date"
                     id="pet-birth"
                     name="birthday"
-                    onChange={handleChange}
+                    // onChange={handleChange}
                 />
                 
-                <label htmlFor="pet-type">
+                <Label htmlFor="pet-type">
                     Type
-                </label>
-                <input
-                    type="text"
+                </Label>
+                <Input
+                    placeholder="Type of pet"
+                    type="type"
                     id="pet-type"
                     name="type"
-                    onChange={handleChange}
-                /> 
+                    // onChange={handleChange}
+                />
 
                 <FormBtnNav onClick={onNextStep} />
-            </Form>
-        </>
+            </StyledForm>
+        </Formik>
     );
 };
 

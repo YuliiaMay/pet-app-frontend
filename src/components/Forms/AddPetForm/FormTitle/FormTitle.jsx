@@ -1,8 +1,9 @@
 import { Title } from "./FormTitle.styled";
 
-const FormTitle = () => {
+
+const FormTitle = ({title}) => {
     return (
-        <Title>Add pet</Title>
+        <Title>{ title }</Title>
     );
 }
 
