@@ -36,6 +36,7 @@ export function ModalNotice({ active, setShow, card }) {
     favorite,
     title,
     category,
+    price,
   } = card;
 
   const handleClickClose = () => {
@@ -100,6 +101,14 @@ export function ModalNotice({ active, setShow, card }) {
                         <span>{name}</span>
                       </td>
                     </tr>
+                    {!price <= 0 && (
+                      <tr>
+                        <td>Price:</td>
+                        <td>
+                          <span>{price}</span>
+                        </td>
+                      </tr>
+                    )}
                     <tr>
                       <td>Birthday:</td>
                       <td>
