@@ -1,4 +1,4 @@
-import{s as o,j as t,k as n,L as E,u as x,o as R,m as b,r as u,p as Y,q as I}from"./index-76c7ab0b.js";const D=o.div`
+import{s as o,j as t,f as n,L as E,u as x,o as R,k as b,r as u,m as Y,p as I}from"./index-a773a42b.js";const D=o.div`
     background-color: ${e=>e.theme.background.wight};
     width: 458px;
     height: 540px;
@@ -29,17 +29,17 @@ import{s as o,j as t,k as n,L as E,u as x,o as R,m as b,r as u,p as Y,q as I}fro
     margin-top: 12px;
     background-color: ${e=>{if(e.$formStage===1)return e.theme.background.blue;if(e.$formStage>1||e.$formStage==="success")return e.theme.background.success}};           
 `,W=o.div`
-`,q=o.h2`
+`,Z=o.h2`
     font-size: 16px;
     font-weight: 500;    
     color: ${e=>e.$formStage===2?e.theme.color.blue:e.$formStage>2||e.$formStage==="success"?e.theme.color.success:e.theme.color.grey}
-`,Z=o.div`
+`,$=o.div`
     width: 120px;
     height: 8px;
     border-radius: 8px;
     margin-top: 12px;
     background-color: ${e=>e.$formStage===2?e.theme.background.blue:e.$formStage>2||e.$formStage==="success"?e.theme.background.success:e.theme.background.lightBlue};          
-`,$=o.div`
+`,q=o.div`
 `,G=o.h2`
     font-size: 16px;
     font-weight: 500;    
@@ -50,7 +50,7 @@ import{s as o,j as t,k as n,L as E,u as x,o as R,m as b,r as u,p as Y,q as I}fro
     border-radius: 8px;
     margin-top: 12px;
     background-color: ${e=>e.$formStage===3?e.theme.background.blue:e.$formStage==="success"?e.theme.background.success:e.theme.background.lightBlue};         
-`,H=()=>{const e=n(y);return t.jsxs(X,{children:[t.jsxs(K,{children:[t.jsx(V,{$formStage:e,children:"Choose  option"}),t.jsx(L,{$formStage:e})]}),t.jsx(W,{children:t.jsxs(q,{$formStage:e,children:["Personal details",t.jsx(Z,{$formStage:e})]})}),t.jsxs($,{children:[t.jsx(G,{$formStage:e,children:"More info"}),t.jsx(z,{$formStage:e})]})]})},P=o.ul`
+`,H=()=>{const e=n(y);return t.jsxs(X,{children:[t.jsxs(K,{children:[t.jsx(V,{$formStage:e,children:"Choose  option"}),t.jsx(L,{$formStage:e})]}),t.jsx(W,{children:t.jsxs(Z,{$formStage:e,children:["Personal details",t.jsx($,{$formStage:e})]})}),t.jsxs(q,{children:[t.jsx(G,{$formStage:e,children:"More info"}),t.jsx(z,{$formStage:e})]})]})},P=o.ul`
     display: flex;
     flex-direction: column;
     gap: 12px;
