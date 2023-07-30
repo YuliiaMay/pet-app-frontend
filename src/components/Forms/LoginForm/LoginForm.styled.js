@@ -31,9 +31,6 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @media screen and (min-width: 768px) {
-  }
 `;
 
 export const StyledTitle = styled.h2`
@@ -52,6 +49,12 @@ export const StyledTitle = styled.h2`
   }
 `;
 
+export const InputContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
 export const StyledField = styled(Field)`
   padding-left: 16px;
   margin-top: 14px;
@@ -59,16 +62,12 @@ export const StyledField = styled(Field)`
   height: 48px;
   border-radius: ${(props) => props.theme.border.radius};
   cursor: pointer;
+  outline: none;
+  border: ${(props) => props.border || props.theme.border.blue};
 
-  border: 1px solid ${(props) => (props.theme.error ? "#F43F5E" : "#54adff")};
-
-  /* width: 100%;
-  padding: 10px 40px 10px 30px;
-  border: 1px solid ${(props) => (props.error ? "red" : "#ccc")};
-  border-radius: 4px; */
   &:hover,
   &:focus {
-    border: 1px solid ${(props) => props.theme.border.success};
+    border: 2px solid ${(props) => props.theme.color.success};
     color: ${(props) => props.theme.color.success};
   }
 
@@ -85,11 +84,59 @@ export const StyledField = styled(Field)`
   }
 `;
 
+export const InputIconShow = styled.span`
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+
+  @media screen and (min-width: 768px) {
+    top: 65%;
+    transform: translateY(-70%);
+  }
+`;
+
+export const InputIconError = styled.span`
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  color: ${(props) => props.icon || props.theme.color.error};
+
+  width: 20px;
+  height: 20px;
+
+  @media screen and (min-width: 768px) {
+    top: 65%;
+    transform: translateY(-70%);
+  }
+`;
+
+export const InputIconSuccess = styled.span`
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: ${(props) => props.theme.color.success};
+  position: absolute;
+  width: 20px;
+  height: 20px;
+
+  @media screen and (min-width: 768px) {
+    top: 72%;
+    transform: translateY(-70%);
+  }
+`;
+
 export const ErrorText = styled(ErrorMessage)`
   color: red;
   margin-top: 4px;
 `;
-
 export const SubmitButton = styled.button`
   width: 256px;
   height: 48px;
