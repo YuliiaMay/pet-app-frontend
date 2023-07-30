@@ -1,4 +1,4 @@
-import{s as o,L as c,u as x,j as t,l}from"./index-a773a42b.js";import{F as h,a as g,E as u,c as b,b as r,d as w}from"./index.esm-9557527e.js";const f=o.div`
+import{s as o,L as c,u as x,j as t,l}from"./index-5fd53603.js";import{F as h,a as g,E as u,b}from"./formik.esm-290bafac.js";import{c as w,a as r}from"./index.esm-29b88e4a.js";const f=o.div`
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -110,4 +110,4 @@ import{s as o,L as c,u as x,j as t,l}from"./index-a773a42b.js";import{F as h,a a
   font-size: 12px;
   letter-spacing: 0.48px;
   text-decoration-line: underline;
-`,L=b().shape({email:r().required(),password:r().required()}),k={email:"",password:""},v=()=>{const e=x(),a=({email:s,password:d},{resetForm:p})=>{e(l({email:s,password:d})).then(m=>!m.error&&p())};return t.jsx(w,{initialValues:k,onSubmit:a,validationSchema:L,children:t.jsx(f,{children:t.jsxs($,{autoComplete:"off",children:[t.jsx(j,{children:"Login"}),t.jsx(i,{type:"text",name:"email",placeholder:"Email"}),t.jsx(n,{name:"email",component:"div"}),t.jsx(i,{type:"password",name:"password",placeholder:"Password"}),t.jsx(n,{name:"password",component:"div"}),t.jsx(y,{type:"submit",children:"Login"}),t.jsxs(S,{to:"/register",children:["Does not have an account? ",t.jsx(F,{children:"Registration"})]})]})})})},q=()=>t.jsx(t.Fragment,{children:t.jsx(v,{})});export{q as default};
+`,L=w().shape({email:r().required(),password:r().required()}),k={email:"",password:""},v=()=>{const e=x(),a=({email:s,password:d},{resetForm:p})=>{e(l({email:s,password:d})).then(m=>!m.error&&p())};return t.jsx(b,{initialValues:k,onSubmit:a,validationSchema:L,children:t.jsx(f,{children:t.jsxs($,{autoComplete:"off",children:[t.jsx(j,{children:"Login"}),t.jsx(i,{type:"text",name:"email",placeholder:"Email"}),t.jsx(n,{name:"email",component:"div"}),t.jsx(i,{type:"password",name:"password",placeholder:"Password"}),t.jsx(n,{name:"password",component:"div"}),t.jsx(y,{type:"submit",children:"Login"}),t.jsxs(S,{to:"/register",children:["Does not have an account? ",t.jsx(F,{children:"Registration"})]})]})})})},C=()=>t.jsx(t.Fragment,{children:t.jsx(v,{})});export{C as default};
