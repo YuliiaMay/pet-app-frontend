@@ -15,14 +15,14 @@ export const Container = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-top: 88px;
-    margin-bottom: 416px;
+    //margin-bottom: 416px;
     width: 608px;
     min-height: 629px;
   }
 
   @media screen and (min-width: 1280px) {
     margin-top: 91px;
-    margin-bottom: 75px;
+    //margin-bottom: 75px;
     min-height: 617px;
   }
 `;
@@ -41,7 +41,7 @@ export const StyledTitle = styled.h2`
   font-weight: 500;
   letter-spacing: 1.44px;
   margin-top: 26px;
-  margin-bottom: 6px;
+  //margin-bottom: 6px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;
@@ -62,7 +62,7 @@ export const StyledField = styled(Field)`
   height: 48px;
   border-radius: ${(props) => props.theme.border.radius};
   outline: none;
-  border: ${(props) => props.theme.border.blue};
+  border: ${(props) => props.border || props.theme.border.blue};
   outline: none;
 
   &:hover,
@@ -84,44 +84,57 @@ export const StyledField = styled(Field)`
   }
 `;
 
-export const InputIcon = styled.span`
+export const InputIconShow = styled.span`
   position: absolute;
-  top: 65%;
+  top: 50%;
   right: 20px;
+  width: 20px;
+  height: 20px;
   transform: translateY(-50%);
-  color: ${(props) =>
-    props.error ? props.theme.color.error : props.theme.color.success};
+  /* color: ${(props) =>
+    props.error ? props.theme.color.error : props.theme.color.success}; */
+  right: ${(props) => props.position || (props.position ? "47px" : "20px")};
+  //right: ${(props) => (props.position ? "47px" : "20px")};
 
   @media screen and (min-width: 768px) {
-    top: 72%;
+    top: 65%;
+    transform: translateY(-70%);
   }
 `;
 
-export const InputIcon2 = styled.span`
+export const InputIconError = styled.span`
   position: absolute;
-  top: 65%;
+  top: 50%;
   right: 20px;
   transform: translateY(-50%);
   pointer-events: none;
-  color: ${(props) => props.theme.color.error};
-  color: #f43f5e;
+
+  color: ${(props) => props.icon || props.theme.color.error};
+  //border: ${(props) => props.border || props.theme.border.blue};
+
+  width: 20px;
+  height: 20px;
 
   @media screen and (min-width: 768px) {
-    top: 72%;
+    top: 65%;
+    transform: translateY(-70%);
   }
 `;
 
-export const InputIcon3 = styled.span`
+export const InputIconSuccess = styled.span`
   position: absolute;
-  top: 65%;
+  top: 50%;
   right: 20px;
   transform: translateY(-50%);
   pointer-events: none;
   color: ${(props) => props.theme.color.success};
-  //color: #f43f5e;
+  position: absolute;
+  width: 20px;
+  height: 20px;
 
   @media screen and (min-width: 768px) {
     top: 72%;
+    transform: translateY(-70%);
   }
 `;
 
@@ -142,6 +155,10 @@ export const SubmitButton = styled.button`
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
+
+  button:disabled {
+    opacity: 0.35;
+  }
 
   @media screen and (min-width: 768px) {
     width: 458px;
