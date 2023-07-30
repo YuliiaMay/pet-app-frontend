@@ -40,7 +40,7 @@ const UserNav = ({ toggleMenu }) => {
         <Box>
           <Avatar />
           {
-            user && user.name
+            user.name
               ? (<UserName>{user.name}</UserName>)
               : (<div>No user data</div>)
           }

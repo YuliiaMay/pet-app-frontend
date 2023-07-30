@@ -41,7 +41,7 @@ function App() {
     // if (isLoggedIn) {
       dispatch(refreshUser());
     // }
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn]);
 
 
   return isRefreshing ? (
