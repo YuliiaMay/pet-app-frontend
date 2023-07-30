@@ -16,6 +16,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { friendsReducer } from "./friendsSlice/friendsSlice";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -37,6 +38,7 @@ export const store = configureStore({
     notices: noticesReducer,
     pet: petReducer,
     news: newsReducer,
+    friends: friendsReducer,
   },
   middleware,
 

@@ -11,6 +11,7 @@ export const FriendsItem = ({
   email,
   addressUrl,
 }) => {
+  console.log(workDays);
   return (
     <Item>
       <a href={url}>
@@ -21,7 +22,17 @@ export const FriendsItem = ({
         <img src={imageUrl} alt={imageUrl} />
         <InfoContainer>
           <span>
-            Time : <p>12-00</p>
+            Time :
+            {workDays === null ? (
+              <p>day and night</p>
+            ) : (
+              workDays.map((item) => {
+                // console.log(item);
+                // <p>
+                //   {from}-{to}
+                // </p>;
+              })
+            )}
           </span>
           <span>
             Address:
