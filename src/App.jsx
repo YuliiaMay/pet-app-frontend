@@ -12,7 +12,6 @@ import { useAuth } from "./hooks/useAuth";
 import { Loader } from "./components/Loader/Loader";
 // import { selectUser } from "./redux/authSlice/selectors";
 
-
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
@@ -27,22 +26,20 @@ const NoticesCategoriesList = lazy(() =>
   import("./components/Notices/NoticesCategoriesList/NoticesCategoriesList")
 );
 
-
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
   const { isLoggedIn } = useAuth();
-  
+
   // const user = useSelector(selectUser);
 
   // console.log(user);
 
   useEffect(() => {
     // if (isLoggedIn) {
-      dispatch(refreshUser());
+    dispatch(refreshUser());
     // }
   }, [dispatch, isLoggedIn]);
-
 
   return isRefreshing ? (
     <Loader />
@@ -106,6 +103,7 @@ function App() {
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           />
+          <Route path="/logout" element={<Navigate to="/notices/sell" />} />
 
           <Route
             path="/add-pet"
