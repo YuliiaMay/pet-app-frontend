@@ -13,6 +13,8 @@ import {
 } from "./NewsItem.styled";
 
 export const NewsItem = ({ dataNews }) => {
+  if (!dataNews) return;
+
   const formattingText = (text) => {
     let newFormat = text;
     if (newFormat.length > 50) {

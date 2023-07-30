@@ -1,8 +1,27 @@
-import { createAction, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchNews } from "./operations";
 
-const setNews = createAction("news/setNews");
+const extraOperations = [fetchNews];
+const getOperations = (type) =>
+  isAnyOf(...extraOperations.map((action) => action[type]));
 
+const pendingReducer = (state) => {
+  state.isLoading = true;
+};
+
+const rejectedReducer = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = payload;
+};
+
+const fulfilledReducer = (state) => {
+  state.isLoading = false;
+  state.error = null;
+};
+
+const fetchNewsReducer = (state, { payload }) => {
+  state.items = payload;
+};
 const initialState = {
   items: [],
   isLoading: false,
@@ -12,24 +31,13 @@ const initialState = {
 const newsSlice = createSlice({
   name: "news",
   initialState,
-  extraReducers: (builder) => {
+  extraReducers: (builder) =>
     builder
-      .addCase(setNews, (state) => {
-        state.items = [];
-      })
-      .addMatcher(isAnyOf(fetchNews.pending), (state) => {
-        state.isLoading = true;
-      })
-      .addMatcher(isAnyOf(fetchNews.fulfilled), (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = payload.result;
-      })
-      .addMatcher(isAnyOf(fetchNews.rejected), (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      });
-  },
+      .addCase(fetchNews.fulfilled, fetchNewsReducer)
+
+      .addMatcher(getOperations("pending"), pendingReducer)
+      .addMatcher(getOperations("rejected"), rejectedReducer)
+      .addMatcher(getOperations("fulfilled"), fulfilledReducer),
 });
 
 export const newsReducer = newsSlice.reducer;

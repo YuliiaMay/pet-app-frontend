@@ -43,7 +43,9 @@ const NoticesCategoriesList = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAttention, setShowModalAttention] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
+
   const [oneCard, setOneCard] = useState(null);
+
   const location = useLocation();
 
   const search = new URLSearchParams(location.search).get("search");
@@ -126,7 +128,7 @@ const NoticesCategoriesList = () => {
   useEffect(() => {
     setCurrentPage(1);
   }, [search]);
-  console.log(notices);
+
   return (
     <>
       <List>
