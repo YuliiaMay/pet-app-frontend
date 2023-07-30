@@ -11,23 +11,9 @@ import { fetchNotices } from "../../../redux/noticesSlice/operations";
 import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
 
 import { CommonItemList } from "../CommonItemList/CommonItemList";
-import { formatYears, scrollToTop } from "../../../utils";
+import { scrollToTop } from "../../../utils";
 
-import {
-  List,
-  Info,
-  Div,
-  Img,
-  Div1,
-  PP,
-  Div2,
-  Button,
-  Ul,
-  Div3,
-  P1,
-  Button1,
-  WrapperPagination,
-} from "./NoticesPetCard.styled";
+import { List, Button1, WrapperPagination } from "./NoticesPetCard.styled";
 
 import "../../../assets/index.less";
 
@@ -79,37 +65,6 @@ const NoticesCategoriesList = () => {
     scrollToTop();
   };
 
-  // const handleClickDelete = () => {
-  //   setShowModalDelete(true);
-  // };
-
-  // const handleOpenAttention = () => {
-  //   setShowModalAttention(true);
-  // };
-
-  const formattingOverview = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 15) {
-      newFormat = text.slice(0, 21) + "...";
-    }
-    return newFormat;
-  };
-
-  const formattingOverviewCity = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 6) {
-      newFormat = text.slice(0, 4) + "...";
-    }
-    return newFormat;
-  };
-
-  const formattingOverviewYear = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 6) {
-      newFormat = text.slice(0, 4) + "...";
-    }
-    return newFormat;
-  };
 
   useEffect(() => {
     if (location.pathname === "/notices/sell") {
@@ -134,54 +89,12 @@ const NoticesCategoriesList = () => {
       <List>
         {notices &&
           notices.map((item) => (
-            <Info key={item._id}>
-              <Div>
-                <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
-                <Div1>
-                  <PP>{item.category}</PP>
-                  <Div2>
-                    <Button aria-label="add to favorites">
-                      <Icon
-                        iconName={"icon-heart"}
-                        width={"24px"}
-                        height={"24px"}
-                        stroke={"#54ADFF"}
-                      />
-                    </Button>
-                  </Div2>
-                </Div1>
-                <Ul>
-                  <CommonItemList iconName={"icon-location"}>
-                    {formattingOverviewCity(item.place)}
-                  </CommonItemList>
-                  <CommonItemList iconName={"icon-clock"}>
-                    {formattingOverviewYear(
-                      formatYears(item.birthday) + " year"
-                    )}
-                  </CommonItemList>
-                  <CommonItemList
-                    iconName={
-                      item.sex === "female" ? "icon-female" : "icon-male"
-                    }
-                  >
-                    {item.sex}
-                  </CommonItemList>
-                </Ul>
-              </Div>
-              <Div3>
-                <P1>{formattingOverview(item.title)}</P1>
-                <Button1 onClick={() => handleClickCards(item)}>
-                  <span>Learn more</span>
-                  <Icon
-                    iconName={"icon-pawprint"}
-                    width={"24px"}
-                    height={"24px"}
-                    stroke={"#54ADFF"}
-                    fill={"#54ADFF"}
-                  />
-                </Button1>
-              </Div3>
-            </Info>
+            <CommonItemList key={item._id} item={item}>
+              <Button1 onClick={() => handleClickCards(item)}>
+                <span>Learn more</span>
+                <Icon iconName={"icon-pawprint"} fill={"#54ADFF"} />
+              </Button1>
+            </CommonItemList>
           ))}
       </List>
       <WrapperPagination>
