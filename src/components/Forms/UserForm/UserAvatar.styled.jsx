@@ -31,6 +31,17 @@ export const FileInput = styled(Field)`
   z-index: 2;
 `;
 
+const setBtnIndex = ({ children }) => {
+  switch (children) {
+    case "isImgUpdating":
+      return "-1";
+    case "!isImgUpdating":
+      return "2";
+    default:
+      return "1";
+  }
+};
+
 export const EditPhotoBtn = styled.button`
   color: ${(props) => props.theme.color.main};
   font-family: Manrope;
@@ -46,7 +57,7 @@ export const EditPhotoBtn = styled.button`
   align-items: center;
   gap: 8px;
   min-width: 92px;
-
+  // z-index: ${setBtnIndex};
   @media (min-width: ${(props) => props.theme.sizes.mobile}) {
   }
 `;

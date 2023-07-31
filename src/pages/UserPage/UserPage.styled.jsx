@@ -88,7 +88,11 @@ export const PetCardInfo = styled.div`
 export const AddPetWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom:24px;
+  margin-bottom: 24px;
+  width: 280px;
+  @media (min-width: ${(props) => props.theme.sizes.tab}) {
+    width: 704px;
+  }
 `;
 
 export const AddPetLink = styled(Link)`

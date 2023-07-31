@@ -12,7 +12,6 @@ import { useAuth } from "./hooks/useAuth";
 import { Loader } from "./components/Loader/Loader";
 // import { selectUser } from "./redux/authSlice/selectors";
 
-
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
@@ -27,14 +26,16 @@ const NoticesCategoriesList = lazy(() =>
   import("./components/Notices/NoticesCategoriesList/NoticesCategoriesList")
 );
 
-
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
+  const { isLoggedIn } = useAuth();
+
+
 
   useEffect(() => {
-      dispatch(refreshUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
 
@@ -100,6 +101,7 @@ function App() {
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           />
+          <Route path="/logout" element={<Navigate to="/notices/sell" />} />
 
           <Route
             path="/add-pet"

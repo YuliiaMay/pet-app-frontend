@@ -4,16 +4,16 @@ import { addPetOrNotice } from "../petsSlice/operations";
 
 const initialStateAuth = {
   user: {
-    avatar: null,
+    avatar: '',
     favorites: [],
     _id: null,
-    name: null,
-    email: null,
-    password: null,
+    name: '',
+    email: '',
+    password: '',
     pets: [],
     token: null,
-    phone: null,
-    city: null
+    phone: '',
+    city: ''
   },
   token: null,
   isLoggedIn: false,
@@ -66,8 +66,18 @@ const authSlice = createSlice({
         return;
       })  
       .addCase(deletePet.fulfilled, (state, { payload }) => {
-        const index = state.user.pets.findIndex(pet => pet._id === payload._id);
-        state.user.pets.splice(index, 1);           
+        // const index = state.user.pets.findIndex(pet => pet._id === payload._id);
+        // state.user.pets.splice(index, 1);
+        // return state.user.pets;
+
+          const updatedPets = state.user.pets.filter(pet => pet._id !== payload._id);
+          return {
+            ...state,
+            user: {
+              ...state.user,
+              pets: updatedPets,
+            },
+          };
       }) 
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.user = payload;

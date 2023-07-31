@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://localhost:3010/api";
+axios.defaults.baseURL = "https://pets-zywq.onrender.com/api";
 
 export const fetchFriends = createAsyncThunk(
   "sponsors/getall",
