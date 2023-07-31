@@ -44,8 +44,18 @@ export default function NewsList() {
 
   return (
     <ResponsiveContainer>
-      <List>{isLoading ? <Loader /> : <NewsItem dataNews={news} />}</List>
-
+      <List>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            {news.map((item) => (
+              <NewsItem key={item._id} {...item} />
+            ))}
+          </>
+        )}
+      </List>
+      \
       <WrapperPagination>
         {news.length < 6 || (
           <Pagination

@@ -6,6 +6,9 @@ import scrollToTop from "./scrollToTop";
 import formattingCitName from "./formattingCitName";
 import formattingAge from "./formattingAge";
 import formattingTitle from "./formattingTitle";
+import checkPosterNews from "./checkPosterNews";
+import formattingTextNews from "./formattingTextNews";
+
 export {
   checkPoster,
   convertPhone,
@@ -15,4 +18,6 @@ export {
   formattingCitName,
   formattingAge,
   formattingTitle,
+  checkPosterNews,
+  formattingTextNews,
 };
