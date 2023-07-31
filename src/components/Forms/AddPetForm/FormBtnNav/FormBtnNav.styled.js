@@ -8,7 +8,7 @@ export const BtnNav = styled.div`
     margin-bottom: 0px;
 `;
 
-export const LinkBackBox = styled.div`
+export const LinkBackBox = styled(Link)`
     width: 130px;
     height: 40px;
     padding: 9px 0;
@@ -22,7 +22,7 @@ export const LinkBackBox = styled.div`
     }   
 `;
 
-export const LinkBack = styled(Link)`
+export const LinkBack = styled.span`
     color: ${props => props.theme.color.blue};
     font-weight: 700;
     font-size: 16px;

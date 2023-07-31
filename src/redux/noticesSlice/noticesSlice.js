@@ -33,10 +33,7 @@ const fetchNoticesSuccessReduser = (state, {payload}) => {
 };
 
 const addNoticesSuccessReduser = (state, {payload}) => {
-    if (payload.addedNotice.category === "sell" ||
-        payload.addedNotice.category === "lost" ||
-        payload.addedNotice.category === "good hands"
-    ) {
+    if ( payload.addedNotice ) {
         state.items.push(payload.addedNotice);
     }
     return;

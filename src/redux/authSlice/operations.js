@@ -38,8 +38,10 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post("/users/login", credentials);
-      console.log("login", response.data);
+      // console.log("login", response);
+      
       setAuthHeader(response.data.token);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -76,11 +78,11 @@ export const refreshUser = createAsyncThunk(
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue("Unable to fetch user");
     }
-    setAuthHeader(persistedToken);
+    // setAuthHeader(persistedToken);
     try {
       setAuthHeader(persistedToken);
       const response = await axios.get("/users/current");
-      console.log("refresh", response.data);
+      // console.log("refresh", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -141,6 +143,7 @@ export const addNoticeToFavorite = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.patch(`/notices/favorite/${id}`);
+      
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

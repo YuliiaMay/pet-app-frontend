@@ -31,17 +31,11 @@ const NoticesCategoriesList = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  const { isLoggedIn } = useAuth();
-  
-  // const user = useSelector(selectUser);
 
-  // console.log(user);
 
   useEffect(() => {
-    // if (isLoggedIn) {
       dispatch(refreshUser());
-    // }
-  }, [dispatch, isLoggedIn]);
+  }, [dispatch]);
 
 
   return isRefreshing ? (
