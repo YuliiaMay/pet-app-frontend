@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-top: 30px;
+  z-index: 999;
+  position: relative;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     padding-top: 32px;
   }
