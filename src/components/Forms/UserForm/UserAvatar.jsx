@@ -24,26 +24,28 @@ import {
   FormAvatar,
   UserAvatarImg,
 } from "./UserAvatar.styled";
+import { selectUser } from "../../../redux/authSlice/selectors";
+import { updateUser } from "../../../redux/authSlice/operations";
 
 export const UserAvatar = ({ isFormEnable }) => {
   const dispatch = useDispatch();
-  // const user = useSelector(user);
+  const user = useSelector(selectUser);
 
   const [isFormatErr, setIsFormatErr] = useState(false);
   const [isImgUpdating, setIsImgUpdating] = useState(false);
-  const user = {
-    avatar:
-      "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-  };
+  // const [isConfirm, setIsConfirm] = useState(false);
+
   const initialValues = {
     avatar: user.avatar,
   };
 
   const handleAvatarEditing = () => {
     setIsImgUpdating(true);
+
   };
 
   const inputUploadHandler = async (e) => {
+    handleAvatarEditing();
     setIsFormatErr(false);
 
     if (e.target.files[0].type !== "image/jpeg") {
@@ -55,8 +57,8 @@ export const UserAvatar = ({ isFormEnable }) => {
     const formData = new FormData();
     formData.append("avatar", e.target.files[0]);
 
-    // eslint-disable-next-line no-undef
-    dispatch(uploadImg(formData));
+    await dispatch(updateUser(formData)).then(() => '');
+
   };
 
   const handleClearAvatar = (setFieldValue) => {
@@ -70,7 +72,7 @@ export const UserAvatar = ({ isFormEnable }) => {
       <UserAvatarImg src={user.avatar} alt='' />
       {isFormEnable && (
         <Formik initialValues={initialValues} onSubmit={inputUploadHandler}>
-          {({ values, setFieldValue }) => (
+          {({ values, setFieldValue}) => (
             <FormAvatar encType='multipart/form-data'>
               <FileInput
                 type='file'
@@ -78,7 +80,9 @@ export const UserAvatar = ({ isFormEnable }) => {
                 name='avatar'
                 accept='image/*'
                 value={""}
-                onChange={handleAvatarEditing}
+                onChange={inputUploadHandler}
+                // dispatch={isSubmitting || isImgUpdating}
+                // hidden={isImgUpdating}
               />
               {!isImgUpdating ? (
                 <EditPhotoBtn type='button'>
@@ -86,8 +90,8 @@ export const UserAvatar = ({ isFormEnable }) => {
                   Edit photo
                 </EditPhotoBtn>
               ) : (
-                <ConfirmWrapper>
-                  <button type='submit'>
+                <ConfirmWrapper hidden>
+                  <button type='button'>
                     <Confirm />
                   </button>
 
