@@ -10,7 +10,7 @@ import {
   FormSearch,
   InputSearch,
   Section,
-  TitleSearch,
+  
 } from "./NoticesSearch.style";
 
 export const NoticesSearch = () => {
@@ -56,7 +56,7 @@ export const NoticesSearch = () => {
 
   return (
     <Section>
-      <TitleSearch>Find your favorite pet</TitleSearch>
+      
       <FormSearch onSubmit={handleSubmit}>
         <InputSearch
           type="text"
