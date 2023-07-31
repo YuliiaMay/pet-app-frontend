@@ -1,4 +1,4 @@
-import{s as i,P as p,j as e,I as c,N as D,d as S,r as d,b as L,f as T,u as W,w as Y}from"./index-522e0d14.js";import{f as E,P as O,s as R}from"./scrollToTop-7d548d8f.js";import{M as C}from"./ModalComponents-e8e8f8a2.js";const U="/pet-app-frontend/assets/defaultPoster-d1161abc.jpeg",G=t=>t||U,_=t=>t.replace(/[.\-/\\\s]/g,"");function q(t){if(!t)return;const n=new Date,r=new Date(n.getFullYear(),n.getMonth(),n.getDate()),a=new Date(t),l=new Date(r.getFullYear(),a.getMonth(),a.getDate());let o;return o=r.getFullYear()-a.getFullYear(),r<l&&(o=o-1),o}const H=t=>t.notices.items,J=i.div`
+import{s as i,P as p,j as e,I as c,N as D,d as S,r as d,b as L,f as T,u as W,w as Y}from"./index-79cfb9b4.js";import{f as E,P as O,s as R}from"./scrollToTop-fa554035.js";import{M as C}from"./ModalComponents-35eae5f2.js";const U="/pet-app-frontend/assets/defaultPoster-d1161abc.jpeg",G=t=>t||U,_=t=>t.replace(/[.\-/\\\s]/g,"");function q(t){if(!t)return;const n=new Date,r=new Date(n.getFullYear(),n.getMonth(),n.getDate()),a=new Date(t),l=new Date(r.getFullYear(),a.getMonth(),a.getDate());let o;return o=r.getFullYear()-a.getFullYear(),r<l&&(o=o-1),o}const H=t=>t.notices.items,J=i.div`
   width: 280px;
 
   display: flex;
@@ -575,7 +575,6 @@ import{s as i,P as p,j as e,I as c,N as D,d as S,r as d,b as L,f as T,u as W,w a
   }
 `,ve=i.div``,A=({active:t,setShow:n})=>{const r=()=>{n(!t)};return e.jsx(e.Fragment,{children:e.jsxs(C,{onClose:n,active:t,children:[e.jsx(N,{onClick:r,children:e.jsx(c,{iconName:"icon-cross",width:"24px",height:"24px",stroke:"#54ADFF",fill:"#54ADFF"})}),e.jsxs(be,{children:[e.jsx("h2",{children:"Delete adverstiment?"}),e.jsxs("p",{children:["Are you sure you want to delete"," ",e.jsx("span",{children:"“Cute dog looking for a home”"}),"?",e.jsx("br",{}),"You can`t undo this action."]}),e.jsxs(je,{children:[e.jsx(ye,{type:"button",onClick:r,children:"Cancel"}),e.jsxs(ke,{type:"button",children:["Yes",e.jsx(ve,{children:e.jsx(c,{iconName:"icon-trash",width:"24px",height:"24px",stroke:"#FEF9F9",fill:"#FEF9F9"})})]})]})]})]})})};A.propTypes={active:p.bool,setShow:p.func};const Fe=i.div`
   padding: 12px 40px 60px;
-  width: 608px;
   display: flex;
   flex-direction: column;
   justify-content: center;
