@@ -1,4 +1,4 @@
-import{s as n,j as t,f as o,L as T,u as S,r as p,o as J,k as A,m as B,n as N}from"./index-9af1dba1.js";import{a as w,b as C,F as k}from"./formik.esm-3f00c2f0.js";const U=n.div`
+import{s as n,j as t,f as o,L as T,u as S,r as p,o as J,p as A,q as B,t as N}from"./index-522e0d14.js";import{a as w,b as C,F as k}from"./formik.esm-215db4fa.js";const U=n.div`
     background-color: ${e=>e.theme.background.wight};
     width: 458px;
     height: 540px;
@@ -11,14 +11,14 @@ import{s as n,j as t,f as o,L as T,u as S,r as p,o as J,k as A,m as B,n as N}fro
     font-weight: 500;
     font-size: 28px;
     margin-bottom: 24px;
-`,Q=({title:e})=>t.jsx(M,{children:e}),y=e=>e.pet.FormStage,f=e=>e.pet.OptionForm.category,E=e=>e.pet.DetailsForm.name,v=e=>e.pet.DetailsForm.birthday,R=e=>e.pet.DetailsForm.breed,I=e=>e.pet.DetailsForm.title,Y=e=>e.pet.DetailsForm.type,X=e=>e.pet.MoreInfoForm.sex,K=e=>e.pet.MoreInfoForm.avatar,V=e=>e.pet.MoreInfoForm.comments,L=e=>e.pet.MoreInfoForm.location,$=e=>e.pet.MoreInfoForm.price,W=e=>e.pet,z=n.nav`
+`,Q=({title:e})=>t.jsx(M,{children:e}),y=e=>e.pet.FormStage,f=e=>e.pet.OptionForm.category,E=e=>e.pet.DetailsForm.name,v=e=>e.pet.DetailsForm.birthday,R=e=>e.pet.DetailsForm.breed,I=e=>e.pet.DetailsForm.title,Y=e=>e.pet.DetailsForm.type,X=e=>e.pet.MoreInfoForm.sex,K=e=>e.pet.MoreInfoForm.avatar,V=e=>e.pet.MoreInfoForm.comments,L=e=>e.pet.MoreInfoForm.location,$=e=>e.pet.MoreInfoForm.price,W=e=>e.pet,q=n.nav`
     display: flex;
     justify-content: flex-start;
     gap: 22px;
     margin-bottom: 40px;
     
-`,Z=n.div`
-`,q=n.h2`
+`,z=n.div`
+`,Z=n.h2`
     font-size: 16px;
     font-weight: 500;
     color: ${e=>{if(e.$formStage===1)return e.theme.color.blue;if(e.$formStage>1||e.$formStage==="success")return e.theme.color.success}}
@@ -50,7 +50,7 @@ import{s as n,j as t,f as o,L as T,u as S,r as p,o as J,k as A,m as B,n as N}fro
     border-radius: 8px;
     margin-top: 12px;
     background-color: ${e=>e.$formStage===3?e.theme.background.blue:e.$formStage==="success"?e.theme.background.success:e.theme.background.lightBlue};         
-`,oe=()=>{const e=o(y);return t.jsxs(z,{children:[t.jsxs(Z,{children:[t.jsx(q,{$formStage:e,children:"Choose  option"}),t.jsx(G,{$formStage:e})]}),t.jsx(H,{children:t.jsxs(P,{$formStage:e,children:["Personal details",t.jsx(O,{$formStage:e})]})}),t.jsxs(_,{children:[t.jsx(ee,{$formStage:e,children:"More info"}),t.jsx(te,{$formStage:e})]})]})},ne=n.ul`
+`,oe=()=>{const e=o(y);return t.jsxs(q,{children:[t.jsxs(z,{children:[t.jsx(Z,{$formStage:e,children:"Choose  option"}),t.jsx(G,{$formStage:e})]}),t.jsx(H,{children:t.jsxs(P,{$formStage:e,children:["Personal details",t.jsx(O,{$formStage:e})]})}),t.jsxs(_,{children:[t.jsx(ee,{$formStage:e,children:"More info"}),t.jsx(te,{$formStage:e})]})]})},ne=n.ul`
     // display: flex;
     // flex-direction: column;
     // gap: 12px;
