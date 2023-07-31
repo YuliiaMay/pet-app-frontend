@@ -2,20 +2,17 @@ import { OptionList, OptionInput } from "./OptionForm.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { formStage, optionForm } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
-import { selectCategory } from "../../../../redux/petsSlice/selectors";
-import { Formik, Form } from 'formik';
-import { useState } from "react";
+import { selectAllPetData, selectCategory } from "../../../../redux/petsSlice/selectors";
 
 
 const OptionForm = () => {
     const dispatch = useDispatch();
     const category = useSelector(selectCategory);
-    const [isSelected, setIsSelected] = useState(false);
+
+    // const all = useSelector(selectAllPetData);
 
 
-    const initialOptionFormStep = {
-        category: category
-    }
+
 
     const handleSelectCategory = ({ target: { value } }) => {
         const selectedCategory = value;
@@ -25,11 +22,11 @@ const OptionForm = () => {
                 category: selectedCategory,
             })
         ); 
-        
-        setIsSelected(true);
+
     };
 
     const onNextStep = () => {
+        // e.preventDefault();
         if (category === "your pet"
             || category === "sell"
             || category === "lost"
@@ -41,59 +38,53 @@ const OptionForm = () => {
         }
     }    
 
+    // console.log(all);  
+
     return (
-        <Formik
-            initialValues={initialOptionFormStep}      
-            onSubmit={onNextStep}
-        >
-            <Form>
+        <div>
 
-                <OptionList>
-                    
-                        <OptionInput
-                            as="button"
-                            value={"your pet"}
-                            onClick={handleSelectCategory}
-                        >
-                            your pet
-                        </OptionInput>
-                    
-                    
-                        <OptionInput
-                            as="button"
-                            value={"sell"}
-                            onClick={handleSelectCategory}                        
-                        >
-                            sell
-                        </OptionInput>
-                    
-                    
-                        <OptionInput
-                            as="button"
-                            value={"lost"}
-                            onClick={handleSelectCategory}                        
-                        >
-                            lost/found
-                        </OptionInput>
-                    
-                    
-                        <OptionInput
-                            as="button"
-                            value={"good hands"}
-                            onClick={handleSelectCategory}                        
-                        >
-                            in good hands
-                        </OptionInput>
-                                        
-                </OptionList>
-                <FormBtnNav
-                    onClick={onNextStep}
-                    isSelected={isSelected}
-                />
+            <OptionList>
+                
+                    <OptionInput
+                        type="button"
+                        value={"your pet"}
+                        name="category-your-pet"
+                        onClick={handleSelectCategory}                   
+                    />
+                
+                
+                    <OptionInput
+                        type="button"
+                        value={"sell"}
+                        name="category-sell"
+                        // name="category"
+                    onClick={handleSelectCategory}     
+                    />
 
-            </Form>
-        </Formik>
-    );
+                
+                    <OptionInput
+                        type="button"
+                        value={"lost"}
+                        name="category-lost"
+                    onClick={handleSelectCategory}     
+                    />
+                
+                
+                    <OptionInput
+                        type="button"
+                        value={"good hands"}
+                        name="category-good-hands"
+                        onClick={handleSelectCategory}
+                    />
+
+                                    
+            </OptionList>
+            <FormBtnNav
+                onClick={onNextStep}
+            />
+
+        </div>
+    )
 };
 
 

@@ -15,7 +15,7 @@ const initialState = {
     },
     MoreInfoForm: {
         sex: "",
-        avatar: "https://www.vetstreet.com/wp-content/uploads/2022/10/default-image.png",
+        imgUrl: "https://www.vetstreet.com/wp-content/uploads/2022/10/default-image.png",
         comments: "",
         location: "",
         price: ""
