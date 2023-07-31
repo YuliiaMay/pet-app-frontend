@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { Icon } from "../../../components/Icon/Icon";
-import { selectNotieces } from "../../../redux/selectors";
+import { selectIsLoading, selectNotieces } from "../../../redux/selectors";
 import { fetchNotices } from "../../../redux/noticesSlice/operations";
 
 import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
@@ -19,6 +19,7 @@ import "../../../assets/index.less";
 
 import ModalApproveDelete from "../../Modals/ModalApproveDelete/ModalApproveDelete";
 import ModalAttention from "../../Modals/ModalAttention/ModalAttention";
+import { Loader } from "../../Loader/Loader";
 
 const NoticesCategoriesList = () => {
   const [fetching, setFetching] = useState(true);
@@ -35,7 +36,7 @@ const NoticesCategoriesList = () => {
   const location = useLocation();
 
   const search = new URLSearchParams(location.search).get("search");
-
+  const IsLoading = useSelector(selectIsLoading);
   const resp = useSelector(selectNotieces);
   const { notices, length } = resp;
 
@@ -65,7 +66,6 @@ const NoticesCategoriesList = () => {
     scrollToTop();
   };
 
-
   useEffect(() => {
     if (location.pathname === "/notices/sell") {
       setCurrentCategory("sale");
@@ -83,38 +83,42 @@ const NoticesCategoriesList = () => {
   useEffect(() => {
     setCurrentPage(1);
   }, [search]);
-
+  console.clear();
   return (
     <>
-      <List>
-        {notices &&
-          notices.map((item) => (
-            <CommonItemList key={item._id} item={item}>
-              <Button1 onClick={() => handleClickCards(item)}>
-                <span>Learn more</span>
-                <Icon iconName={"icon-pawprint"} fill={"#54ADFF"} />
-              </Button1>
-            </CommonItemList>
-          ))}
-      </List>
-      <WrapperPagination>
-        {length <= 10 || (
-          <Pagination
-            onChange={onChange}
-            current={currentPage}
-            showLessItems
-            total={length}
-            showTitle={false}
-          />
-        )}
-      </WrapperPagination>
+      {IsLoading ? (
+        <Loader />
+      ) : (
+        <List>
+          {notices &&
+            notices.map((item) => (
+              <CommonItemList key={item._id} item={item}>
+                <Button1 onClick={() => handleClickCards(item)}>
+                  <span>Learn more</span>
+                  <Icon iconName={"icon-pawprint"} fill={"#54ADFF"} />
+                </Button1>
+              </CommonItemList>
+            ))}
+          <WrapperPagination>
+            {length <= 10 || (
+              <Pagination
+                onChange={onChange}
+                current={currentPage}
+                showLessItems
+                total={length}
+                showTitle={false}
+              />
+            )}
+          </WrapperPagination>
+        </List>
+      )}
+
       <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
 
       <ModalApproveDelete
         active={showModalDelete}
         setShow={setShowModalDelete}
       />
-
       <ModalAttention
         active={showModalAttention}
         setShow={setShowModalAttention}
