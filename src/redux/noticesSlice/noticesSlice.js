@@ -48,13 +48,6 @@ const addNoticesSuccessReduser = (state, {payload}) => {
     return;
 };
 
-const addNoticesSuccessReduser = (state, { payload }) => {
-  if (payload.addedNotice) {
-    state.items.push(payload.addedNotice);
-  }
-  return;
-};
-
 const deleteNoticesSuccessReduser = (state, { payload }) => {
   // state.own = payload;
   const index = state.own.filter((notice) => notice._id === payload);
