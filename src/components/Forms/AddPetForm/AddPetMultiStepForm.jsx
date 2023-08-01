@@ -11,12 +11,11 @@ import SuccessStage from "./SuccessStage/SuccessStage";
 
 
 
-const AddPetMultiStepForm = () => {
+const AddPetMultiStepForm = ({leaveAddPetForm}) => {
     const stage = useSelector(selectCurrentStage);
     const category = useSelector(selectCategory);
-    // const all = useSelector(selectAllPetData);
-    // console.log(all);
 
+    console.log(leaveAddPetForm);
     return (
         <AddPetContainer>
 
@@ -24,8 +23,9 @@ const AddPetMultiStepForm = () => {
                 (category === null && "Add pet") ||
                 (category === "your pet" && "Add pet") ||
                 (category === "sell" && "Add pet for sell") ||
-                (category === "lost" && "Add lost pet") ||
-                (category === "good hands" && "Add pet in good hands")
+                (category === "lost/found" && "Add lost pet") ||
+                (category === "in good hands" && "Add pet in good hands") ||
+                (category === "success" && "Your post has been created!")
                 // (stage === 1 && "Add pet")
             } />
 
@@ -33,7 +33,7 @@ const AddPetMultiStepForm = () => {
 
             {
                 stage === 1
-                    && <OptionForm />
+                    && <OptionForm leaveAddPetForm={leaveAddPetForm} />
             }
 
             {
@@ -47,7 +47,7 @@ const AddPetMultiStepForm = () => {
             }
             {
                 (stage === "success")
-                    && <SuccessStage />
+                    && <SuccessStage leaveAddPetForm={leaveAddPetForm}/>
             }            
             
         </AddPetContainer>

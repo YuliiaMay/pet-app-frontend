@@ -65,7 +65,7 @@ const DetailsForm = () => {
             // onSubmit={formik.onNextStep}
         >
                 {
-                    (category === "sell" || category === "lost" || category === "good hands")  && 
+                    (category === "sell" || category === "lost/found" || category === "in good hands")  && 
                         <>
                             <Label htmlFor="title">
                                 Title of add
