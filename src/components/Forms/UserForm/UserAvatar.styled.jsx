@@ -9,7 +9,8 @@ export const UserAvatarImg = styled.img`
   border: 1px solid #000;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 15px;
-
+  object-position: center; 
+  bject-fit: contain;
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
   }
 `;
@@ -31,6 +32,7 @@ export const FileInput = styled(Field)`
   z-index: 2;
 `;
 
+
 export const EditPhotoBtn = styled.button`
   color: ${(props) => props.theme.color.main};
   font-family: Manrope;
@@ -39,14 +41,10 @@ export const EditPhotoBtn = styled.button`
   font-weight: 400;
   line-height: 22px;
   letter-spacing: 0.48px;
-
-  // position: absolute;
-  // transform: translate(-50%, 0);
   display: flex;
   align-items: center;
   gap: 8px;
   min-width: 92px;
-
   @media (min-width: ${(props) => props.theme.sizes.mobile}) {
   }
 `;
@@ -75,5 +73,8 @@ export const ConfirmWrapper = styled.div`
   display: flex;
   gap: 8px;
   position: absolute;
-  transform: translate(-50%, 0);
 `;
+
+export const ErrorText = styled.p`
+color: red;
+`

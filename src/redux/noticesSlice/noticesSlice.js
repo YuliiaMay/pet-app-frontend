@@ -36,8 +36,16 @@ const fetchNoticesSuccessReduser = (state, { payload }) => {
   state.items = payload;
 };
 
+
 const fetchNoticesAllReduser = (state, { payload }) => {
   state.own = payload;
+}
+
+const addNoticesSuccessReduser = (state, {payload}) => {
+    if ( payload.addedNotice ) {
+        state.items.push(payload.addedNotice);
+    }
+    return;
 };
 
 const addNoticesSuccessReduser = (state, { payload }) => {

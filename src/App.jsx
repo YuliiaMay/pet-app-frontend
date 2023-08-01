@@ -6,7 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import { PublicRoute } from "./routes/PublicRoute";
 import { PrivateRoute } from "./routes/PrivateRoute";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { refreshUser } from "./redux/authSlice/operations";
 import { useAuth } from "./hooks/useAuth";
 import { Loader } from "./components/Loader/Loader";
@@ -29,17 +29,14 @@ const NoticesCategoriesList = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  const { isLoggedIn } = useAuth();
 
-  // const user = useSelector(selectUser);
 
-  // console.log(user);
+
 
   useEffect(() => {
-    // if (isLoggedIn) {
     dispatch(refreshUser());
-    // }
-  }, [dispatch, isLoggedIn]);
+  }, [dispatch]);
+
 
   return isRefreshing ? (
     <Loader />

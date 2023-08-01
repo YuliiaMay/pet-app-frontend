@@ -3,31 +3,31 @@ import { Link } from "react-router-dom";
 
 export const BtnNav = styled.div`
     display: flex;
-    justify-content: space-between;
-    margin-top: auto;
+    justify-content: space-around;
     margin-bottom: 0px;
 `;
 
-export const LinkBackBox = styled.div`
-    width: 130px;
+export const BtnBack = styled(Link)`
+    width: 150px;
     height: 40px;
-    padding: 9px 0;
-
     border-radius: 40px;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 
     &:hover,
     &:focus {
-        border: ${props => props.theme.border.shadow};
+        border: ${props => props.theme.border.blue};
     }   
 `;
 
-export const LinkBack = styled(Link)`
+export const LinkBack = styled.span`
     color: ${props => props.theme.color.blue};
     font-weight: 700;
     font-size: 16px;
-    margin-left: auto;
-    margin-right: auto;    
+    margin-left: 12px;  
 `;
 
 export const BtnNext = styled.button`
@@ -36,8 +36,9 @@ export const BtnNext = styled.button`
     background-color: ${props => props.theme.background.accentBlue};
     border-radius: 40px;
     border: none;
-    padding-top: 9px;
-    padding-bottom: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover,
     &:focus {
@@ -49,4 +50,5 @@ export const BtnNextText = styled.span`
     color: ${props => props.theme.color.wight};
     font-weight: 700;
     font-size: 16px;
+    margin-right: 12px;
 `;

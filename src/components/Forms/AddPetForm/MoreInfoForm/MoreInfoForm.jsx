@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import defaultAvatar from "../../../../images/default-avatar.png";
 
-import FormBtnNav from "../FormBtnNav/FormBtnNav";
+import FormBtnNav, { useTimeout } from "../FormBtnNav/FormBtnNav";
 import { useState } from "react";
-import { formStage } from "../../../../redux/petsSlice/petsSlice";
+import { formStage, moreInfoForm } from "../../../../redux/petsSlice/petsSlice";
 import {
-  selectAvatarURL,
   selectComments,
   selectLocation,
   selectPrice,
@@ -16,113 +15,213 @@ import {
   selectBreed,
   selectTitle,
   selectType,
+  // selectAllPetData
 } from "../../../../redux/petsSlice/selectors";
 import { addPetOrNotice } from "../../../../redux/petsSlice/operations";
+import { useFormik } from "formik";
+import { Input, Label, Comment } from "./MoreInfoForm.styled";
+
+
 
 const MoreInfoForm = () => {
-  //   const [formData, setFormData] = useState(new FormData());
   const [image, setImage] = useState(null);
   const [imageInfo, setImageInfo] = useState("");
   const dispatch = useDispatch();
+  const category = useSelector(selectCategory);
+  const name = useSelector(selectName);
+  const birthday = useSelector(selectBirthday);
+  const breed = useSelector(selectBreed);
+  const title = useSelector(selectTitle);
+  const type = useSelector(selectType);
+  const sex = useSelector(selectSex);
+  const comments = useSelector(selectComments);
+  const location = useSelector(selectLocation);  
+  const price = useSelector(selectPrice);  
+  // const [isSuccess, setisSuccess] = useState(false);
 
-  const [thirdStageData, setThirdStageData] = useState({
-    category: useSelector(selectCategory) || "",
-    name: useSelector(selectName) || "",
-    birthday: useSelector(selectBirthday) || "",
-    breed: useSelector(selectBreed) || "",
-    title: useSelector(selectTitle) || "",
-    type: useSelector(selectType) || "",
-    sex: useSelector(selectSex) || "",
-    file: useSelector(selectAvatarURL) || "",
-    comments: useSelector(selectComments) || "",
-    location: useSelector(selectLocation) || "",
-    price: useSelector(selectPrice) || "",
-  });
 
+  const formik = useFormik({
+    initialValues: {
+      sex: "",
+      imgUrl: "",
+      comments: "",
+      location: "",
+      price: "",      
+    },
+    onSubmit: (values) => {
+      dispatch(
+        moreInfoForm(values)
+      );
+      
+      const newData = {
+        category: category,
+        name: name,
+        birthday: birthday,
+        breed: breed,
+        title: title,
+        type: type,
+        sex: sex,
+        file: imageInfo,
+        comments: comments,
+        location: location,
+        price: price
+      };
+
+      const formData = new FormData();
+      formData.append("category", newData.category);
+      formData.append("name", newData.name);
+      formData.append("birthday", newData.birthday);
+      formData.append("breed", newData.breed);
+      formData.append("title", newData.title);
+      formData.append("type", newData.type);
+      formData.append("sex", newData.sex);
+      formData.append("file", imageInfo);
+      formData.append("comments", newData.comments);
+      formData.append("location", newData.location);
+      formData.append("price", newData.price);
+        
+      // for (let value in values) {
+      //   if (value !== "imgUrl") {
+      //     formData.append(value, values[value]);
+      //   } else {
+      //     formData.append(value, imageInfo);
+      //   }
+      // }
+      
+      // for (const [key, value] of formData.entries()) {
+      //     console.log(`${key}: ${value}`);
+      // }      
+
+      dispatch(addPetOrNotice(formData));
+      dispatch(formStage("success"));
+
+
+      
+    },
+  })
+  
   const handleGetFile = (e) => {
     let file = e.target.files[0];
     setImageInfo(file);
 
     const reader = new FileReader();
-
     reader.onloadend = () => {
       setImage(reader.result);
     };
     reader.readAsDataURL(file);
   };
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
 
-    setThirdStageData({
-      ...thirdStageData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const newPetOrPost = {
-      category: thirdStageData.category,
-      name: thirdStageData.name,
-      birthday: thirdStageData.birthday,
-      breed: thirdStageData.breed,
-      title: thirdStageData.title,
-      type: thirdStageData.type,
-      sex: thirdStageData.sex,
-      file: imageInfo,
-      comments: thirdStageData.comments,
-      location: thirdStageData.location,
-      price: thirdStageData.price,
-    };
-
-    const updatedFormData = new FormData();
-    updatedFormData.append("category", newPetOrPost.category);
-    updatedFormData.append("name", newPetOrPost.name);
-    updatedFormData.append("birthday", newPetOrPost.birthday);
-    updatedFormData.append("breed", newPetOrPost.breed);
-    updatedFormData.append("title", newPetOrPost.title);
-    updatedFormData.append("type", newPetOrPost.type);
-    updatedFormData.append("sex", newPetOrPost.sex);
-    updatedFormData.append("file", newPetOrPost.file);
-    updatedFormData.append("comments", newPetOrPost.comments);
-    updatedFormData.append("location", newPetOrPost.location);
-    updatedFormData.append("price", newPetOrPost.price);
-
-    // setFormData(updatedFormData);
-
-    dispatch(addPetOrNotice(updatedFormData));
-
-    dispatch(formStage("success"));
-  };
 
   return (
-    <>
-      <div>
+    // <Formik
+    //     initialValues={initialMoreInfoValues}      
+    //     onSubmit={handleSubmit}       
+    // >
+
+      <form onSubmit={formik.handleSubmit} encType='multipart/form-data'>
+
+        {/* {
+          (category === "sell" || "lost/found" || "in good hands") &&
+            <>
+              <div>
+                <p>The Sex</p>
+                <input
+                  type="button"
+                  // value={"Female"}            
+                  id="pet-name"
+                  name="female"
+                  onChange={formik.handleChange}
+                  // value={formik.values.female}
+                >
+                  <BsGenderMale color="#F43F5E"/>
+                  Female
+                </input>
+                <input
+                  type="button"
+                  // value={"Male"}            
+                  id="pet-name"
+                  name="male"
+                  onChange={formik.handleChange}
+                  // value={formik.values.male}
+                >
+                  <BsGenderFemale color="#F43F5E"/>
+                  Male
+                </input>
+              </div>     
+            </>
+        } */}
+
+
+
         <div>
-          <label htmlFor="upload"></label>
-          <div>{!image && <img src={defaultAvatar} alt="pet`s photo" />}</div>
-          <input
+          <Label htmlFor="imgUrl"></Label>
+          <div>
+            {
+              !image && <img src={defaultAvatar} alt="pet`s photo" />
+            }
+          </div>
+          <Input
+            accept='image/*'
             type="file"
-            name="upload"
-            id="upload"
-            onChange={(e) => handleGetFile(e)}
+            name="imgUrl"
+            id="imgUrl"
+            onChange={(e) => handleGetFile(e)
+            }
           />
         </div>
+
+        {
+          (category === "sell" || "lost/found" || "in good hands") &&
+            <div>
+              <Label htmlFor="location">
+                  Location
+              </Label>           
+              <Input
+                placeholder="Type of location"
+                type="text"
+                id="location"
+                name="location"   
+                onChange={formik.handleChange}
+                value={formik.values.location}
+              />
+            </div>            
+        }
+
+        {
+          category === "sell" &&
+            <div>
+              <Label htmlFor="price">
+                  Price
+              </Label>           
+              <Input
+                placeholder="Type of price"
+                type="text"
+                id="price"
+                name="price" 
+                onChange={formik.handleChange}
+                value={formik.values.price}
+              />          
+            </div>
+        }
+
+
         <div>
-          <label htmlFor="comment">Comments</label>
-          <textarea
+          <Label htmlFor="comment">Comments</Label>
+          <Comment
             type="text"
             id="comment"
             placeholder="Type of pet"
             name="comments"
-            onChange={handleChange}
-          ></textarea>
+            onChange={formik.handleChange}
+            value={formik.values.comments}
+          />
         </div>
-        <FormBtnNav onClick={handleSubmit} />
-      </div>
-    </>
+        <FormBtnNav
+          // onClick={handleSubmit}
+        />
+      </form>
+    // </Formik>
   );
 };
 

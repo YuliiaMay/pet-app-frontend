@@ -2,41 +2,53 @@ import { useSelector } from "react-redux";
 import { AddPetContainer } from "./AddPetMultiStepForm.styled";
 import FormTitle from "./FormTitle/FormTitle";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import { selectCategory, selectCurrentStage } from "../../../redux/petsSlice/selectors";
+import { selectAllPetData, selectCategory, selectCurrentStage } from "../../../redux/petsSlice/selectors";
 import OptionForm from "./OptionForm/OptionForm";
 import DetailsForm from "./DetailsForm/DetailsForm";
 import MoreInfoForm from "./MoreInfoForm/MoreInfoForm";
+import SuccessStage from "./SuccessStage/SuccessStage";
 
 
-const AddPetMultiStepForm = () => {
-    const currentStage = useSelector(selectCurrentStage);
+
+
+const AddPetMultiStepForm = ({leaveAddPetForm}) => {
+    const stage = useSelector(selectCurrentStage);
     const category = useSelector(selectCategory);
-    const stage = useSelector(selectCurrentStage);  
-            
+
+    console.log(leaveAddPetForm);
     return (
         <AddPetContainer>
+
             <FormTitle title={
-                (category === "your pet" || category === null && "Add pet") ||
-                (category === "sell" && stage !== 1 && "Add pet for sell") ||
-                (category === "lost" && stage !== 1 && "Add lost pet") ||
-                (category === "good hands" && stage !== 1 && "Add pet in good hands")
+                (category === null && "Add pet") ||
+                (category === "your pet" && "Add pet") ||
+                (category === "sell" && "Add pet for sell") ||
+                (category === "lost/found" && "Add lost pet") ||
+                (category === "in good hands" && "Add pet in good hands") ||
+                (category === "success" && "Your post has been created!")
+                // (stage === 1 && "Add pet")
             } />
+
             <ProgressBar />
 
             {
-                currentStage === 1
-                    && <OptionForm stage={currentStage} />
+                stage === 1
+                    && <OptionForm leaveAddPetForm={leaveAddPetForm} />
             }
 
             {
-                currentStage === 2
-                    && <DetailsForm stage={currentStage} />
-            }   
+                stage === 2
+                    && <DetailsForm />
+            }
 
             {
-                (currentStage === 3 || currentStage === "success")
-                    && <MoreInfoForm stage={currentStage} />
+                (stage === 3)
+                    && <MoreInfoForm />
             }
+            {
+                (stage === "success")
+                    && <SuccessStage leaveAddPetForm={leaveAddPetForm}/>
+            }            
             
         </AddPetContainer>
     );
