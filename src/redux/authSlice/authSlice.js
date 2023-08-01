@@ -80,7 +80,10 @@ const authSlice = createSlice({
           };
       }) 
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user = payload;
+        return {
+          ...state,
+          user: payload,
+        };
       })
   
 });

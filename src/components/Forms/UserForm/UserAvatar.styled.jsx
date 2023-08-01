@@ -86,5 +86,8 @@ export const ConfirmWrapper = styled.div`
   display: flex;
   gap: 8px;
   position: absolute;
-  transform: translate(-50%, 0);
 `;
+
+export const ErrorText = styled.p`
+color: red;
+`
