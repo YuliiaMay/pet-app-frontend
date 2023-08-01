@@ -3,8 +3,23 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 axios.defaults.baseURL = "https://pets-zywq.onrender.com/api";
 
-export const fetchNotices = createAsyncThunk(
+export const fetchNoticesAll = createAsyncThunk(
   "notices/getAll",
+  async (data, thunkAPI) => {
+    const { owner } = data;
+    try {
+      const response = await axios.get("/notices/getall", {});
+      const data = response.data.filter((item) => item.owner === owner);
+      console.log("data", data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchNotices = createAsyncThunk(
+  "notices/getSearch",
   async (data, thunkAPI) => {
     const { page, category, search } = data;
 
@@ -53,7 +68,8 @@ export const deleteNotice = createAsyncThunk(
   "notices/deleteNotices",
   async (id, thunkAPI) => {
     try {
-      const response = await axios.post(`/notices/${id}`);
+      const response = await axios.delete(`/notices/delnotice/${id}`);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

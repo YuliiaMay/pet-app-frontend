@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import {
   Button,
   Div,
@@ -22,7 +24,24 @@ import {
   checkPoster,
 } from "../../../utils";
 
-export const CommonItemList = ({ item, children }) => {
+import { selectUser } from "../../../redux/authSlice/selectors";
+
+export const CommonItemList = ({ item, children, handleClickDelete }) => {
+  const user = useSelector(selectUser);
+
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleClickDeleteTest = (id) => {
+    handleClickDelete(id);
+  };
+
+  useEffect(() => {
+    if (user._id === item.owner) {
+      setIsFollowing(true);
+      return;
+    }
+  }, [item.owner, user]);
+
   return (
     <Info>
       <Div>
@@ -38,6 +57,21 @@ export const CommonItemList = ({ item, children }) => {
                 stroke={"#54ADFF"}
               />
             </Button>
+            {isFollowing ? (
+              <Button
+                aria-label="add to trash"
+                onClick={() => handleClickDeleteTest(item._id)}
+              >
+                <Icon
+                  iconName={"icon-trash"}
+                  width={"24px"}
+                  height={"24px"}
+                  stroke={"#54ADFF"}
+                />
+              </Button>
+            ) : (
+              ""
+            )}
           </Div2>
         </Div1>
         <Ul>
@@ -48,7 +82,7 @@ export const CommonItemList = ({ item, children }) => {
               height={"24px"}
               stroke={"#54ADFF"}
             ></Icon>
-            <Span> {formattingCitName(item.place)}</Span>
+            <Span> {item.place}</Span>
           </Li>
           <Li>
             <Icon
@@ -71,7 +105,7 @@ export const CommonItemList = ({ item, children }) => {
         </Ul>
       </Div>
       <Div3>
-        <P1>{formattingTitle(item.title)}</P1>
+        <P1>{item.title}</P1>
         {children}
       </Div3>
     </Info>
@@ -81,4 +115,5 @@ export const CommonItemList = ({ item, children }) => {
 CommonItemList.propTypes = {
   item: PropTypes.object,
   children: PropTypes.object,
+  handleClickDelete: PropTypes.func,
 };

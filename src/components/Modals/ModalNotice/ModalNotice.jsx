@@ -105,7 +105,7 @@ export function ModalNotice({ active, setShow, card }) {
                       <tr>
                         <td>Price:</td>
                         <td>
-                          <span>{price}</span>
+                          <span>{price} ₿</span>
                         </td>
                       </tr>
                     )}

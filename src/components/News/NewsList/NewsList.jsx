@@ -23,7 +23,7 @@ export default function NewsList() {
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("query");
 
-  const news = useSelector(selectAllNews);
+  const { news, length } = useSelector(selectAllNews);
 
   const dispatch = useDispatch();
 
@@ -55,14 +55,14 @@ export default function NewsList() {
           </>
         )}
       </List>
-      \
+
       <WrapperPagination>
         {news.length < 6 || (
           <Pagination
             onChange={onChange}
             current={currentPage}
             showLessItems
-            total={300}
+            total={length}
             showTitle={false}
           />
         )}

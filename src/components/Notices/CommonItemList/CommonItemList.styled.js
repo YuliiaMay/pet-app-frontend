@@ -8,6 +8,7 @@ export const Span = styled.span`
 `;
 
 export const Li = styled.li`
+  background: tomato;
   cursor: pointer;
   align-items: center;
   background-color: ${(props) => props.theme.background.lightBlue};
