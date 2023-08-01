@@ -11,8 +11,12 @@ import {
   LogoutBtn,
 } from "./ModalApproveAction.styled";
 import { Icon } from "../../Icon/Icon";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../redux/authSlice/operations";
 
 const ModalApproveAction = ({ active, setShow }) => {
+  const dispatch = useDispatch();
+
   const handleClickClose = () => {
     setShow(false);
   };
@@ -34,7 +38,7 @@ const ModalApproveAction = ({ active, setShow }) => {
             <CancelBtn onClick={handleClickClose} type="button">
               Cancel
             </CancelBtn>
-            <LogoutBtn type="button">
+            <LogoutBtn type="button" onClick={() => dispatch(logout())}>
               Yes
               <Icon
                 iconName={"icon-logout"}

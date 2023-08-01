@@ -1,20 +1,43 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
     BtnNav,
-    LinkBackBox,
+    BtnBack,
     LinkBack,
     BtnNext,
     BtnNextText
 } from "./FormBtnNav.styled";
 import { selectCurrentStage } from "../../../../redux/petsSlice/selectors";
 import { formStage } from "../../../../redux/petsSlice/petsSlice";
-import { FaArrowLeft } from "react-icons/fa";
+import { Icon } from "../../../../components/Icon/Icon"
+import { useEffect, useRef, useState } from "react";
+import { Navigate } from "react-router";
 
 
-const FormBtnNav = ({ onClick }) => {
+export function useTimeout(callback, delay) {
+  const timeoutRef = useRef(null);
+  const savedCallback = useRef(callback);
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+  useEffect(() => {
+    const tick = () => savedCallback.current();
+    if (typeof delay === 'number') {
+      timeoutRef.current = window.setTimeout(tick, delay);
+      return () => window.clearTimeout(timeoutRef.current);
+    }
+  }, [delay]);
+  return timeoutRef;
+};
+
+
+
+const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
     const stage = useSelector(selectCurrentStage);
     const dispatch = useDispatch();
+    // const [isSuccess, setIsSuccess] = useState(false);
     let prev;
+
+    console.log(leaveAddPetForm);
 
     const countPrevStage = () => {
         if (stage === 3 || stage === 2) {
@@ -25,42 +48,68 @@ const FormBtnNav = ({ onClick }) => {
         return;
     }
 
-    const onCancelClick = () => {
-        console.log(prev);
+    const onBackClick = () => {
         dispatch(
             formStage(countPrevStage())
         );        
     };
 
     return (
-        <>
-            {
-                stage !== "success" &&
+        <div>    
+
+            <div>
+                {
+                    stage !== "success" &&
                     <BtnNav>
-                        <LinkBackBox onClick={onCancelClick}>
-                            <FaArrowLeft/>
-                            <LinkBack>
+                            {
+                                stage === 1
+                                    ? (
+                                        <BtnBack onClick={leaveAddPetForm}>
+                                            <Icon
+                                                iconName={"icon-arrow-left"}
+                                                width={"24px"}
+                                                height={"24px"}
+                                                stroke={"#54ADFF"}
+                                            />  
+                                            <LinkBack>Cancel</LinkBack>
+                                        </BtnBack>
+                                    )
+                                    : (
+                                        <BtnBack onClick={onBackClick}>
+                                            <Icon
+                                                iconName={"icon-arrow-left"}
+                                                width={"24px"}
+                                                height={"24px"}
+                                                stroke={"#54ADFF"}
+                                            />
+                                            <LinkBack>Back</LinkBack>
+                                        </BtnBack>                                )
+                            }
+
+                            
+                            <BtnNext
+                                onClick={onClick}
+                                type="submit"
+                            >
                                 {
-                                    stage === 1
-                                        ? "Cancel"
-                                        : "Back"
+                                    stage === 3
+                                        ? <BtnNextText>Done</BtnNextText>
+                                        : <BtnNextText>Next</BtnNextText>                               
                                 }
-                            </LinkBack>
-                        </LinkBackBox>
-                        
-                        <BtnNext
-                            onClick={onClick}
-                            type="submit"
-                        >
-                        {
-                            stage === 3
-                                ? <BtnNextText>Done</BtnNextText>
-                                : <BtnNextText>Next</BtnNextText>                               
-                        }
-                        </BtnNext>
-                    </BtnNav>            
-            }        
-        </>
+                                <Icon
+                                    iconName={"icon-pawprint"}
+                                    width={"24px"}
+                                    height={"24px"}
+                                    fill={"#FEF9F9"}
+                                />                            
+                            </BtnNext>
+                        </BtnNav>            
+                }        
+            </div>        
+        
+        </div>
+
+
 
     
     );

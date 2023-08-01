@@ -6,7 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import { PublicRoute } from "./routes/PublicRoute";
 import { PrivateRoute } from "./routes/PrivateRoute";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { refreshUser } from "./redux/authSlice/operations";
 import { useAuth } from "./hooks/useAuth";
 import { Loader } from "./components/Loader/Loader";
@@ -30,14 +30,9 @@ function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
-  const { isLoggedIn } = useAuth();
-
-
-
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-
 
   return isRefreshing ? (
     <Loader />
@@ -98,7 +93,10 @@ function App() {
           <Route
             path="/user"
             element={
-              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+              <PrivateRoute
+                redirectTo="/notices/sell"
+                component={<UserPage />}
+              />
             }
           />
           <Route path="/logout" element={<Navigate to="/notices/sell" />} />

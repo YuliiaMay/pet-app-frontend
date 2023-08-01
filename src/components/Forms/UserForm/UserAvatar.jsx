@@ -32,6 +32,7 @@ export const UserAvatar = ({ isFormEnable }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [avatar, setAvatar] = useState(user.avatar || "");
+  const [imgToUpload, setImgToUpload] = useState('')
 
   const [isFormatErr, setIsFormatErr] = useState(false);
   const [isImgUpdating, setIsImgUpdating] = useState(false);
@@ -42,35 +43,44 @@ export const UserAvatar = ({ isFormEnable }) => {
 
   const handleConfirmBtn = () => {
     setIsImgUpdating(false);
+    sendFormData(imgToUpload);
 }
 
   const inputUploadHandler = async (e) => {
     setIsFormatErr(false);
     setIsImgUpdating(true);
 
-    if (e.target.files[0].type !== "image/jpeg") {
+    const newAvatar = e.target.files[0];
+
+    if (newAvatar.type !== "image/jpeg") {
       setIsFormatErr(true);
+      setIsImgUpdating(false);
       return;
     }
+     const objectUrl = URL.createObjectURL(newAvatar)
+    setAvatar(objectUrl);
+    setImgToUpload(newAvatar);
+    setIsFormatErr(false);
+    setIsImgUpdating(true);
 
-    setIsImgUpdating(false);
-    const formData = new FormData();
-    formData.append("file", e.target.files[0]);
+  };
+
+  const sendFormData = async(newAvatar) => {
+     const formData = new FormData();
+    formData.append("file", newAvatar);
 
     await dispatch(updateUser(formData))
       .then((data) => {
         if (data.error) {
           setIsFormatErr(true);
-          setIsImgUpdating(false);
+          setIsImgUpdating(true);
         } 
           setIsFormatErr(false);
-          setIsImgUpdating(true);
+          setIsImgUpdating(false);
       })
-  };
+  }
 
-  const handleClearAvatar = (setFieldValue) => {
-    console.log(setFieldValue)
-    setFieldValue("avatar", '');
+  const handleClearAvatar = () => {
     setAvatar('');
     setIsImgUpdating(false);
   };
@@ -81,10 +91,10 @@ export const UserAvatar = ({ isFormEnable }) => {
       {isFormatErr && (
         <ErrorText>Something went wrong. Only img can be uploaded</ErrorText>
       )}
-      <UserAvatarImg src={avatar} alt='' />
+      <UserAvatarImg src={avatar} alt='' id="avatar"/>
       {isFormEnable && (
         <Formik initialValues={initialValues} onSubmit={inputUploadHandler}>
-          {({ setFieldValue}) => (
+          {() => (
             <FormAvatar encType='multipart/form-data'>
               <FileInput
                 type='file'
@@ -93,7 +103,6 @@ export const UserAvatar = ({ isFormEnable }) => {
                 accept='image/*'
                 value={""}
                 onChange={inputUploadHandler}
-                disable={isImgUpdating}
                 hidden={isImgUpdating}
               />
               {!isImgUpdating ? (
@@ -113,7 +122,7 @@ export const UserAvatar = ({ isFormEnable }) => {
 
                     <button
                       type='button'
-                      onClick={()=> handleClearAvatar(setFieldValue)}>
+                      onClick={handleClearAvatar}>
                       <Decline />
                     </button>
                 </ConfirmWrapper>

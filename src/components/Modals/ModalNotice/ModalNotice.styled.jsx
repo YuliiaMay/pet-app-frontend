@@ -9,7 +9,7 @@ export const WrapperModal = styled.div`
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
-    width: 681px;
+    min-width: 681px;
     min-height: 540px;
 
     padding: 32px 32px 24px 32px;
@@ -98,7 +98,7 @@ export const Title = styled.h2`
   letter-spacing: -0.28px;
 
   @media screen and (min-width: 768px) {
-    width: 250px;
+    width: 350px;
   }
 `;
 

@@ -1,6 +1,7 @@
 import formatDate from "../../../utils/formatDate";
+import { useState } from "react";
 import PropTypes from "prop-types";
-
+import { checkPosterNews, formattingTextNews } from "../../../utils";
 import {
   Item,
   ImageWrapper,
@@ -12,37 +13,36 @@ import {
   NewsLink,
 } from "./NewsItem.styled";
 
-export const NewsItem = ({ dataNews }) => {
-  if (!dataNews) return;
+export const NewsItem = (item) => {
+  const [errorUrl, setErrorUrl] = useState(false);
+  if (!item) return;
 
-  const formattingText = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 50) {
-      newFormat = text.slice(0, 80) + "...";
-    }
-    return newFormat;
+  const handleImageError = () => {
+    setErrorUrl(true);
   };
 
   return (
     <>
-      {dataNews.map((item) => (
-        <Item key={item._id}>
-          <ImageWrapper>
-            <img src={item.imgUrl} alt={item.title} />
-          </ImageWrapper>
-          <TextContent>
-            <NewsTitle>{item.title}</NewsTitle>
-            <NewsBody>{formattingText(item.text)}</NewsBody>
+      <Item key={item._id}>
+        <ImageWrapper>
+          <img
+            onError={handleImageError}
+            src={checkPosterNews(item.imgUrl, errorUrl)}
+            alt={item.title}
+          />
+        </ImageWrapper>
+        <TextContent>
+          <NewsTitle>{item.title}</NewsTitle>
+          <NewsBody>{formattingTextNews(item.text)}</NewsBody>
 
-            <BottomWrapper>
-              <NewsDate>{formatDate(item.date)}</NewsDate>
-              <NewsLink href={item.url} target="_blank" rel="noreferrer">
-                Read more
-              </NewsLink>
-            </BottomWrapper>
-          </TextContent>
-        </Item>
-      ))}
+          <BottomWrapper>
+            <NewsDate>{formatDate(item.date)}</NewsDate>
+            <NewsLink href={item.url} target="_blank" rel="noreferrer">
+              Read more
+            </NewsLink>
+          </BottomWrapper>
+        </TextContent>
+      </Item>
     </>
   );
 };

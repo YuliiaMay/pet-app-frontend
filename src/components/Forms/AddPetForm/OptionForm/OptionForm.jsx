@@ -2,17 +2,13 @@ import { OptionList, OptionInput } from "./OptionForm.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { formStage, optionForm } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
-import { selectAllPetData, selectCategory } from "../../../../redux/petsSlice/selectors";
+import { selectCategory } from "../../../../redux/petsSlice/selectors";
 
 
-const OptionForm = () => {
+const OptionForm = ({leaveAddPetForm}) => {
     const dispatch = useDispatch();
     const category = useSelector(selectCategory);
-
-    // const all = useSelector(selectAllPetData);
-
-
-
+    
 
     const handleSelectCategory = ({ target: { value } }) => {
         const selectedCategory = value;
@@ -22,15 +18,14 @@ const OptionForm = () => {
                 category: selectedCategory,
             })
         ); 
-
     };
 
     const onNextStep = () => {
         // e.preventDefault();
         if (category === "your pet"
             || category === "sell"
-            || category === "lost"
-            || category === "good hands"
+            || category === "lost/found"
+            || category === "in good hands"
         ) {
             dispatch(
                 formStage(2)
@@ -64,7 +59,7 @@ const OptionForm = () => {
                 
                     <OptionInput
                         type="button"
-                        value={"lost"}
+                        value={"lost/found"}
                         name="category-lost"
                     onClick={handleSelectCategory}     
                     />
@@ -72,7 +67,7 @@ const OptionForm = () => {
                 
                     <OptionInput
                         type="button"
-                        value={"good hands"}
+                        value={"in good hands"}
                         name="category-good-hands"
                         onClick={handleSelectCategory}
                     />
@@ -81,6 +76,7 @@ const OptionForm = () => {
             </OptionList>
             <FormBtnNav
                 onClick={onNextStep}
+                leaveAddPetForm={leaveAddPetForm}
             />
 
         </div>
