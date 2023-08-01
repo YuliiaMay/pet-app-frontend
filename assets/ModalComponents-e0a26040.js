@@ -1,4 +1,4 @@
-import{s as n,r as c,C as d,j as o}from"./index-7bcc7605.js";const p=n.div`
+import{s as n,r as c,E as d,j as o}from"./index-9ff8e6ae.js";const p=n.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,7 @@ import{s as n,r as c,C as d,j as o}from"./index-7bcc7605.js";const p=n.div`
     transform: scale(1);
   }
   @media screen and (min-width: 768px) {
-    width: 608px;
+    /* width: 608px; */
     min-height: 354px;
     border-radius: 40px;
     padding: 32px 32px 24px 32px;
