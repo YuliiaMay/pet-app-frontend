@@ -139,11 +139,11 @@ export const deleteNotices = createAsyncThunk(
  * PATCH @ /notices/favorite/${id}
  */
 export const addNoticeToFavorite = createAsyncThunk(
-  "/pet/delete",
+  "/notices/addFavorite",
   async (id, thunkAPI) => {
     try {
       const response = await axios.patch(`/notices/favorite/${id}`);
-      
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
