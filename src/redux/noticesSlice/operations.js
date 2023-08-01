@@ -10,7 +10,7 @@ export const fetchNoticesAll = createAsyncThunk(
     try {
       const response = await axios.get("/notices/getall", {});
       const data = response.data.filter((item) => item.owner === owner);
-      console.log("data", data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

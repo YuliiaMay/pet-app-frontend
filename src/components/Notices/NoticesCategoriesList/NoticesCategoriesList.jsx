@@ -99,11 +99,10 @@ const NoticesCategoriesList = () => {
     setCurrentPage(page);
   };
 
-  useEffect(() => {
+  useMemo(() => {
     if (location.pathname === "/notices/sell") {
       setCurrentCategory("sell");
       setRenderCards(notices);
-
       setFetching(true);
     } else if (location.pathname === "/notices/lost-found") {
       setCurrentCategory("lost/found");
@@ -119,7 +118,7 @@ const NoticesCategoriesList = () => {
     }
   }, [location.pathname, notices]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (
       location.pathname === "/notices/sell" ||
       location.pathname === "/notices/lost-found" ||
@@ -128,7 +127,6 @@ const NoticesCategoriesList = () => {
       setCurrentPage(1);
       setFetching(true);
       setFetchingAll(false);
-      // setRenderCards(notices);
     } else if (location.pathname === "/notices/own") {
       setFetchingAll(true);
       setCurrentPage(1);
