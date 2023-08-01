@@ -11,16 +11,7 @@ export const Section = styled.div`
   }
 `;
 
-export const TitleSearch = styled.h2`
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 40px;
 
-  @media (max-width: 479px) {
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-`;
 
 export const FormSearch = styled.form`
   display: flex;
