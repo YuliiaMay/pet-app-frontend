@@ -4,22 +4,6 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
-
-  @media (min-width: 320px) {
-    margin-top: 40px;
-  }
-`;
-
-export const TitleSearch = styled.h2`
-  font-size: 24px;
-  margin-bottom: 24px;
-
-  @media (min-width: 768px) {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 40px;
-  }
 `;
 
 export const FormSearch = styled.form`

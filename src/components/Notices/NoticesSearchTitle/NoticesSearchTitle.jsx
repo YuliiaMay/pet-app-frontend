@@ -1,9 +1,8 @@
-import {NoticesTitle, TitleSearch} from "./NotisesSearchTitle"
+import { NoticesTitle, TitleSearch } from "./NotisesSearchTitle.styled";
 export const NoticesSearchTitle = () => {
-
-    return (
-        <NoticesTitle>
-            <TitleSearch>Find your favorite pet</TitleSearch>
-        </NoticesTitle>
-    )
-}
+  return (
+    <NoticesTitle>
+      <TitleSearch>Find your favorite pet</TitleSearch>
+    </NoticesTitle>
+  );
+};
