@@ -70,7 +70,7 @@ const authSlice = createSlice({
         state.user.pets.splice(index, 1);           
       }) 
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user = payload;
+        state.user.favorites.push(payload);
       })
   
 });
