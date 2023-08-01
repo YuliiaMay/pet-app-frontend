@@ -30,13 +30,9 @@ function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
-
-
-
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-
 
   return isRefreshing ? (
     <Loader />
@@ -97,7 +93,10 @@ function App() {
           <Route
             path="/user"
             element={
-              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+              <PrivateRoute
+                redirectTo="/notices/sell"
+                component={<UserPage />}
+              />
             }
           />
           <Route path="/logout" element={<Navigate to="/notices/sell" />} />
