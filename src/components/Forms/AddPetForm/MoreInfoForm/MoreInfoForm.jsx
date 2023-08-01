@@ -15,7 +15,6 @@ import {
   selectBreed,
   selectTitle,
   selectType,
-  // selectAllPetData
 } from "../../../../redux/petsSlice/selectors";
 import { addPetOrNotice } from "../../../../redux/petsSlice/operations";
 import { useFormik } from "formik";
@@ -37,7 +36,7 @@ const MoreInfoForm = () => {
   const comments = useSelector(selectComments);
   const location = useSelector(selectLocation);  
   const price = useSelector(selectPrice);  
-  // const [isSuccess, setisSuccess] = useState(false);
+  
 
 
   const formik = useFormik({
@@ -49,9 +48,11 @@ const MoreInfoForm = () => {
       price: "",      
     },
     onSubmit: (values) => {
+      console.log(values);
       dispatch(
         moreInfoForm(values)
       );
+
       
       const newData = {
         category: category,
@@ -88,9 +89,9 @@ const MoreInfoForm = () => {
       //   }
       // }
       
-      // for (const [key, value] of formData.entries()) {
-      //     console.log(`${key}: ${value}`);
-      // }      
+      for (const [key, value] of formData.entries()) {
+          console.log(`${key}: ${value}`);
+      }      
 
       dispatch(addPetOrNotice(formData));
       dispatch(formStage("success"));
@@ -121,36 +122,29 @@ const MoreInfoForm = () => {
 
       <form onSubmit={formik.handleSubmit} encType='multipart/form-data'>
 
-        {/* {
+        {
           (category === "sell" || "lost/found" || "in good hands") &&
             <>
-              <div>
                 <p>The Sex</p>
                 <input
                   type="button"
                   // value={"Female"}            
                   id="pet-name"
-                  name="female"
+                  name="sex"
                   onChange={formik.handleChange}
-                  // value={formik.values.female}
-                >
-                  <BsGenderMale color="#F43F5E"/>
-                  Female
-                </input>
+                  value={formik.values.sex}
+                />
+
                 <input
                   type="button"
-                  // value={"Male"}            
+                  value={"Male"}            
                   id="pet-name"
-                  name="male"
+                  name="sex"
                   onChange={formik.handleChange}
-                  // value={formik.values.male}
-                >
-                  <BsGenderFemale color="#F43F5E"/>
-                  Male
-                </input>
-              </div>     
+                />
+
             </>
-        } */}
+        }
 
 
 

@@ -20,10 +20,11 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post("/users/register", credentials);
-      console.log(response.data);
+      
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
+      console.log(error.response.request.status);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -143,7 +144,7 @@ export const addNoticeToFavorite = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.patch(`/notices/favorite/${id}`);
-      // console.log(response.data);
+      
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

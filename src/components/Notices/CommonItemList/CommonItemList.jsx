@@ -17,27 +17,6 @@ import PropTypes from "prop-types";
 import { Icon } from "../../../components/Icon/Icon";
 import { Div3, P1 } from "../NoticesCategoriesList/NoticesPetCard.styled";
 
-import { formatYears } from "../../../utils";
-import { useState } from "react";
-
-export const CommonItemList = ({ item, children }) => {
-  const [showModalDelete, setShowModalDelete] = useState(false);
-
-  const handleClickDelete = () => {
-    setShowModalDelete(true);
-  };
-
-  const handleAttentionMsg = () => {
-    setShowModalDelete(true);
-  };
-  const formattingOverview = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 15) {
-      newFormat = text.slice(0, 21) + "...";
-    }
-    return newFormat;
-  };
-
 import {
   formatYears,
   formattingCitName,
@@ -53,18 +32,15 @@ export const CommonItemList = ({ item, children, handleClickDelete }) => {
   const user = useSelector(selectUser);
 
   const [isFollowing, setIsFollowing] = useState(false);
-
   const handleClickDeleteTest = (id) => {
     handleClickDelete(id);
   };
-
   useEffect(() => {
     if (user._id === item.owner) {
       setIsFollowing(true);
       return;
     }
   }, [item.owner, user]);
-
   return (
     <Info>
       <Div>
@@ -72,7 +48,8 @@ export const CommonItemList = ({ item, children, handleClickDelete }) => {
         <Div1>
           <PP>{item.category}</PP>
           <Div2>
-            <Button aria-label="add to favorites" onClick={handleAttentionMsg}>
+            <Button aria-label="add to favorites">
+            {/* <Button aria-label="add to favorites" onClick={handleAttentionMsg}> */}
               <Icon
                 iconName={"icon-heart"}
                 width={"24px"}
@@ -135,7 +112,6 @@ export const CommonItemList = ({ item, children, handleClickDelete }) => {
     </Info>
   );
 };
-
 CommonItemList.propTypes = {
   item: PropTypes.object,
   children: PropTypes.object,
