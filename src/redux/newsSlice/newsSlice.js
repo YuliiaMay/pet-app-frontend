@@ -20,7 +20,7 @@ const fulfilledReducer = (state) => {
 };
 
 const fetchNewsReducer = (state, { payload }) => {
-  state.items = payload;
+  state.items = payload.news;
 };
 const initialState = {
   items: [],
