@@ -1,4 +1,4 @@
-import{s as n,P as p,j as e,I as l,f as k,i as T,r as o,N as E,d as V,b as X,u as Z,y as ee,z as te,e as ne,A as ie}from"./index-8f7a4cab.js";import{f as oe,P as se,s as re}from"./index-cc7d2621.js";import{M}from"./ModalComponents-9baffd4c.js";const ae="/pet-app-frontend/assets/defaultPoster-c04359c8.jpeg",W=t=>t||ae,ce=t=>t.replace(/[.\-/\\\s]/g,"");function de(t){if(!t)return;const i=new Date,s=new Date(i.getFullYear(),i.getMonth(),i.getDate()),r=new Date(t),x=new Date(s.getFullYear(),r.getMonth(),r.getDate());let d;return d=s.getFullYear()-r.getFullYear(),s<x&&(d=d-1),d}const le=t=>{let i=t;return i.length>6&&(i=t.slice(0,4)+"..."),i},pe=t=>t.notices.items,xe=t=>t.notices.own,he=t=>t.notices.isLoading,fe=n.div`
+import{s as n,P as p,j as e,I as l,f as k,i as T,r as o,N as E,d as V,b as X,u as Z,y as ee,z as te,e as ne,A as ie}from"./index-90b21447.js";import{f as oe,P as se,s as re}from"./index-7dcb24e7.js";import{M}from"./ModalComponents-b0861a9f.js";const ae="/pet-app-frontend/assets/defaultPoster-c04359c8.jpeg",W=t=>t||ae,ce=t=>t.replace(/[.\-/\\\s]/g,"");function de(t){if(!t)return;const i=new Date,s=new Date(i.getFullYear(),i.getMonth(),i.getDate()),r=new Date(t),x=new Date(s.getFullYear(),r.getMonth(),r.getDate());let d;return d=s.getFullYear()-r.getFullYear(),s<x&&(d=d-1),d}const le=t=>{let i=t;return i.length>6&&(i=t.slice(0,4)+"..."),i},pe=t=>t.notices.items,xe=t=>t.notices.own,he=t=>t.notices.isLoading,fe=n.div`
   width: 280px;
 
   display: flex;
@@ -229,7 +229,7 @@ import{s as n,P as p,j as e,I as l,f as k,i as T,r as o,N as E,d as V,b as X,u a
   letter-spacing: 0.04em;
   line-height: 16px;
 `,S=n.li`
-  background: tomato;
+
   cursor: pointer;
   align-items: center;
   background-color: ${t=>t.theme.background.lightBlue};
@@ -256,8 +256,8 @@ import{s as n,P as p,j as e,I as l,f as k,i as T,r as o,N as E,d as V,b as X,u a
     }
   }
 `,De=n.li`
-  margin: 0 auto;
-
+  /* margin: 0 auto; */
+  align-items: center;
   display: flex;
   flex-direction: column;
   width: 280px;
@@ -354,19 +354,20 @@ import{s as n,P as p,j as e,I as l,f as k,i as T,r as o,N as E,d as V,b as X,u a
     gap: 12px;
   }
 `,Me=n.ul`
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-
-  width: 100%;
-  margin-bottom: 60px;
-
-  gap: 24px;
+  @media screen and (max-width: 767px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 60px;
+    gap: 24px;
+  }
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
     flex-wrap: wrap;
-
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+    align-items: center;
     column-gap: 32px;
     row-gap: 24px;
   }
@@ -375,8 +376,6 @@ import{s as n,P as p,j as e,I as l,f as k,i as T,r as o,N as E,d as V,b as X,u a
     flex-grow: 1;
   }
 `;n.li`
-  margin: 0 auto;
-
   display: flex;
   flex-direction: column;
   width: 280px;
@@ -438,7 +437,7 @@ import{s as n,P as p,j as e,I as l,f as k,i as T,r as o,N as E,d as V,b as X,u a
       stroke: ${t=>t.theme.color.wight};
       fill: ${t=>t.theme.color.wight};
     }
-    
+
     @media screen and (max-width: 767px) {
       /* gap: 5px; */
     }
