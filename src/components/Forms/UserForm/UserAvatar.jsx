@@ -20,31 +20,33 @@ import {
   AvatarFormWrapper,
   ConfirmWrapper,
   EditPhotoBtn,
+  ErrorText,
   FileInput,
   FormAvatar,
   UserAvatarImg,
 } from "./UserAvatar.styled";
+import { selectUser } from "../../../redux/authSlice/selectors";
+import { updateUser } from "../../../redux/authSlice/operations";
 
 export const UserAvatar = ({ isFormEnable }) => {
   const dispatch = useDispatch();
-  // const user = useSelector(user);
+  const user = useSelector(selectUser);
+  const [avatar, setAvatar] = useState(user.avatar || "");
 
   const [isFormatErr, setIsFormatErr] = useState(false);
   const [isImgUpdating, setIsImgUpdating] = useState(false);
-  const user = {
-    avatar:
-      "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-  };
+
   const initialValues = {
-    avatar: user.avatar,
+    avatar: avatar,
   };
 
-  const handleAvatarEditing = () => {
-    setIsImgUpdating(true);
-  };
+  const handleConfirmBtn = () => {
+    setIsImgUpdating(false);
+}
 
   const inputUploadHandler = async (e) => {
     setIsFormatErr(false);
+    setIsImgUpdating(true);
 
     if (e.target.files[0].type !== "image/jpeg") {
       setIsFormatErr(true);
@@ -53,24 +55,36 @@ export const UserAvatar = ({ isFormEnable }) => {
 
     setIsImgUpdating(false);
     const formData = new FormData();
-    formData.append("avatar", e.target.files[0]);
+    formData.append("file", e.target.files[0]);
 
-    // eslint-disable-next-line no-undef
-    dispatch(uploadImg(formData));
+    await dispatch(updateUser(formData))
+      .then((data) => {
+        if (data.error) {
+          setIsFormatErr(true);
+          setIsImgUpdating(false);
+        } 
+          setIsFormatErr(false);
+          setIsImgUpdating(true);
+      })
   };
 
   const handleClearAvatar = (setFieldValue) => {
-    setFieldValue("avatar", null);
+    console.log(setFieldValue)
+    setFieldValue("avatar", '');
+    setAvatar('');
     setIsImgUpdating(false);
   };
 
+
   return (
     <AvatarFormWrapper>
-      {isFormatErr && <p>Only img can be uploaded</p>}
-      <UserAvatarImg src={user.avatar} alt='' />
+      {isFormatErr && (
+        <ErrorText>Something went wrong. Only img can be uploaded</ErrorText>
+      )}
+      <UserAvatarImg src={avatar} alt='' />
       {isFormEnable && (
         <Formik initialValues={initialValues} onSubmit={inputUploadHandler}>
-          {({ values, setFieldValue }) => (
+          {({ setFieldValue}) => (
             <FormAvatar encType='multipart/form-data'>
               <FileInput
                 type='file'
@@ -78,7 +92,9 @@ export const UserAvatar = ({ isFormEnable }) => {
                 name='avatar'
                 accept='image/*'
                 value={""}
-                onChange={handleAvatarEditing}
+                onChange={inputUploadHandler}
+                disable={isImgUpdating}
+                hidden={isImgUpdating}
               />
               {!isImgUpdating ? (
                 <EditPhotoBtn type='button'>
@@ -87,19 +103,19 @@ export const UserAvatar = ({ isFormEnable }) => {
                 </EditPhotoBtn>
               ) : (
                 <ConfirmWrapper>
-                  <button type='submit'>
+                    <button
+                    type='button'
+                    onClick={handleConfirmBtn}>
                     <Confirm />
                   </button>
 
                   <p>Confirm</p>
 
-                  {values.avatar && (
                     <button
                       type='button'
-                      onClick={() => handleClearAvatar(setFieldValue)}>
+                      onClick={()=> handleClearAvatar(setFieldValue)}>
                       <Decline />
                     </button>
-                  )}
                 </ConfirmWrapper>
               )}
             </FormAvatar>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const WrapperInfo = styled.div`
   padding: 12px 40px 60px;
-  width: 608px;
   display: flex;
   flex-direction: column;
   justify-content: center;

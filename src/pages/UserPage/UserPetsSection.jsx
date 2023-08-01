@@ -5,35 +5,35 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { DeleteBtn, PetImg, PetInfoCard, PetInfoDescription, PetInfoPart, PetInfoTextName, UserPetsList } from "./UserPetsSection.styled";
 import { ReactComponent as Delete } from "../../svg/userPage/delete.svg";
+import { selectUser } from "../../redux/authSlice/selectors";
+import { deletePet} from "../../redux/authSlice/operations";
+import { useState } from "react";
 
 
 export const UserPetsSection = () => {
-  // const user = useSelector(user);
-  const dispatch = useDispatch();
-  const pets = [
-    {
-      id: 1,
-      img: "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg",
-      name: "gggggggg",
-      dateofbirth: "gggggggggg",
-      type: "ggggggggg",
-      comments: "gggggggggggggg",
-    },
-  ];
+  const user = useSelector(selectUser);
+  const [pets, setPets] = useState(user.pets);
 
-  const deleteClickHandler = (e) => {
-    // eslint-disable-next-line no-undef
-    dispatch(deletePetFromFavorite(e.target.id));
+  const dispatch = useDispatch();
+
+  const deleteClickHandler = async(id) => {
+    await dispatch(deletePet(id)).then((responce) =>
+      setPets(responce.payload)
+    );
   };
+
+
   return (
     <UserPetsList>
       {pets.map((pet) => {
         return (
-          <PetInfoCard key={pet.id}>
-            <PetImg src={pet.img} alt='' />
+          <PetInfoCard key={pet._id}>
+            <PetImg src={pet.imgUrl} alt='' />
             <div>
               <PetInfoPart>
-                <DeleteBtn type='button' onClick={deleteClickHandler}>
+                <DeleteBtn
+                  type='button'
+                  onClick={() => deleteClickHandler(pet._id)}>
                   <Delete />
                 </DeleteBtn>
                 <PetInfoTextName>Name: </PetInfoTextName>
@@ -41,15 +41,11 @@ export const UserPetsSection = () => {
               </PetInfoPart>
               <PetInfoPart>
                 <PetInfoTextName>Date of birth: </PetInfoTextName>
-                <PetInfoDescription>{pet.dateofbirth}</PetInfoDescription>
+                <PetInfoDescription>{pet.birthday}</PetInfoDescription>
               </PetInfoPart>
               <PetInfoPart>
                 <PetInfoTextName>Type: </PetInfoTextName>
                 <PetInfoDescription>{pet.type}</PetInfoDescription>
-              </PetInfoPart>
-              <PetInfoPart>
-                <PetInfoTextName>Date of birth: </PetInfoTextName>
-                <PetInfoDescription>{pet.dateofbirth}</PetInfoDescription>
               </PetInfoPart>
               <PetInfoPart>
                 <PetInfoTextName>Comments: </PetInfoTextName>
