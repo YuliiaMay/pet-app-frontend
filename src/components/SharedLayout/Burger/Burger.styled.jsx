@@ -12,6 +12,16 @@ export const BurgerIcon = styled(AiOutlineMenu)`
   @media screen and (min-width: 1280px) {
     display: none;
   }
+  @media screen and (max-width: 767px) {
+    margin-left: 0;
+  }
+`;
+
+export const Logos = styled.picture`
+  max-width: 162px;
+  @media screen and (max-width: 767px) {
+    max-width: 116px;
+  }
 `;
 
 export const BurgerContainer = styled.div`
@@ -64,8 +74,6 @@ export const BurgerBtnWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  /* margin-top: 40px; */
-  /* margin-bottom: 40px; */
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     display: none;
   }
@@ -109,6 +117,9 @@ export const BurgerRegisterBtn = styled(NavLink)`
   border-radius: 40px;
   width: 165px;
   text-align: center;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 142px;
+  }
 `;
 
 //////////////////////////////////////////////////////
@@ -197,4 +208,13 @@ export const UserMobBox = styled.div`
   @media screen and (min-width: 768px) {
     display: none;
   }
+`;
+
+export const BoxMob = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const UserNameMob = styled.div`
+  color: #ffc107;
 `;
