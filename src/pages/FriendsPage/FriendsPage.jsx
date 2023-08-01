@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchFriends } from "../../redux/friendsSlice/operations";
 
-import { FriendsList } from "../../components/Friends/FriendsList";
+import { FriendsList } from "../../components/Friends/FriendsList/FriendsList";
 
 const FriendsPage = () => {
   const dispatch = useDispatch();
