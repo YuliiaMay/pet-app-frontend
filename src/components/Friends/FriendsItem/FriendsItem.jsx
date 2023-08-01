@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-import { InfoContainer, Item, ItemContainer } from "./FriendsItem.styled";
+import {
+  InfoContainer,
+  Item,
+  ItemContainer,
+  Link,
+  TitleBox,
+} from "./FriendsItem.styled";
 import defaultImage from "../../../images/friends/defaultImage.png";
 import { DaysList } from "../DaysList/DaysList";
 
@@ -15,44 +21,25 @@ export const FriendsItem = ({
 }) => {
   return (
     <Item>
-      <div>
+      <TitleBox>
         <a href={url} target="_blank">
-          <h2>{title}</h2>
+          {title}
         </a>
-      </div>
+      </TitleBox>
 
       <ItemContainer>
         <img src={imageUrl ? imageUrl : defaultImage} alt={imageUrl} />
         <InfoContainer>
           <span>
-            Time :
             <DaysList workDays={workDays} />
           </span>
           <span>
-            {/* {workDays.map(({ isOpen, from, to }) => {
-            isOpen === false ? (
-              <span>
-                Time :<p>day and night</p>
-              </span>
-            ) : (
-              <span>
-                Time :
-                <ul>
-                  <li>
-                    <p>
-                      {from}-{to}
-                    </p>
-                  </li>
-                </ul>
-              </span>
-            );
-          })} */}
             Address:
             {address === "" ? (
               <p>website only</p>
             ) : (
               <p>
-                <a href={addressUrl}>{address}</a>
+                <Link href={addressUrl}>{address}</Link>
               </p>
             )}
           </span>
@@ -62,7 +49,7 @@ export const FriendsItem = ({
               {email === "" ? (
                 <p>phone or website only</p>
               ) : (
-                <a href={`mailto:${email}`}>{email}</a>
+                <Link href={`mailto:${email}`}>{email}</Link>
               )}
             </p>
           </span>
@@ -72,7 +59,7 @@ export const FriendsItem = ({
               {phone === "" ? (
                 <p>email or website only</p>
               ) : (
-                <a href={`tel:${phone}`}>{phone}</a>
+                <Link href={`tel:${phone}`}>{phone}</Link>
               )}
             </p>
           </span>
