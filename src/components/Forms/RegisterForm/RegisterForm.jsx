@@ -16,12 +16,15 @@ import {
   InputIconShow,
   InputIconError,
   InputIconSuccess,
+  //InputIconDisabled,
 } from "./RegisterForm.styled.js";
+//import { ModalCongrats } from "/src/components/Modals/ModalCongrats/ModalCongrats";
 
 import showPasswordIcon from "/src/svg/registerPage/eyeOpen.svg";
 import hidePasswordIcon from "/src/svg/registerPage/eyeClosed.svg";
 import successIcon from "/src/svg/registerPage/check.svg";
 import errorIcon from "/src/svg/registerPage/cross.svg";
+//import hidePasswordIconDisabled from "/src/svg/registerPage/eyeClosedDisabled.svg";
 
 const userSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -80,10 +83,8 @@ const RegisterForm = () => {
         isSubmitting,
       }) => (
         <Container>
+          <StyledTitle>Registration</StyledTitle>
           <StyledForm autoComplete="off">
-            <StyledTitle>Registration</StyledTitle>
-            <div>{errors.password}</div>
-
             <StyledField
               type="text"
               name="name"
@@ -106,8 +107,8 @@ const RegisterForm = () => {
                 border={errors.email && touched.email && "1px solid red"}
               />
               {touched.email && errors.email && (
-                <InputIconError color="red">
-                  <img src={errorIcon} alt="error" color="red" />
+                <InputIconError>
+                  <img src={errorIcon} alt="error" />
                 </InputIconError>
               )}
             </InputContainer>
@@ -120,13 +121,23 @@ const RegisterForm = () => {
                 value={values.password}
                 placeholder="Password"
                 onBlur={handleBlur}
+                //isValid={showSuccessIcon}
+                //onChange={handleChange}
                 error={errors.password || passwordError}
                 border={errors.password && touched.password && "1px solid red"}
               />
-              {!errors.password && (
-                <InputIconSuccess>
+              {!errors.password && errors.password !== "" && (
+                <InputIconSuccess isVisible={"opacity:1"}>
                   <img src={successIcon} alt="success" />
                 </InputIconSuccess>
+                // ) && (
+                //   <InputIconDisabled>
+                //     <img src={hidePasswordIcon} alt="disabled" />
+                //   </InputIconDisabled>
+                // ) && (
+                //   <InputIconShow isVisible={"opacity:0"}>
+                //     <img src={hidePasswordIcon} alt="disabled" />
+                //   </InputIconShow>
               )}
               <InputIconShow onClick={handleTogglePassword}>
                 <img
@@ -171,11 +182,16 @@ const RegisterForm = () => {
               </InputIconShow>
             </InputContainer>
             <ErrorText name="confirmPassword" component="div" />
-
-            <SubmitButton type="submit" disabled={isSubmitting}>
-              Registration
-            </SubmitButton>
-
+            <>
+              <SubmitButton
+                type="submit"
+                disabled={isSubmitting}
+                // onClick={openModal}
+              >
+                Registration
+              </SubmitButton>
+              {/* <ModalCongrats isOpen={isModalOpen} onClose={closeModal} /> */}
+            </>
             <StyledLink to="/login">
               Already have a account? <StyledSpan>Login</StyledSpan>
             </StyledLink>

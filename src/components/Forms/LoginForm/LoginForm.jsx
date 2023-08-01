@@ -77,8 +77,8 @@ const LoginForm = () => {
                 border={errors.email && touched.email && "1px solid red"}
               />
               {touched.email && errors.email && (
-                <InputIconError color="red">
-                  <img src={errorIcon} alt="error" color="red" />
+                <InputIconError>
+                  <img src={errorIcon} alt="error" />
                 </InputIconError>
               )}
             </InputContainer>
