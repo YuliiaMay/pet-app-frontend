@@ -41,7 +41,7 @@ export default function NewsList() {
   useEffect(() => {
     setCurrentPage(1);
   }, [query]);
-
+  if (!news) return;
   return (
     <ResponsiveContainer>
       <List>
