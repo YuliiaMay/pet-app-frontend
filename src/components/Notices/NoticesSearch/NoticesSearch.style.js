@@ -4,14 +4,7 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
-
-  @media (min-width: 320px) {
-    margin-top: 40px;
-  }
 `;
-
-
 
 export const FormSearch = styled.form`
   display: flex;
