@@ -64,9 +64,10 @@ export const DeleteBtn = styled.button`
 
 export const UserPetsList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     gap: 24px;
   }
 `;

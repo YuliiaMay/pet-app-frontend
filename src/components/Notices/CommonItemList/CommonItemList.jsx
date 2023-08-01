@@ -16,6 +16,28 @@ import PropTypes from "prop-types";
 
 import { Icon } from "../../../components/Icon/Icon";
 import { Div3, P1 } from "../NoticesCategoriesList/NoticesPetCard.styled";
+
+import { formatYears } from "../../../utils";
+import { useState } from "react";
+
+export const CommonItemList = ({ item, children }) => {
+  const [showModalDelete, setShowModalDelete] = useState(false);
+
+  const handleClickDelete = () => {
+    setShowModalDelete(true);
+  };
+
+  const handleAttentionMsg = () => {
+    setShowModalDelete(true);
+  };
+  const formattingOverview = (text) => {
+    let newFormat = text;
+    if (newFormat.length > 15) {
+      newFormat = text.slice(0, 21) + "...";
+    }
+    return newFormat;
+  };
+
 import {
   formatYears,
   formattingCitName,
@@ -25,6 +47,7 @@ import {
 } from "../../../utils";
 
 import { selectUser } from "../../../redux/authSlice/selectors";
+
 
 export const CommonItemList = ({ item, children, handleClickDelete }) => {
   const user = useSelector(selectUser);
@@ -49,7 +72,7 @@ export const CommonItemList = ({ item, children, handleClickDelete }) => {
         <Div1>
           <PP>{item.category}</PP>
           <Div2>
-            <Button aria-label="add to favorites">
+            <Button aria-label="add to favorites" onClick={handleAttentionMsg}>
               <Icon
                 iconName={"icon-heart"}
                 width={"24px"}
@@ -57,6 +80,7 @@ export const CommonItemList = ({ item, children, handleClickDelete }) => {
                 stroke={"#54ADFF"}
               />
             </Button>
+
             {isFollowing ? (
               <Button
                 aria-label="add to trash"
