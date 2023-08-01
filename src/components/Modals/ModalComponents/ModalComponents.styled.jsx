@@ -35,7 +35,7 @@ export const ModalSt = styled.div`
     transform: scale(1);
   }
   @media screen and (min-width: 768px) {
-    width: 608px;
+    /* width: 608px; */
     min-height: 354px;
     border-radius: 40px;
     padding: 32px 32px 24px 32px;

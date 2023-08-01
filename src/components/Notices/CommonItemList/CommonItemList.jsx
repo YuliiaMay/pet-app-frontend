@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import {
   Button,
   Div,
@@ -7,42 +9,43 @@ import {
   Info,
   PP,
   Ul,
+  Li,
+  Span,
 } from "./CommonItemList.styled";
 import PropTypes from "prop-types";
 
 import { Icon } from "../../../components/Icon/Icon";
 import { Div3, P1 } from "../NoticesCategoriesList/NoticesPetCard.styled";
-import { formatYears } from "../../../utils";
+import {
+  formatYears,
+  formattingCitName,
+  formattingAge,
+  formattingTitle,
+  checkPoster,
+} from "../../../utils";
 
-export const CommonItemList = ({ item, children }) => {
-  const formattingOverview = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 15) {
-      newFormat = text.slice(0, 21) + "...";
-    }
-    return newFormat;
+import { selectUser } from "../../../redux/authSlice/selectors";
+
+export const CommonItemList = ({ item, children, handleClickDelete }) => {
+  const user = useSelector(selectUser);
+
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleClickDeleteTest = (id) => {
+    handleClickDelete(id);
   };
 
-  const formattingOverviewCity = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 6) {
-      newFormat = text.slice(0, 4) + "...";
+  useEffect(() => {
+    if (user._id === item.owner) {
+      setIsFollowing(true);
+      return;
     }
-    return newFormat;
-  };
-
-  const formattingOverviewYear = (text) => {
-    let newFormat = text;
-    if (newFormat.length > 6) {
-      newFormat = text.slice(0, 4) + "...";
-    }
-    return newFormat;
-  };
+  }, [item.owner, user]);
 
   return (
     <Info>
       <Div>
-        <Img src={item.imgUrl} alt="pet" loading="lazy"></Img>
+        <Img src={checkPoster(item.imgUrl)} alt="pet" loading="lazy"></Img>
         <Div1>
           <PP>{item.category}</PP>
           <Div2>
@@ -54,37 +57,55 @@ export const CommonItemList = ({ item, children }) => {
                 stroke={"#54ADFF"}
               />
             </Button>
+            {isFollowing ? (
+              <Button
+                aria-label="add to trash"
+                onClick={() => handleClickDeleteTest(item._id)}
+              >
+                <Icon
+                  iconName={"icon-trash"}
+                  width={"24px"}
+                  height={"24px"}
+                  stroke={"#54ADFF"}
+                />
+              </Button>
+            ) : (
+              ""
+            )}
           </Div2>
         </Div1>
         <Ul>
-          <Icon
-            iconName={"icon-location"}
-            width={"24px"}
-            height={"24px"}
-            stroke={"#54ADFF"}
-          >
-            {formattingOverviewCity(item.place)}
-          </Icon>
-          <Icon
-            iconName={"icon-clock"}
-            width={"24px"}
-            height={"24px"}
-            stroke={"#54ADFF"}
-          >
-            {formattingOverviewYear(formatYears(item.birthday) + " year")}
-          </Icon>
-          <Icon
-            iconName={item.sex === "female" ? "icon-female" : "icon-male"}
-            width={"24px"}
-            height={"24px"}
-            stroke={"#54ADFF"}
-          >
-            {item.sex}
-          </Icon>
+          <Li>
+            <Icon
+              iconName={"icon-location"}
+              width={"24px"}
+              height={"24px"}
+              stroke={"#54ADFF"}
+            ></Icon>
+            <Span> {item.place}</Span>
+          </Li>
+          <Li>
+            <Icon
+              iconName={"icon-clock"}
+              width={"24px"}
+              height={"24px"}
+              stroke={"#54ADFF"}
+            ></Icon>
+            <Span>{formattingAge(formatYears(item.birthday) + " year")}</Span>
+          </Li>
+          <Li>
+            <Icon
+              iconName={item.sex === "female" ? "icon-female" : "icon-male"}
+              width={"24px"}
+              height={"24px"}
+              stroke={"#54ADFF"}
+            ></Icon>
+            <Span>{item.sex}</Span>
+          </Li>
         </Ul>
       </Div>
       <Div3>
-        <P1>{formattingOverview(item.title)}</P1>
+        <P1>{item.title}</P1>
         {children}
       </Div3>
     </Info>
@@ -94,4 +115,5 @@ export const CommonItemList = ({ item, children }) => {
 CommonItemList.propTypes = {
   item: PropTypes.object,
   children: PropTypes.object,
+  handleClickDelete: PropTypes.func,
 };

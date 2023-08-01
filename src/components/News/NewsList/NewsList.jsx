@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectAllNews } from "../../../redux/newsSlice/selectors";
@@ -23,11 +23,11 @@ export default function NewsList() {
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("query");
 
-  const news = useSelector(selectAllNews);
+  const { news, length } = useSelector(selectAllNews);
 
   const dispatch = useDispatch();
 
-  useMemo(() => {
+  useEffect(() => {
     dispatch(fetchNews({ page: currentPage, search: query }));
 
     setIsLoading(false);
@@ -41,10 +41,20 @@ export default function NewsList() {
   useEffect(() => {
     setCurrentPage(1);
   }, [query]);
-
+  if (!news) return;
   return (
     <ResponsiveContainer>
-      <List>{isLoading ? <Loader /> : <NewsItem dataNews={news} />}</List>
+      <List>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            {news.map((item) => (
+              <NewsItem key={item._id} {...item} />
+            ))}
+          </>
+        )}
+      </List>
 
       <WrapperPagination>
         {news.length < 6 || (
@@ -52,7 +62,7 @@ export default function NewsList() {
             onChange={onChange}
             current={currentPage}
             showLessItems
-            total={300}
+            total={length}
             showTitle={false}
           />
         )}
