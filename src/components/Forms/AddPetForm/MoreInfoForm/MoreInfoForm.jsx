@@ -228,8 +228,8 @@ const MoreInfoForm = () => {
 
             </RightColumnContainer>
           </StageContainer>
+        <FormBtnNav/> 
         </Form>
-        <FormBtnNav/>      
       </>
 
 
