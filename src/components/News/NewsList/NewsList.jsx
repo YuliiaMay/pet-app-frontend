@@ -23,8 +23,8 @@ export default function NewsList() {
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("query");
 
-  const { news, length } = useSelector(selectAllNews);
-
+  const news = useSelector(selectAllNews);
+  console.log("news", news);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -57,15 +57,13 @@ export default function NewsList() {
       </List>
 
       <WrapperPagination>
-        {news.length < 6 || (
-          <Pagination
-            onChange={onChange}
-            current={currentPage}
-            showLessItems
-            total={length}
-            showTitle={false}
-          />
-        )}
+        <Pagination
+          onChange={onChange}
+          current={currentPage}
+          showLessItems
+          total={300}
+          showTitle={false}
+        />
       </WrapperPagination>
     </ResponsiveContainer>
   );

@@ -4,6 +4,9 @@ import {
   fetchNoticeById,
   deleteNotice,
   fetchNoticesAll,
+  fetchFavorite,
+  fetchFavoriteDelete,
+  fetchFavoriteAdd,
   // addPetOrNotice as addNotice
 } from "./operations";
 import { addPetOrNotice as addNotice } from "../petsSlice/operations";
@@ -36,23 +39,36 @@ const fetchNoticesSuccessReduser = (state, { payload }) => {
   state.items = payload;
 };
 
-
 const fetchNoticesAllReduser = (state, { payload }) => {
   state.own = payload;
-}
+};
 
-const addNoticesSuccessReduser = (state, {payload}) => {
-    if ( payload.addedNotice ) {
-        state.items.push(payload.addedNotice);
-    }
-    return;
+const fetchNoticesFavoriteAll = (state, { payload }) => {
+  state.favorite = payload;
+};
+
+const FavoriteAddReduser = (state, { payload }) => {
+  state.favorite = payload;
+};
+
+const addNoticesSuccessReduser = (state, { payload }) => {
+  if (payload.addedNotice) {
+    state.items.push(payload.addedNotice);
+  }
+  return;
 };
 
 const deleteNoticesSuccessReduser = (state, { payload }) => {
   // state.own = payload;
   const index = state.own.filter((notice) => notice._id === payload);
-  console.log("index", index);
+
   state.own.splice(index, 1);
+};
+
+const deleteFavoriteReduser = (state, { payload }) => {
+  // state.own = payload;
+  // const index = state.favorite.filter((notice) => notice._id === payload);
+  // state.favorite.splice(index, 1);
 };
 
 const noticesSlice = createSlice({
@@ -60,11 +76,16 @@ const noticesSlice = createSlice({
   initialState: {
     items: [],
     own: [],
+    favorite: [],
     isLoading: false,
     error: null,
   },
+
   extraReducers: (builder) =>
     builder
+      .addCase(fetchFavoriteAdd.fulfilled, FavoriteAddReduser)
+      .addCase(fetchFavoriteDelete.fulfilled, deleteFavoriteReduser)
+      .addCase(fetchFavorite.fulfilled, fetchNoticesFavoriteAll)
       .addCase(fetchNoticesAll.fulfilled, fetchNoticesAllReduser)
       .addCase(fetchNotices.fulfilled, fetchNoticesSuccessReduser)
       .addCase(addNotice.fulfilled, addNoticesSuccessReduser)
@@ -73,6 +94,5 @@ const noticesSlice = createSlice({
       .addMatcher(getOperations("rejected"), rejectedReduser)
       .addMatcher(getOperations("fulfilled"), fulfilledReduser),
 });
-
 // slice reduser
 export const noticesReducer = noticesSlice.reducer;

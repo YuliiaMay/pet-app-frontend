@@ -101,6 +101,7 @@ export const Div2 = styled.div`
 
 export const Button = styled.button`
   align-items: center;
+
   background-color: ${(props) => props.theme.background.lightBlue};
   border: none;
   border-radius: 50%;
@@ -112,6 +113,7 @@ export const Button = styled.button`
   margin: 0;
   padding: 0;
   width: 40px;
+  margin-bottom: 15px;
   fill: #cce4fb;
   &:hover,
   focus {

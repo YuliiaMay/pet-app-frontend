@@ -40,6 +40,57 @@ export const fetchNotices = createAsyncThunk(
   }
 );
 
+export const fetchFavorite = createAsyncThunk(
+  "notices/getFavorite",
+  async (data, thunkAPI) => {
+    // const { page, category, search } = data;
+
+    try {
+      const response = await axios.get("/notices/getfavorites", {
+        params: {},
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchFavoriteAdd = createAsyncThunk(
+  "notices/getFavoriteAdd",
+  async (id, thunkAPI) => {
+    // const { page, category, search } = data;
+
+    try {
+      const response = await axios.patch(`/notices/favorite/${id}`, {
+        params: {},
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchFavoriteDelete = createAsyncThunk(
+  "notices/getFavoriteDelete",
+  async (id, thunkAPI) => {
+    // const { page, category, search } = data;
+
+    try {
+      const response = await axios.patch(`/notices/favoritedelete/${id}`, {
+        params: {},
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchNoticeById = createAsyncThunk(
   "notices/getById",
   async (id, thunkAPI) => {
