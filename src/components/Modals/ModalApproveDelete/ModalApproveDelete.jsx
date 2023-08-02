@@ -11,13 +11,7 @@ import {
 } from "./ModalApproveDelete.styled";
 import { Icon } from "../../Icon/Icon";
 
-const ModalApproveDelete = ({
-  active,
-  setShow,
-  setModal,
-  isId,
-  handleConfirmDelete,
-}) => {
+const ModalApproveDelete = ({ active, setShow, isId, handleConfirmDelete }) => {
   const toggleMenu = () => {
     setShow(!active);
   };
@@ -72,4 +66,6 @@ export default ModalApproveDelete;
 ModalApproveDelete.propTypes = {
   active: PropTypes.bool,
   setShow: PropTypes.func,
+  handleConfirmDelete: PropTypes.func,
+  isId: PropTypes.string,
 };
