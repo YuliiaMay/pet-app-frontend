@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 // import { Field, Form } from "formik";
 
-export const StageWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-`;
+
 
 export const Form = styled.form`
     display: flex;
-    gap: 72px;
+    flex-direction: column;
     padding-left: 74px;
     padding-right: 74px;
 `;
@@ -17,6 +13,11 @@ export const Form = styled.form`
 export const LeftColumnContainer = styled.div`
     display: flex;
     flex-direction: column;
+`;
+
+export const StageContainer = styled.div`
+    display: flex;
+    gap: 97px;
 `;
 
 export const RightColumnContainer = styled.div`
@@ -79,9 +80,13 @@ export const UploadInput = styled.input`
 
 export const ImageWrapper = styled.div`
     border-radius: ${props => props.theme.border.radius};
-    width: 182px;
-    height: 182px;
     margin-top: 12px;
+`;
+
+export const ChoosenImg = styled.img`
+border-radius: ${props => props.theme.border.radius};
+    width: 182px;
+    height: 182px;    
 `;
 
 export const Input = styled.input`
