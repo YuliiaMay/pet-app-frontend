@@ -11,10 +11,17 @@ import {
 } from "./ModalApproveDelete.styled";
 import { Icon } from "../../Icon/Icon";
 
-const ModalApproveDelete = ({ active, setShow }) => {
+const ModalApproveDelete = ({
+  active,
+  setShow,
+  setModal,
+  isId,
+  handleConfirmDelete,
+}) => {
   const toggleMenu = () => {
     setShow(!active);
   };
+
   return (
     <>
       <ModalComponents onClose={setShow} active={active}>
@@ -30,7 +37,7 @@ const ModalApproveDelete = ({ active, setShow }) => {
         <Wrapper>
           <h2>Delete adverstiment?</h2>
           <p>
-            Are you sure you want to delete{" "}
+            Are you sure you want to delete
             <span>“Cute dog looking for a home”</span>?
             <br />
             You can`t undo this action.
@@ -40,7 +47,8 @@ const ModalApproveDelete = ({ active, setShow }) => {
             <CloseBtn type="button" onClick={toggleMenu}>
               Cancel
             </CloseBtn>
-            <YesBtn type="button">
+
+            <YesBtn type="button" onClick={() => handleConfirmDelete(isId)}>
               Yes
               <DeleteIcon>
                 <Icon
