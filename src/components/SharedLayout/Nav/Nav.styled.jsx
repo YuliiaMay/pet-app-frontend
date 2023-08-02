@@ -25,7 +25,7 @@ export const NavItem = styled(NavLink)`
   &:focus {
     color: #ffc107;
   }
-  &:active {
+  &.active {
     color: #ffc107;
   }
 `;

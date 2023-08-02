@@ -8,7 +8,7 @@ export const Span = styled.span`
 `;
 
 export const Li = styled.li`
-  background: tomato;
+
   cursor: pointer;
   align-items: center;
   background-color: ${(props) => props.theme.background.lightBlue};
@@ -37,8 +37,8 @@ export const Li = styled.li`
 `;
 
 export const Info = styled.li`
-  margin: 0 auto;
-
+  /* margin: 0 auto; */
+  align-items: center;
   display: flex;
   flex-direction: column;
   width: 280px;

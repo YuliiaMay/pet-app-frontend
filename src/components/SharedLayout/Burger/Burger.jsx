@@ -14,18 +14,25 @@ import {
   LoginTabBox,
   UserMobBox,
   UserTabBox,
+  Logos,
+  UserNameMob,
+  BoxMob,
 } from "./Burger.styled";
 import BurgerNavigationItem from "./BurgerNavigationItem";
-import bglogo from "../Logo/LogoPet.jpg";
+import logoDesk from "../Logo/logoDesk.png";
+import logoMob from "../Logo/logoMob.png";
 import { NavLink } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "../../Icon/Icon";
 import { useAuth } from "../../../hooks/useAuth";
 import UserNav from "../UserNav/UserNav";
 import { logout } from "../../../redux/authSlice/operations";
+import { Avatar } from "../UserNav/UserNav.styled";
+import { selectUser } from "../../../redux/authSlice/selectors";
 
 export const Burger = ({ isOpen, toggleMenu }) => {
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const { isLoggedIn } = useAuth();
   return (
@@ -34,7 +41,19 @@ export const Burger = ({ isOpen, toggleMenu }) => {
         <BurgerContainer>
           <BurgerBar>
             <NavLink to="/main" onClick={toggleMenu}>
-              <img src={bglogo} alt="logotype" />
+              <Logos>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet={logoDesk}
+                  alt="logotype"
+                />
+                <source
+                  media="(min-width: 320px)"
+                  srcSet={logoMob}
+                  alt="logotype"
+                />
+                <img src={logoDesk} alt="logotype" />
+              </Logos>
             </NavLink>
             <LoginTabBox>
               {isLoggedIn ? (
@@ -102,7 +121,15 @@ export const Burger = ({ isOpen, toggleMenu }) => {
             )}
             {isLoggedIn && (
               <UserMobBox>
-                <UserNav toggleMenu={toggleMenu} />
+                <BoxMob>
+                  <Avatar />
+                  {user.name ? (
+                    <UserNameMob>{user.name}</UserNameMob>
+                  ) : (
+                    <div>No user data</div>
+                  )}
+                </BoxMob>
+                {/* <UserNav toggleMenu={toggleMenu} /> */}
               </UserMobBox>
             )}
             <BurgerNavList>

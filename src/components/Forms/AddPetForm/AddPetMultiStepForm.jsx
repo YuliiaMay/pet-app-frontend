@@ -15,7 +15,6 @@ const AddPetMultiStepForm = ({leaveAddPetForm}) => {
     const stage = useSelector(selectCurrentStage);
     const category = useSelector(selectCategory);
 
-    console.log(leaveAddPetForm);
     return (
         <AddPetContainer>
 

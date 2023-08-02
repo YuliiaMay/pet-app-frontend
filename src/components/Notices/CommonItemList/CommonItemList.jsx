@@ -15,11 +15,13 @@ import {
 import PropTypes from "prop-types";
 
 import { Icon } from "../../../components/Icon/Icon";
+
 import {
   Button1,
   Div3,
   P1,
 } from "../NoticesCategoriesList/NoticesPetCard.styled";
+
 import {
   formatYears,
   formattingCitName,
@@ -43,6 +45,7 @@ export const CommonItemList = ({
   handleClickDelete,
   handleClickDeleteFavorite,
 }) => {
+
   const user = useSelector(selectUser);
   const [showModalAttention, setShowModalAttention] = useState(false);
 
@@ -84,10 +87,11 @@ export const CommonItemList = ({
     dispatch(setFavoriteId(item));
   };
 
+  const [isFollowing, setIsFollowing] = useState(false);
+
   const handleClickDeleteTest = (id) => {
     handleClickDelete(id);
   };
-
   useEffect(() => {
     if (!user.token) return;
     if (user._id === item.owner) {
@@ -96,11 +100,13 @@ export const CommonItemList = ({
     }
   }, [item.owner, user]);
 
+
   const handleClickCards = (it) => {
     console.log(it);
     setOneCard(it);
     setShowModal(true);
   };
+
 
   return (
     <Info>
@@ -109,6 +115,7 @@ export const CommonItemList = ({
         <Div1>
           <PP>{item.category}</PP>
           <Div2>
+
             <div onClick={() => handleFavoritesBtn(item._id, isFavoritesBtn)}>
               <Button
                 aria-label="add to favorites"
@@ -126,6 +133,7 @@ export const CommonItemList = ({
               </Button>
             </div>
             {isFollowingTrash ? (
+
               <Button
                 aria-label="add to trash"
                 onClick={() => handleClickDeleteTest(item._id)}
@@ -197,11 +205,12 @@ export const CommonItemList = ({
     </Info>
   );
 };
-
 CommonItemList.propTypes = {
   item: PropTypes.object,
   children: PropTypes.object,
   handleClickDelete: PropTypes.func,
+
   handleClickDeleteFavorite: PropTypes.func,
   isFavorite: PropTypes.bool,
 };
+
