@@ -4,6 +4,12 @@ import { useDispatch } from "react-redux";
 import { register } from "../../../redux/authSlice/operations";
 import * as Yup from "yup";
 
+// import { ReactComponent as ShowPasswordIcon } from "/src/svg/registerPage/eyeOpen.svg";
+// import { ReactComponent as HidePasswordIcon } from "/src/svg/registerPage/eyeClosed.svg";
+import { ReactComponent as SuccessIcon } from "/src/svg/registerPage/check.svg";
+// import { ReactComponent as errorIcon } from "/src/svg/registerPage/cross.svg";
+// import { ReactComponent as hidePasswordIconDisabled } from "/src/svg/registerPage/eyeClosedDisabled.svg";
+
 import {
   Container,
   StyledForm,
@@ -16,15 +22,16 @@ import {
   InputContainer,
   InputIconShow,
   InputIconError,
-  InputIconSuccess,
+  // InputIconSuccess,
   //InputIconDisabled,
 } from "./RegisterForm.styled.js";
-import { ModalCongrats } from "/src/components/Modals/ModalCongrats/ModalCongrats";
 
 import showPasswordIcon from "/src/svg/registerPage/eyeOpen.svg";
 import hidePasswordIcon from "/src/svg/registerPage/eyeClosed.svg";
-import successIcon from "/src/svg/registerPage/check.svg";
+//import successIcon from "/src/svg/registerPage/check.svg";
 import errorIcon from "/src/svg/registerPage/cross.svg";
+import { ModalComponents } from "../../Modals/ModalComponents/ModalComponents";
+import { ModalCongrats } from "../../Modals/ModalCongrats/ModalCongrats";
 //import hidePasswordIconDisabled from "/src/svg/registerPage/eyeClosedDisabled.svg";
 
 const userSchema = Yup.object().shape({
@@ -85,12 +92,13 @@ const RegisterForm = () => {
     setConfirmPasswordError("");
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  // const showModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleShowModal = () => {
+    console.log("Hello modal");
+    setIsModalOpen(true);
   };
 
   return (
@@ -106,6 +114,7 @@ const RegisterForm = () => {
         handleChange,
         handleBlur,
         isSubmitting,
+        // isFormEnable,
       }) => (
         <Container>
           <StyledTitle>Registration</StyledTitle>
@@ -148,11 +157,14 @@ const RegisterForm = () => {
                 onBlur={handleBlur}
                 error={errors.password || passwordError}
                 border={errors.password && touched.password && "1px solid red"}
+                //disabled={isSubmitting || !isFormEnable}
               />
+
               {!errors.password && (
-                <InputIconSuccess>
-                  <img src={successIcon} alt="success" />
-                </InputIconSuccess>
+                <SuccessIcon />
+                // <InputIconSuccess>
+                //   <img src={successIcon} alt="success" />
+                // </InputIconSuccess>
               )}
               {/* {!errors.password && errors.password !== "" && (
                 <InputIconSuccess>
@@ -191,11 +203,11 @@ const RegisterForm = () => {
                 }
                 error={errors.confirmPassword || confirmPasswordError}
               />
-              {!errors.confirmPassword && (
+              {/* {!errors.confirmPassword && (
                 <InputIconSuccess>
                   <img src={successIcon} alt="success" />
                 </InputIconSuccess>
-              )}
+              )} */}
               <InputIconShow onClick={handleToggleConfirmPassword}>
                 <img
                   src={
@@ -214,11 +226,11 @@ const RegisterForm = () => {
               <SubmitButton
                 type="submit"
                 disabled={isSubmitting}
-                onClick={openModal}
+                onClick={handleShowModal}
               >
                 Registration
               </SubmitButton>
-              <ModalCongrats isOpen={isModalOpen} onClose={closeModal} />
+              <ModalCongrats setShow={setIsModalOpen} active={isModalOpen} />
             </>
             <StyledLink to="/login">
               Already have a account? <StyledSpan>Login</StyledSpan>
