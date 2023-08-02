@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Form, Field, ErrorMessage } from "formik";
 
 export const Container = styled.div`
-  margin-top: 40px;
+  margin-top: 44px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 88px;
@@ -41,11 +41,11 @@ export const StyledTitle = styled.h2`
   font-weight: 500;
   letter-spacing: 1.44px;
   margin-top: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;
-    margin-bottom: 40px;
+    margin-bottom: 8px;
     font-size: 36px;
   }
 `;
@@ -63,9 +63,10 @@ export const StyledField = styled(Field)`
   height: 48px;
   font-size: 16px;
   border-radius: ${(props) => props.theme.border.radius};
+  border: ${(props) => props.border || props.theme.border.blue};
+  color: ${(props) => props.theme.color.grey};
   cursor: pointer;
   outline: none;
-  border: ${(props) => props.border || props.theme.border.blue};
 
   &:hover,
   &:focus {
@@ -142,7 +143,7 @@ export const ErrorText = styled(ErrorMessage)`
 export const SubmitButton = styled.button`
   width: 256px;
   height: 48px;
-  margin-top: 40px;
+  margin-top: 110px;
   margin-bottom: 8px;
   background-color: ${(props) => props.theme.color.blue};
   border: none;

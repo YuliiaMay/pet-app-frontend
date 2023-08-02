@@ -6,7 +6,7 @@ import * as Yup from "yup";
 
 // import { ReactComponent as ShowPasswordIcon } from "/src/svg/registerPage/eyeOpen.svg";
 // import { ReactComponent as HidePasswordIcon } from "/src/svg/registerPage/eyeClosed.svg";
-import { ReactComponent as SuccessIcon } from "/src/svg/registerPage/check.svg";
+//import { ReactComponent as SuccessIcon } from "../../../svg/registerPage/check.svg";
 // import { ReactComponent as errorIcon } from "/src/svg/registerPage/cross.svg";
 // import { ReactComponent as hidePasswordIconDisabled } from "/src/svg/registerPage/eyeClosedDisabled.svg";
 
@@ -22,17 +22,17 @@ import {
   InputContainer,
   InputIconShow,
   InputIconError,
-  // InputIconSuccess,
+  InputIconSuccess,
   //InputIconDisabled,
 } from "./RegisterForm.styled.js";
 
-import showPasswordIcon from "/src/svg/registerPage/eyeOpen.svg";
-import hidePasswordIcon from "/src/svg/registerPage/eyeClosed.svg";
-//import successIcon from "/src/svg/registerPage/check.svg";
-import errorIcon from "/src/svg/registerPage/cross.svg";
-import { ModalComponents } from "../../Modals/ModalComponents/ModalComponents";
+import showPasswordIcon from "../../../svg/registerPage/eyeOpen.svg";
+import hidePasswordIcon from "../../../svg/registerPage/eyeClosed.svg";
+import successIcon from "../../../svg/registerPage/check.svg";
+import errorIcon from "../../../svg/registerPage/cross.svg";
+
 import { ModalCongrats } from "../../Modals/ModalCongrats/ModalCongrats";
-//import hidePasswordIconDisabled from "/src/svg/registerPage/eyeClosedDisabled.svg";
+//import hidePasswordIconDisabled from "../../../svg/registerPage/eyeClosedDisabled.svg";
 
 const userSchema = Yup.object().shape({
   name: Yup.string().min(2).max(16).required("Name is required"),
@@ -57,34 +57,24 @@ const initialValues = {
 const RegisterForm = () => {
   const dispatch = useDispatch();
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  //const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
     dispatch(register({ name, email, password })).then(
       (response) => !response.error && resetForm()
     );
   };
-  // const handleSubmit = ({ name, email, password }, { resetForm }) => {
-  //   dispatch(register({ name, email, password })).then((response) => {
-  //     if (response.error) {
-  //       setErrorMessage("Registration failed. Please try again later.");
-  //     } else {
-  //       setErrorMessage("");
-  //       resetForm();
-  //     }
-  //   });
-  // };
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
-  const [confirmPasswordError, setConfirmPasswordError] = useState("");
-  //const [isRegistered, setIsRegistered] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  //const [errorMessage, setErrorMessage] = useState("");
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
     setPasswordError("");
   };
+
   const handleToggleConfirmPassword = () => {
     setShowConfirmPassword(
       (prevShowConfirmPassword) => !prevShowConfirmPassword
@@ -92,12 +82,7 @@ const RegisterForm = () => {
     setConfirmPasswordError("");
   };
 
-  // const showModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
   const handleShowModal = () => {
-    console.log("Hello modal");
     setIsModalOpen(true);
   };
 
@@ -161,10 +146,10 @@ const RegisterForm = () => {
               />
 
               {!errors.password && (
-                <SuccessIcon />
-                // <InputIconSuccess>
-                //   <img src={successIcon} alt="success" />
-                // </InputIconSuccess>
+                // <SuccessIcon />
+                <InputIconSuccess>
+                  <img src={successIcon} alt="success" />
+                </InputIconSuccess>
               )}
               {/* {!errors.password && errors.password !== "" && (
                 <InputIconSuccess>
