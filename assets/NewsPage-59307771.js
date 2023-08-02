@@ -1,4 +1,4 @@
-import{s as n,P as f,r as s,j as t,b as m,f as w,u as b,g as j,R as y,e as S,c as v}from"./index-dfa6b35a.js";import{f as N,P,s as C}from"./index-ef21b177.js";import{S as T,a as z}from"./Cross-13fb01f5.js";const k=n.div`
+import{s as n,P as f,r as o,j as t,b as m,f as w,u as b,g as j,R as y,e as S,c as v}from"./index-5672dca9.js";import{f as N,P,s as C}from"./index-8d0394c8.js";import{S as T,a as z}from"./Cross-1731f138.js";const k=n.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,7 +97,7 @@ import{s as n,P as f,r as s,j as t,b as m,f as w,u as b,g as j,R as y,e as S,c a
   :focus {
     color: ${e=>e.theme.color.yellow};
   }
-`,g=e=>{const[r,i]=s.useState(!1);if(!e)return;const a=()=>{i(!0)};return t.jsx(t.Fragment,{children:t.jsxs($,{children:[t.jsx(D,{children:t.jsx("img",{onError:a,src:E(e.imgUrl,r),alt:e.title})}),t.jsxs(F,{children:[t.jsx(R,{children:e.title}),t.jsx(q,{children:I(e.text)}),t.jsxs(B,{children:[t.jsx(Q,{children:N(e.date)}),t.jsx(U,{href:e.url,target:"_blank",rel:"noreferrer",children:"Read more"})]})]})]},e._id)})};g.propTypes={dataNews:f.array};const W=n.ul`
+`,g=e=>{const[r,i]=o.useState(!1);if(!e)return;const s=()=>{i(!0)};return t.jsx(t.Fragment,{children:t.jsxs($,{children:[t.jsx(D,{children:t.jsx("img",{onError:s,src:E(e.imgUrl,r),alt:e.title})}),t.jsxs(F,{children:[t.jsx(R,{children:e.title}),t.jsx(q,{children:I(e.text)}),t.jsxs(B,{children:[t.jsx(Q,{children:N(e.date)}),t.jsx(U,{href:e.url,target:"_blank",rel:"noreferrer",children:"Read more"})]})]})]},e._id)})};g.propTypes={dataNews:f.array};const W=n.ul`
   display: flex;
   flex-direction: column;
   row-gap: 44px;
@@ -132,7 +132,7 @@ import{s as n,P as f,r as s,j as t,b as m,f as w,u as b,g as j,R as y,e as S,c a
     /* width: 357px; */
     width: 100%;
   }
-`;function A(){const[e,r]=s.useState(!0),[i,a]=s.useState(1),c=m(),x=new URLSearchParams(c.search).get("query"),{news:p,length:d}=w(L),l=b();s.useEffect(()=>{l(j({page:i,search:x})),r(!1)},[i,l,x]);const h=o=>{a(o),C()};if(s.useEffect(()=>{a(1)},[x]),!!p)return t.jsxs(y,{children:[t.jsx(W,{children:e?t.jsx(S,{}):t.jsx(t.Fragment,{children:p.map(o=>t.jsx(g,{...o},o._id))})}),t.jsx(_,{children:p.length<6||t.jsx(P,{onChange:h,current:i,showLessItems:!0,total:d,showTitle:!1})})]})}const Y=n.div`
+`;function A(){const[e,r]=o.useState(!0),[i,s]=o.useState(1),a=m(),l=new URLSearchParams(a.search).get("query"),c=w(L);console.log("news",c);const d=b();o.useEffect(()=>{d(j({page:i,search:l})),r(!1)},[i,d,l]);const x=p=>{s(p),C()};if(o.useEffect(()=>{s(1)},[l]),!!c)return t.jsxs(y,{children:[t.jsx(W,{children:e?t.jsx(S,{}):t.jsx(t.Fragment,{children:c.map(p=>t.jsx(g,{...p},p._id))})}),t.jsx(_,{children:t.jsx(P,{onChange:x,current:i,showLessItems:!0,total:300,showTitle:!1})})]})}const Y=n.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -187,7 +187,7 @@ import{s as n,P as f,r as s,j as t,b as m,f as w,u as b,g as j,R as y,e as S,c a
   right: 13px;
   border: none;
   background-color: inherit;
-`,M=()=>{const[e,r]=s.useState(""),[i,a]=s.useState(""),c=m(),x=o=>{const u=o.currentTarget.value.toLowerCase();r(u)},p=o=>{o.preventDefault(),e.trim()!==""&&(l({query:e}),r(e))},[d,l]=v();d.get("query");const h=()=>{r(""),l(),a(c.pathname)};return s.useEffect(()=>{a(c.pathname),i!==c.pathname&&r("")},[c.pathname,i,l]),t.jsx(Y,{children:t.jsxs(G,{onSubmit:p,children:[t.jsx(H,{type:"text",placeholder:"Search",value:e,autoComplete:"off",onChange:x}),t.jsx(J,{type:"submit",position:e,onSubmit:p,children:t.jsx(T,{})}),e!==""&&t.jsx(K,{type:"button",onClick:h,children:t.jsx(z,{})})]})})},O=n.div`
+`,M=()=>{const[e,r]=o.useState(""),[i,s]=o.useState(""),a=m(),l=h=>{const u=h.currentTarget.value.toLowerCase();r(u)},c=h=>{h.preventDefault(),e.trim()!==""&&(x({query:e}),r(e))},[d,x]=v();d.get("query");const p=()=>{r(""),x(),s(a.pathname)};return o.useEffect(()=>{s(a.pathname),i!==a.pathname&&r("")},[a.pathname,i,x]),t.jsx(Y,{children:t.jsxs(G,{onSubmit:c,children:[t.jsx(H,{type:"text",placeholder:"Search",value:e,autoComplete:"off",onChange:l}),t.jsx(J,{type:"submit",position:e,onSubmit:c,children:t.jsx(T,{})}),e!==""&&t.jsx(K,{type:"button",onClick:p,children:t.jsx(z,{})})]})})},O=n.div`
   margin-top: 40px;
   margin-bottom: 23px;
 
