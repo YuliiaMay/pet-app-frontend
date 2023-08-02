@@ -1,4 +1,4 @@
-import{r as n,s as i,a as y,u as v,g as $,k as z,j as t,m as S,I as E,n as N,o as O,L as R}from"./index-829dacb4.js";import{F as P,a as U,b as V,E as B}from"./formik.esm-974bd9b5.js";import{c as _,a as f,d as Y}from"./index.esm-bea257f3.js";import{M as G}from"./ModalComponents-81830c02.js";const J=e=>n.createElement("svg",{width:24,height:24,viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",...e},n.createElement("path",{d:"M12 16C13.6569 16 15 14.6569 15 13C15 11.3431 13.6569 10 12 10C10.3431 10 9 11.3431 9 13C9 14.6569 10.3431 16 12 16Z",stroke:"#54ADFF",strokeWidth:1.5,strokeLinejoin:"round"}),n.createElement("path",{d:"M3 9C3 7.89543 3.89543 7 5 7H7.5C8.05228 7 8.5 6.55228 8.5 6C8.5 5.44772 8.94772 5 9.5 5H14.5C15.0523 5 15.5 5.44772 15.5 6C15.5 6.55228 15.9477 7 16.5 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V9Z",stroke:"#54ADFF",strokeWidth:1.5,strokeLinejoin:"round"})),K=e=>n.createElement("svg",{width:24,height:24,viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",...e},n.createElement("path",{d:"M20 6L9 17L4 12",stroke:"#54ADFF",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"})),Q=e=>n.createElement("svg",{width:24,height:24,viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",...e},n.createElement("path",{d:"M18 6L6 18",stroke:"#F43F5E",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}),n.createElement("path",{d:"M6 6L18 18",stroke:"#F43F5E",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"})),X=i.img`
+import{r as n,s as i,a as y,u as v,g as $,k as z,j as t,m as S,I as E,n as N,o as O,L as R}from"./index-880d1f98.js";import{F as P,a as U,b as V,E as B}from"./formik.esm-a3e59fbe.js";import{c as _,a as f,d as Y}from"./index.esm-8dba7a1c.js";import{M as G}from"./ModalComponents-cddbc9ae.js";const J=e=>n.createElement("svg",{width:24,height:24,viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",...e},n.createElement("path",{d:"M12 16C13.6569 16 15 14.6569 15 13C15 11.3431 13.6569 10 12 10C10.3431 10 9 11.3431 9 13C9 14.6569 10.3431 16 12 16Z",stroke:"#54ADFF",strokeWidth:1.5,strokeLinejoin:"round"}),n.createElement("path",{d:"M3 9C3 7.89543 3.89543 7 5 7H7.5C8.05228 7 8.5 6.55228 8.5 6C8.5 5.44772 8.94772 5 9.5 5H14.5C15.0523 5 15.5 5.44772 15.5 6C15.5 6.55228 15.9477 7 16.5 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V9Z",stroke:"#54ADFF",strokeWidth:1.5,strokeLinejoin:"round"})),K=e=>n.createElement("svg",{width:24,height:24,viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",...e},n.createElement("path",{d:"M20 6L9 17L4 12",stroke:"#54ADFF",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"})),Q=e=>n.createElement("svg",{width:24,height:24,viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",...e},n.createElement("path",{d:"M18 6L6 18",stroke:"#F43F5E",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"}),n.createElement("path",{d:"M6 6L18 18",stroke:"#F43F5E",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"})),X=i.img`
   width: 182px;
   height: 182px;
   border-radius: 40px;
@@ -353,7 +353,10 @@ import{r as n,s as i,a as y,u as v,g as $,k as z,j as t,m as S,I as E,n as N,o a
     top: -3px;
   }
 `,Le=i.div`
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   gap: 20px;
 
   @media (min-width: ${e=>e.theme.sizes.tab}) {
@@ -365,6 +368,8 @@ import{r as n,s as i,a as y,u as v,g as $,k as z,j as t,m as S,I as E,n as N,o a
     gap: 24px;
   }
 `,$e=e=>n.createElement("svg",{width:24,height:24,viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",...e},n.createElement("path",{d:"M18 6V18C18 19.1046 17.1046 20 16 20H8C6.89543 20 6 19.1046 6 18V6M15 6V5C15 3.89543 14.1046 3 13 3H11C9.89543 3 9 3.89543 9 5V6M4 6H20M10 10V16M14 10V16",stroke:"#54ADFF",strokeWidth:1.5,strokeLinecap:"round",strokeLinejoin:"round"})),ze=()=>{const e=$(z),[r,d]=n.useState(e.pets),a=v(),p=async s=>{await a(O(s)).then(x=>d(x.payload))};return t.jsx(Le,{children:r.map(s=>t.jsxs(ve,{children:[t.jsx(ye,{src:s.imgUrl,alt:""}),t.jsxs(ke,{children:[t.jsx(Ce,{type:"button",onClick:()=>p(s._id),children:t.jsx($e,{})}),t.jsxs(w,{children:[t.jsx(b,{children:"Name: "}),t.jsx(j,{children:s.name})]}),t.jsxs(w,{children:[t.jsx(b,{children:"Date of birth: "}),t.jsx(j,{children:s.birthday})]}),t.jsxs(w,{children:[t.jsx(b,{children:"Type: "}),t.jsx(j,{children:s.type})]}),t.jsxs(w,{children:[t.jsx(b,{children:"Comments: "}),t.jsx(j,{children:s.comments})]})]})]},s._id))})},Me=i.div`
+  align-items: center;
+
   display: flex;
   flex-direction: column;
   align-items: center;
