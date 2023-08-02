@@ -54,13 +54,12 @@ export const StyledTitle = styled.h2`
 export const InputContainer = styled.div`
   position: relative;
   display: flex;
-  //align-items: center;
+  align-items: center;
   //margin-bottom: 4px;
 `;
 
 export const StyledField = styled(Field)`
   padding-left: 16px;
-  //margin-top: 14px;
   width: 224px;
   height: 48px;
   font-size: 16px;
@@ -126,12 +125,12 @@ export const InputIconError = styled.span`
 export const InputIconSuccess = styled.span`
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 60px;
   transform: translateY(-50%);
   pointer-events: none;
-  width: 20px;
-  height: 20px;
-  opacity: ${(props) => (props.isVisible ? "1" : "0")};
+  width: 30px;
+  height: 30px;
+  //opacity: ${(props) => (props.isVisible ? "1" : "0")};
 
   @media screen and (min-width: 768px) {
     top: 72%;
