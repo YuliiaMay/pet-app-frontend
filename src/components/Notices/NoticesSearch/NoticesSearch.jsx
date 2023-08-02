@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
+
 import { ReactComponent as Search } from "../../../images/Icon/Search.svg";
 import { ReactComponent as Cross } from "../../../images/Icon/Cross.svg";
 
@@ -8,52 +10,66 @@ import {
   FormSearch,
   InputSearch,
   Section,
-  TitleSearch,
+  
 } from "./NoticesSearch.style";
-
-import { useSearchParams } from "react-router-dom";
 
 export const NoticesSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [CurrentPathname, setCurrentPathname] = useState("");
+  const location = useLocation();
 
-  //* Значення інпута записуємо в стейт
   const handleChangeSearchQuery = (e) => {
     const searchQuery = e.currentTarget.value.toLowerCase();
-    setSearchParams({ query: searchQuery });
+
     setSearchQuery(searchQuery);
   };
 
-  //*  Передаємо в App значення searchQuery і очищуємо форму
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim() === "") {
-      setSearchParams();
+      // setSearchParams();
       return;
     }
 
+    setSearchParams({ search: searchQuery });
+    setSearchQuery(searchQuery);
     // onSubmit(searchQuery);
-    setSearchQuery("");
+    // setSearchQuery("");
   };
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  const queryMovies = searchParams.get("query") ?? "";
+  const [searchParams, setSearchParams] = useSearchParams();
+  searchParams.get("search") ?? "";
 
   const handleDelete = () => {
     setSearchQuery("");
     setSearchParams();
+    setCurrentPathname(location.pathname);
   };
+
+  useEffect(() => {
+    setCurrentPathname(location.pathname);
+
+    if (CurrentPathname !== location.pathname) {
+      setSearchQuery("");
+    }
+  }, [location.pathname, CurrentPathname, setSearchParams]);
 
   return (
     <Section>
-      <TitleSearch>Find your favorite pet</TitleSearch>
+      
       <FormSearch onSubmit={handleSubmit}>
         <InputSearch
           type="text"
           placeholder="Search"
           value={searchQuery}
+          autoComplete="off"
           onChange={handleChangeSearchQuery}
         />
-        <ButtonSearch type="submit" position={searchQuery}>
+        <ButtonSearch
+          type="submit"
+          position={searchQuery}
+          onSubmit={handleSubmit}
+        >
           <Search />
         </ButtonSearch>
         {searchQuery !== "" && (

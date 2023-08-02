@@ -57,7 +57,7 @@ const LoginForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={userSchema}
+  validationSchema={userSchema}
     >
       {({
         errors,

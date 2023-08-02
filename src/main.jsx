@@ -4,16 +4,19 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalStyle, FontStyles } from "./assets/styles";
 import { Provider } from "react-redux";
-import { store } from "./redux/store.js";
+import { persistor, store } from "./redux/store.js";
+import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <React.StrictMode>
       <BrowserRouter basename="/pet-app-frontend">
-        <App />
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
       </BrowserRouter>
-    </Provider>
-    <GlobalStyle />
-    <FontStyles />
-  </React.StrictMode>
+      <GlobalStyle />
+      <FontStyles />
+    </React.StrictMode>
+  </Provider>
 );

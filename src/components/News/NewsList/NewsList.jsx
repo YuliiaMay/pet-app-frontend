@@ -1,37 +1,70 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { selectAllNews } from "../../../redux/newsSlice/selectors";
+
+import Pagination from "rc-pagination";
+
 import { ResponsiveContainer } from "../../../assets/styles/ResponsiveContainer";
-import { List } from "./NewsList.styled";
 import { fetchNews } from "../../../redux/newsSlice/operations";
-import { NewsItem } from "../NewsItem/NewsItems";
+import { NewsItem } from "../NewsItem/NewsItem";
 import { Loader } from "../../Loader/Loader";
 
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { List, WrapperPagination } from "./NewsList.styled";
+
+import "../../../assets/index.less";
+import { scrollToTop } from "../../../utils";
+import { useLocation } from "react-router-dom";
 
 export default function NewsList() {
-  const [newsData, setNewsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get("query");
+
+  const news = useSelector(selectAllNews);
+  console.log("news", news);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await dispatch(fetchNews());
-        setNewsData(response.payload);
-      } catch (error) {
-        console.log(error.message);
-      }
-      setIsLoading(false);
-    };
+    dispatch(fetchNews({ page: currentPage, search: query }));
 
-    fetchData();
-  }, [dispatch]);
+    setIsLoading(false);
+  }, [currentPage, dispatch, query]);
 
-  const dataNews = newsData.slice(0, 20);
+  const onChange = (page) => {
+    setCurrentPage(page);
+    scrollToTop();
+  };
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [query]);
+  if (!news) return;
   return (
     <ResponsiveContainer>
-      <List>{isLoading ? <Loader /> : <NewsItem dataNews={dataNews} />}</List>
+      <List>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            {news.map((item) => (
+              <NewsItem key={item._id} {...item} />
+            ))}
+          </>
+        )}
+      </List>
+
+      <WrapperPagination>
+        <Pagination
+          onChange={onChange}
+          current={currentPage}
+          showLessItems
+          total={300}
+          showTitle={false}
+        />
+      </WrapperPagination>
     </ResponsiveContainer>
   );
 }

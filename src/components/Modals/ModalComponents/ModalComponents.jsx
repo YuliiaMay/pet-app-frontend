@@ -27,30 +27,3 @@ export function ModalComponents({ active, onClose, children }) {
     modalRoot
   );
 }
-
-// ЛОГИКА ДЛЯ МОДАЛОК
-
-// const [showModal, setShowModal] = useState(false);
-// const [showModalNotice, setShowModalNotice] = useState(false);
-
-// <button type="button" onClick={() => setShowModal(true)}>
-//       Click Open Model ... ModalCongrats
-//     </button>
-//     <button type="button" onClick={() => setShowModalNotice(true)}>
-//       Click Open Model ... ModalNotice
-//     </button>
-//     <ModalCongrats active={showModal} setShow={setShowModal} />
-//     <ModalNotice active={showModalNotice} setShow={setShowModalNotice} />
-
-// //////////////////////////////////////////////////////////!
-// const [showModal, setShowModal] = useState(false);
-// const [oneCard, setOneCard] = useState(null);
-//  <ModalNotice active={showModal} setShow={setShowModal} card={oneCard} />
-// const handleClickCards = (item) => {
-//   setShowModal(true);
-//   setOneCard(item);
-// };
-
-//  <button type="button" onClick={() => handleClickCards(it)}>
-//    Click Open Model ... ModalCongrats //
-//  </button>;

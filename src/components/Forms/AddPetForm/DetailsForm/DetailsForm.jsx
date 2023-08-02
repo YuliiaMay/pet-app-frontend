@@ -1,84 +1,118 @@
 import { useState } from "react";
-import { Form } from "./DetailsForm.styled";
-import { useDispatch } from "react-redux";
+import { StyledForm, Label, Input} from "./DetailsForm.styled";
+import { useDispatch, useSelector } from "react-redux";
 import { detailsForm, formStage } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
-import { selectBirthday, selectBreed, selectName, selectTitle, selectType } from "../../../../redux/petsSlice/selectors";
+import { selectAllPetData, selectBirthday, selectBreed, selectCategory, selectName, selectTitle, selectType } from "../../../../redux/petsSlice/selectors";
+import { Formik, Form, useFormik } from "formik";
+
+
+const initialDetailsValues = {
+    name: "",
+    birthday: "",
+    title: "",
+    type: ""  
+};
+
 
 
 const DetailsForm = () => {
     const dispatch = useDispatch();
-    const [detailsData, setDetailsData] = useState({
-        name: selectName || "",
-        birthday: selectBirthday || "",
-        breed: selectBreed || "",
-        title: selectTitle || "",
-        type: selectType || ""
-    });
+    const category = useSelector(selectCategory);
+    // const name = useSelector(selectName);
+    // const birthday = useSelector(selectBirthday);
+    // const title = useSelector(selectTitle);
+    // const type = useSelector(selectType);    
 
 
-    const handleChange = ({ target }) => {
-        const { name, value } = target;
-        setDetailsData({
-            ...detailsData,
-            [name]: value
-        })
-    };
+    // const formik = useFormik({
+    //     initialDetailsValues: {
+    //         name: useSelector(selectName) || "",
+    //         birthday: useSelector(selectBirthday) || "",
+    //         title: useSelector(selectTitle) || "",
+    //         type: useSelector(selectType) || ""  
+    //     },    
+    //     onNextStep: values => {
+    //         dispatch(
+    //             detailsForm(values)
+    //         )        
+    //         dispatch(
+    //             formStage(3)
+    //         );            
+    //     }
+    // })
 
 
-    const onNextStep = (e) => {
-        e.preventDefault();
+    const onNextStep = (values, _) => {
         dispatch(
-            detailsForm({
-                name: detailsData.name,
-                birthday: detailsData.birthday,
-                breed: detailsData.breed,
-                title: "",
-                type: ""                
-            })
-        )
+            detailsForm(values)
+        )        
         dispatch(
             formStage(3)
         );
     }
 
+    const all = useSelector(selectAllPetData)
+    console.log(all);
+
 
     return (
-        <>
-            <Form>
-                <label htmlFor="pet-name">
+        <Formik
+            initialValues={initialDetailsValues}      
+            onSubmit={onNextStep}            
+        >
+        <Form
+            // onSubmit={formik.onNextStep}
+        >
+                {
+                    (category === "sell" || category === "lost/found" || category === "in good hands")  && 
+                        <>
+                            <Label htmlFor="title">
+                                Title of add
+                            </Label>
+                            <Input
+                                placeholder="Type title for adv"
+                                type="text"
+                                id="title"
+                                name="title"
+                            />      
+                        </>                        
+                }
+
+                
+                <Label htmlFor="pet-name">
                     Pet’s name
-                </label>
-                <input
+                </Label>
+                <Input
+                    placeholder="Type name pet"
                     type="text"
                     id="pet-name"
                     name="name"
-                    onChange={handleChange}
                 />
                 
-                <label htmlFor="pet-birth">
+                <Label htmlFor="pet-birth">
                     Date of birth
-                </label> 
-                <input
+                </Label> 
+                <Input
+                    // placeholder="Type date of birth"
                     type="date"
                     id="pet-birth"
                     name="birthday"
-                    onChange={handleChange}
                 />
                 
-                <label htmlFor="pet-breed">
-                    Breed
-                </label>
-                <input
-                    type="text"
-                    id="pet-breed"
-                    name="breed"
-                    onChange={handleChange}
-                /> 
+                <Label htmlFor="pet-type">
+                    Type
+                </Label>
+                <Input
+                    placeholder="Type of pet"
+                    type="type"
+                    id="pet-type"
+                    name="type"
+                />
 
-                <FormBtnNav onClick={onNextStep} />
+                <FormBtnNav />
             </Form>
-        </>
+        </Formik>
     );
 };
 

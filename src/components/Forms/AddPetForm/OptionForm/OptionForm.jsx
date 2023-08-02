@@ -1,13 +1,14 @@
-import { OptionList, CategoryOption } from "./OptionForm.styled";
+import { OptionList, OptionInput } from "./OptionForm.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { formStage, optionForm } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
 import { selectCategory } from "../../../../redux/petsSlice/selectors";
 
 
-const OptionForm = () => {
+const OptionForm = ({leaveAddPetForm}) => {
     const dispatch = useDispatch();
     const category = useSelector(selectCategory);
+    
 
     const handleSelectCategory = ({ target: { value } }) => {
         const selectedCategory = value;
@@ -16,14 +17,15 @@ const OptionForm = () => {
             optionForm({
                 category: selectedCategory,
             })
-        );        
+        ); 
     };
 
     const onNextStep = () => {
-        if (category === "pet"
+        // e.preventDefault();
+        if (category === "your pet"
             || category === "sell"
-            || category === "lost-found"
-            || category === "in-good-hands"
+            || category === "lost/found"
+            || category === "in good hands"
         ) {
             dispatch(
                 formStage(2)
@@ -31,41 +33,54 @@ const OptionForm = () => {
         }
     }    
 
+    // console.log(all);  
+
     return (
         <div>
+
             <OptionList>
-                <li>
-                    <CategoryOption
+                
+                    <OptionInput
                         type="button"
-                        value={"pet"}
-                        onClick={handleSelectCategory}
-                    >your pet</CategoryOption>
-                </li>
-                <li>
-                    <CategoryOption
+                        value={"your pet"}
+                        name="category-your-pet"
+                        onClick={handleSelectCategory}                   
+                    />
+                
+                
+                    <OptionInput
                         type="button"
                         value={"sell"}
-                        onClick={handleSelectCategory}                        
-                    >sell</CategoryOption>
-                </li>
-                <li>
-                    <CategoryOption
+                        name="category-sell"
+                        // name="category"
+                    onClick={handleSelectCategory}     
+                    />
+
+                
+                    <OptionInput
                         type="button"
-                        value={"lost-found"}
-                        onClick={handleSelectCategory}                        
-                    >lost/found</CategoryOption>
-                </li>
-                <li>
-                    <CategoryOption
+                        value={"lost/found"}
+                        name="category-lost"
+                    onClick={handleSelectCategory}     
+                    />
+                
+                
+                    <OptionInput
                         type="button"
-                        value={"in-good-hands"}
-                        onClick={handleSelectCategory}                        
-                    >in good hands</CategoryOption>
-                </li>                    
+                        value={"in good hands"}
+                        name="category-good-hands"
+                        onClick={handleSelectCategory}
+                    />
+
+                                    
             </OptionList>
-            <FormBtnNav onClick={onNextStep} />
+            <FormBtnNav
+                onClick={onNextStep}
+                leaveAddPetForm={leaveAddPetForm}
+            />
+
         </div>
-    );
+    )
 };
 
 

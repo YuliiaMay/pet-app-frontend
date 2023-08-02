@@ -42,15 +42,15 @@ export const UserName = styled.div`
   font-weight: 500;
   letter-spacing: 0.64px;
   color: #ffc107;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const UserLink = styled(NavLink)`
   display: flex;
   align-items: center;
   margin-left: auto;
-  /* @media screen and (min-width: 768px) and (max-width: 1280px) {
-    display: none;
-  } */
 `;
 
 export const Box = styled.div`
@@ -58,7 +58,6 @@ export const Box = styled.div`
   align-items: center;
   margin-left: auto;
   justify-content: center;
-  /* justify-content: flex-end; */
   @media screen and (max-width: 767px) {
     justify-content: center;
   }

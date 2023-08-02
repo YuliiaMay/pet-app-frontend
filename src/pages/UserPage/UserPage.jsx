@@ -1,4 +1,3 @@
-
 /**
  * eslint-disable react/jsx-no-undef
  *
@@ -12,16 +11,15 @@ import { ReactComponent as CloseSvg } from "../../svg/userPage/close.svg";
 import { ReactComponent as EditSvg } from "../../svg/userPage/editProfile.svg";
 import { ReactComponent as AddSvg } from "../../svg/userPage/add.svg";
 
-
 import { UserPetsSection } from "./UserPetsSection";
 import {
+  AddPetContainer,
   AddPetLink,
   AddPetWrapper,
+  Container,
   EditButton,
   MyInfoText,
-  MyInfoTextWrapper,
   MyPetsText,
-  PetCardInfo,
   UserCardInfo,
   UserPageContainer,
 } from "./UserPage.styled";
@@ -40,36 +38,34 @@ const UserPage = () => {
   return (
     <UserPageContainer>
       <div>
-        <MyInfoTextWrapper>
-          <MyInfoText>My information</MyInfoText>
-        </MyInfoTextWrapper>
+        <MyInfoText>My information</MyInfoText>
+
         <UserCardInfo>
           {isUserEditing ? (
-            <EditButton type='button' onClick={handleCloseButton}>
+            <EditButton type="button" onClick={handleCloseButton}>
               <CloseSvg />
             </EditButton>
           ) : (
-            <EditButton type='button' onClick={handleEditButton}>
+            <EditButton type="button" onClick={handleEditButton}>
               <EditSvg />
             </EditButton>
           )}
-          <UserAvatar isFormEnable={isUserEditing} />
-          <UserForm isFormEnable={isUserEditing} />
+          <Container>
+            <UserAvatar isFormEnable={isUserEditing} />
+            <UserForm isFormEnable={isUserEditing} />
+          </Container>
         </UserCardInfo>
       </div>
-      <div>
+      <AddPetContainer>
         <AddPetWrapper>
-          <MyPetsText>My pets</MyPetsText>
-          <AddPetLink to='/add-pet'>
+          <MyPetsText>My pets:</MyPetsText>
+          <AddPetLink to="/add-pet">
             Add Pet
             <AddSvg />
           </AddPetLink>
         </AddPetWrapper>
-
-        <PetCardInfo>
-          <UserPetsSection />
-        </PetCardInfo>
-      </div>
+        <UserPetsSection />
+      </AddPetContainer>
     </UserPageContainer>
   );
 };

@@ -1,9 +1,20 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 import { ModalComponents } from "../ModalComponents/ModalComponents";
 import { Icon } from "../../Icon/Icon";
 
 import { formatDate, convertPhone, checkPoster } from "../../../utils";
+
+import ModalAttention from "../ModalAttention/ModalAttention";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../../redux/authSlice/selectors";
+import {
+  fetchFavoriteAdd,
+  fetchFavoriteDelete,
+} from "../../../redux/noticesSlice/operations";
+
+import { setFavoriteId } from "../../../redux/savedFavoriteIdSlice/savedFavoriteIdSlice";
 
 import {
   WrapperModal,
@@ -20,9 +31,18 @@ import {
   ImgCards,
 } from "./ModalNotice.styled";
 
-export function ModalNotice({ active, setShow, card }) {
+export function ModalNotice({ card, active, setShow, isFavorites }) {
+  const [showModalAttention, setShowModalAttention] = useState(false);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const [isFavoritesBtn, setIsFavoritesBtn] = useState(isFavorites);
   if (!card) return;
 
+  const handleClickClose = () => {
+    setShow(false);
+  };
+  if (!card) return;
   const {
     imgUrl,
     name,
@@ -32,15 +52,29 @@ export function ModalNotice({ active, setShow, card }) {
     sex,
     email,
     phone,
-    text,
-    favorite,
+    comments,
+
+    title,
+    category,
+    price,
   } = card;
 
-  const handleClickClose = () => {
-    setShow(false);
-  };
+  const handleClickFavorite = (itemId, isFavoritesBtn) => {
+    if (!user.token) {
+      setShowModalAttention(true);
+      return;
+    }
 
-  const handleClickFavorite = () => {};
+    if (!isFavoritesBtn) {
+      setIsFavoritesBtn(true);
+      dispatch(fetchFavoriteAdd(itemId));
+      dispatch(setFavoriteId(itemId));
+      return;
+    }
+    setIsFavoritesBtn(false);
+    dispatch(setFavoriteId(itemId));
+    dispatch(fetchFavoriteDelete(itemId));
+  };
 
   const checkFavorite = (favorite) => {
     return favorite ? (
@@ -83,11 +117,11 @@ export function ModalNotice({ active, setShow, card }) {
           </CloseIcon>
           <ContainerInfo>
             <ImgWrapper>
-              <span>In good hands</span>
+              <span>{category}</span>
               <ImgCards src={checkPoster(imgUrl)} alt="name image" />
             </ImgWrapper>
             <WrapperInfo>
-              <Title>Cute dog looking for a home</Title>
+              <Title>{title}</Title>
 
               <WrapperListInfo>
                 <table>
@@ -98,6 +132,14 @@ export function ModalNotice({ active, setShow, card }) {
                         <span>{name}</span>
                       </td>
                     </tr>
+                    {!price <= 0 && (
+                      <tr>
+                        <td>Price:</td>
+                        <td>
+                          <span>{price} ₿</span>
+                        </td>
+                      </tr>
+                    )}
                     <tr>
                       <td>Birthday:</td>
                       <td>
@@ -141,39 +183,32 @@ export function ModalNotice({ active, setShow, card }) {
           </ContainerInfo>
           <SideInfo>
             Comments:
-            <span>{text}</span>
+            <span>{comments}</span>
           </SideInfo>
           <WrapperBtn>
-            <GoProfileBtn onClick={handleClickFavorite}>
-              {checkFavorite(favorite)}
+            <GoProfileBtn
+              onClick={() => handleClickFavorite(card._id, isFavoritesBtn)}
+            >
+              {checkFavorite(isFavorites)}
             </GoProfileBtn>
 
             <ContactLink href={`tel:${phone}`}>Contact</ContactLink>
           </WrapperBtn>
         </WrapperModal>
       </ModalComponents>
+      <>
+        <ModalAttention
+          active={showModalAttention}
+          setShow={setShowModalAttention}
+        />
+      </>
     </>
   );
 }
 
 ModalNotice.propTypes = {
   active: PropTypes.bool,
+  isFavorites: PropTypes.bool,
   setShow: PropTypes.func,
   card: PropTypes.object,
 };
-
-// Add to
-//             <Icon
-//               iconName={"icon-heart"}
-//               width={"24px"}
-//               height={"24px"}
-//               stroke={"#ffffff"}
-//               fill={"#ffffff"}
-//             />
-//             <Icon
-//               iconName={"icon-heart-full"}
-//               width={"24px"}
-//               height={"24px"}
-//               stroke={"#ffffff"}
-//               fill={"#340cf9"}
-//             />

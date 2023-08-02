@@ -12,6 +12,16 @@ export const BurgerIcon = styled(AiOutlineMenu)`
   @media screen and (min-width: 1280px) {
     display: none;
   }
+  @media screen and (max-width: 767px) {
+    margin-left: 0;
+  }
+`;
+
+export const Logos = styled.picture`
+  max-width: 162px;
+  @media screen and (max-width: 767px) {
+    max-width: 116px;
+  }
 `;
 
 export const BurgerContainer = styled.div`
@@ -46,11 +56,13 @@ export const BurgerBar = styled.div`
 export const BurgerMenu = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+
   align-items: center;
-  gap: 84px;
+  /* gap: 84px; */
+
   @media screen and (max-width: 767px) {
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex: 1 auto;
   }
 `;
@@ -62,7 +74,6 @@ export const BurgerBtnWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-top: 40px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     display: none;
   }
@@ -73,6 +84,7 @@ export const BurgerBtnTabWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 12px;
+
   @media screen and (min-width: 320px) and (max-width: 767px) {
     display: none;
   }
@@ -105,6 +117,9 @@ export const BurgerRegisterBtn = styled(NavLink)`
   border-radius: 40px;
   width: 165px;
   text-align: center;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 142px;
+  }
 `;
 
 //////////////////////////////////////////////////////
@@ -114,12 +129,15 @@ export const BurgerNavList = styled.ul`
   flex-direction: column;
   text-align: center;
   gap: 60px;
-  margin-top: 92px;
+
+  margin-top: 74px;
   @media screen and (max-width: 767px) {
     gap: 20px;
-    margin-top: 0;
+    margin-top: 84px;
+    margin-bottom: 160px;
   }
 `;
+export const BurgerNavigationItem = styled(NavLink)``;
 
 export const CloseBtn = styled(RxCross1)`
   width: 24px;
@@ -150,6 +168,7 @@ export const LogoutMobBtn = styled(NavLink)`
     margin-bottom: 20px;
     width: 135px;
     margin-right: auto;
+    display: inline-flex;
   }
 `;
 
@@ -186,8 +205,16 @@ export const UserTabBox = styled.div`
   }
 `;
 export const UserMobBox = styled.div`
-  margin-bottom: -170px;
   @media screen and (min-width: 768px) {
     display: none;
   }
+`;
+
+export const BoxMob = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const UserNameMob = styled.div`
+  color: #ffc107;
 `;

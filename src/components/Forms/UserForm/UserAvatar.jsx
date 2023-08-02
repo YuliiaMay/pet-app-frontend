@@ -20,86 +20,104 @@ import {
   AvatarFormWrapper,
   ConfirmWrapper,
   EditPhotoBtn,
+  ErrorText,
   FileInput,
   FormAvatar,
   UserAvatarImg,
 } from "./UserAvatar.styled";
+import { selectUser } from "../../../redux/authSlice/selectors";
+import { updateUser } from "../../../redux/authSlice/operations";
 
 export const UserAvatar = ({ isFormEnable }) => {
   const dispatch = useDispatch();
-  // const user = useSelector(user);
+  const user = useSelector(selectUser);
+  const [avatar, setAvatar] = useState(user.avatar || "");
+  const [imgToUpload, setImgToUpload] = useState("");
 
   const [isFormatErr, setIsFormatErr] = useState(false);
   const [isImgUpdating, setIsImgUpdating] = useState(false);
-  const user = {
-    avatar:
-      "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-  };
+
   const initialValues = {
-    avatar: user.avatar,
+    avatar: avatar,
   };
 
-  const handleAvatarEditing = () => {
-    setIsImgUpdating(true);
+  const handleConfirmBtn = () => {
+    setIsImgUpdating(false);
+    sendFormData(imgToUpload);
   };
 
   const inputUploadHandler = async (e) => {
     setIsFormatErr(false);
+    setIsImgUpdating(true);
 
-    if (e.target.files[0].type !== "image/jpeg") {
+    const newAvatar = e.target.files[0];
+
+    if (newAvatar.type !== "image/jpeg") {
       setIsFormatErr(true);
+      setIsImgUpdating(false);
       return;
     }
-
-    setIsImgUpdating(false);
-    const formData = new FormData();
-    formData.append("avatar", e.target.files[0]);
-
-    // eslint-disable-next-line no-undef
-    dispatch(uploadImg(formData));
+    const objectUrl = URL.createObjectURL(newAvatar);
+    setAvatar(objectUrl);
+    setImgToUpload(newAvatar);
+    setIsFormatErr(false);
+    setIsImgUpdating(true);
   };
 
-  const handleClearAvatar = (setFieldValue) => {
-    setFieldValue("avatar", null);
+  const sendFormData = async (newAvatar) => {
+    const formData = new FormData();
+    formData.append("file", newAvatar);
+
+    await dispatch(updateUser(formData)).then((data) => {
+      if (data.error) {
+        setIsFormatErr(true);
+        setIsImgUpdating(true);
+      }
+      setIsFormatErr(false);
+      setIsImgUpdating(false);
+    });
+  };
+
+  const handleClearAvatar = () => {
+    setAvatar("");
     setIsImgUpdating(false);
   };
 
   return (
-    <AvatarFormWrapper>
-      {isFormatErr && <p>Only img can be uploaded</p>}
-      <UserAvatarImg src={user.avatar} alt='' />
+    <AvatarFormWrapper bottom={isFormEnable}>
+      {isFormatErr && (
+        <ErrorText>Something went wrong. Only img can be uploaded</ErrorText>
+      )}
+      <UserAvatarImg src={avatar} alt="" id="avatar" />
       {isFormEnable && (
         <Formik initialValues={initialValues} onSubmit={inputUploadHandler}>
-          {({ values, setFieldValue }) => (
-            <FormAvatar encType='multipart/form-data'>
+          {() => (
+            <FormAvatar encType="multipart/form-data">
               <FileInput
-                type='file'
-                id='avatar'
-                name='avatar'
-                accept='image/*'
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/*"
                 value={""}
-                onChange={handleAvatarEditing}
+                onChange={inputUploadHandler}
+                hidden={isImgUpdating}
               />
               {!isImgUpdating ? (
-                <EditPhotoBtn type='button'>
+                <EditPhotoBtn type="button">
                   <EditAvatar />
                   Edit photo
                 </EditPhotoBtn>
               ) : (
                 <ConfirmWrapper>
-                  <button type='submit'>
+                  <button type="button" onClick={handleConfirmBtn}>
                     <Confirm />
                   </button>
 
                   <p>Confirm</p>
 
-                  {values.avatar && (
-                    <button
-                      type='button'
-                      onClick={() => handleClearAvatar(setFieldValue)}>
-                      <Decline />
-                    </button>
-                  )}
+                  <button type="button" onClick={handleClearAvatar}>
+                    <Decline />
+                  </button>
                 </ConfirmWrapper>
               )}
             </FormAvatar>
