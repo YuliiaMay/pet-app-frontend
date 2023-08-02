@@ -1,4 +1,4 @@
-import{s as n,N as U,P as d,d as te,j as e,I as h,r as o,f as y,i as _,u as E,y as G,z as T,A as O,B as ne,b as ie,C as oe,D as se,E as re,e as ae,F as ce}from"./index-af2f252b.js";import{f as le,P as de,s as pe}from"./index-d56fa67a.js";import{M as W}from"./ModalComponents-c09c08a1.js";const xe="/pet-app-frontend/assets/defaultPoster-c04359c8.jpeg",V=t=>t||xe,he=t=>t.replace(/[.\-/\\\s]/g,"");function fe(t){if(!t)return;const i=new Date,r=new Date(i.getFullYear(),i.getMonth(),i.getDate()),s=new Date(t),f=new Date(r.getFullYear(),s.getMonth(),s.getDate());let l;return l=r.getFullYear()-s.getFullYear(),r<f&&(l=l-1),l}const ge=t=>{if(!t)return;let i=t;return i.length>6&&(i=t.slice(0,4)+"..."),i},ue=t=>{let i=t;return i.length>6&&(i=t.slice(0,4)+"..."),i},me=t=>{if(!t)return;let i=t;return i.length>15&&(i=t.slice(0,21)+"..."),i},we=t=>t.notices.items,je=t=>t.notices.favorite,be=t=>t.notices.own,ye=t=>t.notices.isLoading,P=n.span`
+import{s as n,N as U,P as d,d as te,j as e,I as h,r as o,f as y,i as _,u as E,y as G,z as T,A as O,B as ne,b as ie,C as oe,D as se,E as re,e as ae,F as ce}from"./index-c6237e6e.js";import{f as le,P as de,s as pe}from"./index-149c49e7.js";import{M as W}from"./ModalComponents-76fbebea.js";const xe="/pet-app-frontend/assets/defaultPoster-c04359c8.jpeg",V=t=>t||xe,he=t=>t.replace(/[.\-/\\\s]/g,"");function fe(t){if(!t)return;const i=new Date,r=new Date(i.getFullYear(),i.getMonth(),i.getDate()),s=new Date(t),f=new Date(r.getFullYear(),s.getMonth(),s.getDate());let l;return l=r.getFullYear()-s.getFullYear(),r<f&&(l=l-1),l}const ge=t=>{if(!t)return;let i=t;return i.length>6&&(i=t.slice(0,4)+"..."),i},ue=t=>{let i=t;return i.length>6&&(i=t.slice(0,4)+"..."),i},me=t=>{if(!t)return;let i=t;return i.length>15&&(i=t.slice(0,21)+"..."),i},we=t=>t.notices.items,je=t=>t.notices.favorite,be=t=>t.notices.own,ye=t=>t.notices.isLoading,P=n.span`
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -142,8 +142,7 @@ import{s as n,N as U,P as d,d as te,j as e,I as h,r as o,f as y,i as _,u as E,y 
   @media screen and (min-width: 768px) {
     flex-wrap: wrap;
     display: flex;
-    justify-content: flex-start;
-    padding-left: 10px;
+    justify-content: center;
     align-items: center;
     column-gap: 32px;
     row-gap: 24px;
