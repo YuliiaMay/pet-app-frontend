@@ -8,11 +8,8 @@ export const UserAvatarImg = styled.img`
   border-radius: 40px;
   border: 1px solid #000;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  margin-bottom: 15px;
-  object-position: center; 
-  bject-fit: contain;
-  @media (min-width: ${(props) => props.theme.sizes.tab}) {
-  }
+  object-position: center;
+  object-fit: contain;
 `;
 
 export const FormAvatar = styled(Form)`
@@ -32,12 +29,12 @@ export const FileInput = styled(Field)`
   z-index: 2;
 `;
 
-
 export const EditPhotoBtn = styled.button`
   color: ${(props) => props.theme.color.main};
   font-family: Manrope;
+  margin-top: 15px;
+  margin-bottom: 22px;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: 22px;
   letter-spacing: 0.48px;
@@ -45,8 +42,6 @@ export const EditPhotoBtn = styled.button`
   align-items: center;
   gap: 8px;
   min-width: 92px;
-  @media (min-width: ${(props) => props.theme.sizes.mobile}) {
-  }
 `;
 
 export const AvatarFormWrapper = styled.div`
@@ -54,10 +49,16 @@ export const AvatarFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 49px 46px 49px;
+  margin-bottom: ${(props) => (props.bottom ? "0px" : "59px")};
 
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
-    margin: 18px 34px 46px 71px;
+    margin-bottom: 0px;
+    margin-right: 56px;
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.desk}) {
+    margin-right: 0px;
+    margin-bottom: ${(props) => (props.bottom ? "0px" : "63px")};
   }
 `;
 
@@ -76,5 +77,5 @@ export const ConfirmWrapper = styled.div`
 `;
 
 export const ErrorText = styled.p`
-color: red;
-`
+  color: red;
+`;

@@ -6,23 +6,24 @@ export const Container = styled.div`
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 88px;
   width: 280px;
   min-height: 425px;
   background-color: ${(props) => props.theme.background.wight};
   border: 1px solid ${(props) => props.theme.border.blue};
   border-radius: ${(props) => props.theme.border.radius};
-  box-shadow: ${(props) => props.theme.border.shadow};
+  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
   @media screen and (min-width: 768px) {
     margin-top: 82px;
-    //margin-bottom: 564px;
+    margin-bottom: 564px;
     width: 608px;
     min-height: 481px;
   }
 
   @media screen and (min-width: 1280px) {
     margin-top: 91px;
-    // margin-bottom: 141px;
+    margin-bottom: 141px;
   }
 `;
 
@@ -40,11 +41,11 @@ export const StyledTitle = styled.h2`
   font-weight: 500;
   letter-spacing: 1.44px;
   margin-top: 40px;
-  //margin-bottom: 20px;
+  margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;
-    //margin-bottom: 40px;
+    margin-bottom: 40px;
     font-size: 36px;
   }
 `;
@@ -60,6 +61,7 @@ export const StyledField = styled(Field)`
   margin-top: 14px;
   width: 248px;
   height: 48px;
+  font-size: 16px;
   border-radius: ${(props) => props.theme.border.radius};
   cursor: pointer;
   outline: none;

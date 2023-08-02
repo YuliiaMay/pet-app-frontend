@@ -34,7 +34,6 @@ const authSlice = createSlice({
         state.token = payload.token;
         state.isLoggedIn = true;
       })
-      ////////////////////////////////////////////////////
       .addCase(logout.pending, (state) => state)
       .addCase(logout.fulfilled, (state) => {
         state.user = { name: null, email: null };
@@ -51,7 +50,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
@@ -84,7 +83,6 @@ const authSlice = createSlice({
           user: payload,
         };
       })
-  
 });
 
 export const authReducer = authSlice.reducer;
