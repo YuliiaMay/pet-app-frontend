@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const UserPageContainer = styled.div`
-  margin: 44px 20px;
+  width: 280px;
   align-items: center;
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
 
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
-    min-width: ${(props) => props.theme.sizes.tab};
+    display: block;
+    margin-top: 60px;
   }
 
   @media (min-width: ${(props) => props.theme.sizes.desk}) {
@@ -19,40 +21,35 @@ export const UserPageContainer = styled.div`
     flex-direction: row;
     gap: 32px;
     align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 62px;
   }
 `;
 
 export const MyInfoText = styled.h2`
+  margin-bottom: 18px;
   font-family: Manrope;
   font-size: 20px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
   letter-spacing: 0.8px;
+
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
     font-size: 28px;
-  }
-`;
-
-export const MyInfoTextWrapper = styled.div`
-  @media (min-width: ${(props) => props.theme.sizes.desk}) {
-    margin-bottom:24px;
+    margin-bottom: 24px;
   }
 `;
 
 export const UserCardInfo = styled.div`
-  width: 280px;
   background-color: ${(props) => props.theme.background.wight};
   border-radius: 20px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   position: relative;
   text-align: center;
   padding: 20px 8px 6px 8px;
-  margin-top: 18px;
   margin-bottom: 40px;
 
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
-    width: 704px;
+    width: 664px;
     height: 268px;
     display: flex;
     flex-direction: row-reverse;
@@ -63,7 +60,7 @@ export const UserCardInfo = styled.div`
   @media screen and (min-width: ${(props) => props.theme.sizes.desk}) {
     display: block;
     width: 395px;
-    height: 540px;
+    height: 480px;
     position: relative;
     text-align: center;
     padding: 20px 24px 21px 16px;
@@ -81,15 +78,12 @@ export const EditButton = styled.button`
   }
 `;
 
-export const PetCardInfo = styled.div`
-  background-color: ${(props) => props.theme.background.wight};
-`;
-
 export const AddPetWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
   width: 280px;
+
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
     width: 704px;
   }
@@ -97,7 +91,6 @@ export const AddPetWrapper = styled.div`
 
 export const AddPetLink = styled(Link)`
   display: flex;
-  width: 129px;
   padding: 8px 20px;
   justify-content: center;
   align-items: center;
@@ -114,6 +107,7 @@ export const MyPetsText = styled.h2`
   font-weight: 500;
   line-height: normal;
   letter-spacing: 0.8px;
+
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
     font-size: 28px;
   }
