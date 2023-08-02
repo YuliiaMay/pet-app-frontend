@@ -31,7 +31,6 @@ import ModalApproveDelete from "../../Modals/ModalApproveDelete/ModalApproveDele
 
 import { Loader } from "../../Loader/Loader";
 import { selectUser } from "../../../redux/authSlice/selectors";
-import { useToggle } from "../../../hooks/useToggle";
 
 const NoticesCategoriesList = () => {
   const dispatch = useDispatch();
@@ -56,7 +55,6 @@ const NoticesCategoriesList = () => {
   const user = useSelector(selectUser);
   const IsLoading = useSelector(selectIsLoading);
   const [showModalDelete, setShowModalDelete] = useState(false);
-  const [test, setTest] = useState(false);
 
   useEffect(() => {
     if (!fetchingFavorite) return;
@@ -151,28 +149,23 @@ const NoticesCategoriesList = () => {
     setCurrentPage(page);
   };
 
-  const [approve, setApprove] = useState(false);
-
-  const { isOpen, toggle, open, close } = useToggle();
+  const [approve, setApprove] = useState(null);
 
   const handleClickDelete = (id) => {
     setShowModalDelete(true);
-    handleConfirmDelete(id);
-    // dispatch(deleteNotice(id));
-    // setIdCards(id);
-    // setFetchingAll(true);
+
+    setApprove(id);
   };
   const handleConfirmDelete = (id) => {
-    // console.log(id, "handleConfirmDelete");
-    // dispatch(deleteNotice(id));
-    // setIdCards(id);
-    // setFetchingAll(true);
+    dispatch(deleteNotice(id));
+    setIdCards(id);
+    setFetchingAll(true);
+    setShowModalDelete(false);
   };
 
   const handleClickDeleteFavorite = (id) => {
     dispatch(fetchFavoriteDelete(id));
     setIdCardsFavorite(id);
-    // setFetchingFavorite(true);
   };
 
   return (
@@ -205,8 +198,7 @@ const NoticesCategoriesList = () => {
       <ModalApproveDelete
         active={showModalDelete}
         setShow={setShowModalDelete}
-        setModal={toggle}
-        isId={isOpen}
+        isId={approve}
         handleConfirmDelete={handleConfirmDelete}
       />
     </>
