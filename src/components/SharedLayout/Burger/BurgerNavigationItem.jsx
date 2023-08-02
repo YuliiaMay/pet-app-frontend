@@ -3,7 +3,6 @@ import { BurgerNavItem } from "./BurgerNavigationItem.styled";
 
 const BurgerNavigationItem = ({ to, children, toggleMenu }) => {
   const handleClick = () => {
-    // Close the burger menu when a navigation item is clicked
     toggleMenu();
   };
 

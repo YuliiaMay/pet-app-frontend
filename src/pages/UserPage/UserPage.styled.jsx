@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const UserPageContainer = styled.div`
+  align-items: center;
+
   display: flex;
   flex-direction: column;
   align-items: center;
