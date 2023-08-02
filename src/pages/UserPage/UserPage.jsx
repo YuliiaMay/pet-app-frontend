@@ -13,8 +13,10 @@ import { ReactComponent as AddSvg } from "../../svg/userPage/add.svg";
 
 import { UserPetsSection } from "./UserPetsSection";
 import {
+  AddPetContainer,
   AddPetLink,
   AddPetWrapper,
+  Container,
   EditButton,
   MyInfoText,
   MyPetsText,
@@ -49,11 +51,13 @@ const UserPage = () => {
               <EditSvg />
             </EditButton>
           )}
-          <UserAvatar isFormEnable={isUserEditing} />
-          <UserForm isFormEnable={isUserEditing} />
+          <Container>
+            <UserAvatar isFormEnable={isUserEditing} />
+            <UserForm isFormEnable={isUserEditing} />
+          </Container>
         </UserCardInfo>
       </div>
-      <div>
+      <AddPetContainer>
         <AddPetWrapper>
           <MyPetsText>My pets:</MyPetsText>
           <AddPetLink to="/add-pet">
@@ -61,11 +65,8 @@ const UserPage = () => {
             <AddSvg />
           </AddPetLink>
         </AddPetWrapper>
-
-        <div>
-          <UserPetsSection />
-        </div>
-      </div>
+        <UserPetsSection />
+      </AddPetContainer>
     </UserPageContainer>
   );
 };

@@ -13,7 +13,7 @@ import {
   ErrorText,
   FieldLabel,
   FieldLabelWrapper,
-  FormContainer,
+  InputContainer,
   LogOutBtn,
   LogOutSvgStyled,
   StyledField,
@@ -42,10 +42,9 @@ export const UserForm = ({ isFormEnable }) => {
     city: yup.string().min(3).max(30).required(),
   });
 
-  const SubmitHandler = async(values) => {
+  const SubmitHandler = async (values) => {
     await dispatch(updateUser(values));
   };
-
 
   const initialValues = {
     name: user.name,
@@ -60,77 +59,82 @@ export const UserForm = ({ isFormEnable }) => {
   };
   return (
     <>
-      <FormContainer>
+      <div>
         <Formik
           initialValues={initialValues}
-          validate={()=>{schema}}
-          onSubmit={SubmitHandler}>
+          validate={() => {
+            schema;
+          }}
+          onSubmit={SubmitHandler}
+        >
           {({ isSubmitting }) => (
             <UserFormStyled>
-              <FieldLabelWrapper>
-                <FieldLabel htmlFor='name'>Name:</FieldLabel>
-                <StyledField
-                  type='text'
-                  name='name'
-                  id='name'
-                  disabled={isSubmitting || !isFormEnable}
-                />
-              </FieldLabelWrapper>
-              <ErrorMessage name='name' component='div' />
+              <InputContainer>
+                <FieldLabelWrapper>
+                  <FieldLabel htmlFor="name">Name:</FieldLabel>
+                  <StyledField
+                    type="text"
+                    name="name"
+                    id="name"
+                    disabled={isSubmitting || !isFormEnable}
+                  />
+                </FieldLabelWrapper>
+                <ErrorMessage name="name" component="div" />
 
-              <FieldLabelWrapper>
-                <FieldLabel htmlFor='email'>Email:</FieldLabel>
-                <StyledField
-                  type='email'
-                  name='email'
-                  id='email'
-                  disabled={isSubmitting || !isFormEnable}
-                />
-              </FieldLabelWrapper>
+                <FieldLabelWrapper>
+                  <FieldLabel htmlFor="email">Email:</FieldLabel>
+                  <StyledField
+                    type="email"
+                    name="email"
+                    id="email"
+                    disabled={isSubmitting || !isFormEnable}
+                  />
+                </FieldLabelWrapper>
 
-              <ErrorText name='email' component='div' />
+                <ErrorText name="email" component="div" />
 
-              <FieldLabelWrapper>
-                <FieldLabel htmlFor='birthday'>Birthday:</FieldLabel>
-                <StyledField
-                  type='date'
-                  name='birthday'
-                  id='birthday'
-                  disabled={isSubmitting || !isFormEnable}
-                />
-              </FieldLabelWrapper>
-              <ErrorText name='birthday' component='div' />
+                <FieldLabelWrapper>
+                  <FieldLabel htmlFor="birthday">Birthday:</FieldLabel>
+                  <StyledField
+                    type="date"
+                    name="birthday"
+                    id="birthday"
+                    disabled={isSubmitting || !isFormEnable}
+                  />
+                </FieldLabelWrapper>
+                <ErrorText name="birthday" component="div" />
 
-              <FieldLabelWrapper>
-                <FieldLabel htmlFor='phone'>Phone:</FieldLabel>
-                <StyledField
-                  type='number'
-                  name='phone'
-                  id='phone'
-                  disabled={isSubmitting || !isFormEnable}
-                />
-              </FieldLabelWrapper>
-              <ErrorText name='phone' component='div' />
+                <FieldLabelWrapper>
+                  <FieldLabel htmlFor="phone">Phone:</FieldLabel>
+                  <StyledField
+                    type="number"
+                    name="phone"
+                    id="phone"
+                    disabled={isSubmitting || !isFormEnable}
+                  />
+                </FieldLabelWrapper>
+                <ErrorText name="phone" component="div" />
 
-              <FieldLabelWrapper>
-                <FieldLabel htmlFor='city'>City:</FieldLabel>
-                <StyledField
-                  type='text'
-                  name='city'
-                  id='city'
-                  disabled={isSubmitting || !isFormEnable}
-                />
-              </FieldLabelWrapper>
-              <ErrorText name='city' component='div' />
-
+                <FieldLabelWrapper>
+                  <FieldLabel htmlFor="city">City:</FieldLabel>
+                  <StyledField
+                    type="text"
+                    name="city"
+                    id="city"
+                    disabled={isSubmitting || !isFormEnable}
+                  />
+                </FieldLabelWrapper>
+                <ErrorText name="city" component="div" />
+              </InputContainer>
               {isFormEnable ? (
                 <SubmitButton
-                  type='submit'
-                  disabled={isSubmitting || !isFormEnable}>
+                  type="submit"
+                  disabled={isSubmitting || !isFormEnable}
+                >
                   Save
                 </SubmitButton>
               ) : (
-                <LogOutBtn type='button' onClick={handleCloseButton}>
+                <LogOutBtn type="button" onClick={handleCloseButton}>
                   <LogOutSvgStyled />
                   Log Out
                 </LogOutBtn>
@@ -138,7 +142,7 @@ export const UserForm = ({ isFormEnable }) => {
             </UserFormStyled>
           )}
         </Formik>
-      </FormContainer>
+      </div>
 
       <ModalApproveAction active={showModal} setShow={setShowModal} />
     </>
