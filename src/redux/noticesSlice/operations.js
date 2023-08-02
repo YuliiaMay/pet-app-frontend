@@ -50,6 +50,7 @@ export const fetchFavorite = createAsyncThunk(
         params: {},
       });
 
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -84,6 +85,7 @@ export const fetchFavoriteDelete = createAsyncThunk(
         params: {},
       });
 
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

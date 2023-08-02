@@ -48,7 +48,7 @@ const fetchNoticesFavoriteAll = (state, { payload }) => {
 };
 
 const FavoriteAddReduser = (state, { payload }) => {
-  state.favorite = payload;
+  state.favorite.push(payload);
 };
 
 const addNoticesSuccessReduser = (state, { payload }) => {
@@ -66,9 +66,11 @@ const deleteNoticesSuccessReduser = (state, { payload }) => {
 };
 
 const deleteFavoriteReduser = (state, { payload }) => {
-  // state.own = payload;
-  // const index = state.favorite.filter((notice) => notice._id === payload);
-  // state.favorite.splice(index, 1);
+  // state.favorite = payload;
+  const index = state.favorite.findIndex((fav) => fav._id === payload);
+  // const index = state.favorite.then((fav) => fav._id === payload);
+  // console.log(payload);
+  state.favorite.splice(index, 1);
 };
 
 const noticesSlice = createSlice({

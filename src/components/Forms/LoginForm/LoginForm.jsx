@@ -18,10 +18,10 @@ import {
   InputIconSuccess,
 } from "./LoginForm.styled.js";
 
-import showPasswordIcon from "/src/svg/registerPage/eyeOpen.svg";
-import hidePasswordIcon from "/src/svg/registerPage/eyeClosed.svg";
-import successIcon from "/src/svg/registerPage/check.svg";
-import errorIcon from "/src/svg/registerPage/cross.svg";
+import showPasswordIcon from "../../../svg/registerPage/eyeOpen.svg";
+import hidePasswordIcon from "../../../svg/registerPage/eyeClosed.svg";
+import successIcon from "../../../svg/registerPage/check.svg";
+import errorIcon from "../../../svg/registerPage/cross.svg";
 
 const userSchema = Yup.object().shape({
   email: Yup.string().required("Email is required").email("Email is invalid"),
