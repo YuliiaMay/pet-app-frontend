@@ -38,9 +38,8 @@ const UserPage = () => {
   return (
     <UserPageContainer>
       <div>
-        <div>
-          <MyInfoText>My information</MyInfoText>
-        </div>
+        <MyInfoText>My information</MyInfoText>
+
         <UserCardInfo>
           {isUserEditing ? (
             <EditButton type="button" onClick={handleCloseButton}>

@@ -6,6 +6,7 @@ import styled from "styled-components";
 export const UserPageContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 40px;
 
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
@@ -45,6 +46,7 @@ export const UserCardInfo = styled.div`
   text-align: center;
   padding: 20px 8px;
   margin-bottom: 40px;
+  width: 264px;
 
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
     width: 664px;
