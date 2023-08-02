@@ -1,42 +1,43 @@
-import{s as t,L as b,u as f,r as d,j as o,l as j}from"./index-c6237e6e.js";import{F as $,a as S,E as v,b as y}from"./formik.esm-9a0f3b9d.js";import{c as I,a as p}from"./index.esm-0b8e3c49.js";import{e as k,s as E,a as P,h as F}from"./cross-532f1ca9.js";import{p as L,a as z,b as Y}from"./bg-mob@1x-9dd97546.js";const C=t.div`
+import{s as t,L as b,u as f,r as d,j as o,l as j}from"./index-829dacb4.js";import{F as $,a as S,E as v,b as y}from"./formik.esm-974bd9b5.js";import{c as E,a as p}from"./index.esm-bea257f3.js";import{e as I,s as P,a as k,h as z}from"./cross-942d60f5.js";import{p as F,a as L,b as Y}from"./bg-mob@1x-9dd97546.js";const C=t.div`
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 88px;
   width: 280px;
   min-height: 425px;
   background-color: ${e=>e.theme.background.wight};
   border: 1px solid ${e=>e.theme.border.blue};
   border-radius: ${e=>e.theme.border.radius};
-  box-shadow: ${e=>e.theme.border.shadow};
+  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 
   @media screen and (min-width: 768px) {
     margin-top: 82px;
-    //margin-bottom: 564px;
+    margin-bottom: 564px;
     width: 608px;
     min-height: 481px;
   }
 
   @media screen and (min-width: 1280px) {
     margin-top: 91px;
-    // margin-bottom: 141px;
+    margin-bottom: 141px;
   }
-`,T=t($)`
+`,q=t($)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`,q=t.h2`
+`,T=t.h2`
   color: ${e=>e.theme.color.main};
   text-align: center;
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 1.44px;
   margin-top: 40px;
-  //margin-bottom: 20px;
+  margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;
-    //margin-bottom: 40px;
+    margin-bottom: 40px;
     font-size: 36px;
   }
 `,m=t.div`
@@ -48,6 +49,7 @@ import{s as t,L as b,u as f,r as d,j as o,l as j}from"./index-c6237e6e.js";impor
   margin-top: 14px;
   width: 248px;
   height: 48px;
+  font-size: 16px;
   border-radius: ${e=>e.theme.border.radius};
   cursor: pointer;
   outline: none;
@@ -150,13 +152,13 @@ import{s as t,L as b,u as f,r as d,j as o,l as j}from"./index-c6237e6e.js";impor
   font-size: 12px;
   letter-spacing: 0.48px;
   text-decoration-line: underline;
-`,A=I().shape({email:p().required().min(6).email(),password:p().required().min(4)}),G={email:"",password:""},J=()=>{const e=f(),x=({email:r,password:i},{resetForm:n})=>{e(j({email:r,password:i})).then(a=>!a.error&&n())},[s,h]=d.useState(!1),[g,u]=d.useState(""),w=()=>{h(r=>!r),u("")};return o.jsx(y,{initialValues:G,onSubmit:x,validationSchema:A,children:({errors:r,touched:i,values:n,isSubmitting:a})=>o.jsx(C,{children:o.jsxs(T,{autoComplete:"off",children:[o.jsx(q,{children:"Login"}),o.jsx("div",{children:r.password}),o.jsxs(m,{children:[o.jsx(c,{name:"email",placeholder:"Email",value:n.email,border:r.email&&i.email&&"1px solid red"}),i.email&&r.email&&o.jsx(M,{color:"red",children:o.jsx("img",{src:k,alt:"error",color:"red"})})]}),o.jsx(l,{name:"email",component:"div"}),o.jsxs(m,{children:[o.jsx(c,{type:s?"text":"password",name:"password",placeholder:"Password",value:n.password,error:r.password||g,border:r.password&&i.password&&"1px solid red"}),!r.password&&o.jsx(R,{children:o.jsx("img",{src:E,alt:"success"})}),o.jsx(D,{onClick:w,children:o.jsx("img",{src:s?P:F,alt:s?"Show password":"Hide password"})})]}),o.jsx(l,{name:"password",component:"div"}),o.jsx(B,{type:"submit",disabled:a,children:"Login"}),o.jsxs(H,{to:"/register",children:["Does not have an account? ",o.jsx(V,{children:"Registration"})]})]})})})},K=t.div`
-  background-image: url(${L});
+`,A=E().shape({email:p().required("Email is required").email("Email is invalid"),password:p().min(6,"Password must be at least 6 characters").max(16,"Password can not have more then 16 characters").required("Password is required")}),G={email:"",password:""},J=()=>{const e=f(),x=({email:r,password:s},{resetForm:i})=>{e(j({email:r,password:s})).then(a=>!a.error&&i())},[n,h]=d.useState(!1),[g,u]=d.useState(""),w=()=>{h(r=>!r),u("")};return o.jsx(y,{initialValues:G,onSubmit:x,validationSchema:A,children:({errors:r,touched:s,values:i,isSubmitting:a})=>o.jsx(C,{children:o.jsxs(q,{autoComplete:"off",children:[o.jsx(T,{children:"Login"}),o.jsx("div",{children:r.password}),o.jsxs(m,{children:[o.jsx(c,{name:"email",placeholder:"Email",value:i.email,border:r.email&&s.email&&"1px solid red"}),s.email&&r.email&&o.jsx(M,{children:o.jsx("img",{src:I,alt:"error"})})]}),o.jsx(l,{name:"email",component:"div"}),o.jsxs(m,{children:[o.jsx(c,{type:n?"text":"password",name:"password",placeholder:"Password",value:i.password,error:r.password||g,border:r.password&&s.password&&"1px solid red"}),!r.password&&o.jsx(R,{children:o.jsx("img",{src:P,alt:"success"})}),o.jsx(D,{onClick:w,children:o.jsx("img",{src:n?k:z,alt:n?"Show password":"Hide password"})})]}),o.jsx(l,{name:"password",component:"div"}),o.jsx(B,{type:"submit",disabled:a,children:"Login"}),o.jsxs(H,{to:"/register",children:["Does not have an account? ",o.jsx(V,{children:"Registration"})]})]})})})},K=t.div`
+  background-image: url(${F});
   display: flex;
   position: relative;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    background-image: url(${z});
+    background-image: url(${L});
   }
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
