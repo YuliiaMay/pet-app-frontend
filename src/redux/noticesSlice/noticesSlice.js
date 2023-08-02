@@ -53,9 +53,9 @@ const FavoriteAddReduser = (state, { payload }) => {
 
 const addNoticesSuccessReduser = (state, { payload }) => {
   if (payload.addedNotice) {
-    state.items.push(payload.addedNotice);
+    state.own.push(payload.addedNotice);
   }
-  return;
+  // return;
 };
 
 const deleteNoticesSuccessReduser = (state, { payload }) => {

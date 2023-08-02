@@ -20,6 +20,6 @@ export const OptionInput = styled.input`
     &:hover,
     &:focus {
         color: ${props => props.theme.color.wight};
-        background-color: ${props => props.theme.background.accentBlue}
+        background-color: ${props => props.theme.background.accentBlue};
     }
 `

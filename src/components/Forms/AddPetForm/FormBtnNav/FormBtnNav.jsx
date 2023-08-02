@@ -34,7 +34,6 @@ export function useTimeout(callback, delay) {
 const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
     const stage = useSelector(selectCurrentStage);
     const dispatch = useDispatch();
-    // const [isSuccess, setIsSuccess] = useState(false);
     let prev;
 
     const location = useLocation();

@@ -61,7 +61,7 @@ const DetailsForm = () => {
             initialValues={initialDetailsValues}      
             onSubmit={onNextStep}            
         >
-        <Form
+        <StyledForm
             // onSubmit={formik.onNextStep}
         >
                 {
@@ -111,7 +111,7 @@ const DetailsForm = () => {
                 />
 
                 <FormBtnNav />
-            </Form>
+            </StyledForm>
         </Formik>
     );
 };

@@ -31,9 +31,7 @@ const OptionForm = ({leaveAddPetForm}) => {
                 formStage(2)
             );
         }
-    }    
-
-    // console.log(all);  
+    }
 
     return (
         <div>
