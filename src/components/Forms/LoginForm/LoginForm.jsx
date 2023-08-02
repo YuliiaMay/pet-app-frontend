@@ -24,8 +24,11 @@ import successIcon from "/src/svg/registerPage/check.svg";
 import errorIcon from "/src/svg/registerPage/cross.svg";
 
 const userSchema = Yup.object().shape({
-  email: Yup.string().required().min(6).email(),
-  password: Yup.string().required().min(4),
+  email: Yup.string().required("Email is required").email("Email is invalid"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .max(16, "Password can not have more then 16 characters")
+    .required("Password is required"),
 });
 
 const initialValues = {
@@ -77,8 +80,8 @@ const LoginForm = () => {
                 border={errors.email && touched.email && "1px solid red"}
               />
               {touched.email && errors.email && (
-                <InputIconError color="red">
-                  <img src={errorIcon} alt="error" color="red" />
+                <InputIconError>
+                  <img src={errorIcon} alt="error" />
                 </InputIconError>
               )}
             </InputContainer>
