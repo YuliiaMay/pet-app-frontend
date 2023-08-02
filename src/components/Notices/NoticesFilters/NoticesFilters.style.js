@@ -4,33 +4,35 @@ import styled from "styled-components";
 export const Section = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 43px;
-  margin-bottom: 42px;
-
-  @media (min-width: 320px) {
-    margin-top: 20px;
-    margin-bottom: 24px;
-  }
+  margin-top: 20px;
+  margin-bottom: 24px;
 
   @media (min-width: 768px) {
     margin-top: 40px;
     margin-bottom: 40px;
   }
+
+  @media (min-width: 1280px) {
+    margin-top: 43px;
+    margin-bottom: 42px;
+  }
 `;
 
 export const Container = styled.div`
   display: flex;
-  gap: 12px;
-
-  @media (min-width: 320px) {
-    flex-wrap: wrap;
-    width: 205px;
-    gap: 8px;
-  }
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 205px;
 
   @media (min-width: 768px) {
     flex-wrap: wrap;
     width: 319px;
+    gap: 12px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 100%;
+    gap: 8px;
   }
 `;
 
