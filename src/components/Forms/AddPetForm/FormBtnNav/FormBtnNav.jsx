@@ -10,7 +10,7 @@ import { selectCurrentStage } from "../../../../redux/petsSlice/selectors";
 import { formStage } from "../../../../redux/petsSlice/petsSlice";
 import { Icon } from "../../../../components/Icon/Icon"
 import { useEffect, useRef, useState } from "react";
-import { Navigate } from "react-router";
+import { Navigate, useLocation } from "react-router";
 
 
 export function useTimeout(callback, delay) {
@@ -37,7 +37,10 @@ const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
     // const [isSuccess, setIsSuccess] = useState(false);
     let prev;
 
-    console.log(leaveAddPetForm);
+    const location = useLocation();
+    const back = useRef(location.state?.from ?? 'notices/sell');
+    // console.log(back.current);
+
 
     const countPrevStage = () => {
         if (stage === 3 || stage === 2) {
@@ -64,7 +67,7 @@ const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
                             {
                                 stage === 1
                                     ? (
-                                        <BtnBack onClick={leaveAddPetForm}>
+                                        <BtnBack to={back.current}>
                                             <Icon
                                                 iconName={"icon-arrow-left"}
                                                 width={"24px"}

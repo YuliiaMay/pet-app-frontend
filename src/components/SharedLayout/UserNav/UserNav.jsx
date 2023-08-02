@@ -17,13 +17,7 @@ const UserNav = ({ toggleMenu }) => {
   const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
-  // if (!user.user) {
-  //   return (
-  //     <Wrapper>
-  //       <p>Loading...</p>
-  //     </Wrapper>
-  //   );
-  // }
+
   return (
     <Wrapper>
       <LogoutBtn to="/logout" onClick={() => dispatch(logout())}>
@@ -39,11 +33,11 @@ const UserNav = ({ toggleMenu }) => {
       <UserLink to="/user" onClick={toggleMenu}>
         <Box>
           <Avatar />
-          {
-            user.name
-              ? (<UserName>{user.name}</UserName>)
-              : (<div>No user data</div>)
-          }
+          {user.name ? (
+            <UserName>{user.name}</UserName>
+          ) : (
+            <div>No user data</div>
+          )}
         </Box>
       </UserLink>
     </Wrapper>

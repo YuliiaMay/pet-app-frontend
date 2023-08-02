@@ -82,6 +82,8 @@ export const UserPetsList = styled.div`
   }
 
   @media (min-width: ${(props) => props.theme.sizes.desk}) {
+
+
     gap: 24px;
   }
 `;

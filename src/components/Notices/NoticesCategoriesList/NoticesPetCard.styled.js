@@ -1,19 +1,20 @@
 import { styled } from "styled-components";
 
 export const List = styled.ul`
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-
-  width: 100%;
-  margin-bottom: 60px;
-
-  gap: 24px;
+  @media screen and (max-width: 767px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 60px;
+    gap: 24px;
+  }
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
     flex-wrap: wrap;
-
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+    align-items: center;
     column-gap: 32px;
     row-gap: 24px;
   }
@@ -24,8 +25,6 @@ export const List = styled.ul`
 `;
 
 export const Info = styled.li`
-  margin: 0 auto;
-
   display: flex;
   flex-direction: column;
   width: 280px;
@@ -43,18 +42,6 @@ export const Info = styled.li`
     width: 288px;
   }
 `;
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const Span = styled.span`
   font-size: 12px;
@@ -107,7 +94,7 @@ export const Button1 = styled.button`
       stroke: ${(props) => props.theme.color.wight};
       fill: ${(props) => props.theme.color.wight};
     }
-    
+
     @media screen and (max-width: 767px) {
       /* gap: 5px; */
     }
@@ -162,4 +149,3 @@ export const WrapperPagination = styled.div`
     width: 100%;
   }
 `;
-

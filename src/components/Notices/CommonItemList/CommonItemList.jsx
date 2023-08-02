@@ -16,6 +16,7 @@ import PropTypes from "prop-types";
 
 import { Icon } from "../../../components/Icon/Icon";
 import { Div3, P1 } from "../NoticesCategoriesList/NoticesPetCard.styled";
+
 import {
   formatYears,
   formattingCitName,
@@ -26,22 +27,20 @@ import {
 
 import { selectUser } from "../../../redux/authSlice/selectors";
 
+
 export const CommonItemList = ({ item, children, handleClickDelete }) => {
   const user = useSelector(selectUser);
 
   const [isFollowing, setIsFollowing] = useState(false);
-
   const handleClickDeleteTest = (id) => {
     handleClickDelete(id);
   };
-
   useEffect(() => {
     if (user._id === item.owner) {
       setIsFollowing(true);
       return;
     }
   }, [item.owner, user]);
-
   return (
     <Info>
       <Div>
@@ -50,6 +49,7 @@ export const CommonItemList = ({ item, children, handleClickDelete }) => {
           <PP>{item.category}</PP>
           <Div2>
             <Button aria-label="add to favorites">
+            {/* <Button aria-label="add to favorites" onClick={handleAttentionMsg}> */}
               <Icon
                 iconName={"icon-heart"}
                 width={"24px"}
@@ -57,6 +57,7 @@ export const CommonItemList = ({ item, children, handleClickDelete }) => {
                 stroke={"#54ADFF"}
               />
             </Button>
+
             {isFollowing ? (
               <Button
                 aria-label="add to trash"
@@ -111,7 +112,6 @@ export const CommonItemList = ({ item, children, handleClickDelete }) => {
     </Info>
   );
 };
-
 CommonItemList.propTypes = {
   item: PropTypes.object,
   children: PropTypes.object,
