@@ -120,8 +120,8 @@ export const Burger = ({ isOpen, toggleMenu }) => {
               </BurgerBtnWrapper>
             )}
             {isLoggedIn && (
-              <UserMobBox>
-                <BoxMob>
+              <UserMobBox onClick={toggleMenu}>
+                <BoxMob toggleMenu={toggleMenu}>
                   <Avatar />
                   {user.name ? (
                     <UserNameMob>{user.name}</UserNameMob>
@@ -129,7 +129,6 @@ export const Burger = ({ isOpen, toggleMenu }) => {
                     <div>No user data</div>
                   )}
                 </BoxMob>
-                {/* <UserNav toggleMenu={toggleMenu} /> */}
               </UserMobBox>
             )}
             <BurgerNavList>

@@ -73,7 +73,10 @@ export const DeleteBtn = styled.button`
 `;
 
 export const UserPetsList = styled.div`
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   gap: 20px;
 
   @media (min-width: ${(props) => props.theme.sizes.tab}) {
@@ -82,8 +85,6 @@ export const UserPetsList = styled.div`
   }
 
   @media (min-width: ${(props) => props.theme.sizes.desk}) {
-
-
     gap: 24px;
   }
 `;
