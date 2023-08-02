@@ -4,7 +4,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 axios.defaults.baseURL = "https://pets-zywq.onrender.com/api";
 
 const setAuthHeader = (token) => {
-  axios.defaults.headers.common["Authorization"]= `Bearer ${token}`;
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
 
 const clearAuthHeader = () => {
@@ -40,7 +40,7 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post("/users/login", credentials);
       // console.log("login", response);
-      
+
       setAuthHeader(response.data.token);
 
       return response.data;
@@ -98,13 +98,13 @@ export const updateUser = createAsyncThunk(
   "/users/update",
   async (user, thunkAPI) => {
     try {
-      const response = await axios.patch('/users/update', user);
+      const response = await axios.patch("/users/update", user);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
 
 /*
  * DELETE @ /notices/delpet/${id}
@@ -119,7 +119,7 @@ export const deletePet = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
 
 /*
  * DELETE @ /notices/delnotice/${id}
@@ -134,7 +134,7 @@ export const deleteNotices = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
 
 /*
  * PATCH @ /notices/favorite/${id}
@@ -150,4 +150,4 @@ export const addNoticeToFavorite = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
