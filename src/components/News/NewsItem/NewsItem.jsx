@@ -15,7 +15,7 @@ import {
 
 export const NewsItem = (item) => {
   const [errorUrl, setErrorUrl] = useState(false);
-  if (!item) return;
+  console.log(item);
 
   const handleImageError = () => {
     setErrorUrl(true);
