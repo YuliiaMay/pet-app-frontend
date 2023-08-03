@@ -62,8 +62,6 @@ const RegisterForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
-  //const [showModal, setShowModal] = useState(false);
-  // const [error, setError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -230,8 +228,9 @@ const RegisterForm = () => {
               >
                 Registration
               </SubmitButton>
-
-              {isRegistered && <ModalCongrats />}
+              {isRegistered && (
+                <ModalCongrats setShow={setIsModalOpen} active={isModalOpen} />
+              )}
               {errors && <div>{errorMessage} </div>}
             </>
 

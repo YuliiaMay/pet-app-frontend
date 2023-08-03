@@ -40,14 +40,25 @@ const initialValues = {
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = ({ email, password }, { resetForm }) => {
-    dispatch(login({ email, password })).then(
-      (response) => !response.error && resetForm()
-    );
-  };
-
+  // const handleSubmit = ({ email, password }, { resetForm }) => {
+  //   dispatch(login({ email, password })).then(
+  //     (response) => !response.error && resetForm()
+  //   );
+  // };
   const [showPassword, setShowPassword] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = ({ email, password }, { resetForm }) => {
+    dispatch(login({ email, password })).then((response) => {
+      if (response.error) {
+        setErrorMessage("Login failed. Please try again later.");
+      } else {
+        setErrorMessage("");
+        resetForm();
+      }
+    });
+  };
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -107,11 +118,13 @@ const LoginForm = () => {
               </InputIconShow>
             </InputContainer>
             <ErrorText name="password" component="div" />
-            {/* <ErrorText2 name="password" component="div" /> */}
 
-            <SubmitButton type="submit" disabled={isSubmitting}>
-              Login
-            </SubmitButton>
+            <>
+              <SubmitButton type="submit" disabled={isSubmitting}>
+                Login
+              </SubmitButton>
+              {errors && <div>{errorMessage} </div>}
+            </>
             <StyledLink to="/register">
               Does not have an account? <StyledSpan>Registration</StyledSpan>
             </StyledLink>
