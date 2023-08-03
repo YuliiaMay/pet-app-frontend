@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import succsessImg from "../../../../images/add-pet/success-created.png";
 import { formStage, optionForm, detailsForm, moreInfoForm } from "../../../../redux/petsSlice/petsSlice";
 import { Icon } from "../../../Icon/Icon";
-import { useTimeout } from "../FormBtnNav/FormBtnNav";
+// import { useTimeout } from "../FormBtnNav/FormBtnNav";
 import { BtnBack, LinkBack } from "../FormBtnNav/FormBtnNav.styled";
 // import succsess from "../../../../images/add-pet/success.png";
 import { SuccessContainer, Image } from "./SuccessStage.styled";
@@ -11,9 +11,6 @@ import { SuccessContainer, Image } from "./SuccessStage.styled";
 export const SuccessStage = ({ leaveAddPetForm }) => {
     const dispatch = useDispatch();
 
-    useTimeout(() => {
-        resetState();
-    }, 5000)
 
     const resetState = () => {
         dispatch(
