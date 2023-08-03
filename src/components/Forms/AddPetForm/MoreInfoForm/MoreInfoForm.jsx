@@ -12,7 +12,7 @@ import { addPetOrNotice } from "../../../../redux/petsSlice/operations";
 import { useFormik } from "formik";
 import { Icon } from "../../../Icon/Icon";
 import {
-  StageWrapper,
+  StageContainer,
   Form,
   RightColumnContainer,
   LeftColumnContainer,
@@ -20,14 +20,14 @@ import {
   Label,
   UploadInput,
   ImageWrapper,
+  ChoosenImg,
   CommentContainer,  
   Comment,
   TheSexTitle,
   TheSexBtnContainer,
   TheSexBtn,
-  BtnSexText
+  BtnSexText,
 } from "./MoreInfoForm.styled";
-
 
 
 
@@ -48,22 +48,12 @@ const MoreInfoForm = () => {
       price: "",      
     },
     onSubmit: (values) => {
+      console.log(values);
       dispatch(
         moreInfoForm(values)
       );
 
       const formData = new FormData();
-      // formData.append("category", newData.category);
-      // formData.append("name", newData.name);
-      // formData.append("birthday", newData.birthday);
-      // formData.append("breed", newData.breed);
-      // formData.append("title", newData.title);
-      // formData.append("type", newData.type);
-      // formData.append("sex", newData.sex);
-      // formData.append("file", imageInfo);
-      // formData.append("comments", newData.comments);
-      // formData.append("location", newData.location);
-      // formData.append("price", newData.price);
         
       for (let value in values) {
         if (value !== "imgUrl" && value !== "sell") {
@@ -75,9 +65,9 @@ const MoreInfoForm = () => {
       
       formData.append("sex", sex);
       
-      // for (const [key, value] of formData.entries()) {
-      //     console.log(`${key}: ${value}`);
-      // }      
+      for (const [key, value] of formData.entries()) {
+          console.log(`${key}: ${value}`);
+      }      
 
       dispatch(addPetOrNotice(formData));
       dispatch(formStage("success"));
@@ -122,132 +112,129 @@ const MoreInfoForm = () => {
 
 
   return (
-    // <Formik
-    //     initialValues={initialMoreInfoValues}      
-    //     onSubmit={handleSubmit}       
-    // >
+      <>
+        <Form onSubmit={formik.handleSubmit} encType='multipart/form-data'>
+          <StageContainer>
+            <LeftColumnContainer>
+              {
+                (category === "sell" || "lost/found" || "in good hands") &&
+                  <>
+                    <TheSexTitle>The Sex</TheSexTitle>
+                    <TheSexBtnContainer>
+                      <TheSexBtn
+                        type="button"
+                        value={"Female"}           
+                        name="sex-female"
+                        onClick={handleSwitchChange}>
+                          <Icon
+                              iconName={"icon-female"}
+                              width={"24px"}
+                              height={"24px"}
+                              stroke={"#F43F5E"}
+                          /> 
+                          <BtnSexText>
+                            Female
+                          </BtnSexText>
+                      </TheSexBtn>
+                
+                      <TheSexBtn
+                        type="button"
+                        value={"Male"}           
+                        name="sex-male"
+                        onClick={handleSwitchChange}>
+                          <Icon
+                              iconName={"icon-male"}
+                              width={"24px"}
+                              height={"24px"}
+                              stroke={"#54ADFF"}
+                          />                    
+                          <BtnSexText>
+                            Male
+                          </BtnSexText>
+                      </TheSexBtn>            
+                    </TheSexBtnContainer>
 
-    <StageWrapper>
-      <Form onSubmit={formik.handleSubmit} encType='multipart/form-data'>
-        <LeftColumnContainer>
-          {
-            (category === "sell" || "lost/found" || "in good hands") &&
-              <>
-                <TheSexTitle>The Sex</TheSexTitle>
-                <TheSexBtnContainer>
-                  <TheSexBtn
-                    type="button"
-                    value={"Female"}           
-                    name="sex-female"
-                    onClick={handleSwitchChange}>
-                      <Icon
-                          iconName={"icon-female"}
-                          width={"24px"}
-                          height={"24px"}
-                          stroke={"#F43F5E"}
-                      /> 
-                      <BtnSexText>
-                        Female
-                      </BtnSexText>
-                  </TheSexBtn>
-            
-                  <TheSexBtn
-                    type="button"
-                    value={"Male"}           
-                    name="sex-male"
-                    onClick={handleSwitchChange}>
-                      <Icon
-                          iconName={"icon-male"}
-                          width={"24px"}
-                          height={"24px"}
-                          stroke={"#54ADFF"}
-                      />                    
-                      <BtnSexText>
-                        Male
-                      </BtnSexText>
-                  </TheSexBtn>            
-                </TheSexBtnContainer>
-
-              </>
-          }
+                  </>
+              }
 
 
-          <Label htmlFor="imgUrl">
-            Load the pet’s image:
-              <ImageWrapper>
-                {
-                  !image
-                    ? <img src={defaultAvatar} alt="default avatar photo" />
-                    : <div><img src={image} alt="pet`s photo" /></div>
-                }
-              </ImageWrapper>
-              <UploadInput
-                accept='image/*'
-                type="file"
-                name="imgUrl"
-                id="imgUrl"
-                onChange={(e) => handleGetFile(e)}
-              />
-          </Label>        
+              <Label htmlFor="imgUrl">
+                Load the pet’s image:
+                  <ImageWrapper>
+                    {
+                      !image
+                        ? <img src={defaultAvatar} alt="default avatar photo" />
+                        : <div><ChoosenImg src={image} alt="pet`s photo" /></div>
+                    }
+                  </ImageWrapper>
+                  <UploadInput
+                    accept='image/*'
+                    type="file"
+                    name="imgUrl"
+                    id="imgUrl"
+                    onChange={(e) => handleGetFile(e)}
+                  />
+              </Label>        
 
-        </LeftColumnContainer>
+            </LeftColumnContainer>
 
-        <RightColumnContainer>
-          {
-            (category === "sell" || "lost/found" || "in good hands") &&
-              <>
-                <Label htmlFor="location">
-                    Location
-                </Label>           
-                <Input
-                  placeholder="Type of location"
+            <RightColumnContainer>
+              {
+                (category === "sell" || "lost/found" || "in good hands") &&
+                  <>
+                    <Label htmlFor="location">
+                        Location
+                    </Label>           
+                    <Input
+                      placeholder="Type of location"
+                      type="text"
+                      id="location"
+                      name="location"   
+                      onChange={formik.handleChange}
+                      value={formik.values.location}
+                    />
+                  </>            
+              }
+
+              {
+                category === "sell" &&
+                  <>
+                    <Label htmlFor="price">
+                        Price
+                    </Label>           
+                    <Input
+                      placeholder="Type of price"
+                      type="text"
+                      id="price"
+                      name="price" 
+                      onChange={formik.handleChange}
+                      value={formik.values.price}
+                    />          
+                  </>
+              }
+
+
+              <CommentContainer>
+                <Label htmlFor="comment">Comments</Label>
+                <Comment
                   type="text"
-                  id="location"
-                  name="location"   
+                  id="comment"
+                  placeholder="Type of pet"
+                  name="comments"
                   onChange={formik.handleChange}
-                  value={formik.values.location}
+                  value={formik.values.comments}
                 />
-              </>            
-          }
+              </CommentContainer>
 
-          {
-            category === "sell" &&
-              <>
-                <Label htmlFor="price">
-                    Price
-                </Label>           
-                <Input
-                  placeholder="Type of price"
-                  type="text"
-                  id="price"
-                  name="price" 
-                  onChange={formik.handleChange}
-                  value={formik.values.price}
-                />          
-              </>
-          }
+            </RightColumnContainer>
+          </StageContainer>
+        <FormBtnNav/> 
+        </Form>
+      </>
 
 
-          <CommentContainer>
-            <Label htmlFor="comment">Comments</Label>
-            <Comment
-              type="text"
-              id="comment"
-              placeholder="Type of pet"
-              name="comments"
-              onChange={formik.handleChange}
-              value={formik.values.comments}
-            />
-          </CommentContainer>
-
-        </RightColumnContainer>
-
-      </Form>
-      <FormBtnNav/>
-    </StageWrapper>
-
-    // </Formik>
   );
 };
+
 
 export default MoreInfoForm;
