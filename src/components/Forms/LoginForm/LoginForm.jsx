@@ -15,12 +15,12 @@ import {
   InputContainer,
   InputIconShow,
   InputIconError,
-  InputIconSuccess,
+  //InputIconSuccess,
 } from "./LoginForm.styled.js";
 
 import showPasswordIcon from "../../../svg/registerPage/eyeOpen.svg";
 import hidePasswordIcon from "../../../svg/registerPage/eyeClosed.svg";
-import successIcon from "../../../svg/registerPage/check.svg";
+//import successIcon from "../../../svg/registerPage/check.svg";
 import errorIcon from "../../../svg/registerPage/cross.svg";
 
 const userSchema = Yup.object().shape({
@@ -57,26 +57,19 @@ const LoginForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-  validationSchema={userSchema}
+      validationSchema={userSchema}
     >
-      {({
-        errors,
-        touched,
-        values,
-        // handleChange,
-        // handleBlur,
-        isSubmitting,
-      }) => (
+      {({ errors, touched, values, handleBlur, isSubmitting }) => (
         <Container>
           <StyledForm autoComplete="off">
             <StyledTitle>Login</StyledTitle>
-            <div>{errors.password}</div>
 
             <InputContainer>
               <StyledField
                 name="email"
                 placeholder="Email"
                 value={values.email}
+                onBlur={handleBlur}
                 border={errors.email && touched.email && "1px solid red"}
               />
               {touched.email && errors.email && (
@@ -96,11 +89,11 @@ const LoginForm = () => {
                 error={errors.password || passwordError}
                 border={errors.password && touched.password && "1px solid red"}
               />
-              {!errors.password && (
+              {/* {!errors.password && (
                 <InputIconSuccess>
                   <img src={successIcon} alt="success" />
                 </InputIconSuccess>
-              )}
+              )} */}
               <InputIconShow onClick={handleTogglePassword}>
                 <img
                   src={showPassword ? showPasswordIcon : hidePasswordIcon}
