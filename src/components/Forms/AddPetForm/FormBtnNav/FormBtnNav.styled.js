@@ -5,6 +5,7 @@ export const BtnNav = styled.div`
     display: flex;
     justify-content: space-around;
     margin-bottom: 0px;
+    gap: 32px;
 `;
 
 export const BtnBack = styled(Link)`
@@ -19,7 +20,7 @@ export const BtnBack = styled(Link)`
 
     &:hover,
     &:focus {
-        border: ${props => props.theme.border.blue};
+        box-shadow: ${props => props.theme.border.shadow};
     }   
 `;
 
@@ -31,7 +32,7 @@ export const LinkBack = styled.span`
 `;
 
 export const BtnNext = styled.button`
-    width: 248px;
+    width: 200px;
     height: 40px;
     background-color: ${props => props.theme.background.accentBlue};
     border-radius: 40px;

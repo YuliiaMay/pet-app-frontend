@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { AddPetContainer } from "./AddPetMultiStepForm.styled";
 import FormTitle from "./FormTitle/FormTitle";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import { selectAllPetData, selectCategory, selectCurrentStage } from "../../../redux/petsSlice/selectors";
+import { selectCategory, selectCurrentStage } from "../../../redux/petsSlice/selectors";
 import OptionForm from "./OptionForm/OptionForm";
 import DetailsForm from "./DetailsForm/DetailsForm";
 import MoreInfoForm from "./MoreInfoForm/MoreInfoForm";
@@ -16,7 +16,9 @@ const AddPetMultiStepForm = ({leaveAddPetForm}) => {
     const category = useSelector(selectCategory);
 
     return (
-        <AddPetContainer>
+        <AddPetContainer
+            $stage={stage}
+        >
 
             <FormTitle title={
                 (category === null && "Add pet") ||
