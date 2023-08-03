@@ -61,9 +61,11 @@ const RegisterForm = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userLogin, setUserLogin] = useState({});
   //const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    setUserLogin({ email, password });
     dispatch(register({ name, email, password })).then(
       (response) => !response.error && resetForm()
     );
@@ -214,7 +216,11 @@ const RegisterForm = () => {
               >
                 Registration
               </SubmitButton>
-              <ModalCongrats setShow={setIsModalOpen} active={isModalOpen} />
+              <ModalCongrats
+                userLogin={userLogin}
+                setShow={setIsModalOpen}
+                active={isModalOpen}
+              />
             </>
             <StyledLink to="/login">
               Already have a account? <StyledSpan>Login</StyledSpan>
