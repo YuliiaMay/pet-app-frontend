@@ -9,25 +9,8 @@ import {
 import { selectCurrentStage } from "../../../../redux/petsSlice/selectors";
 import { formStage } from "../../../../redux/petsSlice/petsSlice";
 import { Icon } from "../../../../components/Icon/Icon"
-import { useEffect, useRef, useState } from "react";
-import { Navigate, useLocation } from "react-router";
-
-
-export function useTimeout(callback, delay) {
-  const timeoutRef = useRef(null);
-  const savedCallback = useRef(callback);
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-  useEffect(() => {
-    const tick = () => savedCallback.current();
-    if (typeof delay === 'number') {
-      timeoutRef.current = window.setTimeout(tick, delay);
-      return () => window.clearTimeout(timeoutRef.current);
-    }
-  }, [delay]);
-  return timeoutRef;
-};
+import { useRef } from "react";
+import { useLocation } from "react-router";
 
 
 
@@ -108,7 +91,6 @@ const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
                         </BtnNav>            
                 }        
             </div>        
-        
         </div>
 
 

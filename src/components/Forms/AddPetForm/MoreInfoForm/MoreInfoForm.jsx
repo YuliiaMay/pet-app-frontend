@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import defaultAvatar from "../../../../images/default-avatar.png";
 
-import FormBtnNav, { useTimeout } from "../FormBtnNav/FormBtnNav";
+import FormBtnNav from "../FormBtnNav/FormBtnNav";
 import { useState } from "react";
 import { formStage, moreInfoForm } from "../../../../redux/petsSlice/petsSlice";
 import {
   selectSex,
   selectCategory,
+  selectComments,
+  selectLocation,
+  selectPrice,
 } from "../../../../redux/petsSlice/selectors";
 import { addPetOrNotice } from "../../../../redux/petsSlice/operations";
 import { useFormik } from "formik";
@@ -37,18 +40,18 @@ const MoreInfoForm = () => {
   const dispatch = useDispatch();
   const category = useSelector(selectCategory);
   const sex = useSelector(selectSex);
+  console.log(sex);
 
 
   const formik = useFormik({
     initialValues: {
       // sex: "",
-      imgUrl: "",
-      comments: "",
-      location: "",
-      price: "",      
+      imgUrl: imageInfo,
+      comments: useSelector(selectComments) || "",
+      location: useSelector(selectLocation) || "",
+      price: useSelector(selectPrice) || "",      
     },
     onSubmit: (values) => {
-      console.log(values);
       dispatch(
         moreInfoForm(values)
       );
@@ -87,7 +90,7 @@ const MoreInfoForm = () => {
   };
 
 
-  const handleSwitchChange = ({target: {value}}) => {
+  const handleSwitchSex = ({target: {value}}) => {
     if (value === "Male") {
       dispatch(
           moreInfoForm({
@@ -124,8 +127,11 @@ const MoreInfoForm = () => {
                       <TheSexBtn
                         type="button"
                         value={"Female"}           
-                        name="sex-female"
-                        onClick={handleSwitchChange}>
+                        name="female"
+                        onClick={handleSwitchSex}
+                        $sex={sex}
+                      >
+                        
                           <Icon
                               iconName={"icon-female"}
                               width={"24px"}
@@ -140,8 +146,10 @@ const MoreInfoForm = () => {
                       <TheSexBtn
                         type="button"
                         value={"Male"}           
-                        name="sex-male"
-                        onClick={handleSwitchChange}>
+                        name="male"
+                        onClick={handleSwitchSex}
+                        $sex={sex}
+                      >
                           <Icon
                               iconName={"icon-male"}
                               width={"24px"}
@@ -192,6 +200,7 @@ const MoreInfoForm = () => {
                       name="location"   
                       onChange={formik.handleChange}
                       value={formik.values.location}
+                      required
                     />
                   </>            
               }
@@ -209,6 +218,7 @@ const MoreInfoForm = () => {
                       name="price" 
                       onChange={formik.handleChange}
                       value={formik.values.price}
+                      required
                     />          
                   </>
               }
@@ -223,12 +233,13 @@ const MoreInfoForm = () => {
                   name="comments"
                   onChange={formik.handleChange}
                   value={formik.values.comments}
+                  required
                 />
               </CommentContainer>
 
             </RightColumnContainer>
           </StageContainer>
-        <FormBtnNav/> 
+          <FormBtnNav/> 
         </Form>
       </>
 
