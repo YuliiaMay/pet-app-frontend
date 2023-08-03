@@ -19,12 +19,12 @@ import {
   InputIconSuccess,
   //InputIconDisabled,
 } from "./RegisterForm.styled.js";
-import { ModalCongrats } from "/src/components/Modals/ModalCongrats/ModalCongrats";
+import { ModalCongrats } from "../../../components/Modals/ModalCongrats/ModalCongrats";
 
-import showPasswordIcon from "/src/svg/registerPage/eyeOpen.svg";
-import hidePasswordIcon from "/src/svg/registerPage/eyeClosed.svg";
-import successIcon from "/src/svg/registerPage/check.svg";
-import errorIcon from "/src/svg/registerPage/cross.svg";
+import showPasswordIcon from "../../../svg/registerPage/eyeOpen.svg";
+import hidePasswordIcon from "../../../svg/registerPage/eyeClosed.svg";
+import successIcon from "../../../svg/registerPage/check.svg";
+import errorIcon from "../../../svg/registerPage/cross.svg";
 //import hidePasswordIconDisabled from "/src/svg/registerPage/eyeClosedDisabled.svg";
 
 const userSchema = Yup.object().shape({
