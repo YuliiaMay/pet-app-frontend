@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { Form, Field, ErrorMessage } from "formik";
 
 export const Container = styled.div`
-  margin-top: 42px;
+  margin-top: 46px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 32px;
   width: 280px;
-  min-height: 479px;
+  min-height: 425px;
   background-color: ${(props) => props.theme.background.wight};
   border: 1px solid ${(props) => props.theme.border.blue};
   border-radius: ${(props) => props.theme.border.radius};
@@ -41,12 +41,12 @@ export const StyledTitle = styled.h2`
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 1.44px;
-  margin-top: 26px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 6px;
 
   @media screen and (min-width: 768px) {
     margin-top: 60px;
-    margin-bottom: 40px;
+    margin-bottom: 8px;
     font-size: 40px;
   }
 `;
@@ -55,11 +55,11 @@ export const InputContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  //margin-bottom: 4px;
 `;
 
 export const StyledField = styled(Field)`
   padding-left: 16px;
+  margin-top: 14px;
   width: 224px;
   height: 48px;
   font-size: 16px;
@@ -130,7 +130,6 @@ export const InputIconSuccess = styled.span`
   pointer-events: none;
   width: 30px;
   height: 30px;
-  //opacity: ${(props) => (props.isVisible ? "1" : "0")};
 
   @media screen and (min-width: 768px) {
     top: 72%;
@@ -151,7 +150,6 @@ position: absolute;
 
 export const ErrorText = styled(ErrorMessage)`
   color: red;
-  //text-align: left;
 `;
 
 export const SubmitButton = styled.button`

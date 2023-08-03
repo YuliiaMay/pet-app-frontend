@@ -13,9 +13,9 @@ import { Icon } from "../../Icon/Icon";
 
 export function ModalCongrats({ active, setShow }) {
   const handleClickClose = (e) => {
-    if (e.currentTarget === e.target) {
-      setShow(false);
-    }
+    // if (e.currentTarget === e.target) {
+    setShow(false);
+    // }
   };
   return (
     <>
