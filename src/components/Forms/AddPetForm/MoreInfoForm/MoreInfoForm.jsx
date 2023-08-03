@@ -10,6 +10,11 @@ import {
   selectComments,
   selectLocation,
   selectPrice,
+  selectName,
+  selectBirthday,
+  selectType,
+  selectTitle,
+  selectBreed,
 } from "../../../../redux/petsSlice/selectors";
 import { addPetOrNotice } from "../../../../redux/petsSlice/operations";
 import { useFormik } from "formik";
@@ -40,7 +45,12 @@ const MoreInfoForm = () => {
   const dispatch = useDispatch();
   const category = useSelector(selectCategory);
   const sex = useSelector(selectSex);
-  console.log(sex);
+  const name = useSelector(selectName);
+  const birthday = useSelector(selectBirthday);
+  const breed = useSelector(selectBreed);
+  const title = useSelector(selectTitle);
+  const type = useSelector(selectType);
+
 
 
   const formik = useFormik({
@@ -52,6 +62,7 @@ const MoreInfoForm = () => {
       price: useSelector(selectPrice) || "",      
     },
     onSubmit: (values) => {
+      console.log(values);
       dispatch(
         moreInfoForm(values)
       );
@@ -62,11 +73,16 @@ const MoreInfoForm = () => {
         if (value !== "imgUrl" && value !== "sell") {
           formData.append(value, values[value]);
         } else if (value === "imgUrl") {
-          formData.append(value, imageInfo);
+          formData.append("file", imageInfo);
         }
       }
-      
       formData.append("sex", sex);
+      formData.append("category", category);
+      formData.append("name", name);
+      formData.append("birthday", birthday);
+      formData.append("breed", breed);
+      formData.append("title", title);
+      formData.append("type", type);
       
       for (const [key, value] of formData.entries()) {
           console.log(`${key}: ${value}`);
