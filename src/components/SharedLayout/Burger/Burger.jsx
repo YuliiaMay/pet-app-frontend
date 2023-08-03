@@ -17,6 +17,7 @@ import {
   Logos,
   UserNameMob,
   BoxMob,
+  CloseBtn,
 } from "./Burger.styled";
 import BurgerNavigationItem from "./BurgerNavigationItem";
 import logoDesk from "../Logo/logoDesk.png";
@@ -89,7 +90,7 @@ export const Burger = ({ isOpen, toggleMenu }) => {
                   </BurgerRegisterBtn>
                 </BurgerBtnTabWrapper>
               )}
-              <div onClick={toggleMenu}>
+              <CloseBtn onClick={toggleMenu}>
                 <Icon
                   iconName={"icon-cross"}
                   width={"24px"}
@@ -97,7 +98,7 @@ export const Burger = ({ isOpen, toggleMenu }) => {
                   stroke={"#ffc107"}
                   fill={"#ffc107"}
                 />
-              </div>
+              </CloseBtn>
             </LoginTabBox>
           </BurgerBar>
 

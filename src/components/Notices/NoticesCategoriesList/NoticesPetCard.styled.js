@@ -12,10 +12,11 @@ export const List = styled.ul`
   @media screen and (min-width: 768px) {
     flex-wrap: wrap;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     column-gap: 32px;
     row-gap: 24px;
+    padding-left: 10px;
   }
 
   & > li > p {
@@ -29,7 +30,6 @@ export const Info = styled.li`
   width: 280px;
   padding-bottom: 24px;
   border-radius: 0 0 40px 40px;
-
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   background-color: ${(props) => props.theme.color.wight};
 

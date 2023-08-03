@@ -28,6 +28,9 @@ export const LogoutBtn = styled(NavLink)`
   @media screen and (max-width: 1279px) {
     display: none;
   }
+  &:hover {
+    background: linear-gradient(290deg, #419ef1 0%, #9bd0ff 100%);
+  }
 `;
 
 export const Avatar = styled(FaRegCircleUser)`

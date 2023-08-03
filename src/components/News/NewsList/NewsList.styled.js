@@ -25,16 +25,11 @@ export const WrapperPagination = styled.div`
 
   align-items: center;
   width: 100%;
-
-  /* margin: 0 auto; */
   margin-top: 60px;
   margin-bottom: 30px;
 
   @media screen and (min-width: 768px) {
     display: flex;
-    /* justify-content: center; */
-
-    /* width: 357px; */
     width: 100%;
   }
 `;

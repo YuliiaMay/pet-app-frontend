@@ -1,19 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout, refreshUser, updateUser, deletePet } from "./operations";
+import {
+  register,
+  login,
+  logout,
+  refreshUser,
+  updateUser,
+  deletePet,
+} from "./operations";
 import { addPetOrNotice } from "../petsSlice/operations";
 
 const initialStateAuth = {
   user: {
-    avatar: '',
+    avatar: "",
     favorites: [],
     _id: null,
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
     pets: [],
     token: null,
-    phone: '',
-    city: ''
+    phone: "",
+    city: "",
   },
   token: null,
   isLoggedIn: false,
@@ -41,11 +48,6 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(logout.rejected, (state) => state)
-      // .addCase(logout.fulfilled, (state) => {
-      //   state.user = { name: null, email: null };
-      //   state.token = null;
-      //   state.isLoggedIn = false;
-      // })
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
@@ -62,27 +64,29 @@ const authSlice = createSlice({
           state.user.pets.push(payload);
         }
         return;
-      })  
+      })
       .addCase(deletePet.fulfilled, (state, { payload }) => {
         // const index = state.user.pets.findIndex(pet => pet._id === payload._id);
         // state.user.pets.splice(index, 1);
         // return state.user.pets;
 
-          const updatedPets = state.user.pets.filter(pet => pet._id !== payload._id);
-          return {
-            ...state,
-            user: {
-              ...state.user,
-              pets: updatedPets,
-            },
-          };
-      }) 
+        const updatedPets = state.user.pets.filter(
+          (pet) => pet._id !== payload._id
+        );
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            pets: updatedPets,
+          },
+        };
+      })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         return {
           ...state,
           user: payload,
         };
-      })
+      }),
 });
 
 export const authReducer = authSlice.reducer;

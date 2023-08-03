@@ -26,16 +26,33 @@ export const LogInBtn = styled(NavLink)`
   color: #fef9f9;
   background-color: #ffc107;
   font-weight: 700;
-  padding: 8px 20px;
+  padding: 8px 0;
   border-radius: 40px;
   border: 1px;
+  width: 165px;
+  transition: 0.4s;
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(239, 244, 167, 1) 1%,
+      rgba(255, 193, 7, 1) 93%
+    );
+  }
 `;
 export const RegisterBtn = styled(NavLink)`
   font-weight: 700;
-  padding: 8px 20px;
+  padding: 8px 0;
+  width: 165px;
+  text-align: center;
   color: #ffc107;
   border: 1px solid #ffc107;
   border-radius: 40px;
+  transition: 0.4s;
+  &:hover {
+    background-color: #ffc107;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+  }
 `;
 export const PawIcon = styled(PiPawPrint)`
   fill: white;

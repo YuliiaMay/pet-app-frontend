@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { AiOutlineMenu } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import { RxCross1 } from "react-icons/rx";
 
 export const BurgerIcon = styled(AiOutlineMenu)`
   width: 24px;
@@ -39,7 +38,6 @@ export const BurgerContainer = styled.div`
     display: none;
   }
   @media screen and (max-width: 767px) {
-    /* justify-content: space-between; */
     gap: 40px;
   }
 `;
@@ -56,17 +54,12 @@ export const BurgerBar = styled.div`
 export const BurgerMenu = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-
   align-items: center;
-  /* gap: 84px; */
-
   @media screen and (max-width: 767px) {
-    /* justify-content: space-between; */
     flex: 1 auto;
   }
 `;
-////////////////////////////////////////////////////////////
+////////////////////////////////////////////
 
 export const BurgerBtnWrapper = styled.div`
   display: flex;
@@ -106,6 +99,14 @@ export const BurgerLogInBtn = styled(NavLink)`
   border-radius: 40px;
   border: 1px;
   width: 165px;
+  transition: 0.4s;
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(239, 244, 167, 1) 1%,
+      rgba(255, 193, 7, 1) 93%
+    );
+  }
 `;
 
 export const BurgerRegisterBtn = styled(NavLink)`
@@ -117,12 +118,18 @@ export const BurgerRegisterBtn = styled(NavLink)`
   border-radius: 40px;
   width: 165px;
   text-align: center;
+  transition: 0.4s;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 142px;
   }
+  &:hover {
+    background-color: #ffc107;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+  }
 `;
 
-//////////////////////////////////////////////////////
+////////////////////////////////////////////
 
 export const BurgerNavList = styled.ul`
   display: flex;
@@ -139,10 +146,7 @@ export const BurgerNavList = styled.ul`
 `;
 export const BurgerNavigationItem = styled(NavLink)``;
 
-export const CloseBtn = styled(RxCross1)`
-  width: 24px;
-  height: 24px;
-  stroke: #ffc107;
+export const CloseBtn = styled.div`
   cursor: pointer;
   margin-left: auto;
 `;
@@ -160,6 +164,10 @@ export const LogoutMobBtn = styled(NavLink)`
   gap: 8px;
   margin-right: 40px;
   cursor: pointer;
+  transition: 0.4s;
+  &:hover {
+    background: linear-gradient(290deg, #419ef1 0%, #9bd0ff 100%);
+  }
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -184,6 +192,10 @@ export const LogoutTabBtn = styled(NavLink)`
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  transition: 0.4s;
+  &:hover {
+    background: linear-gradient(290deg, #419ef1 0%, #9bd0ff 100%);
+  }
   @media screen and (min-width: 320px) and (max-width: 767px) {
     display: none;
   }

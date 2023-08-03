@@ -15,7 +15,6 @@ import { logout } from "../../../redux/authSlice/operations";
 
 const UserNav = ({ toggleMenu }) => {
   const user = useSelector(selectUser);
-
   const dispatch = useDispatch();
 
   return (
@@ -30,7 +29,7 @@ const UserNav = ({ toggleMenu }) => {
           fill={"#ffffff"}
         />
       </LogoutBtn>
-      <UserLink to="/user" onClick={toggleMenu}>
+      <UserLink to="/user">
         <Box>
           <Avatar />
           {user.name ? (

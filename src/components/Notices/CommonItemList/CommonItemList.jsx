@@ -39,13 +39,13 @@ import {
 } from "../../../redux/savedFavoriteIdSlice/savedFavoriteIdSlice";
 import ModalAttention from "../../Modals/ModalAttention/ModalAttention";
 import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
+import { useToggle } from "../../../hooks/useToggle";
 
 export const CommonItemList = ({
   item,
   handleClickDelete,
   handleClickDeleteFavorite,
 }) => {
-
   const user = useSelector(selectUser);
   const [showModalAttention, setShowModalAttention] = useState(false);
 
@@ -62,6 +62,7 @@ export const CommonItemList = ({
     if (!user.token) return;
     setIsFavoritesBtn(savedFavoriteId.includes(item._id));
   }, [item._id, savedFavoriteId, user.token]);
+
   const handleFavoritesBtn = (itemId, flag) => {
     if (!user.token) {
       setShowModalAttention(true);
@@ -100,13 +101,11 @@ export const CommonItemList = ({
     }
   }, [item.owner, user]);
 
-
   const handleClickCards = (it) => {
     console.log(it);
     setOneCard(it);
     setShowModal(true);
   };
-
 
   return (
     <Info>
@@ -115,7 +114,6 @@ export const CommonItemList = ({
         <Div1>
           <PP>{item.category}</PP>
           <Div2>
-
             <div onClick={() => handleFavoritesBtn(item._id, isFavoritesBtn)}>
               <Button
                 aria-label="add to favorites"
@@ -133,7 +131,6 @@ export const CommonItemList = ({
               </Button>
             </div>
             {isFollowingTrash ? (
-
               <Button
                 aria-label="add to trash"
                 onClick={() => handleClickDeleteTest(item._id)}
@@ -213,4 +210,3 @@ CommonItemList.propTypes = {
   handleClickDeleteFavorite: PropTypes.func,
   isFavorite: PropTypes.bool,
 };
-
