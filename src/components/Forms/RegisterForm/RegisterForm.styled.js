@@ -71,7 +71,7 @@ export const StyledField = styled(Field)`
   &:hover,
   &:focus {
     border: 2px solid ${(props) => props.theme.color.success};
-    color: ${(props) => props.theme.color.success};
+    color: ${(props) => props.theme.color.grey};
   }
 
   &::placeholder {

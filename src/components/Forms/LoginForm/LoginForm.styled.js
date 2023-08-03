@@ -71,7 +71,7 @@ export const StyledField = styled(Field)`
   &:hover,
   &:focus {
     border: 2px solid ${(props) => props.theme.color.success};
-    color: ${(props) => props.theme.color.success};
+    color: ${(props) => props.theme.color.grey};
   }
 
   &::placeholder {
@@ -140,6 +140,9 @@ export const ErrorText = styled(ErrorMessage)`
   color: red;
   margin-top: 4px;
 `;
+// export const Text = styled.p`
+// color: green;`;
+
 export const SubmitButton = styled.button`
   width: 256px;
   height: 48px;

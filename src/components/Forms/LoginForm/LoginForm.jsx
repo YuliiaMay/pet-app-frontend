@@ -9,6 +9,7 @@ import {
   StyledTitle,
   StyledField,
   ErrorText,
+  // Text,
   SubmitButton,
   StyledLink,
   StyledSpan,
@@ -90,6 +91,10 @@ const LoginForm = () => {
                 border={errors.password && touched.password && "1px solid red"}
               />
               {/* {!errors.password && (
+                <Text color="green">{"Password is secure"}</Text>
+              )} */}
+
+              {/* {!errors.password && (
                 <InputIconSuccess>
                   <img src={successIcon} alt="success" />
                 </InputIconSuccess>
@@ -102,6 +107,7 @@ const LoginForm = () => {
               </InputIconShow>
             </InputContainer>
             <ErrorText name="password" component="div" />
+            {/* <ErrorText2 name="password" component="div" /> */}
 
             <SubmitButton type="submit" disabled={isSubmitting}>
               Login
