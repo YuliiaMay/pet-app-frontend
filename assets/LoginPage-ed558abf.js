@@ -1,4 +1,4 @@
-import{s as r,L as $,u as S,r as d,j as o,l as v}from"./index-61069971.js";import{F as y,a as E,E as P,b as k}from"./formik.esm-a71ab6ef.js";import{c as F,a as m}from"./index.esm-ec4b8844.js";import{e as I,s as L,h as z}from"./cross-73b25fed.js";import{p as Y,a as C,b as q}from"./bg-mob@1x-9dd97546.js";const M=r.div`
+import{s as r,L as $,u as S,r as d,j as o,l as v}from"./index-92568d77.js";import{F as y,a as E,E as P,b as k}from"./formik.esm-f5109fd0.js";import{c as F,a as m}from"./index.esm-7d455359.js";import{e as I,s as L,h as z}from"./cross-cffbf78c.js";import{b as Y,a as C,c as q}from"./bg-mob@1x-38a1584a.js";const M=r.div`
   margin-top: 44px;
   margin-left: auto;
   margin-right: auto;
@@ -26,7 +26,7 @@ import{s as r,L as $,u as S,r as d,j as o,l as v}from"./index-61069971.js";impor
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`,B=r.h2`
+`,D=r.h2`
   color: ${e=>e.theme.color.main};
   text-align: center;
   font-size: 24px;
@@ -73,7 +73,7 @@ import{s as r,L as $,u as S,r as d,j as o,l as v}from"./index-61069971.js";impor
     height: 48px;
     margin-top: 32px;
   }
-`,D=r.span`
+`,B=r.span`
   position: absolute;
   top: 50%;
   right: 20px;
@@ -153,7 +153,7 @@ import{s as r,L as $,u as S,r as d,j as o,l as v}from"./index-61069971.js";impor
   font-size: 12px;
   letter-spacing: 0.48px;
   text-decoration-line: underline;
-`,G=F().shape({email:m().required("Email is required").email("Email is invalid"),password:m().min(6,"Password must be at least 6 characters").max(16,"Password can not have more then 16 characters").required("Password is required")}),J={email:"",password:""},K=()=>{const e=S(),[n,h]=d.useState(!1),[g,u]=d.useState(""),[w,p]=d.useState(""),b=({email:t,password:i},{resetForm:a})=>{e(v({email:t,password:i})).then(s=>{s.error?p("Login failed. Please try again later."):(p(""),a())})},f=()=>{h(t=>!t),u("")};return o.jsx(k,{initialValues:J,onSubmit:b,validationSchema:G,children:({errors:t,touched:i,values:a,handleBlur:s,isSubmitting:j})=>o.jsx(M,{children:o.jsxs(T,{autoComplete:"off",children:[o.jsx(B,{children:"Login"}),o.jsxs(l,{children:[o.jsx(c,{name:"email",placeholder:"Email",value:a.email,onBlur:s,border:t.email&&i.email&&"1px solid red"}),i.email&&t.email&&o.jsx(R,{children:o.jsx("img",{src:I,alt:"error"})})]}),o.jsx(x,{name:"email",component:"div"}),o.jsxs(l,{children:[o.jsx(c,{type:n?"text":"password",name:"password",placeholder:"Password",value:a.password,error:t.password||g,border:t.password&&i.password&&"1px solid red"}),o.jsx(D,{onClick:f,children:o.jsx("img",{src:n?L:z,alt:n?"Show password":"Hide password"})})]}),o.jsx(x,{name:"password",component:"div"}),o.jsxs(o.Fragment,{children:[o.jsx(H,{type:"submit",disabled:j,children:"Login"}),t&&o.jsxs("div",{children:[w," "]})]}),o.jsxs(V,{to:"/register",children:["Does not have an account? ",o.jsx(A,{children:"Registration"})]})]})})})},N=r.div`
+`,G=F().shape({email:m().required("Email is required").email("Email is invalid"),password:m().min(6,"Password must be at least 6 characters").max(16,"Password can not have more then 16 characters").required("Password is required")}),J={email:"",password:""},K=()=>{const e=S(),[a,h]=d.useState(!1),[g,u]=d.useState(""),[b,p]=d.useState(""),w=({email:t,password:i},{resetForm:n})=>{e(v({email:t,password:i})).then(s=>{s.error?p("Login failed. Please try again later."):(p(""),n())})},f=()=>{h(t=>!t),u("")};return o.jsx(k,{initialValues:J,onSubmit:w,validationSchema:G,children:({errors:t,touched:i,values:n,handleBlur:s,isSubmitting:j})=>o.jsx(M,{children:o.jsxs(T,{autoComplete:"off",children:[o.jsx(D,{children:"Login"}),o.jsxs(l,{children:[o.jsx(c,{name:"email",placeholder:"Email",value:n.email,onBlur:s,border:t.email&&i.email&&"1px solid red"}),i.email&&t.email&&o.jsx(R,{children:o.jsx("img",{src:I,alt:"error"})})]}),o.jsx(x,{name:"email",component:"div"}),o.jsxs(l,{children:[o.jsx(c,{type:a?"text":"password",name:"password",placeholder:"Password",value:n.password,error:t.password||g,border:t.password&&i.password&&"1px solid red"}),o.jsx(B,{onClick:f,children:o.jsx("img",{src:a?L:z,alt:a?"Show password":"Hide password"})})]}),o.jsx(x,{name:"password",component:"div"}),o.jsxs(o.Fragment,{children:[o.jsx(H,{type:"submit",disabled:j,children:"Login"}),t&&o.jsxs("div",{children:[b," "]})]}),o.jsxs(V,{to:"/register",children:["Does not have an account? ",o.jsx(A,{children:"Registration"})]})]})})})},N=r.div`
   background-image: url(${Y});
   display: flex;
   position: relative;
