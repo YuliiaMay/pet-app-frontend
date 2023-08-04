@@ -2,6 +2,7 @@ import styled from "styled-components";
 import paws from "../../images/backgraund/bg-des@1x.png";
 import pawsTab from "../../images/backgraund/bg-tab@1x.png";
 import pawsMob from "../../images/backgraund/bg-mob@1x.png";
+
 export const Container = styled.div`
   background-image: url(${paws});
   display: flex;

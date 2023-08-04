@@ -40,9 +40,7 @@ const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
     };
 
     return (
-        <div>    
-
-            <div>
+        <>    
                 {
                     stage !== "success" &&
                     <BtnNav>
@@ -88,10 +86,9 @@ const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
                                     fill={"#FEF9F9"}
                                 />                            
                             </BtnNext>
-                        </BtnNav>            
+                    </BtnNav>            
                 }        
-            </div>        
-        </div>
+        </>
 
 
 

@@ -3,13 +3,23 @@ import { Link } from "react-router-dom";
 
 export const BtnNav = styled.div`
     display: flex;
-    justify-content: space-around;
+    flex-direction: column-reverse;
+    justify-content: center;
     margin-bottom: 0px;
-    gap: 32px;
+    // padding-left: auto;
+    // padding-right: auto;
+    gap: 20px;
+
+
+    @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
+        flex-direction: row;  
+        justify-content: space-around;
+        gap: 32px;     
+    };      
 `;
 
 export const BtnBack = styled(Link)`
-    width: 150px;
+    width: 200px;
     height: 40px;
     border-radius: 40px;
     border: none;

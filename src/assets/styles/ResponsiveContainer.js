@@ -3,7 +3,7 @@ import styled from "styled-components";
 // const breakpoints = [320, 768, 1280];
 // const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`);
 
-export const ResponsiveContainer = styled.div`
+export const ResponsiveContainer = styled.main`
   // mobile
   @media screen and (min-width: 320px) {
     margin: 0 auto;

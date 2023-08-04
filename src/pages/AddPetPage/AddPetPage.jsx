@@ -1,6 +1,9 @@
 import { useLocation } from "react-router";
 import AddPetMultiStepForm from "../../components/Forms/AddPetForm/AddPetMultiStepForm";
 import { useRef } from "react";
+import { Overlay } from "./AddPetPage.styled";
+import { ResponsiveContainer } from "../../assets/styles/ResponsiveContainer";
+
 
 
 const AddPetPage = () => {
@@ -8,9 +11,11 @@ const AddPetPage = () => {
   const leaveAddPetForm = useRef(location.state?.from ?? 'notices/sell');
 
   return (
-    <>
-      <AddPetMultiStepForm leaveAddPetForm={leaveAddPetForm} />
-    </>
+    <ResponsiveContainer>
+      <Overlay>
+        <AddPetMultiStepForm leaveAddPetForm={leaveAddPetForm} />
+      </Overlay>      
+    </ResponsiveContainer>
   );
 };
 
