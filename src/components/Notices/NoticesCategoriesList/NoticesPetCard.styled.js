@@ -12,11 +12,10 @@ export const List = styled.ul`
   @media screen and (min-width: 768px) {
     flex-wrap: wrap;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     column-gap: 32px;
     row-gap: 24px;
-    padding-left: 10px;
   }
 
   & > li > p {
