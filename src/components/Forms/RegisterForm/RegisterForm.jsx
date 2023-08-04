@@ -26,7 +26,7 @@ import {
   //InputIconSuccess,
   //InputIconDisabled,
 } from "./RegisterForm.styled.js";
-import { ModalCongrats } from "/src/components/Modals/ModalCongrats/ModalCongrats";
+
 
 
 import showPasswordIcon from "../../../svg/registerPage/eyeOpen.svg";
