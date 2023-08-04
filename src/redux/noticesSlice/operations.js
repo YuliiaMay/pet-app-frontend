@@ -42,15 +42,11 @@ export const fetchNotices = createAsyncThunk(
 
 export const fetchFavorite = createAsyncThunk(
   "notices/getFavorite",
-  async (data, thunkAPI) => {
-    // const { page, category, search } = data;
-
+  async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/notices/getfavorites", {
-        params: {},
-      });
+      const response = await axios.get("/notices/getfavorites");
 
-      return response.data;
+      return response.data.favNotices;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -60,12 +56,8 @@ export const fetchFavorite = createAsyncThunk(
 export const fetchFavoriteAdd = createAsyncThunk(
   "notices/getFavoriteAdd",
   async (id, thunkAPI) => {
-    // const { page, category, search } = data;
-
     try {
-      const response = await axios.patch(`/notices/favorite/${id}`, {
-        params: {},
-      });
+      const response = await axios.patch(`/notices/favorite/${id}`);
 
       return response.data;
     } catch (error) {
@@ -77,12 +69,8 @@ export const fetchFavoriteAdd = createAsyncThunk(
 export const fetchFavoriteDelete = createAsyncThunk(
   "notices/getFavoriteDelete",
   async (id, thunkAPI) => {
-    // const { page, category, search } = data;
-
     try {
-      const response = await axios.patch(`/notices/favoritedelete/${id}`, {
-        params: {},
-      });
+      const response = await axios.patch(`/notices/favoritedelete/${id}`);
 
       return response.data;
     } catch (error) {
@@ -102,18 +90,6 @@ export const fetchNoticeById = createAsyncThunk(
     }
   }
 );
-
-// export const addNotice = createAsyncThunk(
-//   "notices/addNotices",
-//   async (notice, thunkAPI) => {
-//     try {
-//       const response = await axios.post("/notices/add", notice);
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const deleteNotice = createAsyncThunk(
   "notices/deleteNotices",

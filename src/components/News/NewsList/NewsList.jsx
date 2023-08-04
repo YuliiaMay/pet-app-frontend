@@ -24,7 +24,6 @@ export default function NewsList() {
   const query = new URLSearchParams(location.search).get("query");
 
   const news = useSelector(selectAllNews);
-  console.log("news", news);
   const dispatch = useDispatch();
 
   useEffect(() => {

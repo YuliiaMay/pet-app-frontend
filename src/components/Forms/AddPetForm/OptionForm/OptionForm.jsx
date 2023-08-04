@@ -34,50 +34,52 @@ const OptionForm = ({leaveAddPetForm}) => {
     }
 
     return (
-        <div>
+        <>
+            <OptionList>              
+                <OptionInput
 
-            <OptionList>
-                
-                    <OptionInput
-                        type="button"
-                        value={"your pet"}
-                        name="category-your-pet"
-                        onClick={handleSelectCategory}                   
-                    />
-                
-                
-                    <OptionInput
-                        type="button"
-                        value={"sell"}
-                        name="category-sell"
-                        // name="category"
+                    type="button"
+                    value={"your pet"}
+                    name="your pet"
+                    onClick={handleSelectCategory} 
+                    $category={category}
+                />
+            
+            
+                <OptionInput
+                    type="button"
+                    value={"sell"}
+                    name="sell"
+                    // name="category"
                     onClick={handleSelectCategory}     
-                    />
+                    $category={category}
+                />
 
-                
-                    <OptionInput
-                        type="button"
-                        value={"lost/found"}
-                        name="category-lost"
-                    onClick={handleSelectCategory}     
-                    />
-                
-                
-                    <OptionInput
-                        type="button"
-                        value={"in good hands"}
-                        name="category-good-hands"
-                        onClick={handleSelectCategory}
-                    />
+            
+                <OptionInput
+                    type="button"
+                    value={"lost/found"}
+                    name="lost/found"
+                    onClick={handleSelectCategory}   
+                    $category={category}
+                />
+            
+            
+                <OptionInput
+                    type="button"
+                    value={"in good hands"}
+                    name="in good hands"
+                    onClick={handleSelectCategory}
+                    $category={category}
+                />
 
-                                    
+
             </OptionList>
             <FormBtnNav
                 onClick={onNextStep}
                 leaveAddPetForm={leaveAddPetForm}
-            />
-
-        </div>
+            /> 
+        </>
     )
 };
 

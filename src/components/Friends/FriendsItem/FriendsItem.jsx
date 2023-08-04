@@ -39,7 +39,9 @@ export const FriendsItem = ({
               <p>website only</p>
             ) : (
               <p>
-                <Link href={addressUrl}>{address}</Link>
+                <Link href={addressUrl} target="_blank">
+                  {address}
+                </Link>
               </p>
             )}
           </span>

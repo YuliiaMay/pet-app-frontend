@@ -7,7 +7,7 @@ import * as Yup from "yup";
 
 // import { ReactComponent as ShowPasswordIcon } from "/src/svg/registerPage/eyeOpen.svg";
 // import { ReactComponent as HidePasswordIcon } from "/src/svg/registerPage/eyeClosed.svg";
-//import { ReactComponent as SuccessIcon } from "../../../svg/registerPage/check.svg";
+// import { ReactComponent as SuccessIcon } from "../../../svg/registerPage/check.svg";
 // import { ReactComponent as errorIcon } from "/src/svg/registerPage/cross.svg";
 // import { ReactComponent as hidePasswordIconDisabled } from "/src/svg/registerPage/eyeClosedDisabled.svg";
 
@@ -26,6 +26,8 @@ import {
   //InputIconSuccess,
   //InputIconDisabled,
 } from "./RegisterForm.styled.js";
+import { ModalCongrats } from "/src/components/Modals/ModalCongrats/ModalCongrats";
+
 
 import showPasswordIcon from "../../../svg/registerPage/eyeOpen.svg";
 import hidePasswordIcon from "../../../svg/registerPage/eyeClosed.svg";
@@ -34,6 +36,7 @@ import errorIcon from "../../../svg/registerPage/cross.svg";
 
 import { ModalCongrats } from "../../Modals/ModalCongrats/ModalCongrats";
 //import hidePasswordIconDisabled from "../../../svg/registerPage/eyeClosedDisabled.svg";
+
 
 const userSchema = Yup.object().shape({
   name: Yup.string().min(2).max(16).required("Name is required"),
