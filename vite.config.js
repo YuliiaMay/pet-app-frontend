@@ -12,7 +12,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    open: "/index.html",
+    open: "/pet-app-frontend",
     port: 8000,
   },
   base: "/pet-app-frontend",
