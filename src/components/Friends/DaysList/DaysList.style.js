@@ -22,6 +22,11 @@ export const DateBox = styled.div`
 
   & > span {
     font-weight: 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      color: ${(props) => props.theme.color.blue};
+    }
   }
 `;
 

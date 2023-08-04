@@ -49,7 +49,7 @@ export const FriendsItem = ({
             Email:
             <p>
               {email === "" ? (
-                <p>phone or website only</p>
+                <p>phone only</p>
               ) : (
                 <Link href={`mailto:${email}`}>{email}</Link>
               )}
@@ -59,7 +59,7 @@ export const FriendsItem = ({
             Phone:
             <p>
               {phone === "" ? (
-                <p>email or website only</p>
+                <p>email only</p>
               ) : (
                 <Link href={`tel:${phone}`}>{phone}</Link>
               )}
