@@ -187,15 +187,17 @@ const NoticesCategoriesList = () => {
           ) : (
             <NoItemsFound text="Nothing was found for your request." />
           )}
-          <WrapperPagination>
-            <Pagination
-              onChange={onChange}
-              current={currentPage}
-              showLessItems
-              total={length}
-              showTitle={false}
-            />
-          </WrapperPagination>
+          {renderCards && (
+            <WrapperPagination>
+              <Pagination
+                onChange={onChange}
+                current={currentPage}
+                showLessItems
+                total={length}
+                showTitle={false}
+              />
+            </WrapperPagination>
+          )}
         </List>
       )}
       <ModalApproveDelete

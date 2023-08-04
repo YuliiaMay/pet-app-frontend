@@ -41,7 +41,6 @@ export default function NewsList() {
     setCurrentPage(1);
   }, [query]);
 
-  console.log(news);
   return (
     <ResponsiveContainer>
       <List>
@@ -57,7 +56,6 @@ export default function NewsList() {
           </>
         )}
       </List>
-      {/* {!news.length && <NoItemsFound text="no data" />} */}
       {news && (
         <WrapperPagination>
           <Pagination
