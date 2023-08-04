@@ -1,4 +1,4 @@
-import{s as n,a as d,r as i,e as F,f as E,j as e,I as f,u as Y,A as Z,c as ee,B as L,C as te,D as ne,i as ie,E as oe,F as se}from"./index-bbafbda1.js";import{f as re,N as ae,P as le,s as ce}from"./index-15ad64f9.js";import{M as W,C as de,W as pe,B as he,a as xe,Y as fe,D as ge}from"./ModalAttention-bbc67b0e.js";import{M as U}from"./ModalComponents-5e114d64.js";const ue="/pet-app-frontend/assets/defaultPoster-c04359c8.jpeg",R=t=>t||ue,me=t=>t.replace(/[.\-/\\\s]/g,"");function je(t){if(!t)return;const o=new Date,r=new Date(o.getFullYear(),o.getMonth(),o.getDate()),a=new Date(t),l=new Date(r.getFullYear(),a.getMonth(),a.getDate());let p;return p=r.getFullYear()-a.getFullYear(),r<l&&(p=p-1),p}const we=t=>{if(!t)return;let o=t;return o.length>6&&(o=t.slice(0,4)+"..."),o},be=t=>{let o=t;return o.length>6&&(o=t.slice(0,4)+"..."),o},Fe=t=>{if(!t)return;let o=t;return o.length>15&&(o=t.slice(0,21)+"..."),o},ke=t=>t.notices.items,q=t=>t.notices.favorite,ve=t=>t.notices.own,ye=t=>t.notices.isLoading,Ce=n.div`
+import{s as n,a as d,r as i,e as F,f as E,j as e,I as f,u as Y,A as Z,c as ee,B as L,C as te,D as ne,i as ie,E as oe,F as se}from"./index-d4346772.js";import{f as re,N as ae,P as le,s as ce}from"./index-f2d0897f.js";import{M as W,C as de,W as pe,B as he,a as xe,Y as fe,D as ge}from"./ModalAttention-780735a0.js";import{M as U}from"./ModalComponents-5cc4668b.js";const ue="/pet-app-frontend/assets/defaultPoster-c04359c8.jpeg",R=t=>t||ue,me=t=>t.replace(/[.\-/\\\s]/g,"");function je(t){if(!t)return;const o=new Date,r=new Date(o.getFullYear(),o.getMonth(),o.getDate()),a=new Date(t),l=new Date(r.getFullYear(),a.getMonth(),a.getDate());let p;return p=r.getFullYear()-a.getFullYear(),r<l&&(p=p-1),p}const we=t=>{if(!t)return;let o=t;return o.length>6&&(o=t.slice(0,4)+"..."),o},be=t=>{let o=t;return o.length>6&&(o=t.slice(0,4)+"..."),o},Fe=t=>{if(!t)return;let o=t;return o.length>15&&(o=t.slice(0,21)+"..."),o},ke=t=>t.notices.items,q=t=>t.notices.favorite,ve=t=>t.notices.own,ye=t=>t.notices.isLoading,Ce=n.div`
   width: 280px;
 
   display: flex;
@@ -401,6 +401,7 @@ import{s as n,a as d,r as i,e as F,f as E,j as e,I as f,u as Y,A as Z,c as ee,B 
   padding: 20px;
   font-size: 24px;
   font-weight: 700;
+  height: 80px;
 `,He=n.button`
   align-items: center;
   background-color: transparent;
