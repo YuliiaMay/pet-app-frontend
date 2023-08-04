@@ -1,4 +1,4 @@
-import{s as e,j as t}from"./index-f687cdb8.js";import{p,a as i,b as d}from"./bg-mob@1x-9dd97546.js";const o=e.div`
+import{s as e,j as t}from"./index-0ed24258.js";import{p,a as i,b as d}from"./bg-mob@1x-9dd97546.js";const o=e.div`
   background-image: url(${p});
   display: flex;
   position: relative;
