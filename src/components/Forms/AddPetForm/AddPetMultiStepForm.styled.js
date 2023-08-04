@@ -10,7 +10,8 @@ export const AddPetContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;;
+    align-items: center;
+    align-items: ;;
     width: 280px;    
     height: 496px;
 

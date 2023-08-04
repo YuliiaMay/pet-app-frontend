@@ -6,28 +6,22 @@ import {
     BtnNext,
     BtnNextText
 } from "./FormBtnNav.styled";
-import { selectCategory, selectCurrentStage } from "../../../../redux/petsSlice/selectors";
+import { selectCurrentStage } from "../../../../redux/petsSlice/selectors";
 import { formStage } from "../../../../redux/petsSlice/petsSlice";
 import { Icon } from "../../../../components/Icon/Icon"
 import { useRef } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation } from "react-router";
 
 
 
 const FormBtnNav = ({ onClick }) => {
     const stage = useSelector(selectCurrentStage);
-    const category = useSelector(selectCategory);
     const location = useLocation();
-    const navigate = useNavigate();
-    // const onLeavePage = useRef(location.state?.from ?? '/notices/sell');
-
     const dispatch = useDispatch();
+    
+    const back = useRef(location.state?.from ?? '/notices/sell');
+    console.log(back.current);
     let prev;
-
-    // const location = useLocation();
-    // const back = useRef(location.state?.from ?? 'notices/sell');
-    // console.log(back.current);
-
 
 
 
@@ -55,7 +49,7 @@ const FormBtnNav = ({ onClick }) => {
                                 stage === 1
                                     ? (
                                         <BtnBack
-                                            // to={back.current}
+                                            to={back.current}
                                         >
                                             <Icon
                                                 iconName={"icon-arrow-left"}

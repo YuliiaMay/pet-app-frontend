@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import defaultAvatar from "../../../../images/default-avatar.png";
-
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
 import { useState } from "react";
 import { detailsForm, formStage, moreInfoForm, optionForm } from "../../../../redux/petsSlice/petsSlice";
@@ -165,9 +164,7 @@ const MoreInfoForm = () => {
           price: ""        
       })
     );
-} 
-
-
+}
 
   return (
       <>
