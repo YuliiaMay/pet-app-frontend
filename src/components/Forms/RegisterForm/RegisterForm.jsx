@@ -66,6 +66,16 @@ const RegisterForm = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   const [userLogin, setUserLogin] = useState({});
+//   //const [errorMessage, setErrorMessage] = useState("");
+
+//   const handleSubmit = ({ name, email, password }, { resetForm }) => {
+//     setUserLogin({ email, password });
+//     dispatch(register({ name, email, password })).then(
+//       (response) => !response.error && resetForm()
+//     );
+
   const [isRegistered, setIsRegistered] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -235,6 +245,7 @@ const RegisterForm = () => {
                 <ModalCongrats setShow={setIsModalOpen} active={isModalOpen} />
               )}
               {errors && <div>{errorMessage} </div>}
+
             </>
 
             <StyledLink to="/login">
