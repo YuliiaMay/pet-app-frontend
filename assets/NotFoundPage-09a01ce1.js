@@ -1,4 +1,4 @@
-import{s as e,N as n,j as r,R as t,I as o}from"./index-46dab993.js";import{p as s,a as p,b as i}from"./bg-mob@1x-9dd97546.js";const a="/pet-app-frontend/assets/error-desk-9c84cef6.png",d="/pet-app-frontend/assets/error-desk2-a7dba45b.png",c="/pet-app-frontend/assets/error-tab-e53d6a20.png",x="/pet-app-frontend/assets/error-tab2-e0c2401f.png",f="/pet-app-frontend/assets/error-mob-d3ab3fb4.png",m="/pet-app-frontend/assets/error-mob2-8584f464.png",g=e.div`
+import{s as e,N as n,j as r,R as t,I as o}from"./index-f687cdb8.js";import{p as s,a as p,b as i}from"./bg-mob@1x-9dd97546.js";const a="/pet-app-frontend/assets/error-desk-9c84cef6.png",d="/pet-app-frontend/assets/error-desk2-a7dba45b.png",c="/pet-app-frontend/assets/error-tab-e53d6a20.png",x="/pet-app-frontend/assets/error-tab2-e0c2401f.png",f="/pet-app-frontend/assets/error-mob-d3ab3fb4.png",m="/pet-app-frontend/assets/error-mob2-8584f464.png",g=e.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
