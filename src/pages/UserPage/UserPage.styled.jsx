@@ -96,7 +96,7 @@ export const AddPetContainer = styled.div`
     margin-bottom: 121px;
   }
 
-  @media (min-width: ${(props) => props.theme.sizes.tab}) {
+  @media (min-width: ${(props) => props.theme.sizes.desk}) {
     margin-bottom: 0px;
   }
 `;

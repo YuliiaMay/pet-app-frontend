@@ -14,7 +14,6 @@ export const UserAvatarImg = styled.img`
 
 export const FormAvatar = styled(Form)`
   position: relative;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,10 +65,11 @@ export const ConfirmWrapper = styled.div`
   color: ${(props) => props.theme.color.main};
   font-family: Manrope;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: 22px;
   letter-spacing: 0.48px;
+  padding-top: 15px;
+  padding-bottom: 22px;
 
   display: flex;
   gap: 8px;

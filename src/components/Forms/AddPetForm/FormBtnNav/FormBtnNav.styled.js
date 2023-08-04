@@ -1,65 +1,62 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const BtnNav = styled.div`
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    margin-bottom: 0px;
-    // padding-left: auto;
-    // padding-right: auto;
-    gap: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  margin-bottom: 0px;
+  align-items: center;
+  gap: 20px;
 
-
-    @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
-        flex-direction: row;  
-        justify-content: space-around;
-        gap: 32px;     
-    };      
+  @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 32px;
+  }
 `;
 
 export const BtnBack = styled(Link)`
-    width: 200px;
-    height: 40px;
-    border-radius: 40px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+  width: 200px;
+  height: 40px;
+  border-radius: 40px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    &:hover,
-    &:focus {
-        box-shadow: ${props => props.theme.border.shadow};
-    }   
+  &:hover,
+  &:focus {
+    box-shadow: ${(props) => props.theme.border.shadow};
+  }
 `;
 
 export const LinkBack = styled.span`
-    color: ${props => props.theme.color.blue};
-    font-weight: 700;
-    font-size: 16px;
-    margin-left: 12px;  
+  color: ${(props) => props.theme.color.blue};
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 12px;
 `;
 
 export const BtnNext = styled.button`
-    width: 200px;
-    height: 40px;
-    background-color: ${props => props.theme.background.accentBlue};
-    border-radius: 40px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 248px;
+  padding: 8px 28px;
+  background-color: ${(props) => props.theme.background.accentBlue};
+  border-radius: 40px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    &:hover,
-    &:focus {
-        box-shadow: ${props => props.theme.border.shadow};
-    }
+  &:hover,
+  &:focus {
+    box-shadow: ${(props) => props.theme.border.shadow};
+  }
 `;
 
 export const BtnNextText = styled.span`
-    color: ${props => props.theme.color.wight};
-    font-weight: 700;
-    font-size: 16px;
-    margin-right: 12px;
+  color: ${(props) => props.theme.color.wight};
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 12px;
 `;

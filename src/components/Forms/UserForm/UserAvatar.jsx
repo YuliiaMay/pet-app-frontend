@@ -41,6 +41,20 @@ export const UserAvatar = ({ isFormEnable }) => {
     avatar: avatar,
   };
 
+  const sendFormData = async (newAvatar) => {
+    const formData = new FormData();
+    formData.append("file", newAvatar);
+
+    await dispatch(updateUser(formData)).then((data) => {
+      if (data.error) {
+        setIsFormatErr(true);
+        setIsImgUpdating(true);
+      }
+      setIsFormatErr(false);
+      setIsImgUpdating(false);
+    });
+  };
+
   const handleConfirmBtn = () => {
     setIsImgUpdating(false);
     sendFormData(imgToUpload);
@@ -62,20 +76,6 @@ export const UserAvatar = ({ isFormEnable }) => {
     setImgToUpload(newAvatar);
     setIsFormatErr(false);
     setIsImgUpdating(true);
-  };
-
-  const sendFormData = async (newAvatar) => {
-    const formData = new FormData();
-    formData.append("file", newAvatar);
-
-    await dispatch(updateUser(formData)).then((data) => {
-      if (data.error) {
-        setIsFormatErr(true);
-        setIsImgUpdating(true);
-      }
-      setIsFormatErr(false);
-      setIsImgUpdating(false);
-    });
   };
 
   const handleClearAvatar = () => {
@@ -108,7 +108,7 @@ export const UserAvatar = ({ isFormEnable }) => {
                   Edit photo
                 </EditPhotoBtn>
               ) : (
-                <ConfirmWrapper>
+                <ConfirmWrapper bottom={isFormEnable}>
                   <button type="button" onClick={handleConfirmBtn}>
                     <Confirm />
                   </button>
