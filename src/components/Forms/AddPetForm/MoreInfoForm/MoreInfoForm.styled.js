@@ -1,15 +1,9 @@
 import styled from 'styled-components';
-// import { Field, Form } from "formik";
 
-export const StageWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-`;
 
 export const Form = styled.form`
     display: flex;
-    gap: 72px;
+    flex-direction: column;
     padding-left: 74px;
     padding-right: 74px;
 `;
@@ -17,6 +11,12 @@ export const Form = styled.form`
 export const LeftColumnContainer = styled.div`
     display: flex;
     flex-direction: column;
+`;
+
+export const StageContainer = styled.div`
+    display: flex;
+    gap: 97px;
+    margin-bottom: 60px;
 `;
 
 export const RightColumnContainer = styled.div`
@@ -45,6 +45,14 @@ export const TheSexBtn= styled.button`
     gap: 12px;
     padding: 8px 16px;
     border-radius: 40px;
+    background-color: ${props => {
+        if (props.name === props.$sex) {
+            return props.theme.background.accentBlue;
+        } else {
+            return "transparent";
+        }
+    }};
+   
 
     &:hover,
     &:focus {
@@ -59,12 +67,21 @@ export const TheSexBtn= styled.button`
             color: ${props => props.theme.color.wight};
         }
     };
+
+    > span {
+        color: ${props => {
+        if (props.name === props.$sex) {
+            return props.theme.color.wight;
+        } else {
+            return props.theme.color.grey;
+        }
+    }};  
+    };
 `;
 
 export const BtnSexText = styled.span`
     font-weight: 400;
     font-size: 16px;
-    color: ${props => props.theme.color.grey};
 `;
 
 export const UploadLabel = styled.label`
@@ -79,9 +96,13 @@ export const UploadInput = styled.input`
 
 export const ImageWrapper = styled.div`
     border-radius: ${props => props.theme.border.radius};
-    width: 182px;
-    height: 182px;
     margin-top: 12px;
+`;
+
+export const ChoosenImg = styled.img`
+border-radius: ${props => props.theme.border.radius};
+    width: 182px;
+    height: 182px;    
 `;
 
 export const Input = styled.input`
@@ -94,6 +115,7 @@ export const Input = styled.input`
     font-weight: 400;
     font-size: 16px;
     color: ${props => props.theme.color.grey};  
+
 `;
 
 export const Label = styled.label`
@@ -112,7 +134,7 @@ export const Comment = styled.textarea`
     max-width: 394px;
     height: auto;
     margin-top: 8px;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
     padding: 12px 16px;
     font-weight: 400;
     font-size: 16px;

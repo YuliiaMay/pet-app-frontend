@@ -7,14 +7,8 @@ import { Icon } from "../../Icon/Icon";
 import { formatDate, convertPhone, checkPoster } from "../../../utils";
 
 import ModalAttention from "../ModalAttention/ModalAttention";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectUser } from "../../../redux/authSlice/selectors";
-import {
-  fetchFavoriteAdd,
-  fetchFavoriteDelete,
-} from "../../../redux/noticesSlice/operations";
-
-import { setFavoriteId } from "../../../redux/savedFavoriteIdSlice/savedFavoriteIdSlice";
 
 import {
   WrapperModal,
@@ -31,10 +25,16 @@ import {
   ImgCards,
 } from "./ModalNotice.styled";
 
-export function ModalNotice({ card, active, setShow, isFavorites }) {
+export function ModalNotice({
+  card,
+  active,
+  setShow,
+  isFavorites,
+  handleFollowAdd,
+  handleFollowDel,
+}) {
   const [showModalAttention, setShowModalAttention] = useState(false);
   const user = useSelector(selectUser);
-  const dispatch = useDispatch();
 
   const [isFavoritesBtn, setIsFavoritesBtn] = useState(isFavorites);
   if (!card) return;
@@ -53,27 +53,24 @@ export function ModalNotice({ card, active, setShow, isFavorites }) {
     email,
     phone,
     comments,
-
     title,
     category,
     price,
   } = card;
 
-  const handleClickFavorite = (itemId, isFavoritesBtn) => {
+  const handleClickFavorite = (itemId) => {
     if (!user.token) {
       setShowModalAttention(true);
       return;
     }
 
-    if (!isFavoritesBtn) {
-      setIsFavoritesBtn(true);
-      dispatch(fetchFavoriteAdd(itemId));
-      dispatch(setFavoriteId(itemId));
-      return;
+    if (isFavoritesBtn) {
+      handleFollowDel(itemId);
+    } else {
+      handleFollowAdd(itemId);
     }
-    setIsFavoritesBtn(false);
-    dispatch(setFavoriteId(itemId));
-    dispatch(fetchFavoriteDelete(itemId));
+
+    setIsFavoritesBtn(!isFavoritesBtn);
   };
 
   const checkFavorite = (favorite) => {
@@ -136,7 +133,7 @@ export function ModalNotice({ card, active, setShow, isFavorites }) {
                       <tr>
                         <td>Price:</td>
                         <td>
-                          <span>{price} ₿</span>
+                          <span>{price} &#x20bf;</span>
                         </td>
                       </tr>
                     )}
@@ -186,10 +183,8 @@ export function ModalNotice({ card, active, setShow, isFavorites }) {
             <span>{comments}</span>
           </SideInfo>
           <WrapperBtn>
-            <GoProfileBtn
-              onClick={() => handleClickFavorite(card._id, isFavoritesBtn)}
-            >
-              {checkFavorite(isFavorites)}
+            <GoProfileBtn onClick={() => handleClickFavorite(card._id)}>
+              {checkFavorite(isFavoritesBtn)}
             </GoProfileBtn>
 
             <ContactLink href={`tel:${phone}`}>Contact</ContactLink>
@@ -211,4 +206,6 @@ ModalNotice.propTypes = {
   isFavorites: PropTypes.bool,
   setShow: PropTypes.func,
   card: PropTypes.object,
+  handleFollowAdd: PropTypes.func,
+  handleFollowDel: PropTypes.func,
 };

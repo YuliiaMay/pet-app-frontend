@@ -10,12 +10,16 @@ import {
 } from "./ModalCongrats.styled";
 import { ModalComponents } from "../ModalComponents/ModalComponents";
 import { Icon } from "../../Icon/Icon";
+import { useDispatch } from "react-redux";
+import { login } from "../../../redux/authSlice/operations";
 
-export function ModalCongrats({ active, setShow }) {
-  const handleClickClose = (e) => {
-    if (e.currentTarget === e.target) {
-      setShow(false);
-    }
+export function ModalCongrats({ active, setShow, userLogin }) {
+  const { email, password } = userLogin;
+  const dispatch = useDispatch();
+  const handleClickClose = () => {
+    dispatch(login({ email, password }));
+
+    setShow(false);
   };
   return (
     <>
@@ -43,4 +47,5 @@ export function ModalCongrats({ active, setShow }) {
 ModalCongrats.propTypes = {
   active: PropTypes.bool,
   setShow: PropTypes.func,
+  userLogin: PropTypes.object,
 };

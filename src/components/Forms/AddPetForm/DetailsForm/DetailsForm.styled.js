@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Field, Form } from "formik";
 
 
-export const StyledForm = styled(Form)`
+export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+    width: 458px;
 `;
 
 
@@ -18,7 +18,7 @@ export const Label = styled.label`
 `;
 
 
-export const Input = styled(Field)`
+export const Input = styled.input`
     border-radius: ${props => props.theme.border.radius};
     border: ${props => props.theme.border.blue};
     width: 394px;
