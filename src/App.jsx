@@ -40,7 +40,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Navigate to="/notices/sell" />} />
+          <Route index element={<NoticesPage />} />
+
+          {/* <Route index element={<Navigate to="/notices/sell" />} /> */}
           <Route path="/main" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
 
