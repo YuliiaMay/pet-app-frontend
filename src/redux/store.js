@@ -17,7 +17,6 @@ import {
   REGISTER,
 } from "redux-persist";
 import { friendsReducer } from "./friendsSlice/friendsSlice";
-import { FavoriteIdReducer } from "./savedFavoriteIdSlice/savedFavoriteIdSlice";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -33,11 +32,6 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
-const persistConfig = {
-  key: "favoriteId",
-  storage,
-  whitelist: ["favoriteId"],
-};
 
 export const store = configureStore({
   reducer: {
@@ -46,7 +40,6 @@ export const store = configureStore({
     pet: petReducer,
     news: newsReducer,
     friends: friendsReducer,
-    savedFavoriteId: persistReducer(persistConfig, FavoriteIdReducer),
   },
   middleware,
 

@@ -66,11 +66,13 @@ const deleteNoticesSuccessReduser = (state, { payload }) => {
 };
 
 const deleteFavoriteReduser = (state, { payload }) => {
-  // state.favorite = payload;
-  const index = state.favorite.findIndex((fav) => fav._id === payload);
-  // const index = state.favorite.then((fav) => fav._id === payload);
-  // console.log(payload);
-  state.favorite.splice(index, 1);
+  if (state.favorite.length > 0) {
+    const updatedFavorite = state.favorite.filter(({ _id }) => _id !== payload);
+    return {
+      ...state,
+      favorite: updatedFavorite,
+    };
+  }
 };
 
 const noticesSlice = createSlice({

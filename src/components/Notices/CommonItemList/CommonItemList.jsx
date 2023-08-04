@@ -13,7 +13,7 @@ import {
   Span,
 } from "./CommonItemList.styled";
 import PropTypes from "prop-types";
-
+import {useToggle} from "../../../hooks/useToggle"
 import { Icon } from "../../../components/Icon/Icon";
 
 import {
@@ -32,13 +32,11 @@ import {
 
 import { selectUser } from "../../../redux/authSlice/selectors";
 
-import { fetchFavoriteAdd } from "../../../redux/noticesSlice/operations";
-import {
-  selectFavoriteIdValue,
-  setFavoriteId,
-} from "../../../redux/savedFavoriteIdSlice/savedFavoriteIdSlice";
+import { fetchFavoriteAdd, fetchFavoriteDelete } from "../../../redux/noticesSlice/operations";
 import ModalAttention from "../../Modals/ModalAttention/ModalAttention";
 import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
+import { selectFavorite } from "../../../redux/selectors";
+
 
 export const CommonItemList = ({
   item,
@@ -47,35 +45,52 @@ export const CommonItemList = ({
 }) => {
 
   const user = useSelector(selectUser);
+  const favNotices = useSelector(selectFavorite);
   const [showModalAttention, setShowModalAttention] = useState(false);
-
+  const { isOpen, toggle } = useToggle();
   const [showModal, setShowModal] = useState(false);
   const [oneCard, setOneCard] = useState(null);
 
-  const savedFavoriteId = useSelector(selectFavoriteIdValue);
 
   const dispatch = useDispatch();
   const [isFollowingTrash, setIsFollowingTrash] = useState(false);
   const [isFavoritesBtn, setIsFavoritesBtn] = useState(false);
 
+
+  // useEffect(() => {
+  //   if (!user.token) return;
+  //   setIsFavoritesBtn(favNotices.find(({_id}) => _id === item._id));
+  // }, [favNotices, item._id, user.token]); 
+
+  
   useEffect(() => {
-    if (!user.token) return;
-    setIsFavoritesBtn(savedFavoriteId.includes(item._id));
-  }, [item._id, savedFavoriteId, user.token]);
+    setIsFavoritesBtn(!!favNotices?.find((fav) => fav._id === item._id))
+  }, [favNotices, item._id])
+  
+
   const handleFavoritesBtn = (itemId, flag) => {
-    if (!user.token) {
-      setShowModalAttention(true);
-      return;
-    }
+    // if (!user.token) {
+    //   setShowModalAttention(true);
+    //   return;
+    // }
+    
+    setIsFavoritesBtn(!isFavoritesBtn);
+      console.log(itemId);
+      console.log(flag);
 
+      
+      // dispatch(fetchFavoriteDelete(itemId));
+      // dispatch(fetchFavoriteAdd(itemId));
+
+
+    // setIsFavoritesBtn(false);
     if (!flag) {
-      setIsFavoritesBtn(true);
       dispatch(fetchFavoriteAdd(itemId));
-
       return;
     }
-    setIsFavoritesBtn(false);
     handleClickDeleteFavorite(itemId);
+    // dispatch(fetchFavoriteDelete(itemId));
+    
   };
 
   const handleFollowClick = (item) => {
@@ -84,7 +99,7 @@ export const CommonItemList = ({
       return;
     }
 
-    dispatch(setFavoriteId(item));
+    // dispatch(setFavoriteId(item));
   };
 
   const [isFollowing, setIsFollowing] = useState(false);
@@ -107,6 +122,8 @@ export const CommonItemList = ({
     setShowModal(true);
   };
 
+  
+
 
   return (
     <Info>
@@ -116,20 +133,33 @@ export const CommonItemList = ({
           <PP>{item.category}</PP>
           <Div2>
 
-            <div onClick={() => handleFavoritesBtn(item._id, isFavoritesBtn)}>
+            <div
+              // onClick={() => handleFavoritesBtn(item._id, isFavoritesBtn)}
+            >
               <Button
                 aria-label="add to favorites"
-                onClick={() => {
-                  handleFollowClick(item._id);
-                }}
+                onClick={() => handleFavoritesBtn(item._id, isFavoritesBtn)}
               >
-                <Icon
-                  iconName={"icon-heart-full"}
-                  width={"24px"}
-                  height={"24px"}
-                  stroke={"#54ADFF"}
-                  fill={isFavoritesBtn ? "#54ADFF" : ""}
-                />
+                {
+                  isFavoritesBtn
+                    ? <Icon
+                        iconName={"icon-heart-full"}
+                        width={"24px"}
+                        height={"24px"}
+                        stroke={"#54ADFF"}
+                        fill={"#54ADFF"}
+                        // $follow={follow}
+                      />  
+                    : <Icon
+                        iconName={"icon-heart-full"}
+                        width={"24px"}
+                        height={"24px"}
+                        stroke={"#54ADFF"}
+                        // fill={"#54ADFF"}
+                        // $follow={follow}
+                      />
+                }
+
               </Button>
             </div>
             {isFollowingTrash ? (
