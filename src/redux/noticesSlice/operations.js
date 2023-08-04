@@ -50,8 +50,8 @@ export const fetchFavorite = createAsyncThunk(
         params: {},
       });
 
-      // console.log(response.data);
-      return response.data;
+      console.log(response.data.favNotices);
+      return response.data.favNotices;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -67,7 +67,7 @@ export const fetchFavoriteAdd = createAsyncThunk(
       const response = await axios.patch(`/notices/favorite/${id}`, {
         params: {},
       });
-      // console.log("add", response.data);
+      console.log("add", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -85,7 +85,7 @@ export const fetchFavoriteDelete = createAsyncThunk(
         params: {},
       });
 
-      // console.log("delete", response.data);
+      console.log("delete", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

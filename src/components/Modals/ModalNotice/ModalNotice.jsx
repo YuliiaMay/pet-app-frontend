@@ -14,7 +14,6 @@ import {
   fetchFavoriteDelete,
 } from "../../../redux/noticesSlice/operations";
 
-import { setFavoriteId } from "../../../redux/savedFavoriteIdSlice/savedFavoriteIdSlice";
 
 import {
   WrapperModal,
@@ -60,20 +59,20 @@ export function ModalNotice({ card, active, setShow, isFavorites }) {
   } = card;
 
   const handleClickFavorite = (itemId, isFavoritesBtn) => {
-    if (!user.token) {
-      setShowModalAttention(true);
-      return;
-    }
+    // if (!user.token) {
+    //   setShowModalAttention(true);
+    //   return;
+    // }
 
-    if (!isFavoritesBtn) {
-      setIsFavoritesBtn(true);
-      dispatch(fetchFavoriteAdd(itemId));
-      dispatch(setFavoriteId(itemId));
-      return;
-    }
-    setIsFavoritesBtn(false);
-    dispatch(setFavoriteId(itemId));
-    dispatch(fetchFavoriteDelete(itemId));
+    // if (!isFavoritesBtn) {
+    //   setIsFavoritesBtn(true);
+    //   dispatch(fetchFavoriteAdd(itemId));
+    //   dispatch(setFavoriteId(itemId));
+    //   return;
+    // }
+    // setIsFavoritesBtn(false);
+    // dispatch(setFavoriteId(itemId));
+    // dispatch(fetchFavoriteDelete(itemId));
   };
 
   const checkFavorite = (favorite) => {

@@ -50,15 +50,16 @@ const NoticesCategoriesList = () => {
   const search = new URLSearchParams(location.search).get("search");
 
   const all = useSelector(selectNotiecesAll);
-  const { favNotices } = useSelector(selectFavorite);
+  const favNotices = useSelector(selectFavorite);
   const { notices, length } = useSelector(selectNotieces);
   const user = useSelector(selectUser);
   const IsLoading = useSelector(selectIsLoading);
   const [showModalDelete, setShowModalDelete] = useState(false);
+  console.log(favNotices);
 
   useEffect(() => {
     if (!fetchingFavorite) return;
-
+    console.log(idCardsFavorite);
     dispatch(fetchFavorite());
 
     setRenderCards(favNotices);
@@ -99,7 +100,7 @@ const NoticesCategoriesList = () => {
     setFetchingAll(false);
   }, [all, dispatch, fetchingAll, idCards, renderCards, user._id]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (location.pathname === "/notices/sell") {
       setCurrentCategory("sell");
       setRenderCards(notices);
@@ -115,9 +116,10 @@ const NoticesCategoriesList = () => {
       setFetchingFavorite(true);
       if (!idCardsFavorite) return;
 
-      setRenderCards((prevRenderCards) =>
-        prevRenderCards.filter((item) => item._id !== idCardsFavorite)
-      );
+      // setRenderCards((prevRenderCards) =>
+      //   prevRenderCards.filter((item) => item._id === idCardsFavorite)
+      // );
+
       setFetchingFavorite(false);
       setIdCardsFavorite(false);
     }
@@ -158,6 +160,7 @@ const NoticesCategoriesList = () => {
   };
   const handleConfirmDelete = (id) => {
     dispatch(deleteNotice(id));
+
     setIdCards(id);
     setFetchingAll(true);
     setShowModalDelete(false);
@@ -165,12 +168,14 @@ const NoticesCategoriesList = () => {
 
   const handleClickDeleteFavorite = (id) => {
     dispatch(fetchFavoriteDelete(id));
+
+    console.log(favNotices);
     setIdCardsFavorite(id);
   };
 
   return (
     <>
-      {IsLoading ? (
+      {IsLoading && favNotices ? (
         <Loader />
       ) : (
         <List>
