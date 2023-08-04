@@ -1,4 +1,5 @@
 import { useState } from "react";
+//import { Redirect } from "react-router-dom";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../../../redux/authSlice/operations";
@@ -22,16 +23,20 @@ import {
   InputContainer,
   InputIconShow,
   InputIconError,
-  InputIconSuccess,
+  //InputIconSuccess,
   //InputIconDisabled,
 } from "./RegisterForm.styled.js";
-import { ModalCongrats } from "/src/components/Modals/ModalCongrats/ModalCongrats";
 
-import showPasswordIcon from "/src/svg/registerPage/eyeOpen.svg";
-import hidePasswordIcon from "/src/svg/registerPage/eyeClosed.svg";
-import successIcon from "/src/svg/registerPage/check.svg";
-import errorIcon from "/src/svg/registerPage/cross.svg";
-//import hidePasswordIconDisabled from "/src/svg/registerPage/eyeClosedDisabled.svg";
+
+
+import showPasswordIcon from "../../../svg/registerPage/eyeOpen.svg";
+import hidePasswordIcon from "../../../svg/registerPage/eyeClosed.svg";
+//import successIcon from "../../../svg/registerPage/check.svg";
+import errorIcon from "../../../svg/registerPage/cross.svg";
+
+import { ModalCongrats } from "../../Modals/ModalCongrats/ModalCongrats";
+//import hidePasswordIconDisabled from "../../../svg/registerPage/eyeClosedDisabled.svg";
+
 
 const userSchema = Yup.object().shape({
   name: Yup.string().min(2).max(16).required("Name is required"),
@@ -61,14 +66,33 @@ const RegisterForm = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userLogin, setUserLogin] = useState({});
-  //const [errorMessage, setErrorMessage] = useState("");
 
+//   const [userLogin, setUserLogin] = useState({});
+//   //const [errorMessage, setErrorMessage] = useState("");
+
+//   const handleSubmit = ({ name, email, password }, { resetForm }) => {
+//     setUserLogin({ email, password });
+//     dispatch(register({ name, email, password })).then(
+//       (response) => !response.error && resetForm()
+//     );
+
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // const handleSubmit = ({ name, email, password }, { resetForm }) => {
+  //   dispatch(register({ name, email, password })).then(
+  //     (response) => !response.error && resetForm()
+  //   );
+  // };
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
-    setUserLogin({ email, password });
-    dispatch(register({ name, email, password })).then(
-      (response) => !response.error && resetForm()
-    );
+    dispatch(register({ name, email, password })).then((response) => {
+      if (response.error) {
+        setErrorMessage("Registration failed. Please try again later.");
+      } else {
+        setErrorMessage("");
+        resetForm();
+      }
+    });
   };
 
   const handleTogglePassword = () => {
@@ -85,7 +109,10 @@ const RegisterForm = () => {
 
   const handleShowModal = () => {
     setIsModalOpen(true);
+    setIsRegistered(true);
   };
+
+  //if (!isRegistered) return <Redirect to={"/user"} />;
 
   return (
     <Formik
@@ -100,7 +127,6 @@ const RegisterForm = () => {
         handleChange,
         handleBlur,
         isSubmitting,
-        // isFormEnable,
       }) => (
         <Container>
           <StyledTitle>Registration</StyledTitle>
@@ -143,15 +169,14 @@ const RegisterForm = () => {
                 onBlur={handleBlur}
                 error={errors.password || passwordError}
                 border={errors.password && touched.password && "1px solid red"}
-                //disabled={isSubmitting || !isFormEnable}
               />
 
-              {!errors.password && (
+              {/* {!errors.password && (
                 // <SuccessIcon />
                 <InputIconSuccess>
                   <img src={successIcon} alt="success" />
                 </InputIconSuccess>
-              )}
+              )} */}
               {/* {!errors.password && errors.password !== "" && (
                 <InputIconSuccess>
                   <img src={successIcon} alt="success" />
@@ -216,12 +241,13 @@ const RegisterForm = () => {
               >
                 Registration
               </SubmitButton>
-              <ModalCongrats
-                userLogin={userLogin}
-                setShow={setIsModalOpen}
-                active={isModalOpen}
-              />
+              {isRegistered && (
+                <ModalCongrats setShow={setIsModalOpen} active={isModalOpen} />
+              )}
+              {errors && <div>{errorMessage} </div>}
+
             </>
+
             <StyledLink to="/login">
               Already have a account? <StyledSpan>Login</StyledSpan>
             </StyledLink>

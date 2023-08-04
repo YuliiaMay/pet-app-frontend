@@ -7,7 +7,6 @@ import {
   fetchFavorite,
   fetchFavoriteDelete,
   fetchFavoriteAdd,
-  // addPetOrNotice as addNotice
 } from "./operations";
 import { addPetOrNotice as addNotice } from "../petsSlice/operations";
 
@@ -20,7 +19,6 @@ const extraOperations = [
 const getOperations = (type) =>
   isAnyOf(...extraOperations.map((action) => action[type]));
 
-// operations redusers
 const pandingReduser = (state) => {
   state.isLoading = true;
 };
@@ -43,6 +41,18 @@ const fetchNoticesAllReduser = (state, { payload }) => {
   state.own = payload;
 };
 
+const addNoticesSuccessReduser = (state, { payload }) => {
+  if (payload.addedNotice) {
+    state.own.push(payload.addedNotice);
+  }
+};
+
+const deleteNoticesSuccessReduser = (state, { payload }) => {
+  const index = state.own.filter((notice) => notice._id === payload);
+
+  state.own.splice(index, 1);
+};
+
 const fetchNoticesFavoriteAll = (state, { payload }) => {
   state.favorite = payload;
 };
@@ -51,26 +61,14 @@ const FavoriteAddReduser = (state, { payload }) => {
   state.favorite.push(payload);
 };
 
-const addNoticesSuccessReduser = (state, { payload }) => {
-  if (payload.addedNotice) {
-    state.own.push(payload.addedNotice);
-  }
-  // return;
-};
-
-const deleteNoticesSuccessReduser = (state, { payload }) => {
-  // state.own = payload;
-  const index = state.own.filter((notice) => notice._id === payload);
-
-  state.own.splice(index, 1);
-};
-
 const deleteFavoriteReduser = (state, { payload }) => {
-  // state.favorite = payload;
-  const index = state.favorite.findIndex((fav) => fav._id === payload);
-  // const index = state.favorite.then((fav) => fav._id === payload);
-  // console.log(payload);
-  state.favorite.splice(index, 1);
+  if (state.favorite.length > 0) {
+    const updatedFavorite = state.favorite.filter(({ _id }) => _id !== payload);
+    return {
+      ...state,
+      favorite: updatedFavorite,
+    };
+  }
 };
 
 const noticesSlice = createSlice({
@@ -96,5 +94,5 @@ const noticesSlice = createSlice({
       .addMatcher(getOperations("rejected"), rejectedReduser)
       .addMatcher(getOperations("fulfilled"), fulfilledReduser),
 });
-// slice reduser
+
 export const noticesReducer = noticesSlice.reducer;

@@ -2,19 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 
-// https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [
-//     react(),
-//     svgr({
-//       svgrOptions: {
-//         // svgr options
-//       },
-//     }),
-//   ],
-//   base: "/pet-app-frontend/",
-// });
-
 export default defineConfig({
   plugins: [
     react(),
@@ -28,5 +15,5 @@ export default defineConfig({
     open: "/index.html",
     port: 8000,
   },
-  base: "/pet-app-frontend/",
+  base: "/pet-app-frontend",
 });
