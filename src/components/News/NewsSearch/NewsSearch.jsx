@@ -10,7 +10,6 @@ import {
   FormSearch,
   InputSearch,
   Section,
-
 } from "./NewsSearch.styled";
 
 export const NewsSearch = () => {
@@ -58,7 +57,6 @@ export const NewsSearch = () => {
 
   return (
     <Section>
-      
       <FormSearch onSubmit={handleSubmit}>
         <InputSearch
           type="text"

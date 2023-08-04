@@ -26,6 +26,7 @@ import ModalApproveDelete from "../../Modals/ModalApproveDelete/ModalApproveDele
 
 import { Loader } from "../../Loader/Loader";
 import { selectUser } from "../../../redux/authSlice/selectors";
+import NoItemsFound from "../../NoItemsFound/NoItemsFound";
 
 import "../../../assets/index.less";
 import { List, WrapperPagination } from "./NoticesPetCard.styled";
@@ -174,15 +175,18 @@ const NoticesCategoriesList = () => {
         <Loader />
       ) : (
         <List>
-          {renderCards &&
+          {renderCards ? (
             renderCards.map((item) => (
               <CommonItemList
                 key={item._id}
                 item={item}
                 handleClickDelete={handleClickDelete}
                 handleClickDeleteFavorite={handleClickDeleteFavorite}
-              ></CommonItemList>
-            ))}
+              />
+            ))
+          ) : (
+            <NoItemsFound text="Nothing was found for your request." />
+          )}
           <WrapperPagination>
             <Pagination
               onChange={onChange}
@@ -194,7 +198,6 @@ const NoticesCategoriesList = () => {
           </WrapperPagination>
         </List>
       )}
-
       <ModalApproveDelete
         active={showModalDelete}
         setShow={setShowModalDelete}
