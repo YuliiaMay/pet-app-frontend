@@ -54,6 +54,7 @@ const NoticesCategoriesList = () => {
   const user = useSelector(selectUser);
   const IsLoading = useSelector(selectIsLoading);
   const [showModalDelete, setShowModalDelete] = useState(false);
+  const [lengthCards, setLengthCards] = useState(null);
 
   useEffect(() => {
     dispatch(fetchFavorite());
@@ -65,9 +66,7 @@ const NoticesCategoriesList = () => {
     dispatch(fetchFavorite());
 
     setRenderCards(favNotices);
-    setRenderCards((favNotices) =>
-      favNotices.filter((item) => item._id !== idCards)
-    );
+
     setFetchingFavorite(false);
   }, [dispatch, favNotices, fetchingFavorite]);
 
@@ -79,11 +78,12 @@ const NoticesCategoriesList = () => {
         search: search,
       })
     );
+    setLengthCards(length);
     if (!idCards) return;
     setRenderCards((prevRenderCards) =>
       prevRenderCards.filter((item) => item._id !== idCards)
     );
-  }, [currentCategory, currentPage, dispatch, idCards, search]);
+  }, [currentCategory, currentPage, dispatch, idCards, length, search]);
 
   useEffect(() => {
     if (!fetchingAll) return;
@@ -154,6 +154,9 @@ const NoticesCategoriesList = () => {
     setIdCards(id);
     setFetchingAll(true);
     setShowModalDelete(false);
+    setRenderCards((renderCards) =>
+      renderCards.filter((item) => item._id !== id)
+    );
   };
 
   const handleClickDeleteFavorite = (id) => {
@@ -171,11 +174,11 @@ const NoticesCategoriesList = () => {
 
   return (
     <>
-      {IsLoading && favNotices ? (
+      {IsLoading ? (
         <Loader />
       ) : (
         <List>
-          {renderCards ? (
+          {renderCards &&
             renderCards.map((item) => (
               <CommonItemList
                 key={item._id}
@@ -183,23 +186,29 @@ const NoticesCategoriesList = () => {
                 handleClickDelete={handleClickDelete}
                 handleClickDeleteFavorite={handleClickDeleteFavorite}
               />
-            ))
-          ) : (
-            <NoItemsFound text="Nothing was found for your request." />
-          )}
-          {renderCards && (
-            <WrapperPagination>
-              <Pagination
-                onChange={onChange}
-                current={currentPage}
-                showLessItems
-                total={length}
-                showTitle={false}
-              />
-            </WrapperPagination>
-          )}
+
+            ))}
         </List>
       )}
+      {!renderCards ? (
+        <>
+          <NoItemsFound text="Nothing was found on your request." />
+        </>
+      ) : (
+        <WrapperPagination>
+          {!IsLoading && (
+            <Pagination
+              onChange={onChange}
+              current={currentPage}
+              showLessItems
+              total={lengthCards}
+              showTitle={false}
+            />
+          )}
+        </WrapperPagination>
+
+      )}
+
       <ModalApproveDelete
         active={showModalDelete}
         setShow={setShowModalDelete}

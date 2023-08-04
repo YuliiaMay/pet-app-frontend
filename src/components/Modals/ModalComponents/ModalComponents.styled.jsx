@@ -32,7 +32,7 @@ export const ModalSt = styled.div`
     transform: scale(1);
   }
   @media screen and (min-width: 768px) {
-    width: 608px;
+    /* width: 608px; */
     margin: 0 auto;
     border-radius: 40px;
     padding: 12px 40px 60px;
