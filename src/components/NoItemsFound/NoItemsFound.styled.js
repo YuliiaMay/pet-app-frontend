@@ -5,12 +5,13 @@ const Text = styled.p`
   font-size: 24px;
   color: ${(props) => props.theme.color.yellow};
   text-align: center;
+  margin: 0 auto;
 
-  opacity: 0.3;
-
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     padding: 64px 0;
     font-size: 28px;
+
+    margin: 0 auto;
   }
 `;
 

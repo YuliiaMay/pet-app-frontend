@@ -41,7 +41,6 @@ export default function NewsList() {
     setCurrentPage(1);
   }, [query]);
 
-  console.log(news);
   return (
     <ResponsiveContainer>
       <List>
