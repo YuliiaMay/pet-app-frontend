@@ -1,5 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import PropTypes from "prop-types";
+
+import { Icon } from "../../../components/Icon/Icon";
+
+import { selectFavorite } from "../../../redux/selectors";
+import { selectUser } from "../../../redux/authSlice/selectors";
+
+import {
+  formatYears,
+  formattingCitName,
+  formattingAge,
+  formattingTitle,
+  checkPoster,
+} from "../../../utils";
+
+import { fetchFavoriteAdd } from "../../../redux/noticesSlice/operations";
+import ModalAttention from "../../Modals/ModalAttention/ModalAttention";
+import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
+
 import {
   Button,
   Div,
@@ -12,101 +31,61 @@ import {
   Li,
   Span,
 } from "./CommonItemList.styled";
-import PropTypes from "prop-types";
-import {useToggle} from "../../../hooks/useToggle"
-import { Icon } from "../../../components/Icon/Icon";
-
 import {
   Button1,
   Div3,
   P1,
 } from "../NoticesCategoriesList/NoticesPetCard.styled";
 
-import {
-  formatYears,
-  formattingCitName,
-  formattingAge,
-  formattingTitle,
-  checkPoster,
-} from "../../../utils";
-
-import { selectUser } from "../../../redux/authSlice/selectors";
-
-import { fetchFavoriteAdd, fetchFavoriteDelete } from "../../../redux/noticesSlice/operations";
-import ModalAttention from "../../Modals/ModalAttention/ModalAttention";
-import { ModalNotice } from "../../Modals/ModalNotice/ModalNotice";
-import { selectFavorite } from "../../../redux/selectors";
-
-
 export const CommonItemList = ({
   item,
   handleClickDelete,
   handleClickDeleteFavorite,
 }) => {
-
   const user = useSelector(selectUser);
   const favNotices = useSelector(selectFavorite);
   const [showModalAttention, setShowModalAttention] = useState(false);
-  const { isOpen, toggle } = useToggle();
+
   const [showModal, setShowModal] = useState(false);
   const [oneCard, setOneCard] = useState(null);
 
-
   const dispatch = useDispatch();
+
   const [isFollowingTrash, setIsFollowingTrash] = useState(false);
+
   const [isFavoritesBtn, setIsFavoritesBtn] = useState(false);
 
-
-  // useEffect(() => {
-  //   if (!user.token) return;
-  //   setIsFavoritesBtn(favNotices.find(({_id}) => _id === item._id));
-  // }, [favNotices, item._id, user.token]); 
-
-  
   useEffect(() => {
-    setIsFavoritesBtn(!!favNotices?.find((fav) => fav._id === item._id))
-  }, [favNotices, item._id])
-  
+    setIsFavoritesBtn(!!favNotices?.find((fav) => fav._id === item._id));
+  }, [item._id]);
 
-  const handleFavoritesBtn = (itemId, flag) => {
-    // if (!user.token) {
-    //   setShowModalAttention(true);
-    //   return;
-    // }
-    
-    setIsFavoritesBtn(!isFavoritesBtn);
-      console.log(itemId);
-      console.log(flag);
+  const handleFollowAdd = useCallback(
+    (itemId) => {
+      if (!user.token) {
+        setShowModalAttention(true);
+        return;
+      }
+      setIsFavoritesBtn(true);
 
-      
-      // dispatch(fetchFavoriteDelete(itemId));
-      // dispatch(fetchFavoriteAdd(itemId));
-
-
-    // setIsFavoritesBtn(false);
-    if (!flag) {
       dispatch(fetchFavoriteAdd(itemId));
       return;
-    }
-    handleClickDeleteFavorite(itemId);
-    // dispatch(fetchFavoriteDelete(itemId));
-    
-  };
+    },
+    [dispatch, user.token]
+  );
 
-  const handleFollowClick = (item) => {
-    if (!user.token) {
-      setShowModalAttention(true);
-      return;
-    }
+  const handleFollowDel = useCallback(
+    (itemId) => {
+      setIsFavoritesBtn(false);
 
-    // dispatch(setFavoriteId(item));
-  };
+      handleClickDeleteFavorite(itemId);
+    },
+    [handleClickDeleteFavorite]
+  );
 
-  const [isFollowing, setIsFollowing] = useState(false);
-
-  const handleClickDeleteTest = (id) => {
+  const handleClickDeleteTrash = (id) => {
     handleClickDelete(id);
   };
+
   useEffect(() => {
     if (!user.token) return;
     if (user._id === item.owner) {
@@ -115,15 +94,10 @@ export const CommonItemList = ({
     }
   }, [item.owner, user]);
 
-
   const handleClickCards = (it) => {
-    console.log(it);
     setOneCard(it);
     setShowModal(true);
   };
-
-  
-
 
   return (
     <Info>
@@ -132,41 +106,33 @@ export const CommonItemList = ({
         <Div1>
           <PP>{item.category}</PP>
           <Div2>
+            <Button aria-label="add to favorites">
+              {isFavoritesBtn ? (
+                <div onClick={() => handleFollowDel(item._id)}>
+                  <Icon
+                    iconName={"icon-heart"}
+                    width={"24px"}
+                    height={"24px"}
+                    stroke={"#54ADFF"}
+                    fill={"#54ADFF"}
+                  />
+                </div>
+              ) : (
+                <div onClick={() => handleFollowAdd(item._id)}>
+                  <Icon
+                    iconName={"icon-heart-full"}
+                    width={"24px"}
+                    height={"24px"}
+                    stroke={"#54ADFF"}
+                  />
+                </div>
+              )}
+            </Button>
 
-            <div
-              // onClick={() => handleFavoritesBtn(item._id, isFavoritesBtn)}
-            >
-              <Button
-                aria-label="add to favorites"
-                onClick={() => handleFavoritesBtn(item._id, isFavoritesBtn)}
-              >
-                {
-                  isFavoritesBtn
-                    ? <Icon
-                        iconName={"icon-heart-full"}
-                        width={"24px"}
-                        height={"24px"}
-                        stroke={"#54ADFF"}
-                        fill={"#54ADFF"}
-                        // $follow={follow}
-                      />  
-                    : <Icon
-                        iconName={"icon-heart-full"}
-                        width={"24px"}
-                        height={"24px"}
-                        stroke={"#54ADFF"}
-                        // fill={"#54ADFF"}
-                        // $follow={follow}
-                      />
-                }
-
-              </Button>
-            </div>
             {isFollowingTrash ? (
-
               <Button
                 aria-label="add to trash"
-                onClick={() => handleClickDeleteTest(item._id)}
+                onClick={() => handleClickDeleteTrash(item._id)}
               >
                 <Icon
                   iconName={"icon-trash"}
@@ -225,6 +191,8 @@ export const CommonItemList = ({
           setShow={setShowModal}
           card={oneCard}
           isFavorites={isFavoritesBtn}
+          handleFollowAdd={handleFollowAdd}
+          handleFollowDel={handleFollowDel}
         />
 
         <ModalAttention
@@ -239,8 +207,6 @@ CommonItemList.propTypes = {
   item: PropTypes.object,
   children: PropTypes.object,
   handleClickDelete: PropTypes.func,
-
   handleClickDeleteFavorite: PropTypes.func,
   isFavorite: PropTypes.bool,
 };
-
