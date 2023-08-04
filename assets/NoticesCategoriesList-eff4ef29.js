@@ -1,4 +1,4 @@
-import{s as n,a as d,r as i,e as b,f as E,j as e,I as f,u as Y,A as Z,c as ee,B as L,C as te,D as ne,i as ie,E as oe,F as se}from"./index-7c6b2bc2.js";import{f as re,N as ae,P as le,s as ce}from"./index-999a5477.js";import{M as W,C as de,W as pe,B as he,a as xe,Y as fe,D as ge}from"./ModalAttention-e5d062f5.js";import{M as U}from"./ModalComponents-e8fbfea2.js";const ue="/pet-app-frontend/assets/defaultPoster-c04359c8.jpeg",R=t=>t||ue,me=t=>t.replace(/[.\-/\\\s]/g,"");function je(t){if(!t)return;const o=new Date,r=new Date(o.getFullYear(),o.getMonth(),o.getDate()),a=new Date(t),l=new Date(r.getFullYear(),a.getMonth(),a.getDate());let p;return p=r.getFullYear()-a.getFullYear(),r<l&&(p=p-1),p}const we=t=>{if(!t)return;let o=t;return o.length>6&&(o=t.slice(0,4)+"..."),o},be=t=>{let o=t;return o.length>6&&(o=t.slice(0,4)+"..."),o},Fe=t=>{if(!t)return;let o=t;return o.length>15&&(o=t.slice(0,21)+"..."),o},ke=t=>t.notices.items,q=t=>t.notices.favorite,ve=t=>t.notices.own,ye=t=>t.notices.isLoading,Ce=n.div`
+import{s as n,a as d,r as i,e as b,f as E,j as e,I as f,u as Y,A as Z,c as ee,B as L,C as te,D as ne,i as ie,E as oe,F as se}from"./index-8fcb056a.js";import{f as re,N as ae,P as le,s as ce}from"./index-75ba178f.js";import{M as W,C as de,W as pe,B as he,a as xe,Y as fe,D as ge}from"./ModalAttention-363c7f44.js";import{M as U}from"./ModalComponents-6d218339.js";const ue="/pet-app-frontend/assets/defaultPoster-c04359c8.jpeg",R=t=>t||ue,me=t=>t.replace(/[.\-/\\\s]/g,"");function je(t){if(!t)return;const o=new Date,r=new Date(o.getFullYear(),o.getMonth(),o.getDate()),a=new Date(t),l=new Date(r.getFullYear(),a.getMonth(),a.getDate());let p;return p=r.getFullYear()-a.getFullYear(),r<l&&(p=p-1),p}const we=t=>{if(!t)return;let o=t;return o.length>6&&(o=t.slice(0,4)+"..."),o},be=t=>{let o=t;return o.length>6&&(o=t.slice(0,4)+"..."),o},Fe=t=>{if(!t)return;let o=t;return o.length>15&&(o=t.slice(0,21)+"..."),o},ke=t=>t.notices.items,q=t=>t.notices.favorite,ve=t=>t.notices.own,ye=t=>t.notices.isLoading,Ce=n.div`
   width: 280px;
 
   display: flex;
@@ -363,11 +363,10 @@ import{s as n,a as d,r as i,e as b,f as E,j as e,I as f,u as Y,A as Z,c as ee,B 
   @media screen and (min-width: 768px) {
     flex-wrap: wrap;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     column-gap: 32px;
     row-gap: 24px;
-    padding-left: 10px;
   }
 
   & > li > p {
