@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import {
-  selectError,
   selectFavorite,
   selectIsLoading,
   selectNotieces,
@@ -23,14 +22,13 @@ import {
 import { CommonItemList } from "../CommonItemList/CommonItemList";
 import { scrollToTop } from "../../../utils";
 
-import { List, WrapperPagination } from "./NoticesPetCard.styled";
-
-import "../../../assets/index.less";
-
 import ModalApproveDelete from "../../Modals/ModalApproveDelete/ModalApproveDelete";
 
 import { Loader } from "../../Loader/Loader";
 import { selectUser } from "../../../redux/authSlice/selectors";
+
+import "../../../assets/index.less";
+import { List, WrapperPagination } from "./NoticesPetCard.styled";
 
 const NoticesCategoriesList = () => {
   const dispatch = useDispatch();
@@ -55,25 +53,22 @@ const NoticesCategoriesList = () => {
   const user = useSelector(selectUser);
   const IsLoading = useSelector(selectIsLoading);
   const [showModalDelete, setShowModalDelete] = useState(false);
-  console.log(favNotices);
+
+  useEffect(() => {
+    dispatch(fetchFavorite());
+  }, []);
 
   useEffect(() => {
     if (!fetchingFavorite) return;
-    console.log(idCardsFavorite);
+
     dispatch(fetchFavorite());
 
     setRenderCards(favNotices);
-
+    setRenderCards((favNotices) =>
+      favNotices.filter((item) => item._id !== idCards)
+    );
     setFetchingFavorite(false);
-  }, [dispatch, favNotices, fetchingFavorite, idCardsFavorite]);
-
-  // useEffect(() => {
-  //   if (!idCardsFavorite) return;
-  //   setRenderCards((prevRenderCards) =>
-  //     prevRenderCards.filter((item) => item._id !== idCardsFavorite)
-  //   );
-  //   setIdCardsFavorite(false);
-  // }, [dispatch, fetchingFavorite, idCardsFavorite, test]);
+  }, [dispatch, favNotices, fetchingFavorite]);
 
   useEffect(() => {
     dispatch(
@@ -94,9 +89,7 @@ const NoticesCategoriesList = () => {
     if (!user._id) return;
     dispatch(fetchNoticesAll({ owner: user._id }));
     setRenderCards(all);
-    setRenderCards((prevRenderCards) =>
-      prevRenderCards.filter((item) => item._id !== idCards)
-    );
+
     setFetchingAll(false);
   }, [all, dispatch, fetchingAll, idCards, renderCards, user._id]);
 
@@ -115,10 +108,6 @@ const NoticesCategoriesList = () => {
     } else if (location.pathname === "/notices/favorite") {
       setFetchingFavorite(true);
       if (!idCardsFavorite) return;
-
-      // setRenderCards((prevRenderCards) =>
-      //   prevRenderCards.filter((item) => item._id === idCardsFavorite)
-      // );
 
       setFetchingFavorite(false);
       setIdCardsFavorite(false);
@@ -167,10 +156,16 @@ const NoticesCategoriesList = () => {
   };
 
   const handleClickDeleteFavorite = (id) => {
+    setFetchingFavorite(true);
     dispatch(fetchFavoriteDelete(id));
 
-    console.log(favNotices);
-    setIdCardsFavorite(id);
+    if (location.pathname === "/notices/favorite") {
+      setRenderCards((favNotices) =>
+        favNotices.filter((item) => item._id !== id)
+      );
+    }
+
+    setFetchingFavorite(false);
   };
 
   return (
