@@ -5,6 +5,7 @@ export const CloseIcon = styled.div`
   text-align: right;
   margin-top: 24px;
   padding-right: 24px;
+  cursor: pointer;
 `;
 
 export const Wrapper = styled.div`

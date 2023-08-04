@@ -156,7 +156,7 @@ export function ModalNotice({
                       </td>
                     </tr>
                     <tr>
-                      <td>The sex:</td>
+                      <td>Sex:</td>
                       <td>
                         <span>{sex}</span>
                       </td>

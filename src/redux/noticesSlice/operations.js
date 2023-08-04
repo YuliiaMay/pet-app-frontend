@@ -28,7 +28,7 @@ export const fetchNotices = createAsyncThunk(
         params: {
           category: category,
           page: page,
-          limit: 10,
+          limit: 12,
           word: search,
         },
       });

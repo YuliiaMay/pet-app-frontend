@@ -57,11 +57,8 @@ export const ContainerInfo = styled.div`
 export const ImgWrapper = styled.div`
   max-width: 240px;
   height: 240px;
-
   margin: 0 auto;
-
   overflow: hidden;
-  /* object-fit: cover; */
 
   border-radius: 0px 0px 40px 40px;
   span {
@@ -94,7 +91,6 @@ export const Title = styled.h2`
   margin-top: 10px;
   padding-bottom: 20px;
   font-size: 28px;
-
   letter-spacing: -0.28px;
 
   @media screen and (min-width: 768px) {

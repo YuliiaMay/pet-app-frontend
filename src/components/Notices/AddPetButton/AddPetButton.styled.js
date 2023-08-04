@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
-export const ButtonAdd = styled(NavLink)`
+export const ButtonAdd = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 24px;
-  padding: 8px 20px;
+  width: 130px;
+  height: 35px;
+  /* padding: 8px 20px; */
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.64px;

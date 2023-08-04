@@ -56,6 +56,19 @@ export const CommonItemList = ({
   const [isFavoritesBtn, setIsFavoritesBtn] = useState(false);
 
   useEffect(() => {
+
+//     if (!user.token) return;
+//     setIsFavoritesBtn(savedFavoriteId.includes(item._id));
+//   }, [item._id, savedFavoriteId, user.token]);
+
+//   const handleFavoritesBtn = (itemId, flag) => {
+//     if (!user.token) {
+//       setShowModalAttention(true);
+//       return;
+//     }
+
+//     if (!flag) {
+
     setIsFavoritesBtn(!!favNotices?.find((fav) => fav._id === item._id));
   }, [item._id]);
 
@@ -65,6 +78,7 @@ export const CommonItemList = ({
         setShowModalAttention(true);
         return;
       }
+
       setIsFavoritesBtn(true);
 
       dispatch(fetchFavoriteAdd(itemId));
@@ -128,6 +142,7 @@ export const CommonItemList = ({
                 </div>
               )}
             </Button>
+
 
             {isFollowingTrash ? (
               <Button

@@ -2,12 +2,13 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const WrapperInfo = styled.div`
-  padding: 12px 40px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  margin: 0 auto;
   gap: 40px;
+  width: 608px;
   & h2 {
     font-size: 36px;
     font-weight: 500;
@@ -65,6 +66,13 @@ export const LogInModal = styled(NavLink)`
     width: 240px;
     padding: 8px 0;
   }
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(239, 244, 167, 1) 1%,
+      rgba(255, 193, 7, 1) 93%
+    );
+  }
 `;
 export const RegisterModal = styled(NavLink)`
   font-weight: 700;
@@ -76,5 +84,10 @@ export const RegisterModal = styled(NavLink)`
   @media screen and (max-width: 767px) {
     width: 240px;
     padding: 8px 0;
+  }
+  &:hover {
+    background-color: #ffc107;
+    color: #ffffff;
+    border: 1px solid #ffffff;
   }
 `;

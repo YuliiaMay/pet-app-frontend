@@ -1,10 +1,10 @@
+
 import { StyledForm, Label, Input} from "./DetailsForm.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { detailsForm, formStage } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
 import { selectBirthday, selectCategory, selectName, selectTitle, selectType } from "../../../../redux/petsSlice/selectors";
 import { useFormik } from "formik";
-
 
 
 const DetailsForm = () => {
@@ -97,6 +97,5 @@ const DetailsForm = () => {
         </StyledForm>
     );
 };
-
 
 export default DetailsForm;
