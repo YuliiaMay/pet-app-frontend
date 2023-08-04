@@ -5,7 +5,7 @@ import FormBtnNav from "../FormBtnNav/FormBtnNav";
 import { selectCategory } from "../../../../redux/petsSlice/selectors";
 
 
-const OptionForm = ({leaveAddPetForm}) => {
+const OptionForm = ({ onLeavePage }) => {
     const dispatch = useDispatch();
     const category = useSelector(selectCategory);
     
@@ -77,7 +77,7 @@ const OptionForm = ({leaveAddPetForm}) => {
             </OptionList>
             <FormBtnNav
                 onClick={onNextStep}
-                leaveAddPetForm={leaveAddPetForm}
+                onLeavePage={onLeavePage}
             /> 
         </>
     )

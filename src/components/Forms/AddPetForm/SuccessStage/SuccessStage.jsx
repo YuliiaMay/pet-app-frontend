@@ -8,44 +8,23 @@ import { BtnBack, LinkBack } from "../FormBtnNav/FormBtnNav.styled";
 import { SuccessContainer, Image } from "./SuccessStage.styled";
 
 
-export const SuccessStage = ({ leaveAddPetForm }) => {
+export const SuccessStage = ({ onLeavePage, onClick }) => {
     const dispatch = useDispatch();
 
 
-    const resetState = () => {
-        dispatch(
-            // formStage(1),
-            optionForm({
-                category: null        
-            }),
-            detailsForm({
-                name: "",
-                birthday: "",
-                breed: "",
-                title: "",
-                type: ""        
-            }),
-            moreInfoForm({
-                sex: "",
-                imgUrl: "",
-                comments: "",
-                location: "",
-                price: ""        
-            })
-        );
-    }    
+   
 
     return ( 
         <SuccessContainer>
             <Image src={succsessImg} alt="success" width={300} />
-            <BtnBack onClick={leaveAddPetForm}>
+            <BtnBack onLeavePage={onLeavePage}>
                 <Icon
                     iconName={"icon-arrow-left"}
                     width={"24px"}
                     height={"24px"}
                     stroke={"#54ADFF"}
                 />  
-                <LinkBack>Go Back</LinkBack>
+                <LinkBack onClick={onClick}>Go Back</LinkBack>
             </BtnBack>
         </SuccessContainer>
 

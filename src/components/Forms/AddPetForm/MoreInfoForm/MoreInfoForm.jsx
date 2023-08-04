@@ -3,7 +3,7 @@ import defaultAvatar from "../../../../images/default-avatar.png";
 
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
 import { useState } from "react";
-import { formStage, moreInfoForm } from "../../../../redux/petsSlice/petsSlice";
+import { detailsForm, formStage, moreInfoForm, optionForm } from "../../../../redux/petsSlice/petsSlice";
 import {
   selectSex,
   selectCategory,
@@ -36,6 +36,7 @@ import {
   TheSexBtn,
   BtnSexText,
 } from "./MoreInfoForm.styled";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -50,7 +51,7 @@ const MoreInfoForm = () => {
   const breed = useSelector(selectBreed);
   const title = useSelector(selectTitle);
   const type = useSelector(selectType);
-
+  const navigate = useNavigate();
 
 
   const formik = useFormik({
@@ -89,7 +90,10 @@ const MoreInfoForm = () => {
       }      
 
       dispatch(addPetOrNotice(formData));
-      dispatch(formStage("success"));
+      resetState();
+      handleNavigate();
+
+      // dispatch(formStage("success"));
     },
   })
   
@@ -127,6 +131,41 @@ const MoreInfoForm = () => {
       return;
     }     
   };
+
+  const handleNavigate = () => {
+    if (category === 'your pet') {
+        navigate('/user');
+    } else if (category === 'sell') {
+        navigate('/notices/sell');
+    } else if (category === 'lost/found') {
+        navigate('/notices/lost-found');
+    } else if (category === 'in good hands') {
+        navigate('/notices/for-free');
+    }
+  };  
+  
+  const resetState = () => {
+    dispatch(
+      // formStage(1),
+      optionForm({
+          category: null        
+      }),
+      detailsForm({
+          name: "",
+          birthday: "",
+          breed: "",
+          title: "",
+          type: ""        
+      }),
+      moreInfoForm({
+          sex: "",
+          imgUrl: "",
+          comments: "",
+          location: "",
+          price: ""        
+      })
+    );
+} 
 
 
 
