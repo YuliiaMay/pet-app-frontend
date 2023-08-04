@@ -67,7 +67,9 @@ const RegisterForm = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-//   const [userLogin, setUserLogin] = useState({});
+
+
+  const [userLogin, setUserLogin] = useState({});
 //   //const [errorMessage, setErrorMessage] = useState("");
 
 //   const handleSubmit = ({ name, email, password }, { resetForm }) => {
@@ -85,6 +87,7 @@ const RegisterForm = () => {
   //   );
   // };
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
+    setUserLogin({ email, password });
     dispatch(register({ name, email, password })).then((response) => {
       if (response.error) {
         setErrorMessage("Registration failed. Please try again later.");
@@ -242,7 +245,11 @@ const RegisterForm = () => {
                 Registration
               </SubmitButton>
               {isRegistered && (
-                <ModalCongrats setShow={setIsModalOpen} active={isModalOpen} />
+                <ModalCongrats
+                  setShow={setIsModalOpen}
+                  active={isModalOpen}
+                  userLogin={userLogin}
+                />
               )}
               {errors && <div>{errorMessage} </div>}
 
