@@ -14,14 +14,15 @@ import { useLocation } from "react-router";
 
 
 
-const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
+const FormBtnNav = ({ onClick }) => {
     const stage = useSelector(selectCurrentStage);
+    const location = useLocation();
     const dispatch = useDispatch();
+    
+    const back = useRef(location.state?.from ?? '/notices/sell');
+    console.log(back.current);
     let prev;
 
-    const location = useLocation();
-    const back = useRef(location.state?.from ?? 'notices/sell');
-    // console.log(back.current);
 
 
     const countPrevStage = () => {
@@ -47,7 +48,9 @@ const FormBtnNav = ({ onClick, leaveAddPetForm }) => {
                             {
                                 stage === 1
                                     ? (
-                                        <BtnBack to={back.current}>
+                                        <BtnBack
+                                            to={back.current}
+                                        >
                                             <Icon
                                                 iconName={"icon-arrow-left"}
                                                 width={"24px"}

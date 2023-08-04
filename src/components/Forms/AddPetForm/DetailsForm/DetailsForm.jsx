@@ -40,59 +40,62 @@ const DetailsForm = () => {
                         <>
                             <Label htmlFor="title">
                                 Title of add
+                            
+                                <Input
+                                    placeholder="Type title for adv"
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.title} 
+                                    required
+                                />    
                             </Label>
-                            <Input
-                                placeholder="Type title for adv"
-                                type="text"
-                                id="title"
-                                name="title"
-                                onChange={formik.handleChange}
-                                value={formik.values.title} 
-                                required
-                            />      
                         </>                        
                 }
 
                 
                 <Label htmlFor="pet-name">
                     Pet’s name
-                </Label>
-                <Input
-                    placeholder="Type name pet"
-                    type="text"
-                    id="pet-name"
-                    name="name"
-                    onChange={formik.handleChange}
-                    value={formik.values.name}  
-                    required
-                />
                 
+                    <Input
+                        placeholder="Type name pet"
+                        type="text"
+                        id="pet-name"
+                        name="name"
+                        onChange={formik.handleChange}
+                        value={formik.values.name}  
+                        required
+                    />
+                </Label>
+            
                 <Label htmlFor="pet-birth">
                     Date of birth
-                </Label> 
-                <Input
-                    type="date"
-                    max={currentDay}
-                    id="pet-birth"
-                    name="birthday"
-                    onChange={formik.handleChange}
-                    value={formik.values.birthday} 
-                    required
-                />
                 
+                    <Input
+                        type="date"
+                        max={currentDay}
+                        id="pet-birth"
+                        name="birthday"
+                        onChange={formik.handleChange}
+                        value={formik.values.birthday} 
+                        required
+                    />
+                </Label> 
+            
                 <Label htmlFor="pet-type">
                     Type
+                
+                    <Input
+                        placeholder="Type of pet"
+                        type="type"
+                        id="pet-type"
+                        name="type"
+                        onChange={formik.handleChange}
+                        value={formik.values.type}  
+                        required
+                    />
                 </Label>
-                <Input
-                    placeholder="Type of pet"
-                    type="type"
-                    id="pet-type"
-                    name="type"
-                    onChange={formik.handleChange}
-                    value={formik.values.type}  
-                    required
-                />
-
                 <FormBtnNav />
         </StyledForm>
     );

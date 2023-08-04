@@ -186,6 +186,7 @@ const NoticesCategoriesList = () => {
                 handleClickDelete={handleClickDelete}
                 handleClickDeleteFavorite={handleClickDeleteFavorite}
               />
+
             ))}
         </List>
       )}
@@ -205,6 +206,7 @@ const NoticesCategoriesList = () => {
             />
           )}
         </WrapperPagination>
+
       )}
 
       <ModalApproveDelete

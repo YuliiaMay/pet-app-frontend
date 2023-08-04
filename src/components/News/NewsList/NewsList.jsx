@@ -56,7 +56,6 @@ export default function NewsList() {
           </>
         )}
       </List>
-      {/* {!news.length && <NoItemsFound text="no data" />} */}
       {news && (
         <WrapperPagination>
           <Pagination

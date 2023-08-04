@@ -63,7 +63,7 @@ export function ModalNotice({
       setShowModalAttention(true);
       return;
     }
-
+0
     if (isFavoritesBtn) {
       handleFollowDel(itemId);
     } else {

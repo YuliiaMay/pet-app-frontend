@@ -10,6 +10,7 @@ import { Navigation } from "../Nav/Nav";
 import { Wrapper } from "./Header.styled";
 import { AuthNav } from "../AuthNav/AuthNav";
 
+
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,11 +21,13 @@ export const Header = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <Wrapper>
-      <Logo />
-      <Navigation />
-      {isLoggedIn ? <UserNav toggleMenu={toggleMenu} /> : <AuthNav />}
-      <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
-    </Wrapper>
+
+      <Wrapper>
+        <Logo />
+        <Navigation />
+        {isLoggedIn ? <UserNav toggleMenu={toggleMenu} /> : <AuthNav />}
+        <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
+      </Wrapper>
+
   );
 };

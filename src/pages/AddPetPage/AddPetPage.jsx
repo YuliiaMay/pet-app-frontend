@@ -1,21 +1,24 @@
-import { useLocation } from "react-router";
+
 import AddPetMultiStepForm from "../../components/Forms/AddPetForm/AddPetMultiStepForm";
-import { useRef } from "react";
+
 import { Overlay } from "./AddPetPage.styled";
-import { ResponsiveContainer } from "../../assets/styles/ResponsiveContainer";
+
 
 
 
 const AddPetPage = () => {
-  const location = useLocation();
-  const leaveAddPetForm = useRef(location.state?.from ?? 'notices/sell');
+  // const location = useLocation();
+  // const navigate = useNavigate();
+  // const onLeavePage = useRef(location.state?.from ?? '/notices/sell');
 
   return (
-    <ResponsiveContainer>
+
       <Overlay>
-        <AddPetMultiStepForm leaveAddPetForm={leaveAddPetForm} />
+        <AddPetMultiStepForm
+          // onLeavePage={onLeavePage}
+        />
       </Overlay>      
-    </ResponsiveContainer>
+
   );
 };
 

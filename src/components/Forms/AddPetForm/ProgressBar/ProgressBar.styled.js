@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Bar = styled.nav`
     display: flex;
     justify-content: center;
+
     gap: 12px;
     margin-bottom: 40px;
     padding-left: auto;
