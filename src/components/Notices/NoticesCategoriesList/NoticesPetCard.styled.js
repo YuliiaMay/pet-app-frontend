@@ -58,6 +58,7 @@ export const P1 = styled.p`
   padding: 20px;
   font-size: 24px;
   font-weight: 700;
+  height: 80px;
 `;
 
 export const Button1 = styled.button`
