@@ -1,4 +1,4 @@
-import{s as n,a as f,r as o,j as t,c as m,g as w,u as b,h as j,R as y,f as S,d as v}from"./index-0ed24258.js";import{f as N,P as C,s as P}from"./index-1ccbc64e.js";import{S as T,a as z}from"./Cross-a9e1053e.js";const k=n.div`
+import{s as n,a as f,r as o,j as t,c as m,e as w,u as b,k as j,R as y,i as S,d as v}from"./index-49ee36c7.js";import{f as N,P as C,s as P}from"./index-a9e8edcb.js";import{S as T,a as k}from"./Cross-40e5cc51.js";const z=n.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,16 +120,11 @@ import{s as n,a as f,r as o,j as t,c as m,g as w,u as b,h as j,R as y,f as S,d a
 
   align-items: center;
   width: 100%;
-
-  /* margin: 0 auto; */
   margin-top: 60px;
   margin-bottom: 30px;
 
   @media screen and (min-width: 768px) {
     display: flex;
-    /* justify-content: center; */
-
-    /* width: 357px; */
     width: 100%;
   }
 `;function A(){const[e,r]=o.useState(!0),[i,s]=o.useState(1),a=m(),p=new URLSearchParams(a.search).get("query"),l=w(L),d=b();o.useEffect(()=>{d(j({page:i,search:p})),r(!1)},[i,d,p]);const x=c=>{s(c),P()};if(o.useEffect(()=>{s(1)},[p]),!!l)return t.jsxs(y,{children:[t.jsx(W,{children:e?t.jsx(S,{}):t.jsx(t.Fragment,{children:l.map(c=>t.jsx(g,{...c},c._id))})}),t.jsx(_,{children:t.jsx(C,{onChange:x,current:i,showLessItems:!0,total:300,showTitle:!1})})]})}const Y=n.div`
@@ -187,7 +182,7 @@ import{s as n,a as f,r as o,j as t,c as m,g as w,u as b,h as j,R as y,f as S,d a
   right: 13px;
   border: none;
   background-color: inherit;
-`,M=()=>{const[e,r]=o.useState(""),[i,s]=o.useState(""),a=m(),p=h=>{const u=h.currentTarget.value.toLowerCase();r(u)},l=h=>{h.preventDefault(),e.trim()!==""&&(x({query:e}),r(e))},[d,x]=v();d.get("query");const c=()=>{r(""),x(),s(a.pathname)};return o.useEffect(()=>{s(a.pathname),i!==a.pathname&&r("")},[a.pathname,i,x]),t.jsx(Y,{children:t.jsxs(G,{onSubmit:l,children:[t.jsx(H,{type:"text",placeholder:"Search",value:e,autoComplete:"off",onChange:p}),t.jsx(J,{type:"submit",position:e,onSubmit:l,children:t.jsx(T,{})}),e!==""&&t.jsx(K,{type:"button",onClick:c,children:t.jsx(z,{})})]})})},O=n.div`
+`,M=()=>{const[e,r]=o.useState(""),[i,s]=o.useState(""),a=m(),p=h=>{const u=h.currentTarget.value.toLowerCase();r(u)},l=h=>{h.preventDefault(),e.trim()!==""&&(x({query:e}),r(e))},[d,x]=v();d.get("query");const c=()=>{r(""),x(),s(a.pathname)};return o.useEffect(()=>{s(a.pathname),i!==a.pathname&&r("")},[a.pathname,i,x]),t.jsx(Y,{children:t.jsxs(G,{onSubmit:l,children:[t.jsx(H,{type:"text",placeholder:"Search",value:e,autoComplete:"off",onChange:p}),t.jsx(J,{type:"submit",position:e,onSubmit:l,children:t.jsx(T,{})}),e!==""&&t.jsx(K,{type:"button",onClick:c,children:t.jsx(k,{})})]})})},O=n.div`
   margin-top: 40px;
   margin-bottom: 23px;
 
@@ -202,4 +197,4 @@ import{s as n,a as f,r as o,j as t,c as m,g as w,u as b,h as j,R as y,f as S,d a
     font-size: 48px;
     font-weight: 700;
   }
-`,X=()=>t.jsx(O,{children:t.jsx(V,{children:"News"})}),ne=()=>t.jsx(t.Fragment,{children:t.jsxs(k,{children:[t.jsx(X,{}),t.jsx(M,{}),t.jsx(A,{})]})});export{ne as default};
+`,X=()=>t.jsx(O,{children:t.jsx(V,{children:"News"})}),ne=()=>t.jsx(t.Fragment,{children:t.jsxs(z,{children:[t.jsx(X,{}),t.jsx(M,{}),t.jsx(A,{})]})});export{ne as default};

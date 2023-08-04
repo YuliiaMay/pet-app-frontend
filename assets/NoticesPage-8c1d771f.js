@@ -1,8 +1,8 @@
-import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./index-0ed24258.js";import{S as y,a as v}from"./Cross-a9e1053e.js";const k=i.div`
+import{s as n,r as o,c as g,d as f,j as e,N as b,e as w,f as j,g as S,h as v,i as y,O as k}from"./index-49ee36c7.js";import{S as C,a as $}from"./Cross-40e5cc51.js";import{M as F}from"./ModalAttention-b2b2b7cf.js";import"./ModalComponents-db1c86ea.js";const P=n.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`,$=i.form`
+`,z=n.form`
   display: flex;
   position: relative;
   align-items: center;
@@ -11,7 +11,7 @@ import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./ind
   @media (max-width: 479px) {
     width: 280px;
   }
-`,C=i.input`
+`,A=n.input`
   width: 100%;
   font-size: 20px;
   font-weight: 400;
@@ -34,7 +34,7 @@ import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./ind
     letter-spacing: 0.56px;
     padding: 14px 20px;
   }
-`,F=i.button`
+`,B=n.button`
   position: absolute;
   width: 24px;
   height: 24px;
@@ -46,14 +46,14 @@ import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./ind
   @media (max-width: 480px) {
     right: ${t=>t.position?"37px":"13px"};
   }
-`,z=i.button`
+`,L=n.button`
   position: absolute;
   width: 24px;
   height: 24px;
   right: 13px;
   border: none;
   background-color: inherit;
-`,P=()=>{const[t,r]=n.useState(""),[c,x]=n.useState(""),s=f(),h=p=>{const g=p.currentTarget.value.toLowerCase();r(g)},d=p=>{p.preventDefault(),t.trim()!==""&&(a({search:t}),r(t))},[m,a]=b();m.get("search");const u=()=>{r(""),a(),x(s.pathname)};return n.useEffect(()=>{x(s.pathname),c!==s.pathname&&r("")},[s.pathname,c,a]),e.jsx(k,{children:e.jsxs($,{onSubmit:d,children:[e.jsx(C,{type:"text",placeholder:"Search",value:t,autoComplete:"off",onChange:h}),e.jsx(F,{type:"submit",position:t,onSubmit:d,children:e.jsx(y,{})}),t!==""&&e.jsx(z,{type:"button",onClick:u,children:e.jsx(v,{})})]})})},B=i.div`
+`,N=()=>{const[t,i]=o.useState(""),[a,c]=o.useState(""),r=g(),l=d=>{const u=d.currentTarget.value.toLowerCase();i(u)},x=d=>{d.preventDefault(),t.trim()!==""&&(p({search:t}),i(t))},[h,p]=f();h.get("search");const m=()=>{i(""),p(),c(r.pathname)};return o.useEffect(()=>{c(r.pathname),a!==r.pathname&&i("")},[r.pathname,a,p]),e.jsx(P,{children:e.jsxs(z,{onSubmit:x,children:[e.jsx(A,{type:"text",placeholder:"Search",value:t,autoComplete:"off",onChange:l}),e.jsx(B,{type:"submit",position:t,onSubmit:x,children:e.jsx(C,{})}),t!==""&&e.jsx(L,{type:"button",onClick:m,children:e.jsx($,{})})]})})},E=n.div`
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
@@ -68,7 +68,7 @@ import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./ind
     margin-top: 43px;
     margin-bottom: 42px;
   }
-`,L=i.div`
+`,M=n.div`
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -84,7 +84,7 @@ import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./ind
     width: 100%;
     gap: 8px;
   }
-`,o=i(l)`
+`,s=n(b)`
   display: flex;
   padding: 8px 16px;
   justify-content: center;
@@ -103,12 +103,13 @@ import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./ind
   &:hover {
     box-shadow: ${t=>t.theme.color.blue} 0px 2px 8px 0px;
   }
-`,N=t=>n.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",...t},n.createElement("path",{d:"M12 7V17M7 12L17 12",stroke:"#FEF9F9",strokeWidth:1.5,strokeLinecap:"round",strokeLinejoin:"round"})),E=i(l)`
+`,Q=t=>o.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",...t},o.createElement("path",{d:"M12 7V17M7 12L17 12",stroke:"#FEF9F9",strokeWidth:1.5,strokeLinecap:"round",strokeLinejoin:"round"})),T=n.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 24px;
-  padding: 8px 20px;
+  width: 130px;
+  height: 35px;
+  /* padding: 8px 20px; */
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.64px;
@@ -139,7 +140,7 @@ import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./ind
     border-radius: 100%;
     padding: 0px;
   }
-`,A=i.svg`
+`,I=n.svg`
   display: flex;
   width: 24px;
   height: 24px;
@@ -151,7 +152,7 @@ import{s as i,r as n,c as f,d as b,j as e,N as l,e as w,f as j,O as S}from"./ind
   @media (max-width: 767px) {
     margin-left: 0px;
   }
-`,Q=()=>e.jsxs(E,{to:"/add-pet",children:[e.jsx("span",{children:"Add Pet"}),e.jsx(A,{children:e.jsx(N,{})})]}),T=()=>{const{isLoggedIn:t}=w();return e.jsxs(e.Fragment,{children:[e.jsxs(B,{children:[e.jsxs(L,{children:[e.jsx(o,{to:"/notices/sell",children:"sell"}),e.jsx(o,{to:"/notices/lost-found",children:"lost/found"}),e.jsx(o,{to:"/notices/for-free",children:"in good hands"}),t&&e.jsxs(e.Fragment,{children:[e.jsx(o,{to:"/notices/favorite",children:"favorite ads"}),e.jsx(o,{to:"/notices/own",children:"my ads"})]})]}),e.jsx(Q,{})]}),e.jsx(n.Suspense,{fallback:e.jsx(j,{}),children:e.jsx(S,{})})]})},I=i.div`
+`,D=()=>{const[t,i]=o.useState(!1),{token:a}=w(j),c=S(),r=()=>{if(!a){i(!0);return}c("/add-pet")};return e.jsxs(e.Fragment,{children:[e.jsxs(T,{onClick:r,children:[e.jsx("span",{children:"Add Pet"}),e.jsx(I,{children:e.jsx(Q,{})})]}),e.jsx(F,{active:t,setShow:i})]})},O=()=>{const{isLoggedIn:t}=v();return e.jsxs(e.Fragment,{children:[e.jsxs(E,{children:[e.jsxs(M,{children:[e.jsx(s,{to:"/notices/sell",children:"sell"}),e.jsx(s,{to:"/notices/lost-found",children:"lost/found"}),e.jsx(s,{to:"/notices/for-free",children:"in good hands"}),t&&e.jsxs(e.Fragment,{children:[e.jsx(s,{to:"/notices/favorite",children:"favorite ads"}),e.jsx(s,{to:"/notices/own",children:"my ads"})]})]}),e.jsx(D,{})]}),e.jsx(o.Suspense,{fallback:e.jsx(y,{}),children:e.jsx(k,{})})]})},R=n.div`
 display: flex;
   flex-direction: column;
 align-items: center;
@@ -163,7 +164,7 @@ margin-bottom: 24px;
 margin-bottom: 40px;
   
 }
-`,D=i.h2`
+`,U=n.h2`
   font-size: 24px;
   font-weight: 700;
   
@@ -172,4 +173,4 @@ margin-bottom: 40px;
     font-size: 48px;
     
   }
-`,M=()=>e.jsx(I,{children:e.jsx(D,{children:"Find your favorite pet"})}),V=()=>e.jsxs(e.Fragment,{children:[e.jsx(M,{}),e.jsx(P,{}),e.jsx(T,{})]});export{V as default};
+`,V=()=>e.jsx(R,{children:e.jsx(U,{children:"Find your favorite pet"})}),J=()=>e.jsxs(e.Fragment,{children:[e.jsx(V,{}),e.jsx(N,{}),e.jsx(O,{})]});export{J as default};
