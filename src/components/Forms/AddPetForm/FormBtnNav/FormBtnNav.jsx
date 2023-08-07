@@ -6,24 +6,34 @@ import {
     BtnNext,
     BtnNextText
 } from "./FormBtnNav.styled";
-import { selectCurrentStage } from "../../../../redux/petsSlice/selectors";
-import { formStage } from "../../../../redux/petsSlice/petsSlice";
+import { selectCategory, selectCurrentStage, selectIsAvailable } from "../../../../redux/petsSlice/selectors";
+import { accessToNextStep, formStage } from "../../../../redux/petsSlice/petsSlice";
 import { Icon } from "../../../../components/Icon/Icon"
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 
 
 
 const FormBtnNav = ({ onClick }) => {
-    const stage = useSelector(selectCurrentStage);
-    const location = useLocation();
     const dispatch = useDispatch();
-    
+    const location = useLocation();
+    const stage = useSelector(selectCurrentStage);
+    const isAvailable = useSelector(selectIsAvailable);
+    const category = useSelector(selectCategory);
     const back = useRef(location.state?.from ?? '/notices/sell');
-    console.log(back.current);
+    
     let prev;
 
 
+    useEffect(() => {
+        if (category !== null) {
+            dispatch(
+                accessToNextStep(true),
+            );  
+        }
+        
+    }, [category, dispatch])
+    console.log(isAvailable);
 
     const countPrevStage = () => {
         if (stage === 3 || stage === 2) {
@@ -76,6 +86,7 @@ const FormBtnNav = ({ onClick }) => {
                             <BtnNext
                                 onClick={onClick}
                                 type="submit"
+                                $isAvailabl={isAvailable}
                             >
                                 {
                                     stage === 3

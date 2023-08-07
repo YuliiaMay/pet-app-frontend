@@ -21,6 +21,7 @@ const initialState = {
         price: ""
     },
     // isSubmitted: false,
+    isAvailable: false,
     isLoading: false,
     error: null    
 };
@@ -34,9 +35,10 @@ const petSlice = createSlice({
         optionForm: (state, action) => { state.OptionForm = action.payload },
         detailsForm: (state, action) => { state.DetailsForm = action.payload },
         moreInfoForm: (state, action) => { state.MoreInfoForm = action.payload },
+        accessToNextStep: (state, action) => { state.isAvailable = action.payload },
     },
 });
 
 
-export const { formStage, optionForm, detailsForm, moreInfoForm } = petSlice.actions
+export const { formStage, optionForm, detailsForm, moreInfoForm, accessToNextStep } = petSlice.actions
 export const petReducer = petSlice.reducer;

@@ -14,9 +14,21 @@ export const BtnNav = styled.div`
     @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
         flex-direction: row;  
         justify-content: space-around;
-        gap: 32px;     
+        gap: 32px;  
+        // margin-top: 40px;
+        
+        // @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
+        //     margin-top: 40px;
+        // }
+
+        // @media screen and (min-width: ${(props) => props.theme.sizes.desk}) {
+        //     margin-top: 40px;
+        // }
     };      
 `;
+
+
+
 
 export const BtnBack = styled(Link)`
     width: 200px;
@@ -44,7 +56,13 @@ export const LinkBack = styled.span`
 export const BtnNext = styled.button`
     width: 200px;
     height: 40px;
-    background-color: ${props => props.theme.background.accentBlue};
+    background-color: ${props => {
+        if (props.$isAvailable === false) {
+            return props.theme.background.lightBlue;
+        }
+        return props.theme.background.accentBlue;
+        }
+    };
     border-radius: 40px;
     border: none;
     display: flex;

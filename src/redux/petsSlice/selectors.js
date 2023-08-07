@@ -23,5 +23,8 @@ export const selectLocation = state => state.pet.MoreInfoForm.location;
 export const selectPrice = state => state.pet.MoreInfoForm.price;
 
 
+// Access to btn Next 
+export const selectIsAvailable = state => state.pet.isAvailable;
+
 // PetData
 export const selectAllPetData = state => state.pet;

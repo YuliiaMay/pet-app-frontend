@@ -5,12 +5,13 @@ export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40px;
     width: 458px;
 `;
 
 
 export const Label = styled.label`
+    display: flex;
+    flex-direction: column;
     font-weight: 500;
     font-size: 12px;
 
@@ -31,14 +32,18 @@ export const Input = styled.input`
     font-size: 14px;
     color: ${props => props.theme.color.grey};  
 
+    // &:last-child {
+    //     margin-bottom: 40px;
+    // }
+
     @media screen and (min-width: ${(props) => props.theme.sizes.tab}) {
         font-size: 16px;  
         margin-top: 8px;
         width: 390px;
 
-            &:not(:last-child) {
-                margin-bottom: 24px;
-            }
+            // &:not(:last-child) {
+            //     margin-bottom: 24px;
+            // }
     };     
     
     @media screen and (min-width: ${(props) => props.theme.sizes.desk}) {
@@ -46,9 +51,9 @@ export const Input = styled.input`
                 margin-bottom: 20px;
             }
 
-            &:last-child {
-                margin-bottom: 40px;
-            }
+            // &:last-child {
+            //     margin-bottom: 40px;
+            // }
     };    
 
     &:hover,

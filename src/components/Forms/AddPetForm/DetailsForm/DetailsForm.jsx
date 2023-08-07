@@ -12,8 +12,6 @@ const DetailsForm = () => {
     const category = useSelector(selectCategory);
     const currentDay = new Date().toISOString().slice(0, 10);
 
-
-
     const formik = useFormik({
         initialValues: {
             name: useSelector(selectName) || "",

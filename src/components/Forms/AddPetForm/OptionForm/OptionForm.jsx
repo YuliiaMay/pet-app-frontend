@@ -1,14 +1,15 @@
 import { OptionList, OptionInput } from "./OptionForm.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { formStage, optionForm } from "../../../../redux/petsSlice/petsSlice";
+import { formStage, optionForm, accessToNextStep } from "../../../../redux/petsSlice/petsSlice";
 import FormBtnNav from "../FormBtnNav/FormBtnNav";
-import { selectCategory } from "../../../../redux/petsSlice/selectors";
+import { selectCategory, selectIsAvailable } from "../../../../redux/petsSlice/selectors";
 
 
-const OptionForm = ({ onLeavePage }) => {
+const OptionForm = () => {
     const dispatch = useDispatch();
     const category = useSelector(selectCategory);
     
+
 
     const handleSelectCategory = ({ target: { value } }) => {
         const selectedCategory = value;
@@ -27,6 +28,9 @@ const OptionForm = ({ onLeavePage }) => {
             || category === "lost/found"
             || category === "in good hands"
         ) {
+            dispatch(
+                accessToNextStep(true),
+            );            
             dispatch(
                 formStage(2)
             );
@@ -77,7 +81,6 @@ const OptionForm = ({ onLeavePage }) => {
             </OptionList>
             <FormBtnNav
                 onClick={onNextStep}
-                onLeavePage={onLeavePage}
             /> 
         </>
     )

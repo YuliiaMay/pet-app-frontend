@@ -89,8 +89,9 @@ const MoreInfoForm = () => {
       }      
 
       dispatch(addPetOrNotice(formData));
-      resetState();
+      
       handleNavigate();
+      resetState();
 
       // dispatch(formStage("success"));
     },

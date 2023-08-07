@@ -40,7 +40,7 @@ const authSlice = createSlice({
         state.user = payload;
         state.token = payload.token;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
+        // state.isRefreshing = false;
       })
       .addCase(logout.pending, (state) => state)
       .addCase(logout.fulfilled, (state) => {
